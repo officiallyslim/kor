@@ -3,3 +3,4 @@
 **/tests
 .env
 daily_count.txt
+.VSCodeCounter
