@@ -24,6 +24,7 @@ facts_md = "src/facts/facts.md"
 daily_count_file = "src/facts/daily_count.txt"
 added_trivia_file = 'src/facts/added_trivia.json'
 island_fact_database = 'src/facts/island_fact.json'
+new_fact_path = 'src/facts/new_fact.txt'
 
 # Staff Roles
 mr_boomsteak = 1210006813945106492
