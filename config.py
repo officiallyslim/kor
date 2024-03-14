@@ -19,6 +19,31 @@ admins = [756509638169460837]
 # CHANNELS
 fact_channel_id_debug = 1216056844506759278
 
-junior_role = 1155823367623020586
-moderator_role = 843816627018530838
-admin_role = 1150091304831823912
+# Path
+facts_md = "src/facts/facts.md"
+daily_count_file = "src/facts/daily_count.txt"
+added_trivia_file = 'src/facts/added_trivia.json'
+island_fact_database = 'src/facts/island_fact.json'
+
+# Staff Roles
+mr_boomsteak = 1210006813945106492
+developer = 1214469615808417812
+head_of_operations = 1168385225349406771
+assistant_director = 1151613202669514813
+community_manager = 1175981569656225862
+staff_manager = 1175986076125515786
+head_administration = 1216518080889622538
+senior_administration = 1216518078649860198
+official_administration = 1216518079433936975
+junior_administration = 1175985559743774791
+trial_administration = 1175985971565694987
+mr_boomsteaks_controller = 1151613201377677382
+management_team = 1175984805620494426
+head_of_moderation = 1216518081032093766
+senior_moderator = 1175982839481782353
+official_moderator = 1151613205089628212
+junior_moderator = 1216506577251733615
+trial_moderator = 1151613206939324578
+
+# Links
+island_base_url = "https://robloxislands.fandom.com"
