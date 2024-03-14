@@ -20,7 +20,7 @@ admins = [756509638169460837]
 fact_channel_id_debug = 1216056844506759278
 
 # Path
-facts_md = "src/facts/facts.md"
+facts_md = "src/facts/facts_list.md"
 daily_count_file = "src/facts/daily_count.txt"
 added_trivia_file = 'src/facts/added_trivia.json'
 island_fact_database = 'src/facts/island_fact.json'
