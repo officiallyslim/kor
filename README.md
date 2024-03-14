@@ -9,7 +9,7 @@
 </details>
 
 ## Description
-`Kor` is a Discord bot for [💣BOOM BUILDING CORPORATION 💣](discord.gg/boombuilding).
+`Kor` is a Discord bot for [💣BOOM BUILDING CORPORATION 💣](https://discord.com/invite/boombuilding).
 
 This is bot is specific and only for `💣BOOM BUILDING CORPORATION 💣` server, theres no reason for fork and self host.
 
