@@ -1,5 +1,5 @@
 from config import *
-from src.get_fact import get_randomfact, get_randomcatfact, get_randomdogfact
+from src.facts.get_fact import get_randomfact, get_randomcatfact, get_randomdogfact, get_islandfact
 
 fact_group = discord.SlashCommandGroup("fact", "Send a fact!")
 
@@ -39,16 +39,26 @@ async def dog_fact(ctx: discord.ApplicationContext):
 
     await ctx.respond(embed=randomdogfact_embed)
 
-# @fact_group.command(name = "dog", description = "Get random dog fact 🐶")
-# async def island_fact(ctx: discord.ApplicationContext):
-#     dogfact = get_randomdogfact()
-#     print(f'Random dog fact: {dogfact}')
-#     randomdogfact_embed = discord.Embed(
-#         title="Random dog fact 🏝️",
-#         description=f"{dogfact}",
-#         colour=discord.Colour(int("964B00", 16))
-#     )
-#     await ctx.respond(embed=randomdogfact_embed)
+@fact_group.command(name = "island", description = "Get island dog fact 🏝️")
+async def island_fact(ctx: discord.ApplicationContext):
+    fact = get_islandfact()
+    print(f"Random island fact: {fact['Fact']}")
+    randomislandfact_embed = discord.Embed(
+        title="Random island fact 🏝️",
+        description=f"{fact['Fact']}",
+        colour=discord.Colour(int("d1e8fa", 16))
+    )
+    if fact['Image Link'] != None:
+        randomislandfact_embed.set_image(f"{fact['Image Link']}")
+    if fact["Source Link"] == None:
+        await ctx.respond(embed=randomislandfact_embed)
+    else:
+        await ctx.respond(embed=randomislandfact_embed, view=source_island(fact['Source Link']))
+
+class source_island(discord.ui.View):
+    def __init__(self, source_link):
+        super().__init__()
+        self.add_item(discord.ui.Button(label="Information source", url=f'{source_link}'))
 
 # @fact_group.command(name = "help", description = "Random facts help")
 # async def fact_help(ctx: discord.ApplicationContext):
