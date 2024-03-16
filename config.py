@@ -18,6 +18,8 @@ admins = [756509638169460837]
 
 # CHANNELS
 fact_channel_id_debug = 1216056844506759278
+daily_fact_log_channel_id = 1217895141902123111
+general_log_channel_id = 1217894520658722866
 
 # Path
 facts_md = "src/facts/facts_list.md"
