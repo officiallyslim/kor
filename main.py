@@ -2,7 +2,7 @@ from config import *
 import os
 import traceback
 
-cogs = ['cogs.fact']
+cogs = ['cogs.fact', 'cogs.embed_sender']
 
 for cog in cogs:
     try:
