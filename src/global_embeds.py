@@ -17,3 +17,9 @@ error_embed = discord.Embed(
     description=f"Please, contact <@756509638169460837> or any moderator/administrator.",
     colour=discord.Colour(int("ff0000", 16))
 )
+
+failed_fetch_daily_channel = discord.Embed(
+    title="Daily fact channel log not found!",
+    description=f"Failed log mod action becouse daily fact log channel not found",
+    colour=discord.Colour(int("ff0000", 16))
+)
