@@ -39,12 +39,12 @@ class embed_sender(commands.Cog):
             if discohook_link:
                 response = requests.get(embed_url, params={'url': discohook_link})
                 data = response.json()
-                with open('embed.json', 'w', encoding='utf-8') as f:
+                with open(embed_path, 'w', encoding='utf-8') as f:
                     json.dump(data, f, ensure_ascii=False)
             elif file:
-                await file.save("embed.json")
+                await file.save(embed_path)
 
-            with open('embed.json', 'r', encoding='utf-8') as f:
+            with open(embed_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
 
             if 'message' in data:
@@ -96,12 +96,12 @@ class embed_sender(commands.Cog):
             if discohook_link:
                 response = requests.get(embed_url, params={'url': discohook_link})
                 data = response.json()
-                with open('embed.json', 'w', encoding='utf-8') as f:
+                with open(embed_path, 'w', encoding='utf-8') as f:
                     json.dump(data, f, ensure_ascii=False)
             elif file:
-                await file.save("embed.json")
+                await file.save(embed_path)
 
-            with open('embed.json', 'r', encoding='utf-8') as f:
+            with open(embed_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
 
             if 'message' in data:
