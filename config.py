@@ -48,3 +48,4 @@ trial_moderator = 1151613206939324578
 
 # Links
 island_base_url = "https://robloxislands.fandom.com"
+embed_url = "http://144.76.143.198:8165/getEmbed"

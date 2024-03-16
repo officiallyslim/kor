@@ -1,6 +1,7 @@
 from config import *
 import requests
 import json
+from src.global_embeds import no_perm_embed
 
 class ConfirmView(discord.ui.View):
     def __init__(self, ctx, channel, content=None, embeds=None):
@@ -25,7 +26,7 @@ class embed_sender(commands.Cog):
     @discord.slash_command(name = "send_embed", description = "Send embed in specifically channel")
     async def embed_sender(self, ctx: discord.ApplicationContext, channel: discord.TextChannel, file: discord.Attachment = None, discohook_link: str = None):
         if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager, community_manager, assistant_director, head_of_operations, developer, mr_boomsteak] for role in ctx.author.roles):
-            await ctx.respond("You are not allowed to use this command!", ephemeral=True)
+            await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
         if file and discohook_link:
             await ctx.respond("You can't send JSON file and Discohook link at the same time!", ephemeral=True)
@@ -36,7 +37,7 @@ class embed_sender(commands.Cog):
 
         try:
             if discohook_link:
-                response = requests.get('http://144.76.143.198:8165/getEmbed', params={'url': discohook_link})
+                response = requests.get(embed_url, params={'url': discohook_link})
                 data = response.json()
                 with open('embed.json', 'w', encoding='utf-8') as f:
                     json.dump(data, f, ensure_ascii=False)
@@ -82,7 +83,7 @@ class embed_sender(commands.Cog):
     @discord.slash_command(name = "send_dm_embed", description = "Send embed in DM")
     async def dm_sender(self, ctx: discord.ApplicationContext, user: discord.User, file: discord.Attachment = None, discohook_link: str = None):
         if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager, community_manager, assistant_director, head_of_operations, developer, mr_boomsteak] for role in ctx.author.roles):
-            await ctx.respond("You are not allowed to use this command!", ephemeral=True)
+            await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
         if file and discohook_link:
             await ctx.respond("You can't send a JSON file and a Discohook link at the same time!", ephemeral=True)
@@ -93,7 +94,7 @@ class embed_sender(commands.Cog):
 
         try:
             if discohook_link:
-                response = requests.get('http://144.76.143.198:8165/getEmbed', params={'url': discohook_link})
+                response = requests.get(embed_url, params={'url': discohook_link})
                 data = response.json()
                 with open('embed.json', 'w', encoding='utf-8') as f:
                     json.dump(data, f, ensure_ascii=False)
