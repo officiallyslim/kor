@@ -1,6 +1,10 @@
 from config import *
 import os
 import traceback
+import dotenv
+
+dotenv.load_dotenv()
+token = str(os.getenv("TOKEN"))
 
 cogs = ['cogs.fact', 'cogs.embed_sender']
 
@@ -38,8 +42,4 @@ async def reload_cog(
     else:
         await ctx.respond("You are not allowed to use this command")
 
-import dotenv
-dotenv.load_dotenv()
-token = str(os.getenv("TOKEN"))
-
-bot.run(token) # kor
+bot.run(token)
