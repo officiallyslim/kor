@@ -5,6 +5,4 @@
 daily_count.txt
 .VSCodeCounter
 src/facts/new_fact.txt
-src/facts/island_fact.json
-src/facts/added_trivia.json
 src/embed_sender/embed.json
