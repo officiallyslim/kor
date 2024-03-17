@@ -1,49 +1,105 @@
 from config import *
 from discord.commands import Option
 from commands.fact_commands import fact_group
+from src.global_embeds import no_perm_embed, soon_embed, error_embed, failed_fetch_daily_channel
+from src.facts.island_fact import check_existing_link, check_link, extract_trivia
+
+async def send_facts_as_file(ctx: discord.ApplicationContext, facts):
+    facts_str = '\n'.join(facts) if isinstance(facts, list) else str(facts)
+
+    with open(new_fact_path, 'w', encoding='utf-8') as file:
+        file.write(facts_str)
+
+    with open(new_fact_path, 'rb') as file:
+        await ctx.respond("Added the following facts:", file=discord.File(file, 'facts.txt'), ephemeral=True)
+
 
 class fact(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @discord.slash_command(name = "change_fact_number", description = "Change the daily fact number")
-    async def change_fact_number(self, ctx, number: Option(int, "The next say fact number")): # type: ignore
-        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [moderator_role] for role in ctx.author.roles):
-            await ctx.respond("You are not allowed to use this command!", ephemeral=True)
+    async def change_fact_number(self, ctx: discord.ApplicationContext, number: Option(int, "The next say fact number")): # type: ignore
+        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
+                staff_manager,
+                community_manager,
+                assistant_director,
+                head_of_operations,
+                developer,
+                mr_boomsteak] for role in ctx.author.roles):
+            await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
 
         if not float(number).is_integer():
             await ctx.respond("Please enter an integer without decimals!", ephemeral=True)
             return
 
-        f = open("daily_count.txt", "w")
+        f = open(daily_count_file, "w")
         f.write(f"{number}")
         f.close()
 
         await ctx.respond(f"The next daily count number set to `{number}`", ephemeral=True)
 
-    @discord.slash_command(name = "add_island_fact", description = "Add new island fact to database")
-    async def change_fact_number(self, ctx, fact: Option(str, "Fact about Islands (Roblox)"), img_link: Option(None, "Related image of the fact"), source_link: Option(None, "Source link of the fact")):# type: ignore
-        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [moderator_role] for role in ctx.author.roles):
-            await ctx.respond("You are not allowed to use this command!", ephemeral=True)
+        daily_log_channel = bot.get_channel(daily_fact_log_channel_id)
+        general_kor_log_channel = bot.get_channel(general_log_channel_id)
+
+        if daily_log_channel:
+            embed = discord.Embed(
+                title="Updated daily count",
+                description=f"{ctx.author.mention} (`{ctx.author.id}`) updated the daily count to `{number}`",
+                colour=discord.Colour(int("51d1f6", 16))
+            )
+            await daily_log_channel.send(embed=embed)
+        else:
+            await general_kor_log_channel.send(embed=failed_fetch_daily_channel)
+
+    @discord.slash_command(name = "add_custom_island_fact", description = "Add new island fact to database")
+    async def add_custom_island_fact(self, ctx: discord.ApplicationContext, fact: Option(str, "Fact about Islands (Roblox)"), img_link: Option(str, "Related image of the fact") = None, source_link: Option(str, "Source link of the fact") = None):# type: ignore
+        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
+                staff_manager,
+                community_manager,
+                assistant_director,
+                head_of_operations,
+                developer,
+                mr_boomsteak] for role in ctx.author.roles):
+            await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
 
-        if not float(number).is_integer():
-            await ctx.respond("Please enter an integer without decimals!", ephemeral=True)
+        await ctx.respond(embed=soon_embed, ephemeral=True)
+
+    @discord.slash_command(name = "add_island_trivia", description = "Add fact of trivia from official Island Wiki")
+    async def add_island_trivia(self, ctx: discord.ApplicationContext, link: Option(str, "Island Wiki link")):# type: ignore
+        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
+                staff_manager,
+                community_manager,
+                assistant_director,
+                head_of_operations,
+                developer,
+                mr_boomsteak] for role in ctx.author.roles):
+            await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
+        
+        if await check_link(link):
+            if not await check_existing_link(link):
+                facts = await extract_trivia(link)
+                if facts == "No trivia":
+                    await ctx.respond(f"No trivia found!", ephemeral=True)
+                else:
+                    await send_facts_as_file(ctx, facts)
 
-        f = open("daily_count.txt", "w")
-        f.write(f"{number}")
-        f.close()
-
-        await ctx.respond(f"The next daily count number set to `{number}`", ephemeral=True)
-
-
+            else:
+                existing_embed = discord.Embed(
+                    title="",
+                    description=f"This page trivia is already added to the database. Contact <@756509638169460837> if its wrong!\nIf you want see the facts, check the database in [Github](https://github.com/Stageddat/kor).",
+                    colour=discord.Colour(int("ff0000", 16))
+                )
+                await ctx.respond(embed=existing_embed, ephemeral=True)
+        else:
+            await ctx.respond(embed=error_embed, ephemeral=True)
 
     # @discord.Cog.listener()
     # async def on_ready(self):
     #     # dailyfact.start()
-    #     print("Loading commands")
 
     print("Loading commands")
     bot.add_application_command(fact_group)
@@ -64,7 +120,7 @@ def setup(bot):
 #     cursor.close()
 #     mydb.close()
 #     return int(result[0])
-    
+
 # def increment_fact_number():
 #     mydb = pool.get_connection()
 #     cursor = mydb.cursor()
