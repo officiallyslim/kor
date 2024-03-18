@@ -1,5 +1,103 @@
 # FACTS LIST
-**Version: 0**
-**Updated by: Stagedddat**
-**Updated at: 21:23 EST**
+**Version: 6**
+
+
+
+
+
+
+
+**Updated by: stageddat**
+
+
+
+
+
+
+
+**Updated at: 15:21 EST**
 - Upon using a blueprint, it disappears from the player’s [inventory](https://robloxislands.fandom.com/wiki/Inventory) and a visual icon of the [item](https://robloxislands.fandom.com/wiki/Item) on will appear temporarily on the player’s head. 
+-  [Slimes](https://robloxislands.fandom.com/wiki/Slime) are the first hostile mob inIslands. 
+-  [Fish](https://robloxislands.fandom.com/wiki/Fish) are the first passive mob inIslands. 
+-  [Bees](https://robloxislands.fandom.com/wiki/Bee) are the first flying passive mob inIslands. 
+- When the [Christmas 2020](https://robloxislands.fandom.com/wiki/Christmas_2020) event ended, [frost slimes](https://robloxislands.fandom.com/wiki/Frost_Slime) would still spawn on [Slime Island](https://robloxislands.fandom.com/wiki/Slime_Island) for a few more days. 
+-  [Snowmen](https://robloxislands.fandom.com/wiki/Snowman_(mob)) are currently the first and only neutral mob inIslands. 
+- The [Grand High Witch](https://robloxislands.fandom.com/wiki/Grand_High_Witch) is the first [boss](https://robloxislands.fandom.com/wiki/Category:Bosses) inIslands. 
+- The [Infernal Dragon](https://robloxislands.fandom.com/wiki/Infernal_Dragon) is the first boss inIslandsthat doesn't have a summon cooldown.It is the first boss inIslandsthat requires its own [token](https://robloxislands.fandom.com/wiki/Token) to be summoned. 
+- It is the first boss inIslandsthat requires its own [token](https://robloxislands.fandom.com/wiki/Token) to be summoned. 
+-  [Fhanhorn](https://robloxislands.fandom.com/wiki/Fhanhorn) is the first and only boss inIslandswhose summon cooldown currently cannot be bypassed with 500 [tokens](https://robloxislands.fandom.com/wiki/Token).It is also the second boss inIslandsthat doesn't have its own token, with the others being the Grand High Witch, the [Lunar Rabbit](https://robloxislands.fandom.com/wiki/Lunar_Rabbit), and the [Azarathian Serpent](https://robloxislands.fandom.com/wiki/Azarathian_Serpent).Unlike most bosses with the "Failed to Summon" notification, if a player attempts to summon Fhanhorn  while still on cooldown due to it doesn't have its own token, nothing happens.It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token.Since the [October 28, 2022](https://robloxislands.fandom.com/wiki/October_28,_2022) update, the token requirement is doesn't indicate on Fhanhorn 's summoning UI due to it doesn't have its own token. 
+- It is also the second boss inIslandsthat doesn't have its own token, with the others being the Grand High Witch, the [Lunar Rabbit](https://robloxislands.fandom.com/wiki/Lunar_Rabbit), and the [Azarathian Serpent](https://robloxislands.fandom.com/wiki/Azarathian_Serpent). 
+- Unlike most bosses with the "Failed to Summon" notification, if a player attempts to summon Fhanhorn while still on cooldown due to it doesn't have its own token, nothing happens.It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token. 
+- It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token. 
+- Since the [October 28, 2022](https://robloxislands.fandom.com/wiki/October_28,_2022) update, the token requirement is doesn't indicate on Fhanhorn's summoning UI due to it doesn't have its own token. 
+- Fhanhorn is the first boss inIslandswith the ability to heal itself. 
+-  [Slimes](https://robloxislands.fandom.com/wiki/Slime) are the first hostile mob inIslands. 
+-  [Fish](https://robloxislands.fandom.com/wiki/Fish) are the first passive mob inIslands. 
+-  [Bees](https://robloxislands.fandom.com/wiki/Bee) are the first flying passive mob inIslands. 
+- When the [Christmas 2020](https://robloxislands.fandom.com/wiki/Christmas_2020) event ended, [frost slimes](https://robloxislands.fandom.com/wiki/Frost_Slime) would still spawn on [Slime Island](https://robloxislands.fandom.com/wiki/Slime_Island) for a few more days. 
+-  [Snowmen](https://robloxislands.fandom.com/wiki/Snowman_(mob)) are currently the first and only neutral mob inIslands. 
+- The [Grand High Witch](https://robloxislands.fandom.com/wiki/Grand_High_Witch) is the first [boss](https://robloxislands.fandom.com/wiki/Category:Bosses) inIslands. 
+- The [Infernal Dragon](https://robloxislands.fandom.com/wiki/Infernal_Dragon) is the first boss inIslandsthat doesn't have a summon cooldown.It is the first boss inIslandsthat requires its own [token](https://robloxislands.fandom.com/wiki/Token) to be summoned. 
+- It is the first boss inIslandsthat requires its own [token](https://robloxislands.fandom.com/wiki/Token) to be summoned. 
+-  [Fhanhorn](https://robloxislands.fandom.com/wiki/Fhanhorn) is the first and only boss inIslandswhose summon cooldown currently cannot be bypassed with 500 [tokens](https://robloxislands.fandom.com/wiki/Token).It is also the second boss inIslandsthat doesn't have its own token, with the others being the Grand High Witch, the [Lunar Rabbit](https://robloxislands.fandom.com/wiki/Lunar_Rabbit), and the [Azarathian Serpent](https://robloxislands.fandom.com/wiki/Azarathian_Serpent).Unlike most bosses with the "Failed to Summon" notification, if a player attempts to summon Fhanhorn  while still on cooldown due to it doesn't have its own token, nothing happens.It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token.Since the [October 28, 2022](https://robloxislands.fandom.com/wiki/October_28,_2022) update, the token requirement is doesn't indicate on Fhanhorn 's summoning UI due to it doesn't have its own token. 
+- It is also the second boss inIslandsthat doesn't have its own token, with the others being the Grand High Witch, the [Lunar Rabbit](https://robloxislands.fandom.com/wiki/Lunar_Rabbit), and the [Azarathian Serpent](https://robloxislands.fandom.com/wiki/Azarathian_Serpent). 
+- Unlike most bosses with the "Failed to Summon" notification, if a player attempts to summon Fhanhorn while still on cooldown due to it doesn't have its own token, nothing happens.It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token. 
+- It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token. 
+- Since the [October 28, 2022](https://robloxislands.fandom.com/wiki/October_28,_2022) update, the token requirement is doesn't indicate on Fhanhorn's summoning UI due to it doesn't have its own token. 
+- Fhanhorn is the first boss inIslandswith the ability to heal itself. 
+-  [Slimes](https://robloxislands.fandom.com/wiki/Slime) are the first hostile mob inIslands. 
+-  [Fish](https://robloxislands.fandom.com/wiki/Fish) are the first passive mob inIslands. 
+-  [Bees](https://robloxislands.fandom.com/wiki/Bee) are the first flying passive mob inIslands. 
+- When the [Christmas 2020](https://robloxislands.fandom.com/wiki/Christmas_2020) event ended, [frost slimes](https://robloxislands.fandom.com/wiki/Frost_Slime) would still spawn on [Slime Island](https://robloxislands.fandom.com/wiki/Slime_Island) for a few more days. 
+-  [Snowmen](https://robloxislands.fandom.com/wiki/Snowman_(mob)) are currently the first and only neutral mob inIslands. 
+- The [Grand High Witch](https://robloxislands.fandom.com/wiki/Grand_High_Witch) is the first [boss](https://robloxislands.fandom.com/wiki/Category:Bosses) inIslands. 
+- The [Infernal Dragon](https://robloxislands.fandom.com/wiki/Infernal_Dragon) is the first boss inIslandsthat doesn't have a summon cooldown.It is the first boss inIslandsthat requires its own [token](https://robloxislands.fandom.com/wiki/Token) to be summoned. 
+- It is the first boss inIslandsthat requires its own [token](https://robloxislands.fandom.com/wiki/Token) to be summoned. 
+-  [Fhanhorn](https://robloxislands.fandom.com/wiki/Fhanhorn) is the first and only boss inIslandswhose summon cooldown currently cannot be bypassed with 500 [tokens](https://robloxislands.fandom.com/wiki/Token).It is also the second boss inIslandsthat doesn't have its own token, with the others being the Grand High Witch, the [Lunar Rabbit](https://robloxislands.fandom.com/wiki/Lunar_Rabbit), and the [Azarathian Serpent](https://robloxislands.fandom.com/wiki/Azarathian_Serpent).Unlike most bosses with the "Failed to Summon" notification, if a player attempts to summon Fhanhorn  while still on cooldown due to it doesn't have its own token, nothing happens.It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token.Since the [October 28, 2022](https://robloxislands.fandom.com/wiki/October_28,_2022) update, the token requirement is doesn't indicate on Fhanhorn 's summoning UI due to it doesn't have its own token. 
+- It is also the second boss inIslandsthat doesn't have its own token, with the others being the Grand High Witch, the [Lunar Rabbit](https://robloxislands.fandom.com/wiki/Lunar_Rabbit), and the [Azarathian Serpent](https://robloxislands.fandom.com/wiki/Azarathian_Serpent). 
+- Unlike most bosses with the "Failed to Summon" notification, if a player attempts to summon Fhanhorn while still on cooldown due to it doesn't have its own token, nothing happens.It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token. 
+- It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token. 
+- Since the [October 28, 2022](https://robloxislands.fandom.com/wiki/October_28,_2022) update, the token requirement is doesn't indicate on Fhanhorn's summoning UI due to it doesn't have its own token. 
+- Fhanhorn is the first boss inIslandswith the ability to heal itself. 
+-  [Slimes](https://robloxislands.fandom.com/wiki/Slime) are the first hostile mob inIslands. 
+-  [Fish](https://robloxislands.fandom.com/wiki/Fish) are the first passive mob inIslands. 
+-  [Bees](https://robloxislands.fandom.com/wiki/Bee) are the first flying passive mob inIslands. 
+- When the [Christmas 2020](https://robloxislands.fandom.com/wiki/Christmas_2020) event ended, [frost slimes](https://robloxislands.fandom.com/wiki/Frost_Slime) would still spawn on [Slime Island](https://robloxislands.fandom.com/wiki/Slime_Island) for a few more days. 
+-  [Snowmen](https://robloxislands.fandom.com/wiki/Snowman_(mob)) are currently the first and only neutral mob inIslands. 
+- The [Grand High Witch](https://robloxislands.fandom.com/wiki/Grand_High_Witch) is the first [boss](https://robloxislands.fandom.com/wiki/Category:Bosses) inIslands. 
+- The [Infernal Dragon](https://robloxislands.fandom.com/wiki/Infernal_Dragon) is the first boss inIslandsthat doesn't have a summon cooldown.It is the first boss inIslandsthat requires its own [token](https://robloxislands.fandom.com/wiki/Token) to be summoned. 
+- It is the first boss inIslandsthat requires its own [token](https://robloxislands.fandom.com/wiki/Token) to be summoned. 
+-  [Fhanhorn](https://robloxislands.fandom.com/wiki/Fhanhorn) is the first and only boss inIslandswhose summon cooldown currently cannot be bypassed with 500 [tokens](https://robloxislands.fandom.com/wiki/Token).It is also the second boss inIslandsthat doesn't have its own token, with the others being the Grand High Witch, the [Lunar Rabbit](https://robloxislands.fandom.com/wiki/Lunar_Rabbit), and the [Azarathian Serpent](https://robloxislands.fandom.com/wiki/Azarathian_Serpent).Unlike most bosses with the "Failed to Summon" notification, if a player attempts to summon Fhanhorn  while still on cooldown due to it doesn't have its own token, nothing happens.It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token.Since the [October 28, 2022](https://robloxislands.fandom.com/wiki/October_28,_2022) update, the token requirement is doesn't indicate on Fhanhorn 's summoning UI due to it doesn't have its own token. 
+- It is also the second boss inIslandsthat doesn't have its own token, with the others being the Grand High Witch, the [Lunar Rabbit](https://robloxislands.fandom.com/wiki/Lunar_Rabbit), and the [Azarathian Serpent](https://robloxislands.fandom.com/wiki/Azarathian_Serpent). 
+- Unlike most bosses with the "Failed to Summon" notification, if a player attempts to summon Fhanhorn while still on cooldown due to it doesn't have its own token, nothing happens.It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token. 
+- It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token. 
+- Since the [October 28, 2022](https://robloxislands.fandom.com/wiki/October_28,_2022) update, the token requirement is doesn't indicate on Fhanhorn's summoning UI due to it doesn't have its own token. 
+- Fhanhorn is the first boss inIslandswith the ability to heal itself. 
+-  [Slimes](https://robloxislands.fandom.com/wiki/Slime) are the first hostile mob inIslands. 
+-  [Fish](https://robloxislands.fandom.com/wiki/Fish) are the first passive mob inIslands. 
+-  [Bees](https://robloxislands.fandom.com/wiki/Bee) are the first flying passive mob inIslands. 
+- When the [Christmas 2020](https://robloxislands.fandom.com/wiki/Christmas_2020) event ended, [frost slimes](https://robloxislands.fandom.com/wiki/Frost_Slime) would still spawn on [Slime Island](https://robloxislands.fandom.com/wiki/Slime_Island) for a few more days. 
+-  [Snowmen](https://robloxislands.fandom.com/wiki/Snowman_(mob)) are currently the first and only neutral mob inIslands. 
+- The [Grand High Witch](https://robloxislands.fandom.com/wiki/Grand_High_Witch) is the first [boss](https://robloxislands.fandom.com/wiki/Category:Bosses) inIslands. 
+- The [Infernal Dragon](https://robloxislands.fandom.com/wiki/Infernal_Dragon) is the first boss inIslandsthat doesn't have a summon cooldown.It is the first boss inIslandsthat requires its own [token](https://robloxislands.fandom.com/wiki/Token) to be summoned. 
+- It is the first boss inIslandsthat requires its own [token](https://robloxislands.fandom.com/wiki/Token) to be summoned. 
+-  [Fhanhorn](https://robloxislands.fandom.com/wiki/Fhanhorn) is the first and only boss inIslandswhose summon cooldown currently cannot be bypassed with 500 [tokens](https://robloxislands.fandom.com/wiki/Token).It is also the second boss inIslandsthat doesn't have its own token, with the others being the Grand High Witch, the [Lunar Rabbit](https://robloxislands.fandom.com/wiki/Lunar_Rabbit), and the [Azarathian Serpent](https://robloxislands.fandom.com/wiki/Azarathian_Serpent).Unlike most bosses with the "Failed to Summon" notification, if a player attempts to summon Fhanhorn  while still on cooldown due to it doesn't have its own token, nothing happens.It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token.Since the [October 28, 2022](https://robloxislands.fandom.com/wiki/October_28,_2022) update, the token requirement is doesn't indicate on Fhanhorn 's summoning UI due to it doesn't have its own token. 
+- It is also the second boss inIslandsthat doesn't have its own token, with the others being the Grand High Witch, the [Lunar Rabbit](https://robloxislands.fandom.com/wiki/Lunar_Rabbit), and the [Azarathian Serpent](https://robloxislands.fandom.com/wiki/Azarathian_Serpent). 
+- Unlike most bosses with the "Failed to Summon" notification, if a player attempts to summon Fhanhorn while still on cooldown due to it doesn't have its own token, nothing happens.It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token. 
+- It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token. 
+- Since the [October 28, 2022](https://robloxislands.fandom.com/wiki/October_28,_2022) update, the token requirement is doesn't indicate on Fhanhorn's summoning UI due to it doesn't have its own token. 
+- Fhanhorn is the first boss inIslandswith the ability to heal itself. 
+-  [Slimes](https://robloxislands.fandom.com/wiki/Slime) are the first hostile mob inIslands. 
+-  [Fish](https://robloxislands.fandom.com/wiki/Fish) are the first passive mob inIslands. 
+-  [Bees](https://robloxislands.fandom.com/wiki/Bee) are the first flying passive mob inIslands. 
+- When the [Christmas 2020](https://robloxislands.fandom.com/wiki/Christmas_2020) event ended, [frost slimes](https://robloxislands.fandom.com/wiki/Frost_Slime) would still spawn on [Slime Island](https://robloxislands.fandom.com/wiki/Slime_Island) for a few more days. 
+-  [Snowmen](https://robloxislands.fandom.com/wiki/Snowman_(mob)) are currently the first and only neutral mob inIslands. 
+- The [Grand High Witch](https://robloxislands.fandom.com/wiki/Grand_High_Witch) is the first [boss](https://robloxislands.fandom.com/wiki/Category:Bosses) inIslands. 
+- The [Infernal Dragon](https://robloxislands.fandom.com/wiki/Infernal_Dragon) is the first boss inIslandsthat doesn't have a summon cooldown.It is the first boss inIslandsthat requires its own [token](https://robloxislands.fandom.com/wiki/Token) to be summoned. 
+- It is the first boss inIslandsthat requires its own [token](https://robloxislands.fandom.com/wiki/Token) to be summoned. 
+-  [Fhanhorn](https://robloxislands.fandom.com/wiki/Fhanhorn) is the first and only boss inIslandswhose summon cooldown currently cannot be bypassed with 500 [tokens](https://robloxislands.fandom.com/wiki/Token).It is also the second boss inIslandsthat doesn't have its own token, with the others being the Grand High Witch, the [Lunar Rabbit](https://robloxislands.fandom.com/wiki/Lunar_Rabbit), and the [Azarathian Serpent](https://robloxislands.fandom.com/wiki/Azarathian_Serpent).Unlike most bosses with the "Failed to Summon" notification, if a player attempts to summon Fhanhorn  while still on cooldown due to it doesn't have its own token, nothing happens.It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token.Since the [October 28, 2022](https://robloxislands.fandom.com/wiki/October_28,_2022) update, the token requirement is doesn't indicate on Fhanhorn 's summoning UI due to it doesn't have its own token. 
+- It is also the second boss inIslandsthat doesn't have its own token, with the others being the Grand High Witch, the [Lunar Rabbit](https://robloxislands.fandom.com/wiki/Lunar_Rabbit), and the [Azarathian Serpent](https://robloxislands.fandom.com/wiki/Azarathian_Serpent). 
+- Unlike most bosses with the "Failed to Summon" notification, if a player attempts to summon Fhanhorn while still on cooldown due to it doesn't have its own token, nothing happens.It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token. 
+- It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token. 
+- Since the [October 28, 2022](https://robloxislands.fandom.com/wiki/October_28,_2022) update, the token requirement is doesn't indicate on Fhanhorn's summoning UI due to it doesn't have its own token. 
+- Fhanhorn is the first boss inIslandswith the ability to heal itself. 
