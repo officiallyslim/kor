@@ -2,7 +2,10 @@ from config import *
 from discord.commands import Option
 from commands.fact_commands import fact_group
 from src.global_embeds import no_perm_embed, soon_embed, error_embed, failed_fetch_daily_channel
-from src.facts.island_fact import check_existing_link, check_link, extract_trivia
+from src.facts.island_fact import check_existing_link, check_link, extract_trivia, push_facts_github
+import json
+import os
+import dotenv
 
 async def send_facts_as_file(ctx: discord.ApplicationContext, facts):
     facts_str = '\n'.join(facts) if isinstance(facts, list) else str(facts)
@@ -11,8 +14,20 @@ async def send_facts_as_file(ctx: discord.ApplicationContext, facts):
         file.write(facts_str)
 
     with open(new_fact_path, 'rb') as file:
-        await ctx.respond("Added the following facts:", file=discord.File(file, 'facts.txt'), ephemeral=True)
+        await ctx.respond(f"Added the following facts. **PLEASE CHECK IF THERE ARE ANY ERRORS**. Click the below button if u need help.\nIf you want see the whole log, visit [Github]({fact_list_github})", file=discord.File(file, 'facts.txt'), ephemeral=True, view=error_trivia_help())
 
+class error_trivia_help(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=None)
+
+    @discord.ui.button(label="Help", style=discord.ButtonStyle.primary, emoji="➕", custom_id="fact_error_help")
+    async def fact_error_help(self, button: discord.ui.Button, interaction: discord.Interaction):
+        with open(error_fact_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+
+        help_embed = [discord.Embed.from_dict(embed_info) for embed_info in data[0]['embeds']] if data[0]['embeds'] else None
+
+        await interaction.response.send_message(embeds=help_embed, ephemeral=True)
 
 class fact(commands.Cog):
     def __init__(self, bot):
@@ -34,7 +49,7 @@ class fact(commands.Cog):
             await ctx.respond("Please enter an integer without decimals!", ephemeral=True)
             return
 
-        f = open(daily_count_file, "w")
+        f = open(daily_count_path, "w")
         f.write(f"{number}")
         f.close()
 
@@ -69,6 +84,7 @@ class fact(commands.Cog):
 
     @discord.slash_command(name = "add_island_trivia", description = "Add fact of trivia from official Island Wiki")
     async def add_island_trivia(self, ctx: discord.ApplicationContext, link: Option(str, "Island Wiki link")):# type: ignore
+        await ctx.defer(ephemeral=True)
         if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
                 staff_manager,
                 community_manager,
@@ -81,7 +97,7 @@ class fact(commands.Cog):
         
         if await check_link(link):
             if not await check_existing_link(link):
-                facts = await extract_trivia(link)
+                facts = await extract_trivia(link, ctx.user.name)
                 if facts == "No trivia":
                     await ctx.respond(f"No trivia found!", ephemeral=True)
                 else:
@@ -90,16 +106,84 @@ class fact(commands.Cog):
             else:
                 existing_embed = discord.Embed(
                     title="",
-                    description=f"This page trivia is already added to the database. Contact <@756509638169460837> if its wrong!\nIf you want see the facts, check the database in [Github](https://github.com/Stageddat/kor).",
+                    description=f"This page trivia is already added to the database. Contact <@756509638169460837> if its wrong!\nIf you want see the facts, check the database in [Github]({fact_list_github}).",
                     colour=discord.Colour(int("ff0000", 16))
                 )
                 await ctx.respond(embed=existing_embed, ephemeral=True)
         else:
             await ctx.respond(embed=error_embed, ephemeral=True)
 
-    # @discord.Cog.listener()
-    # async def on_ready(self):
-    #     # dailyfact.start()
+    @discord.slash_command(name = "sync_island_fact_github", description = "Add fact of trivia from official Island Wiki")
+    async def sync_island_fact_github(self, ctx: discord.ApplicationContext):
+        await ctx.defer(ephemeral=True)
+        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
+                staff_manager,
+                community_manager,
+                assistant_director,
+                head_of_operations,
+                developer,
+                mr_boomsteak] for role in ctx.author.roles):
+            await ctx.respond(embed=no_perm_embed, ephemeral=True)
+            return
+        
+        # Get the github version
+        headers = {'Authorization': f'token {github_token}'}
+        response = requests.get(raw_fact_list_github, headers=headers)
+        version_prefix = "**Version: "
+        version_suffix = "**"
+        content = response.text
+        lines = content.split('\n')
+
+        # get version
+        version_line = next((line for line in lines if line.startswith(version_prefix)), None)
+        if version_line is None:
+            await ctx.respond("Failed get version in Github.", ephemeral=True)
+            return
+
+        github_version = int(version_line.strip().replace(version_prefix, "").replace(version_suffix, ""))
+
+        # Get local version
+        with open(facts_md, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+
+        version_prefix = "**Version: "
+        version_suffix = "**"
+
+        # get version
+        version_line = next((line for line in lines if line.startswith(version_prefix)), None)
+        if version_line is None:
+            await ctx.respond("Failed get local facts version.", ephemeral=True)
+            return
+
+        local_version = int(version_line.strip().replace(version_prefix, "").replace(version_suffix, ""))
+
+        if github_version == local_version:
+            await ctx.respond("It is already synchronized")
+
+        elif github_version > local_version:
+            # Facts list
+            r = requests.get(raw_fact_list_github, allow_redirects=True, headers=headers)
+            open(facts_md, 'wb').write(r.content)
+
+            # Facts database
+            r = requests.get(raw_fact_database_github, allow_redirects=True, headers=headers)
+            open(island_fact_database, 'wb').write(r.content)
+
+            # Added facts link
+            r = requests.get(raw_added_fact_github, allow_redirects=True, headers=headers)
+            open(added_trivia_path, 'wb').write(r.content)
+            await ctx.respond("Detected Github facts are newer. Copying from Github to bot local storage.", ephemeral=True)
+
+        elif github_version < local_version:
+            push_facts_github('./', ['src/facts/facts_list.md', 'src/facts/added_trivia.json', 'src/facts/island_fact.json'], f'Update fact data from local v:{local_version}', 'kor', 'https://github.com/Stageddat/kor')
+            await ctx.respond("Detected local facts are newer. Uploading from local to Github.", ephemeral=True)
+        else:
+            await ctx.respond(embed=error_embed, ephemeral=True)
+
+    @discord.Cog.listener()
+    async def on_ready(self):
+        # dailyfact.start()
+        bot.add_view(error_trivia_help())
 
     print("Loading commands")
     bot.add_application_command(fact_group)

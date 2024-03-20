@@ -6,6 +6,8 @@ from discord.ext import tasks, commands
 import random
 from datetime import datetime
 import asyncio
+import dotenv
+import os
 
 bot = discord.Bot()
 intents = discord.Intents.all()
@@ -23,10 +25,12 @@ general_log_channel_id = 1217894520658722866
 
 # Path
 facts_md = "src/facts/facts_list.md"
-daily_count_file = "src/facts/daily_count.txt"
-added_trivia_file = 'src/facts/added_trivia.json'
+daily_count_path = "src/facts/daily_count.txt"
+added_trivia_path = 'src/facts/added_trivia.json'
 island_fact_database = 'src/facts/island_fact.json'
 new_fact_path = 'src/facts/new_fact.txt'
+error_fact_path = 'src/facts/error_fact.json'
+
 embed_path = 'src/embed_sender/embed.json'
 
 # Staff Roles
@@ -52,3 +56,16 @@ trial_moderator = 1151613206939324578
 # Links
 island_base_url = "https://robloxislands.fandom.com"
 embed_url = "http://144.76.143.198:8165/getEmbed"
+fact_list_github = "https://github.com/Stageddat/kor/blob/main/src/facts/facts_list.md"
+
+
+
+# Github raw links
+dotenv.load_dotenv()
+github_token = str(os.getenv("GITHUB_TOKEN"))
+
+raw_fact_list_github = f"https://raw.githubusercontent.com/Stageddat/kor/main/src/facts/facts_list.md"
+raw_fact_database_github = f"https://raw.githubusercontent.com/Stageddat/kor/main/src/facts/island_fact.json"
+raw_added_fact_github = f"https://raw.githubusercontent.com/Stageddat/kor/main/src/facts/added_trivia.json"
+
+# Img links
