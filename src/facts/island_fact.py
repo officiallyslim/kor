@@ -121,8 +121,6 @@ def add_to_md(data, user):
 
     return added_numbers
 
-
-
 async def check_existing_link(link):
     # parse de link for get base
     parse_link = urlparse(link)
