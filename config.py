@@ -29,7 +29,7 @@ daily_count_path = "src/facts/daily_count.txt"
 added_trivia_path = 'src/facts/added_trivia.json'
 island_fact_database = 'src/facts/island_fact.json'
 new_fact_path = 'src/facts/new_fact.txt'
-error_fact_path = 'src/facts/error_fact.json'
+error_fact_path = 'src/facts/error_fact/error_fact.json'
 
 embed_path = 'src/embed_sender/embed.json'
 
