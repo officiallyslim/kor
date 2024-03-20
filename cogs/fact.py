@@ -175,7 +175,7 @@ class fact(commands.Cog):
             await ctx.respond("Detected Github facts are newer. Copying from Github to bot local storage.", ephemeral=True)
 
         elif github_version < local_version:
-            push_facts_github('./', ['src/facts/facts_list.md', 'src/facts/added_trivia.json', 'src/facts/island_fact.json'], f'Update fact data from local v:{local_version}', 'kor', 'https://github.com/Stageddat/kor')
+            push_facts_github('./', [facts_md, added_trivia_path, island_fact_database], f'Update fact data from local v:{local_version}', 'kor', 'https://github.com/Stageddat/kor')
             await ctx.respond("Detected local facts are newer. Uploading from local to Github.", ephemeral=True)
         else:
             await ctx.respond(embed=error_embed, ephemeral=True)
