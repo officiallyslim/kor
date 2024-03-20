@@ -6,7 +6,7 @@ import dotenv
 dotenv.load_dotenv()
 token = str(os.getenv("TOKEN"))
 
-cogs = ['cogs.fact', 'cogs.embed_sender']
+cogs = ['cogs.fact', 'cogs.embed_sender', 'cogs.new_member']
 
 for cog in cogs:
     try:
