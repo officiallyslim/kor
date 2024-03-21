@@ -1,8 +1,8 @@
 # FACTS LIST
-**Version: 20**
+**Version: 21**
 
 **Updated by: stageddat**
-**Updated at: 18:57 EST**
+**Updated at: 18:58 EST**
 1. Upon using a blueprint, it disappears from the player’s [inventory](https://robloxislands.fandom.com/wiki/Inventory) and a visual icon of the [item](https://robloxislands.fandom.com/wiki/Item) on will appear temporarily on the player’s head.
 2. The in-game loading tips refer to fertile flowers as "source flowers".
 3. Before breeding became possible, flowers could not be placed.
@@ -83,3 +83,5 @@
 78. Due to the Maple Isles has no [hostile mobs](https://robloxislands.fandom.com/wiki/Category:Hostile_mobs), it [doesn't have its own token](https://robloxislands.fandom.com/wiki/Category:No_tokens) to bypass 1-hour cooldown.
 79. Since the [October 28, 2022](https://robloxislands.fandom.com/wiki/October_28,_2022) update, it doesn't have any token requirement on its summoning UI while on cooldown.
 80. It was the first and only [boss](https://robloxislands.fandom.com/wiki/Category:Bosses) of the Maple Isles in Islands that doesn't have the "Failed to Summon" notification.
+81. Before the [September 18, 2020](https://robloxislands.fandom.com/wiki/September_18,_2020) update, the steel rod and [gilded steel rod](https://robloxislands.fandom.com/wiki/Gilded_Steel_Rod) shared the same model before the steel rod was updated to a newer one. 
+82. The steel  rod is the only moldable item that can be crafted outside the [steel](https://robloxislands.fandom.com/wiki/Steel_Press) or [copper press](https://robloxislands.fandom.com/wiki/Copper_Press). 
