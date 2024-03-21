@@ -1,9 +1,9 @@
 # FACTS LIST
-**Version: 12**
+**Version: 13**
 
 **Updated by: stageddat**
 
-**Updated at: 13:32 EST**
+**Updated at: 13:34 EST**
 1. Upon using a blueprint, it disappears from the player’s [inventory](https://robloxislands.fandom.com/wiki/Inventory) and a visual icon of the [item](https://robloxislands.fandom.com/wiki/Item) on will appear temporarily on the player’s head. 
 2. The in-game loading tips refer to fertile flowers as "source flowers". 
 3. Before breeding became possible, flowers could not be placed. 
@@ -54,9 +54,8 @@
 52. Treasure chests that have been opened but the rewards have not been claimed will close when the player goes away. However, the item will still be there spinning, so items like [sharks](https://robloxislands.fandom.com/wiki/Fish) will be seen outside of the chest, still spinning. 
 53. Prior to [April 17, 2023](https://robloxislands.fandom.com/wiki/April_14,_2023), breaking treasure chests from islands other than [Pirate Island](https://robloxislands.fandom.com/wiki/Pirate_Island) and the [Hub](https://robloxislands.fandom.com/wiki/Hub) would turn it into a regular treasure chest. 
 54. There is a typo in the description of [Red Bronze Ingot](https://robloxislands.fandom.com/wiki/Red_Bronze_Ingot) which says "An high quality" instead of "A high quality".
-55. Fish were the first passive mob released inIslands. 
-56. Due to a bug, spirit fish, puffer fish and infernal fish used to turn invisible when put inside a [fish tank](https://robloxislands.fandom.com/wiki/Fish_Tank).This was fixed on [April 16, 2022](https://robloxislands.fandom.com/wiki/April_16,_2022). 
-57. This was fixed on [April 16, 2022](https://robloxislands.fandom.com/wiki/April_16,_2022). 
-58. There was another bug that caused rarer tiers of fish to appear significantly less often and even making them uncatchable.This was fixed on [October 22, 2022](https://robloxislands.fandom.com/wiki/October_22,_2022). 
-59. This was fixed on [October 22, 2022](https://robloxislands.fandom.com/wiki/October_22,_2022). 
-60. Koi is the only un-sellable item inIslands. 
+55. Fish were the first passive mob released in Islands. 
+56. Due to a bug, spirit fish, puffer fish and infernal fish used to turn invisible when put inside a [fish tank](https://robloxislands.fandom.com/wiki/Fish_Tank). This was fixed on [April 16, 2022](https://robloxislands.fandom.com/wiki/April_16,_2022). 
+58. There was a bug that caused rarer tiers of fish to appear significantly less often and even making them uncatchable. This was fixed on [October 22, 2022](https://robloxislands.fandom.com/wiki/October_22,_2022). 
+60. Koi is the only un-sellable item in Islands. 
+61. Before [May 20, 2022](https://robloxislands.fandom.com/wiki/May_20,_2022), the steel ingot used the same crafting recipe as the [steel rod](https://robloxislands.fandom.com/wiki/Steel_Rod) before [September 18, 2020](https://robloxislands.fandom.com/wiki/September_18,_2020). 
