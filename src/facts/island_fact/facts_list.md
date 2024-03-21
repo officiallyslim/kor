@@ -1,5 +1,5 @@
 # FACTS LIST
-**Version: 18**
+**Version: 17**
 
 **Updated by: stageddat**
 
