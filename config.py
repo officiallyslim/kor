@@ -63,14 +63,14 @@ trial_moderator = 1151613206939324578
 # Links
 island_base_url = "https://robloxislands.fandom.com"
 embed_url = "http://144.76.143.198:8165/getEmbed"
-fact_list_github = "https://github.com/Stageddat/kor/blob/main/src/facts/facts_list.md"
+fact_list_github = "https://github.com/Stageddat/kor/blob/main/src/facts/island_fact/facts_list.md"
 
 # Github raw links
 dotenv.load_dotenv()
 github_token = str(os.getenv("GITHUB_TOKEN"))
 
-raw_fact_list_github = f"https://raw.githubusercontent.com/Stageddat/kor/main/src/facts/facts_list.md"
-raw_fact_database_github = f"https://raw.githubusercontent.com/Stageddat/kor/main/src/facts/island_fact.json"
-raw_added_fact_github = f"https://raw.githubusercontent.com/Stageddat/kor/main/src/facts/added_trivia.json"
+raw_fact_list_github = f"https://raw.githubusercontent.com/Stageddat/kor/main/src/facts/island_fact/facts_list.md"
+raw_fact_database_github = f"https://raw.githubusercontent.com/Stageddat/kor/main/src/facts/island_fact/island_fact.json"
+raw_added_fact_github = f"https://raw.githubusercontent.com/Stageddat/kor/main/src/factsisland_fact//added_trivia.json"
 
 # Img links
