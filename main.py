@@ -19,7 +19,7 @@ for cog in cogs:
 @bot.event
 async def on_ready():
     print(f"{bot.user} is not dead lol!")
-    # await bot.change_presence(activity=discord.Game(name=""))
+    await bot.change_presence(activity=discord.Game(name="with Grover ♥️"))
 
 async def get_cog_names(ctx: discord.AutocompleteContext):
     name = ctx.options['name']
