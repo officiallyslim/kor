@@ -162,7 +162,7 @@ class fact(commands.Cog):
             await ctx.respond(embed=error_embed, ephemeral=True)
 
     @discord.slash_command(name = "sync_island_fact_database", description = "Sync between island fact list and database and upload to Github")
-    async def sync_island_fact_github(self, ctx: discord.ApplicationContext):
+    async def sync_island_fact_database(self, ctx: discord.ApplicationContext):
         await ctx.defer(ephemeral=True)
         if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
                 staff_manager,
