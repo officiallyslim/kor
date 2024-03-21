@@ -17,7 +17,7 @@
 12. Tulips are the tallest flowers. 
 13. Hibiscuses are the shortest flowers. 
 14. Roses are the only species of flowers that do not require [bees](https://robloxislands.fandom.com/wiki/Bee) for any breeding combination. 
-15. The fertile light green chrysanthemum is the second longest item name inIslands, the longest being the [fish tank treasure chest blueprint](https://robloxislands.fandom.com/wiki/Blueprint). 
+15. The fertile light green chrysanthemum is the second longest item name in Islands, the longest being the [fish tank treasure chest blueprint](https://robloxislands.fandom.com/wiki/Blueprint). 
 16. Walking while holding a chrome chrysanthemum in the [Void Isles](https://robloxislands.fandom.com/wiki/Void_Isles) will cause it to constantly change color from black to purple. 
 17. Other than mundane, the most common flower color is red.  Chrome is the least common color. 
 18. If you try to breed a lavender combination that doesn't work (e.g. fertile purple+fertile purple)it doesn't give you a mundane flower,but it does make it dry after a few minutes. therefore,making lavenders the only flower that doesn't have a mundane version. 
