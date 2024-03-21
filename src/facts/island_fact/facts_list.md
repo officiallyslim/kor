@@ -1,9 +1,9 @@
 # FACTS LIST
-**Version: 9**
+**Version: 10**
 
 **Updated by: stageddat**
 
-**Updated at: 13:29 EST**
+**Updated at: 13:30 EST**
 1. Upon using a blueprint, it disappears from the player’s [inventory](https://robloxislands.fandom.com/wiki/Inventory) and a visual icon of the [item](https://robloxislands.fandom.com/wiki/Item) on will appear temporarily on the player’s head. 
 2. The in-game loading tips refer to fertile flowers as "source flowers". 
 3. Before breeding became possible, flowers could not be placed. 
@@ -49,3 +49,7 @@
 47. The black personal orb was incorrectly capitalized as "Black Personal orb" in-game. 
 48. The purple personal orb was incorrectly referred to as a "Black Personal Orb" in-game. 
 49. The Void Serpent orb is the only boss orb that does not require [red bronze ingots](https://robloxislands.fandom.com/wiki/Red_Bronze_Ingot). 
+50. From [October 18, 2021](https://robloxislands.fandom.com/wiki/October_18,_2021) to October 25, 2021, the green dot representing the player on the [treasure map](https://robloxislands.fandom.com/wiki/Treasure_Map) was set at an offset, meaning that it had incorrectly shown the player's location. However, the location of the buried treasure chest marked by the red 'X' was still accurate in accordance to the surrounding terrain. 
+51. Leaving and rejoining the game while having an unclaimed reward from a treasure chest will display it as an uncommon item, regardless of rarity. 
+52. Treasure chests that have been opened but the rewards have not been claimed will close when the player goes away. However, the item will still be there spinning, so items like [sharks](https://robloxislands.fandom.com/wiki/Fish) will be seen outside of the chest, still spinning. 
+53. Prior to [April 17, 2023](https://robloxislands.fandom.com/wiki/April_14,_2023), breaking treasure chests from islands other than [Pirate Island](https://robloxislands.fandom.com/wiki/Pirate_Island) and the [Hub](https://robloxislands.fandom.com/wiki/Hub) would turn it into a regular treasure chest. 
