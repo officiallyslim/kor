@@ -1,9 +1,9 @@
 # FACTS LIST
-**Version: 14**
+**Version: 15**
 
 **Updated by: stageddat**
 
-**Updated at: 13:35 EST**
+**Updated at: 13:43 EST**
 1. Upon using a blueprint, it disappears from the player’s [inventory](https://robloxislands.fandom.com/wiki/Inventory) and a visual icon of the [item](https://robloxislands.fandom.com/wiki/Item) on will appear temporarily on the player’s head. 
 2. The in-game loading tips refer to fertile flowers as "source flowers". 
 3. Before breeding became possible, flowers could not be placed. 
@@ -65,3 +65,4 @@
 65. Prior to [November 11, 2022](https://robloxislands.fandom.com/wiki/November_11,_2022), the rageblade was the second-fastest [weapon](https://robloxislands.fandom.com/wiki/Weapon), the fastest being the [lightning scepter](https://robloxislands.fandom.com/wiki/Lightning_Scepter). 
 66. This was the second weapon to have an ability, the first being the [azarathian longbow](https://robloxislands.fandom.com/wiki/Azarathian_Longbow). 
 67. The rageblade model is equivalent to the [Rageblade](https://robloxislands.fandom.comhttps://robloxbedwars.fandom.com/wiki/Rageblade) model in [BedWars](https://robloxislands.fandom.comhttps://robloxbedwars.fandom.com/wiki/BedWars_Wiki). 
+68. The ruby sword is the fourth-strongest [melee weapon](https://robloxislands.fandom.com/wiki/Category:Melee_weapons) in terms of base damage, only behind the [noxious stinger](https://robloxislands.fandom.com/wiki/Noxious_Stinger), [serpent's bane](https://robloxislands.fandom.com/wiki/Serpent%27s_Bane), and [the reaper's scythe](https://robloxislands.fandom.com/wiki/The_Reaper%27s_Scythe). 
