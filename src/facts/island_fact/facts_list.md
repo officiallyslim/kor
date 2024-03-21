@@ -1,9 +1,9 @@
 # FACTS LIST
-**Version: 3**
+**Version: 5**
 
 **Updated by: stageddat**
 
-**Updated at: 07:25 EST**
+**Updated at: 08:12 EST**
 1. Upon using a blueprint, it disappears from the player’s [inventory](https://robloxislands.fandom.com/wiki/Inventory) and a visual icon of the [item](https://robloxislands.fandom.com/wiki/Item) on will appear temporarily on the player’s head. 
 2. The in-game loading tips refer to fertile flowers as "source flowers". 
 3. Before breeding became possible, flowers could not be placed. 
@@ -21,3 +21,12 @@
 16. Walking while holding a chrome chrysanthemum in the [Void Isles](https://robloxislands.fandom.com/wiki/Void_Isles) will cause it to constantly change color from black to purple. 
 17. Other than mundane, the most common flower color is red.  Chrome is the least common color. 
 18. If you try to breed a lavender combination that doesn't work (e.g. fertile purple+fertile purple)it doesn't give you a mundane flower,but it does make it dry after a few minutes. therefore,making lavenders the only flower that doesn't have a mundane version. 
+19. Crop totems need the player to plant their respective crop seed nearby to start working as totems that have not harvested before cannot plant seeds. 
+20. Crops harvested by totems will give [Farming](https://robloxislands.fandom.com/wiki/Farming) XP despite how no particles are emitted when this occurs. 
+21.  [Red berry](https://robloxislands.fandom.com/wiki/Red_Berry), [blueberry](https://robloxislands.fandom.com/wiki/Blueberry), [blackberry](https://robloxislands.fandom.com/wiki/Blackberry), and test totems are the only totems that cannot be upgraded. 
+22. Totems were remodelled on [April 16, 2021](https://robloxislands.fandom.com/wiki/April_16,_2021), and initially, if a player held a totem, it would display its legacy model. This issue was later fixed on [May 8, 2021](https://robloxislands.fandom.com/wiki/May_8,_2021). Additionally, the totems used to have a hitbox of 3x3, but this was also changed back to the original 1x1 on the same day.
+25. There was a bug where players would start lagging due to totem animations. This was fixed in the [December 10, 2021](https://robloxislands.fandom.com/wiki/December_10,_2021) update. 
+26. There was a bug where pineapple totems would not collect [pineapples](https://robloxislands.fandom.com/wiki/Pineapple). This was fixed shortly after it was found. 
+27. Since the [January 15, 2022](https://robloxislands.fandom.com/wiki/January_15,_2022) update, red berry, blueberry, and blackberry totems have been discontinued and are no longer purchasable from Arius in the Hub. 
+28. On [April 1, 2022](https://robloxislands.fandom.com/wiki/April_1,_2022), little icons were added to totems to differentiate between different totems. 
+29.  [Red berry](https://robloxislands.fandom.com/wiki/Red_Berries), [blueberry](https://robloxislands.fandom.com/wiki/Blueberries), and [blackberry](https://robloxislands.fandom.com/wiki/Blackberries) totems can no longer be traded 

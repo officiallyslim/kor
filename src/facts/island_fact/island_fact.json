@@ -100,5 +100,59 @@
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Flower"
+    },
+    "19": {
+        "fact": "Crop totems need the player to plant their respective crop seed nearby to start working as totems that have not harvested before cannot plant seeds. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Totem"
+    },
+    "20": {
+        "fact": "Crops harvested by totems will give [Farming](https://robloxislands.fandom.com/wiki/Farming) XP despite how no particles are emitted when this occurs. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Totem"
+    },
+    "21": {
+        "fact": " [Red berry](https://robloxislands.fandom.com/wiki/Red_Berry), [blueberry](https://robloxislands.fandom.com/wiki/Blueberry), [blackberry](https://robloxislands.fandom.com/wiki/Blackberry), and test totems are the only totems that cannot be upgraded. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Totem"
+    },
+    "22": {
+        "fact": "Totems were remodelled on [April 16, 2021](https://robloxislands.fandom.com/wiki/April_16,_2021), and initially, if a player held a totem, it would display its legacy model. This issue was later fixed on [May 8, 2021](https://robloxislands.fandom.com/wiki/May_8,_2021). Additionally, the totems used to have a hitbox of 3x3, but this was also changed back to the original 1x1 on the same day.",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Totem"
+    },
+    "25": {
+        "fact": "There was a bug where players would start lagging due to totem animations. This was fixed in the [December 10, 2021](https://robloxislands.fandom.com/wiki/December_10,_2021) update. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Totem"
+    },
+    "26": {
+        "fact": "There was a bug where pineapple totems would not collect [pineapples](https://robloxislands.fandom.com/wiki/Pineapple). This was fixed shortly after it was found. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Totem"
+    },
+    "27": {
+        "fact": "Since the [January 15, 2022](https://robloxislands.fandom.com/wiki/January_15,_2022) update, red berry, blueberry, and blackberry totems have been discontinued and are no longer purchasable from Arius in the Hub. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Totem"
+    },
+    "28": {
+        "fact": "On [April 1, 2022](https://robloxislands.fandom.com/wiki/April_1,_2022), little icons were added to totems to differentiate between different totems. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Totem"
+    },
+    "29": {
+        "fact": " [Red berry](https://robloxislands.fandom.com/wiki/Red_Berries), [blueberry](https://robloxislands.fandom.com/wiki/Blueberries), and [blackberry](https://robloxislands.fandom.com/wiki/Blackberries) totems can no longer be traded ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Totem"
     }
 }
