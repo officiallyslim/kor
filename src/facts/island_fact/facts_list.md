@@ -1,8 +1,8 @@
 # FACTS LIST
-**Version: 25**
+**Version: 26**
 
 **Updated by: stageddat**
-**Updated at: 19:03 EST**
+**Updated at: 19:04 EST**
 1. Upon using a blueprint, it disappears from the player’s [inventory](https://robloxislands.fandom.com/wiki/Inventory) and a visual icon of the [item](https://robloxislands.fandom.com/wiki/Item) on will appear temporarily on the player’s head.
 2. The in-game loading tips refer to fertile flowers as "source flowers".
 3. Before breeding became possible, flowers could not be placed.
@@ -101,4 +101,4 @@
 96. Puffer fish is referred to as "Pufferfish" when fished.
 97. From May 13, 2022 to [May 14, 2022](https://robloxislands.fandom.com/wiki/May_13,_2022#May_14,_2022), fishing basic fertilizer would not reward the player any item.In the same time period, fish-related quests given by [Azur](https://robloxislands.fandom.com/wiki/Azur) and [Odlum](https://robloxislands.fandom.com/wiki/Odlum) could not be completed.
 98. In the same time period, fish-related quests given by [Azur](https://robloxislands.fandom.com/wiki/Azur) and [Odlum](https://robloxislands.fandom.com/wiki/Odlum) could not be completed.
-99. The fishing minigame is also present in Easy.gg's other game: [BedWars](https://robloxislands.fandom.comhttps://robloxbedwars.fandom.com/wiki/Fishing_Rod).
+99. egg2
