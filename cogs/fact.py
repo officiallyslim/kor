@@ -2,7 +2,10 @@ from config import *
 from discord.commands import Option
 from commands.fact_commands import fact_group
 from src.global_embeds import no_perm_embed, soon_embed, error_embed, failed_fetch_daily_channel
-from src.facts.island_fact import check_existing_link, check_link, extract_trivia, push_facts_github
+from src.facts.island_fact import check_existing_link, check_link, extract_trivia
+from src.facts.push_facts_github import push_facts_github
+from src.facts.get_version import get_version
+from src.facts.sync_database import sync_database
 import json
 import os
 import dotenv
@@ -15,6 +18,7 @@ async def send_facts_as_file(ctx: discord.ApplicationContext, facts, added_numbe
 
     with open(new_fact_path, 'rb') as file:
         await ctx.respond(f"Added the following facts {added_numbers}. **PLEASE CHECK IF THERE ARE ANY ERRORS**. Click the below button if u need help.\nIf you want see the whole log, visit [Github]({fact_list_github})", file=discord.File(file, 'facts.txt'), ephemeral=True, view=error_trivia_help())
+    push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path], f'Add new facts', 'kor', 'https://github.com/Stageddat/kor')
 
 class error_trivia_help(discord.ui.View):
     def __init__(self):
@@ -125,49 +129,24 @@ class fact(commands.Cog):
                 mr_boomsteak] for role in ctx.author.roles):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
-        
-        # Get the github version
-        headers = {'Authorization': f'token {github_token}'}
-        response = requests.get(raw_fact_list_github, headers=headers)
-        version_prefix = "**Version: "
-        version_suffix = "**"
-        content = response.text
-        lines = content.split('\n')
 
-        # get version
-        version_line = next((line for line in lines if line.startswith(version_prefix)), None)
-        if version_line is None:
-            await ctx.respond("Failed get version in Github.", ephemeral=True)
-            return
-
-        github_version = int(version_line.strip().replace(version_prefix, "").replace(version_suffix, ""))
-
-        # Get local version
-        with open(facts_md, "r", encoding="utf-8") as f:
-            lines = f.readlines()
-
-        version_prefix = "**Version: "
-        version_suffix = "**"
-
-        # get version
-        version_line = next((line for line in lines if line.startswith(version_prefix)), None)
-        if version_line is None:
-            await ctx.respond("Failed get local facts version.", ephemeral=True)
-            return
-
-        local_version = int(version_line.strip().replace(version_prefix, "").replace(version_suffix, ""))
+        try:
+            github_version, local_version = await get_version()
+        except Exception as e:
+            await ctx.respond(f"**Error**:\n```{e}```",embed=error_embed, ephemeral=True)
 
         if github_version == local_version:
             await ctx.respond("It is already synchronized")
 
         elif github_version > local_version:
             # Facts list
+            headers = {'Authorization': f'token {github_token}'}
             r = requests.get(raw_fact_list_github, allow_redirects=True, headers=headers)
-            open(facts_md, 'wb').write(r.content)
+            open(facts_md_path, 'wb').write(r.content)
 
             # Facts database
             r = requests.get(raw_fact_database_github, allow_redirects=True, headers=headers)
-            open(island_fact_database, 'wb').write(r.content)
+            open(island_fact_database_path, 'wb').write(r.content)
 
             # Added facts link
             r = requests.get(raw_added_fact_github, allow_redirects=True, headers=headers)
@@ -175,8 +154,27 @@ class fact(commands.Cog):
             await ctx.respond("Detected Github facts are newer. Copying from Github to bot local storage.", ephemeral=True)
 
         elif github_version < local_version:
-            push_facts_github('./', [facts_md, added_trivia_path, island_fact_database], f'Update fact data from local v:{local_version}', 'kor', 'https://github.com/Stageddat/kor')
+            push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path], f'Update fact data from local v:{local_version}', 'kor', 'https://github.com/Stageddat/kor')
             await ctx.respond("Detected local facts are newer. Uploading from local to Github.", ephemeral=True)
+        else:
+            await ctx.respond(embed=error_embed, ephemeral=True)
+
+    @discord.slash_command(name = "sync_island_fact_database", description = "Sync between island fact list and database and upload to Github")
+    async def sync_island_fact_github(self, ctx: discord.ApplicationContext):
+        await ctx.defer(ephemeral=True)
+        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
+                staff_manager,
+                community_manager,
+                assistant_director,
+                head_of_operations,
+                developer,
+                mr_boomsteak] for role in ctx.author.roles):
+            await ctx.respond(embed=no_perm_embed, ephemeral=True)
+            return
+
+        status = sync_database()
+        if status == True:
+            await ctx.respond("Synchronized!", ephemeral=True)
         else:
             await ctx.respond(embed=error_embed, ephemeral=True)
 
@@ -187,7 +185,6 @@ class fact(commands.Cog):
 
     print("Loading commands")
     bot.add_application_command(fact_group)
-
 
 def setup(bot):
     bot.add_cog(fact(bot)) # add the cog to the bot
