@@ -101,4 +101,4 @@
 96. Puffer fish is referred to as "Pufferfish" when fished.
 97. From May 13, 2022 to [May 14, 2022](https://robloxislands.fandom.com/wiki/May_13,_2022#May_14,_2022), fishing basic fertilizer would not reward the player any item.In the same time period, fish-related quests given by [Azur](https://robloxislands.fandom.com/wiki/Azur) and [Odlum](https://robloxislands.fandom.com/wiki/Odlum) could not be completed.
 98. In the same time period, fish-related quests given by [Azur](https://robloxislands.fandom.com/wiki/Azur) and [Odlum](https://robloxislands.fandom.com/wiki/Odlum) could not be completed.
-99. egg2
+99. The fishing minigame is also present in Easy.gg's other game: [BedWars](https://robloxislands.fandom.comhttps://robloxbedwars.fandom.com/wiki/Fishing_Rod).
