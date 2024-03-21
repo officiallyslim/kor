@@ -102,8 +102,10 @@ class fact(commands.Cog):
         if await check_link(link):
             if not await check_existing_link(link):
                 facts, added_numbers = await extract_trivia(link, ctx.user.name)
+
                 if facts == "No trivia":
                     await ctx.respond(f"No trivia found!", ephemeral=True)
+                    push_facts_github('./', [added_trivia_path], f'Add new facts', 'kor', 'https://github.com/Stageddat/kor')
                 else:
                     await send_facts_as_file(ctx, facts, added_numbers)
 

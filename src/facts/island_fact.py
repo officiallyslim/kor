@@ -30,13 +30,13 @@ async def extract_trivia(url, name):
                 return facts, added_numbers
             else:
                 add_to_log(url)
-                return 404
+                return 404, None
         else:
             add_to_log(url)
-            return "No trivia"
+            return "No trivia", None
     else:
         add_to_log(url)
-        return "No trivia"
+        return "No trivia", None
 
 def extract_data(html, page_url):
     soup = html
