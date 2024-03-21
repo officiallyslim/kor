@@ -480,67 +480,61 @@
         "source_link": null
     },
     "81": {
-        "fact": "Before the [September 18, 2020](https://robloxislands.fandom.com/wiki/September_18,_2020) update, the steel rod and [gilded steel rod](https://robloxislands.fandom.com/wiki/Gilded_Steel_Rod) shared the same model before the steel rod was updated to a newer one. ",
+        "fact": "Before the [September 18, 2020](https://robloxislands.fandom.com/wiki/September_18,_2020) update, the steel rod and [gilded steel rod](https://robloxislands.fandom.com/wiki/Gilded_Steel_Rod) shared the same model before the steel rod was updated to a newer one.",
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Steel_Rod#Trivia"
     },
     "82": {
-        "fact": "The steel  rod is the only moldable item that can be crafted outside the [steel](https://robloxislands.fandom.com/wiki/Steel_Press) or [copper press](https://robloxislands.fandom.com/wiki/Copper_Press). ",
+        "fact": "The steel  rod is the only moldable item that can be crafted outside the [steel](https://robloxislands.fandom.com/wiki/Steel_Press) or [copper press](https://robloxislands.fandom.com/wiki/Copper_Press).",
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Steel_Rod#Trivia"
     },
     "83": {
-        "fact": "The spellbook used to use the [tidal spellbook's](https://robloxislands.fandom.com/wiki/Tidal_Spellbook) model from [July 25, 2020](https://robloxislands.fandom.com/wiki/July_25,_2020) - [October 1, 2022](https://robloxislands.fandom.com/wiki/October_1,_2022) before being changed to a new one on July 25, 2020  when the aforementioned weapon was released. ",
+        "fact": "The spellbook used to use the [tidal spellbook's](https://robloxislands.fandom.com/wiki/Tidal_Spellbook) model from [July 25, 2020](https://robloxislands.fandom.com/wiki/July_25,_2020) - [October 1, 2022](https://robloxislands.fandom.com/wiki/October_1,_2022) before being changed to a new one on July 25, 2020  when the aforementioned weapon was released.",
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Spellbook"
     },
     "84": {
-        "fact": "The spellbook's animation used to be a \"two hand shove\" animation. However, it was changed to the melee swing animation after the [March 19, 2021](https://robloxislands.fandom.com/wiki/March_19,_2021) update.Despite [wizard lizards](https://robloxislands.fandom.com/wiki/Wizard_Lizard) using spellbooks, they continue to use the two hand shove animation instead of the melee swing animation. ",
+        "fact": "The spellbook's animation used to be a \"two hand shove\" animation. However, it was changed to the melee swing animation after the [March 19, 2021](https://robloxislands.fandom.com/wiki/March_19,_2021) update. Despite [wizard lizards](https://robloxislands.fandom.com/wiki/Wizard_Lizard) using spellbooks, they continue to use the two hand shove animation instead of the melee swing animation.",
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Spellbook"
     },
     "85": {
-        "fact": "Despite [wizard lizards](https://robloxislands.fandom.com/wiki/Wizard_Lizard) using spellbooks, they continue to use the two hand shove animation instead of the melee swing animation. ",
+        "fact": "Despite exploding upon disappearing, fireballs shot from spellbooks don't deal AOE damage.",
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Spellbook"
     },
     "86": {
-        "fact": "Despite exploding upon disappearing, fireballs shot from spellbooks don't deal AOE damage. ",
+        "fact": "The spellbook's projectiles can collide with a wizard lizard's projectile, causing one or both projectiles to explode mid-path.",
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Spellbook"
     },
     "87": {
-        "fact": "The spellbook's projectiles can collide with a wizard lizard's projectile, causing one or both projectiles to explode mid-path. ",
+        "fact": "The spellbook can fire through terrain and island parts, but cannot fire through game-generated structures.",
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Spellbook"
     },
     "88": {
-        "fact": "The spellbook can fire through terrain and island parts, but cannot fire through game-generated structures. ",
+        "fact": "The angle the fireball launches is slightly delayed from the player's actual rotation, making shots inaccurate if the player is moving their camera very quickly.",
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Spellbook"
     },
     "89": {
-        "fact": "The angle the fireball launches is slightly delayed from the player's actual rotation, making shots inaccurate if the player is moving their camera very quickly. ",
+        "fact": "Spellbooks do not function correctly on private servers, as well as tidal spellbooks and [ruby staffs](https://robloxislands.fandom.com/wiki/Ruby_Staff).",
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Spellbook"
     },
     "90": {
-        "fact": "Spellbooks do not function correctly on private servers, as well as tidal spellbooks and [ruby staffs](https://robloxislands.fandom.com/wiki/Ruby_Staff). ",
-        "daily": false,
-        "img_link": null,
-        "source_link": "https://robloxislands.fandom.com/wiki/Spellbook"
-    },
-    "91": {
-        "fact": "Spellbooks and [Slime Queen's scepters](https://robloxislands.fandom.com/wiki/Slime_Queen%27s_Scepter) are the only magic weapons that can be crafted without a [Magic](https://robloxislands.fandom.com/wiki/Magic) level requirement. ",
+        "fact": "Spellbooks and [Slime Queen's scepters](https://robloxislands.fandom.com/wiki/Slime_Queen%27s_Scepter) are the only magic weapons that can be crafted without a [Magic](https://robloxislands.fandom.com/wiki/Magic) level requirement.",
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Spellbook"
