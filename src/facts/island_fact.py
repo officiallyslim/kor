@@ -1,7 +1,7 @@
 import re
 from bs4 import BeautifulSoup as bs
 from urllib.request import urlopen
-from config import facts_md, island_base_url, added_trivia_path, island_fact_database
+from config import facts_md_path, island_base_url, added_trivia_path, island_fact_database_path
 import json
 from urllib.parse import urlparse, urlunparse
 from datetime import datetime
@@ -69,7 +69,7 @@ def add_to_md(data, user):
     updated_by_prefix = "**Updated by: "
     updated_at_prefix = "**Updated at: "
     
-    with open(facts_md, "r", encoding="utf-8") as f:
+    with open(facts_md_path, "r", encoding="utf-8") as f:
         lines = f.readlines()
 
     # get version
@@ -116,7 +116,7 @@ def add_to_md(data, user):
         added_numbers.append(last_number)
 
     # save
-    with open(facts_md, "w", encoding="utf-8") as f:
+    with open(facts_md_path, "w", encoding="utf-8") as f:
         f.writelines(lines)
 
     return added_numbers
@@ -149,7 +149,7 @@ async def check_link(link):
 
 def add_to_database(fact, url):
     # load
-    with open(island_fact_database, 'r', encoding='utf-8') as file:
+    with open(island_fact_database_path, 'r', encoding='utf-8') as file:
         data = json.load(file)
 
     # object it
@@ -164,7 +164,7 @@ def add_to_database(fact, url):
     data[next_index] = new_entry
 
     # save
-    with open(island_fact_database, 'w', encoding='utf-8') as file:
+    with open(island_fact_database_path, 'w', encoding='utf-8') as file:
         json.dump(data, file, ensure_ascii=False, indent=4)
 
 def add_to_log(url):
@@ -177,16 +177,3 @@ def add_to_log(url):
     # Guardar la lista actualizada en el archivo JSON
     with open(added_trivia_path, 'w', encoding='utf-8') as file:
         json.dump(links_list, file, ensure_ascii=False, indent=4)
-
-def push_facts_github(repo_path, file_paths, commit_message, remote_name, remote_url):
-    repo = Repo(repo_path)
-
-    repo.index.add(file_paths)
-
-    repo.index.commit(commit_message)
-
-    try:
-        origin = repo.remote(name=remote_name)
-    except ValueError:
-        origin = repo.create_remote(remote_name, url=remote_url)
-    origin.push()

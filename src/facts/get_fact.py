@@ -2,7 +2,7 @@ from better_profanity import profanity
 import requests
 import random
 import json
-from config import island_fact_database
+from config import island_fact_database_path
 
 # API REQUEST
 def get_randomfact():
@@ -57,7 +57,7 @@ def get_randomdogfact():
         return None
 
 def get_islandfact():
-    with open(island_fact_database, encoding= "utf8") as f:
+    with open(island_fact_database_path, encoding= "utf8") as f:
         json_content = json.load(f)
 
     random_key = random.choice(list(json_content.keys()))
