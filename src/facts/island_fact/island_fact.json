@@ -424,5 +424,23 @@
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Mob"
+    },
+    "83": {
+        "fact": "Due to its extremely high knockback, it is possible for players to ‘fly’ on a large mob such as a [skorp](https://robloxislands.fandom.com/wiki/Skorp), something that was only previously possible with the [rageblade](https://robloxislands.fandom.com/wiki/Rageblade) and the [gilded steel hammer](https://robloxislands.fandom.com/wiki/Gilded_Steel_Hammer). ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/The_Captain%27s_Rapier"
+    },
+    "84": {
+        "fact": "It is the first and only [weapon](https://robloxislands.fandom.com/wiki/Weapon) that can modify the drop chances of [mob drops](https://robloxislands.fandom.com/wiki/Category:Mob_drops). ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/The_Captain%27s_Rapier"
+    },
+    "85": {
+        "fact": "This weapon is one of the only melee weapons to have two melee classifications changed and a piercing classification, the other being the [cactus spike](https://robloxislands.fandom.com/wiki/Cactus_Spike). ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/The_Captain%27s_Rapier"
     }
 }

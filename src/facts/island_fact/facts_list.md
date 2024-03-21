@@ -1,9 +1,9 @@
 # FACTS LIST
-**Version: 16**
+**Version: 17**
 
 **Updated by: stageddat**
 
-**Updated at: 13:44 EST**
+**Updated at: 13:46 EST**
 1. Upon using a blueprint, it disappears from the player’s [inventory](https://robloxislands.fandom.com/wiki/Inventory) and a visual icon of the [item](https://robloxislands.fandom.com/wiki/Item) on will appear temporarily on the player’s head. 
 2. The in-game loading tips refer to fertile flowers as "source flowers". 
 3. Before breeding became possible, flowers could not be placed. 
@@ -75,3 +75,6 @@
 75. The [Infernal Dragon](https://robloxislands.fandom.com/wiki/Infernal_Dragon) is the first boss inIslandsthat doesn't have a summon cooldown.It is the first boss in Islands that requires its own [token](https://robloxislands.fandom.com/wiki/Token) to be summoned. 
 77.  [Fhanhorn](https://robloxislands.fandom.com/wiki/Fhanhorn) is the first and only boss inIslandswhose summon cooldown currently cannot be bypassed with 500 [tokens](https://robloxislands.fandom.com/wiki/Token). It is also the second boss in Islandsthat doesn't have its own token, with the others being the Grand High Witch, the [Lunar Rabbit](https://robloxislands.fandom.com/wiki/Lunar_Rabbit), and the [Azarathian Serpent](https://robloxislands.fandom.com/wiki/Azarathian_Serpent). Unlike most bosses with the "Failed to Summon" notification, if a player attempts to summon Fhanhorn  while still on cooldown due to it doesn't have its own token, nothing happens. It is the first and only boss inIslandsthat doesn't have the "Failed to Summon" notification if attempts to be summoned by players during cooldown or doesn't have its own token. Since the [October 28, 2022](https://robloxislands.fandom.com/wiki/October_28,_2022) update, the token requirement is doesn't indicate on Fhanhorn 's summoning UI due to it doesn't have its own token. 
 82. Fhanhorn is the first boss in Islands with the ability to heal itself. 
+83. Due to its extremely high knockback, it is possible for players to ‘fly’ on a large mob such as a [skorp](https://robloxislands.fandom.com/wiki/Skorp), something that was only previously possible with the [rageblade](https://robloxislands.fandom.com/wiki/Rageblade) and the [gilded steel hammer](https://robloxislands.fandom.com/wiki/Gilded_Steel_Hammer). 
+84. It is the first and only [weapon](https://robloxislands.fandom.com/wiki/Weapon) that can modify the drop chances of [mob drops](https://robloxislands.fandom.com/wiki/Category:Mob_drops). 
+85. This weapon is one of the only melee weapons to have two melee classifications changed and a piercing classification, the other being the [cactus spike](https://robloxislands.fandom.com/wiki/Cactus_Spike). 
