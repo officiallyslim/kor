@@ -1,5 +1,5 @@
 # FACTS LIST
-**Version: 10**
+**Version: 11**
 
 **Updated by: stageddat**
 
@@ -53,3 +53,4 @@
 51. Leaving and rejoining the game while having an unclaimed reward from a treasure chest will display it as an uncommon item, regardless of rarity. 
 52. Treasure chests that have been opened but the rewards have not been claimed will close when the player goes away. However, the item will still be there spinning, so items like [sharks](https://robloxislands.fandom.com/wiki/Fish) will be seen outside of the chest, still spinning. 
 53. Prior to [April 17, 2023](https://robloxislands.fandom.com/wiki/April_14,_2023), breaking treasure chests from islands other than [Pirate Island](https://robloxislands.fandom.com/wiki/Pirate_Island) and the [Hub](https://robloxislands.fandom.com/wiki/Hub) would turn it into a regular treasure chest. 
+54. There is a typo in its description saying, "An high quality" instead of, "A high quality". 

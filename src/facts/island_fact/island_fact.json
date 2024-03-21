@@ -292,5 +292,11 @@
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Treasure_Chest"
+    },
+    "54": {
+        "fact": "There is a typo in its description saying, \"An high quality\" instead of, \"A high quality\". ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Red_Bronze_Ingot"
     }
 }
