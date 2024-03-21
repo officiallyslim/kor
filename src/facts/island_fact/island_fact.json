@@ -592,5 +592,35 @@
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Fishing"
+    },
+    "100": {
+        "fact": "The Azarathian Serpent is the first and only mini-boss inIslandsthat can be summoned by itself and cannot be summoned by players or [tokens](https://robloxislands.fandom.com/wiki/Token). ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Azarathian_Serpent#Trivia"
+    },
+    "101": {
+        "fact": "It is the fourth boss inIslandsthat doesn't have its own token ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Azarathian_Serpent#Trivia"
+    },
+    "102": {
+        "fact": "Upon defeat, it can drop other boss tokens, much like how the [Slime King](https://robloxislands.fandom.com/wiki/Slime_King) drops [Slime Queen Tokens](https://robloxislands.fandom.com/wiki/Slime_Queen_Token). ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Azarathian_Serpent#Trivia"
+    },
+    "103": {
+        "fact": "When the Azaranthian Serpent burrows into the ground, its model is condensed into a ball and hidden until it unburrows and plays its pop-up animation. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Azarathian_Serpent#Trivia"
+    },
+    "104": {
+        "fact": "It is the only boss that can possibly spawn on another boss's arena ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Azarathian_Serpent#Trivia"
     }
 }
