@@ -1,9 +1,9 @@
 # FACTS LIST
-**Version: 5**
+**Version: 7**
 
 **Updated by: stageddat**
 
-**Updated at: 08:12 EST**
+**Updated at: 08:17 EST**
 1. Upon using a blueprint, it disappears from the player’s [inventory](https://robloxislands.fandom.com/wiki/Inventory) and a visual icon of the [item](https://robloxislands.fandom.com/wiki/Item) on will appear temporarily on the player’s head. 
 2. The in-game loading tips refer to fertile flowers as "source flowers". 
 3. Before breeding became possible, flowers could not be placed. 
@@ -30,3 +30,7 @@
 27. Since the [January 15, 2022](https://robloxislands.fandom.com/wiki/January_15,_2022) update, red berry, blueberry, and blackberry totems have been discontinued and are no longer purchasable from Arius in the Hub. 
 28. On [April 1, 2022](https://robloxislands.fandom.com/wiki/April_1,_2022), little icons were added to totems to differentiate between different totems. 
 29.  [Red berry](https://robloxislands.fandom.com/wiki/Red_Berries), [blueberry](https://robloxislands.fandom.com/wiki/Blueberries), and [blackberry](https://robloxislands.fandom.com/wiki/Blackberries) totems can no longer be traded 
+30. Noxious Stingers is the first and only spear [weapon](https://robloxislands.fandom.com/wiki/Weapon) in Islands. 
+31. Noxious Stingers is the third-strongest weapon in the game, with the second being the [serpent's bane](https://robloxislands.fandom.com/wiki/Serpent%27s_Bane) and the strongest being [the reaper's scythe](https://robloxislands.fandom.com/wiki/The_Reaper%27s_Scythe). 
+32. When lagging, noxious stingers can make hostile mobs "fly".This is because the poison damage is being registered as having knockback. 
+34. The [Skorp Stinger](https://robloxislands.fandom.comhttps://robloxbedwars.fandom.com/wiki/Skorp_Stinger) from [BedWars](https://robloxislands.fandom.comhttps://robloxbedwars.fandom.com/wiki/Skorp_Stinger) is based off this weapon. 

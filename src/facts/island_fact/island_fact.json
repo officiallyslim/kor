@@ -154,5 +154,29 @@
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Totem"
+    },
+    "30": {
+        "fact": "Noxious Stingers is the first and only spear [weapon](https://robloxislands.fandom.com/wiki/Weapon) in Islands. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Noxious_Stinger#Trivia"
+    },
+    "31": {
+        "fact": "Noxious Stingers is the third-strongest weapon in the game, with the second being the [serpent's bane](https://robloxislands.fandom.com/wiki/Serpent%27s_Bane) and the strongest being [the reaper's scythe](https://robloxislands.fandom.com/wiki/The_Reaper%27s_Scythe). ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Noxious_Stinger#Trivia"
+    },
+    "32": {
+        "fact": "When lagging, noxious stingers can make hostile mobs \"fly\".This is because the poison damage is being registered as having knockback. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Noxious_Stinger#Trivia"
+    },
+    "34": {
+        "fact": "The [Skorp Stinger](https://robloxislands.fandom.comhttps://robloxbedwars.fandom.com/wiki/Skorp_Stinger) from [BedWars](https://robloxislands.fandom.comhttps://robloxbedwars.fandom.com/wiki/Skorp_Stinger) is based off this weapon. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Noxious_Stinger#Trivia"
     }
 }
