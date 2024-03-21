@@ -27,7 +27,7 @@ async def extract_trivia(url, name):
                 added_numbers = add_to_md(facts, name)
                 print(added_numbers)
                 add_to_log(url)
-                return facts
+                return facts, added_numbers
             else:
                 add_to_log(url)
                 return 404

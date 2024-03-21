@@ -7,14 +7,14 @@ import json
 import os
 import dotenv
 
-async def send_facts_as_file(ctx: discord.ApplicationContext, facts):
+async def send_facts_as_file(ctx: discord.ApplicationContext, facts, added_numbers):
     facts_str = '\n'.join(facts) if isinstance(facts, list) else str(facts)
 
     with open(new_fact_path, 'w', encoding='utf-8') as file:
         file.write(facts_str)
 
     with open(new_fact_path, 'rb') as file:
-        await ctx.respond(f"Added the following facts. **PLEASE CHECK IF THERE ARE ANY ERRORS**. Click the below button if u need help.\nIf you want see the whole log, visit [Github]({fact_list_github})", file=discord.File(file, 'facts.txt'), ephemeral=True, view=error_trivia_help())
+        await ctx.respond(f"Added the following facts {added_numbers}. **PLEASE CHECK IF THERE ARE ANY ERRORS**. Click the below button if u need help.\nIf you want see the whole log, visit [Github]({fact_list_github})", file=discord.File(file, 'facts.txt'), ephemeral=True, view=error_trivia_help())
 
 class error_trivia_help(discord.ui.View):
     def __init__(self):
@@ -97,11 +97,11 @@ class fact(commands.Cog):
         
         if await check_link(link):
             if not await check_existing_link(link):
-                facts = await extract_trivia(link, ctx.user.name)
+                facts, added_numbers = await extract_trivia(link, ctx.user.name)
                 if facts == "No trivia":
                     await ctx.respond(f"No trivia found!", ephemeral=True)
                 else:
-                    await send_facts_as_file(ctx, facts)
+                    await send_facts_as_file(ctx, facts, added_numbers)
 
             else:
                 existing_embed = discord.Embed(
