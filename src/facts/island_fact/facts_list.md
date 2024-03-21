@@ -1,9 +1,9 @@
 # FACTS LIST
-**Version: 7**
+**Version: 8**
 
 **Updated by: stageddat**
 
-**Updated at: 08:17 EST**
+**Updated at: 13:20 EST**
 1. Upon using a blueprint, it disappears from the player’s [inventory](https://robloxislands.fandom.com/wiki/Inventory) and a visual icon of the [item](https://robloxislands.fandom.com/wiki/Item) on will appear temporarily on the player’s head. 
 2. The in-game loading tips refer to fertile flowers as "source flowers". 
 3. Before breeding became possible, flowers could not be placed. 
@@ -34,3 +34,14 @@
 31. Noxious Stingers is the third-strongest weapon in the game, with the second being the [serpent's bane](https://robloxislands.fandom.com/wiki/Serpent%27s_Bane) and the strongest being [the reaper's scythe](https://robloxislands.fandom.com/wiki/The_Reaper%27s_Scythe). 
 32. When lagging, noxious stingers can make hostile mobs "fly".This is because the poison damage is being registered as having knockback. 
 34. The [Skorp Stinger](https://robloxislands.fandom.comhttps://robloxbedwars.fandom.com/wiki/Skorp_Stinger) from [BedWars](https://robloxislands.fandom.comhttps://robloxbedwars.fandom.com/wiki/Skorp_Stinger) is based off this weapon. 
+35. Even though [starfruits](https://robloxislands.fandom.com/wiki/Starfruit) and [pineapples](https://robloxislands.fandom.com/wiki/Pineapple) have an oily variant and recipe in the [washing station](https://robloxislands.fandom.com/wiki/Washing_Station), it cannot become oily. 
+36. There is currently an unpatched bug in game where if a player leaves then rejoins on their island, all planted crops will be instantly grown. 
+37.  [Chili peppers](https://robloxislands.fandom.com/wiki/Chili_Pepper) and [seaweed](https://robloxislands.fandom.com/wiki/Seaweed) are the only crops that cannot be sold. 
+38.  [Pineapples](https://robloxislands.fandom.com/wiki/Pineapple) are the highest-selling crop. 
+39.  [Plums](https://robloxislands.fandom.com/wiki/Plum) are the highest-selling non-seasonal crop. 
+40. Before the [January 15, 2022](https://robloxislands.fandom.com/wiki/January_15,_2022), players were still able to obtain extra candy cane seeds when harvesting candy canes. 
+41.  [Pumpkins](https://robloxislands.fandom.com/wiki/Pumpkin), [watermelons](https://robloxislands.fandom.com/wiki/Watermelon), [radishes](https://robloxislands.fandom.com/wiki/Radish), [blackberries](https://robloxislands.fandom.com/wiki/Blackberries), [coconuts](https://robloxislands.fandom.com/wiki/Coconut), [kiwis](https://robloxislands.fandom.com/wiki/Kiwi) and plums are the only crops that cannot be used to craft other food items. 
+42.  [Raspberries](https://robloxislands.fandom.com/wiki/Raspberries) are the only crop that cannot be harvested by players. 
+43.  [Turkeys](https://robloxislands.fandom.com/wiki/Turkey) cannot reward extra [berry seeds](https://robloxislands.fandom.com/wiki/Berry_Seeds) when harvesting [berry bushes](https://robloxislands.fandom.com/wiki/Berry). 
+44. Prior to the [June 3, 2022](https://robloxislands.fandom.com/wiki/June_3,_2022) update, [Cletus](https://robloxislands.fandom.com/wiki/Cletus) could not buy crops from the player in the [Hub](https://robloxislands.fandom.com/wiki/Hub) ; instead, the shop belonged to [Tom](https://robloxislands.fandom.com/wiki/Tom). 
+45. During the [Halloween 2022](https://robloxislands.fandom.com/wiki/Halloween_2022) event, Tom replaced Cletus due to Cletus being zomblified. 
