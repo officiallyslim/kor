@@ -1,5 +1,5 @@
 # FACTS LIST
-**Version: 21**
+**Version: 22**
 
 **Updated by: stageddat**
 **Updated at: 18:58 EST**
@@ -85,3 +85,12 @@
 80. It was the first and only [boss](https://robloxislands.fandom.com/wiki/Category:Bosses) of the Maple Isles in Islands that doesn't have the "Failed to Summon" notification.
 81. Before the [September 18, 2020](https://robloxislands.fandom.com/wiki/September_18,_2020) update, the steel rod and [gilded steel rod](https://robloxislands.fandom.com/wiki/Gilded_Steel_Rod) shared the same model before the steel rod was updated to a newer one. 
 82. The steel  rod is the only moldable item that can be crafted outside the [steel](https://robloxislands.fandom.com/wiki/Steel_Press) or [copper press](https://robloxislands.fandom.com/wiki/Copper_Press). 
+83. The spellbook used to use the [tidal spellbook's](https://robloxislands.fandom.com/wiki/Tidal_Spellbook) model from [July 25, 2020](https://robloxislands.fandom.com/wiki/July_25,_2020) - [October 1, 2022](https://robloxislands.fandom.com/wiki/October_1,_2022) before being changed to a new one on July 25, 2020  when the aforementioned weapon was released. 
+84. The spellbook's animation used to be a "two hand shove" animation. However, it was changed to the melee swing animation after the [March 19, 2021](https://robloxislands.fandom.com/wiki/March_19,_2021) update.Despite [wizard lizards](https://robloxislands.fandom.com/wiki/Wizard_Lizard) using spellbooks, they continue to use the two hand shove animation instead of the melee swing animation. 
+85. Despite [wizard lizards](https://robloxislands.fandom.com/wiki/Wizard_Lizard) using spellbooks, they continue to use the two hand shove animation instead of the melee swing animation. 
+86. Despite exploding upon disappearing, fireballs shot from spellbooks don't deal AOE damage. 
+87. The spellbook's projectiles can collide with a wizard lizard's projectile, causing one or both projectiles to explode mid-path. 
+88. The spellbook can fire through terrain and island parts, but cannot fire through game-generated structures. 
+89. The angle the fireball launches is slightly delayed from the player's actual rotation, making shots inaccurate if the player is moving their camera very quickly. 
+90. Spellbooks do not function correctly on private servers, as well as tidal spellbooks and [ruby staffs](https://robloxislands.fandom.com/wiki/Ruby_Staff). 
+91. Spellbooks and [Slime Queen's scepters](https://robloxislands.fandom.com/wiki/Slime_Queen%27s_Scepter) are the only magic weapons that can be crafted without a [Magic](https://robloxislands.fandom.com/wiki/Magic) level requirement. 
