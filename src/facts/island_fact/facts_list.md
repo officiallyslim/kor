@@ -1,9 +1,9 @@
 # FACTS LIST
-**Version: 13**
+**Version: 14**
 
 **Updated by: stageddat**
 
-**Updated at: 13:34 EST**
+**Updated at: 13:35 EST**
 1. Upon using a blueprint, it disappears from the player’s [inventory](https://robloxislands.fandom.com/wiki/Inventory) and a visual icon of the [item](https://robloxislands.fandom.com/wiki/Item) on will appear temporarily on the player’s head. 
 2. The in-game loading tips refer to fertile flowers as "source flowers". 
 3. Before breeding became possible, flowers could not be placed. 
@@ -59,3 +59,9 @@
 58. There was a bug that caused rarer tiers of fish to appear significantly less often and even making them uncatchable. This was fixed on [October 22, 2022](https://robloxislands.fandom.com/wiki/October_22,_2022). 
 60. Koi is the only un-sellable item in Islands. 
 61. Before [May 20, 2022](https://robloxislands.fandom.com/wiki/May_20,_2022), the steel ingot used the same crafting recipe as the [steel rod](https://robloxislands.fandom.com/wiki/Steel_Rod) before [September 18, 2020](https://robloxislands.fandom.com/wiki/September_18,_2020). 
+62. It is possible to "fly" on some mobs such as the [buffalkor](https://robloxislands.fandom.com/wiki/Buffalkor) or [skorps](https://robloxislands.fandom.com/wiki/Skorp) by jumping on one and continuously attacking it. This is due to the combination of the rageblade's knockback and fast attack speed and the mobs' large hitbox. 
+63. The old model of the rageblade resembles a [katana](https://robloxislands.fandom.comhttp://en.wikipedia.org/wiki/Katana), a type of sword from ancient [Japan](https://robloxislands.fandom.comhttp://en.wikipedia.org/wiki/Japan). 
+64. The in-game description for the rageblade is a quote by [Mario Andretti](https://robloxislands.fandom.comhttp://en.wikipedia.org/wiki/Mario_Andretti), an Italian racer. 
+65. Prior to [November 11, 2022](https://robloxislands.fandom.com/wiki/November_11,_2022), the rageblade was the second-fastest [weapon](https://robloxislands.fandom.com/wiki/Weapon), the fastest being the [lightning scepter](https://robloxislands.fandom.com/wiki/Lightning_Scepter). 
+66. This was the second weapon to have an ability, the first being the [azarathian longbow](https://robloxislands.fandom.com/wiki/Azarathian_Longbow). 
+67. The rageblade model is equivalent to the [Rageblade](https://robloxislands.fandom.comhttps://robloxbedwars.fandom.com/wiki/Rageblade) model in [BedWars](https://robloxislands.fandom.comhttps://robloxbedwars.fandom.com/wiki/BedWars_Wiki). 
