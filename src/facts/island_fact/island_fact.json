@@ -244,5 +244,29 @@
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Crop"
+    },
+    "46": {
+        "fact": "Holding a personal orb will show where the destination of the orb is. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Orb"
+    },
+    "47": {
+        "fact": "The black personal orb was incorrectly capitalized as \"Black Personal orb\" in-game. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Orb"
+    },
+    "48": {
+        "fact": "The purple personal orb was incorrectly referred to as a \"Black Personal Orb\" in-game. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Orb"
+    },
+    "49": {
+        "fact": "The Void Serpent orb is the only boss orb that does not require [red bronze ingots](https://robloxislands.fandom.com/wiki/Red_Bronze_Ingot). ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Orb"
     }
 }

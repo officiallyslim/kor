@@ -1,9 +1,9 @@
 # FACTS LIST
-**Version: 8**
+**Version: 9**
 
 **Updated by: stageddat**
 
-**Updated at: 13:20 EST**
+**Updated at: 13:29 EST**
 1. Upon using a blueprint, it disappears from the player’s [inventory](https://robloxislands.fandom.com/wiki/Inventory) and a visual icon of the [item](https://robloxislands.fandom.com/wiki/Item) on will appear temporarily on the player’s head. 
 2. The in-game loading tips refer to fertile flowers as "source flowers". 
 3. Before breeding became possible, flowers could not be placed. 
@@ -45,3 +45,7 @@
 43.  [Turkeys](https://robloxislands.fandom.com/wiki/Turkey) cannot reward extra [berry seeds](https://robloxislands.fandom.com/wiki/Berry_Seeds) when harvesting [berry bushes](https://robloxislands.fandom.com/wiki/Berry). 
 44. Prior to the [June 3, 2022](https://robloxislands.fandom.com/wiki/June_3,_2022) update, [Cletus](https://robloxislands.fandom.com/wiki/Cletus) could not buy crops from the player in the [Hub](https://robloxislands.fandom.com/wiki/Hub) ; instead, the shop belonged to [Tom](https://robloxislands.fandom.com/wiki/Tom). 
 45. During the [Halloween 2022](https://robloxislands.fandom.com/wiki/Halloween_2022) event, Tom replaced Cletus due to Cletus being zomblified. 
+46. Holding a personal orb will show where the destination of the orb is. 
+47. The black personal orb was incorrectly capitalized as "Black Personal orb" in-game. 
+48. The purple personal orb was incorrectly referred to as a "Black Personal Orb" in-game. 
+49. The Void Serpent orb is the only boss orb that does not require [red bronze ingots](https://robloxislands.fandom.com/wiki/Red_Bronze_Ingot). 
