@@ -110,7 +110,7 @@ class fact(commands.Cog):
 
                 if facts == "No trivia":
                     await ctx.respond(f"No trivia found!", ephemeral=True)
-                    push_facts_github('./', [added_trivia_path], f'Add new facts', 'kor', 'https://github.com/Stageddat/kor', token)
+                    push_facts_github('./', [added_trivia_path], f'Add new facts', 'kor', 'https://github.com/Stageddat/kor')
                 else:
                     await send_facts_as_file(ctx, facts, added_numbers)
 
@@ -161,7 +161,7 @@ class fact(commands.Cog):
             await ctx.respond("Detected Github facts are newer. Copying from Github to bot local storage.", ephemeral=True)
 
         elif github_version < local_version:
-            push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path], f'Update fact data from local v:{local_version}', 'kor', 'https://github.com/Stageddat/kor', token)
+            push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path], f'Update fact data from local v:{local_version}', 'kor', 'https://github.com/Stageddat/kor')
             await ctx.respond("Detected local facts are newer. Uploading from local to Github.", ephemeral=True)
         else:
             await ctx.respond(embed=error_embed, ephemeral=True)
@@ -222,7 +222,6 @@ async def dailyfact():
     cest = pytz.timezone('Europe/Madrid')
     if now.astimezone(cest).hour == 17 and now.astimezone(cest).minute == 00:
         # print("ITS TIME FOR NEW!")
-        last_sent = None
         if last_sent is None or now.date() != last_sent:
             last_sent = now.date()
             channel = bot.get_channel(fact_channel_id_debug)
