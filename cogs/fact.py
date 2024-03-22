@@ -1,10 +1,11 @@
 from config import *
 from discord.commands import Option
-from commands.fact_commands import fact_group
+from commands.fact_commands import fact_group, source_island
 from src.global_embeds import no_perm_embed, soon_embed, error_embed, failed_fetch_daily_channel
 from src.facts.island_fact import check_existing_link, check_link, extract_trivia
 from src.facts.push_facts_github import push_facts_github
 from src.facts.get_version import get_version
+from src.facts.get_fact import get_randomfact, get_randomdogfact, get_randomcatfact, get_islandfact, get_daily_islandfact, count_daily_status
 from src.facts.sync_database import sync_database
 import json
 import os
@@ -182,7 +183,7 @@ class fact(commands.Cog):
 
     @discord.Cog.listener()
     async def on_ready(self):
-        # dailyfact.start()
+        dailyfact.start()
         bot.add_view(error_trivia_help())
 
     print("Loading commands")
@@ -192,65 +193,67 @@ def setup(bot):
     bot.add_cog(fact(bot)) # add the cog to the bot
 
 # DAILY RANDOM FACT HERE
-# last_sent = None
-# channel = bot.get_channel(934367707212677151)
+last_sent = None
 
-# def get_fact_number():
-#     mydb = pool.get_connection()
-#     cursor = mydb.cursor()
-#     cursor.execute("SELECT fact_day_number FROM server_variables")
-#     result = cursor.fetchone()
-#     cursor.close()
-#     mydb.close()
-#     return int(result[0])
+def get_fact_number():
+    with open(daily_count_path, 'r') as f:
+        content = f.read()
+        number = int(content)
+        return number
 
-# def increment_fact_number():
-#     mydb = pool.get_connection()
-#     cursor = mydb.cursor()
-#     cursor.execute("UPDATE server_variables SET fact_day_number = fact_day_number + 1")
-#     mydb.commit()
-#     cursor.close()
-#     mydb.close()
+def increment_fact_number():
+    with open(daily_count_path, 'r') as f:
+        content = f.read()
+        number = int(content)
 
-# @tasks.loop(seconds=1)
-# async def dailyfact():
-#     global last_sent
-#     now = datetime.now(pytz.utc)
-#     cest = pytz.timezone('Europe/Madrid')
-#     if now.astimezone(cest).hour == 17 and now.astimezone(cest).minute == 00:
-#         # print("ITS TIME FOR NEW!")
-#         if last_sent is None or now.date() != last_sent:
-#             last_sent = now.date()
-#             channel = bot.get_channel(1133869739882586112)
-#             fact_type = random.randint(1, 3)
-#             if fact_type == 1:
-#                 fact = get_randomfact()
-#                 print(f'Daily random fact: {fact}')
-#                 dailyfact_embed = discord.Embed(
-#                     title="Did you know? 🤔",
-#                     description=f"{fact}",
-#                     colour=discord.Colour(int("6692d7", 16))
-#                 )
+    number += 1
 
-#             elif fact_type == 2:
-#                 fact = get_randomcatfact()
-#                 print(f'Daily random cat fact: {fact}')
-#                 dailyfact_embed = discord.Embed(
-#                     title="Did you know? 🐱",
-#                     description=f"{fact}",
-#                     colour=discord.Colour(int("ffcc00", 16))
-#                 )
-#             else:
-#                 fact = get_randomdogfact()
-#                 print(f'Daily random dog fact: {fact}')
-#                 dailyfact_embed = discord.Embed(
-#                     title="Did you know? 🐶",
-#                     description=f"{fact}",
-#                     colour=discord.Colour(int("964B00", 16))
-#                 )
+    with open(daily_count_path, 'w') as f:
+        f.write(str(number))
 
-#             fact_number = get_fact_number()
-#             increment_fact_number()
-#             await channel.send(f'## <@&1134794106195955772> Random Fact #{fact_number}\n', embed=dailyfact_embed)
-#     else:
-#         pass
+@tasks.loop(seconds=1)
+async def dailyfact():
+    global last_sent
+    now = datetime.now(pytz.utc)
+    cest = pytz.timezone('Europe/Madrid')
+    if now.astimezone(cest).hour == 0 and now.astimezone(cest).minute == 57:
+        # print("ITS TIME FOR NEW!")
+        last_sent = None
+        if last_sent is None or now.date() != last_sent:
+            last_sent = now.date()
+            channel = bot.get_channel(fact_channel_id_debug)
+
+        fact = await get_daily_islandfact()
+
+        print(f"Random island fact: {fact['Fact']}")
+        randomislandfact_embed = discord.Embed(
+            title="Did you know? 🏝️",
+            description=f"{fact['Fact']}",
+            colour=discord.Colour(int("d1e8fa", 16))
+        )
+        fact_number = get_fact_number()
+        if fact['Image Link'] != None:
+            randomislandfact_embed.set_image(f"{fact['Image Link']}")
+        if fact["Source Link"] == None:
+            await channel.send(f'## <@&1134794106195955772> Random Fact #{fact_number}\n', embed=randomislandfact_embed)
+        else:
+            await channel.send(f'## <@&1134794106195955772> Random Fact #{fact_number}\n', embed=randomislandfact_embed, view=source_island(fact['Source Link']))
+
+        increment_fact_number()
+        
+        daily_log_channel = bot.get_channel(daily_fact_log_channel_id)
+        status = count_daily_status()
+
+        embed = discord.Embed(
+            title=f"Daily random fact status #{fact_number}",
+            description=f"{fact['Fact']}",
+            colour=discord.Colour(int("d1e8fa", 16))
+        )
+
+        embed.add_field(name="Island Facts used", value=f"{status['True']}", inline=True)
+        embed.add_field(name="Island Facts left", value=f"{status['False']}", inline=True)
+
+        await daily_log_channel.send(embed=embed)
+        
+    else:
+        pass
