@@ -88,7 +88,7 @@ async def get_daily_islandfact():
     json_content[random_key]["daily"] = True
 
     with open(island_fact_database_path, 'w', encoding="utf8") as f:
-        json.dump(json_content, f)
+        json.dump(json_content, f, indent=4)
 
     fact_object = {
         "Fact": random_value["fact"],
