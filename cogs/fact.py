@@ -224,7 +224,7 @@ async def dailyfact():
         # print("ITS TIME FOR NEW!")
         if last_sent is None or now.date() != last_sent:
             last_sent = now.date()
-            channel = bot.get_channel(fact_channel_id_debug)
+            channel = bot.get_channel(fact_channel_id)
 
         fact = await get_daily_islandfact()
 
