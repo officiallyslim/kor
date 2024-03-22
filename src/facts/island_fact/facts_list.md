@@ -1,8 +1,8 @@
 # FACTS LIST
-**Version: 32**
+**Version: 33**
 
 **Updated by: stageddat**
-**Updated at: 20:29 EST**
+**Updated at: 20:41 EST**
 1. Upon using a blueprint, it disappears from the player’s [inventory](https://robloxislands.fandom.com/wiki/Inventory) and a visual icon of the [item](https://robloxislands.fandom.com/wiki/Item) on will appear temporarily on the player’s head.
 2. The in-game loading tips refer to fertile flowers as "source flowers".
 3. Before breeding became possible, flowers could not be placed.
@@ -79,30 +79,28 @@
 74. The Maple Isles is the first location to be a cluster of islands, the second being the [Void Isles](https://robloxislands.fandom.com/wiki/Void_Isles).
 75. There is a bug in Maple Isles where the gate to the Second Isle will still be there even after the player finished [Bailey](https://robloxislands.fandom.com/wiki/Bailey)'s questline. This can be fixed by talking to [Kontos](https://robloxislands.fandom.com/wiki/Kontos) or [Bailey](https://robloxislands.fandom.com/wiki/Bailey).
 76. The Maple Isles is the second permanent island that doesn't have any [hostile mob](https://robloxislands.fandom.com/wiki/Category:Hostile_mobs), with the first being [Spirit Island](https://robloxislands.fandom.com/wiki/Spirit_Island).
-77. [Fhanhorn](https://robloxislands.fandom.com/wiki/Fhanhorn) was the first and only [boss](https://robloxislands.fandom.com/wiki/Category:Bosses) of the Maple Isles inIslandswhose [summon cooldown](https://robloxislands.fandom.com/wiki/Category:Bosses#Summon_cooldowns) currently cannot be bypassed with [tokens](https://robloxislands.fandom.com/wiki/Token) during it has [no token](https://robloxislands.fandom.com/wiki/Category:No_tokens) and no [ [hostile mobs](https://robloxislands.fandom.com/wiki/Category:Hostile_mobs), unless forced players to wait for 60 minutes; 1 hour and able to re-summon it.Due to the Maple Isles has no [hostile mobs](https://robloxislands.fandom.com/wiki/Category:Hostile_mobs), it [doesn't have its own token](https://robloxislands.fandom.com/wiki/Category:No_tokens) to bypass 1-hour cooldown.Since the [October 28, 2022](https://robloxislands.fandom.com/wiki/October_28,_2022) update, it doesn't have any token requirement on its summoning UI while on cooldown.
-78. Due to the Maple Isles has no [hostile mobs](https://robloxislands.fandom.com/wiki/Category:Hostile_mobs), it [doesn't have its own token](https://robloxislands.fandom.com/wiki/Category:No_tokens) to bypass 1-hour cooldown.
-79. Since the [October 28, 2022](https://robloxislands.fandom.com/wiki/October_28,_2022) update, it doesn't have any token requirement on its summoning UI while on cooldown.
-80. It was the first and only [boss](https://robloxislands.fandom.com/wiki/Category:Bosses) of the Maple Isles in Islands that doesn't have the "Failed to Summon" notification.
-81. Before the [September 18, 2020](https://robloxislands.fandom.com/wiki/September_18,_2020) update, the steel rod and [gilded steel rod](https://robloxislands.fandom.com/wiki/Gilded_Steel_Rod) shared the same model before the steel rod was updated to a newer one.
-82. The steel  rod is the only moldable item that can be crafted outside the [steel](https://robloxislands.fandom.com/wiki/Steel_Press) or [copper press](https://robloxislands.fandom.com/wiki/Copper_Press).
-83. The spellbook used to use the [tidal spellbook's](https://robloxislands.fandom.com/wiki/Tidal_Spellbook) model from [July 25, 2020](https://robloxislands.fandom.com/wiki/July_25,_2020) - [October 1, 2022](https://robloxislands.fandom.com/wiki/October_1,_2022) before being changed to a new one on July 25, 2020  when the aforementioned weapon was released.
-84. The spellbook's animation used to be a "two hand shove" animation. However, it was changed to the melee swing animation after the [March 19, 2021](https://robloxislands.fandom.com/wiki/March_19,_2021) update. Despite [wizard lizards](https://robloxislands.fandom.com/wiki/Wizard_Lizard) using spellbooks, they continue to use the two hand shove animation instead of the melee swing animation.
-85. Despite exploding upon disappearing, fireballs shot from spellbooks don't deal AOE damage.
-86. The spellbook's projectiles can collide with a wizard lizard's projectile, causing one or both projectiles to explode mid-path.
-87. The spellbook can fire through terrain and island parts, but cannot fire through game-generated structures.
-88. The angle the fireball launches is slightly delayed from the player's actual rotation, making shots inaccurate if the player is moving their camera very quickly.
-89. Spellbooks do not function correctly on private servers, as well as tidal spellbooks and [ruby staffs](https://robloxislands.fandom.com/wiki/Ruby_Staff).
-90. Spellbooks and [Slime Queen's scepters](https://robloxislands.fandom.com/wiki/Slime_Queen%27s_Scepter) are the only magic weapons that can be crafted without a [Magic](https://robloxislands.fandom.com/wiki/Magic) level requirement.
-91. [Seaweed seeds](https://robloxislands.fandom.com/wiki/Seaweed_Seeds) are the only seeds that can be obtained through fishing.
-92. In all servers, the amount of fish in a body of water is determined by the amount of players in and around that body of water.
-93. As of [May 13, 2022](https://robloxislands.fandom.com/wiki/May_13,_2022), fish tank blueprints can no longer be fished.
-94. [Basic fertilizer](https://robloxislands.fandom.com/wiki/Basic_Fertilizer) is referred to as "Fertilizer" when fished.
-95. Blue tang is referred to as "Royal Blue Tang" when fished.
-96. Puffer fish is referred to as "Pufferfish" when fished.
-97. From May 13, 2022 to [May 14, 2022](https://robloxislands.fandom.com/wiki/May_13,_2022#May_14,_2022), fishing basic fertilizer would not reward the player any item. In the same time period, fish-related quests given by [Azur](https://robloxislands.fandom.com/wiki/Azur) and [Odlum](https://robloxislands.fandom.com/wiki/Odlum) could not be completed.
-98. The fishing minigame is also present in Easy.gg's other game: [BedWars](https://robloxislands.fandom.comhttps://robloxbedwars.fandom.com/wiki/Fishing_Rod).
-99. The Azarathian Serpent is the first and only mini-boss in Islands that can be summoned by itself and cannot be summoned by players or [tokens](https://robloxislands.fandom.com/wiki/Token).
-100. Azarathian Serpent is the fourth boss in Islands that doesn't have its own token
-101. Upon defeat, Azarathian Serpent can drop other boss tokens, much like how the [Slime King](https://robloxislands.fandom.com/wiki/Slime_King) drops [Slime Queen Tokens](https://robloxislands.fandom.com/wiki/Slime_Queen_Token).
-102. When the Azaranthian Serpent burrows into the ground, its model is condensed into a ball and hidden until it unburrows and plays its pop-up animation.
-103. Azarathian Serpent is the only boss that can possibly spawn on another boss's arena
+77. [Fhanhorn](https://robloxislands.fandom.com/wiki/Fhanhorn) was the first and only [boss](https://robloxislands.fandom.com/wiki/Category:Bosses) of the Maple Isles inIslandswhose [summon cooldown](https://robloxislands.fandom.com/wiki/Category:Bosses#Summon_cooldowns) currently cannot be bypassed with [tokens](https://robloxislands.fandom.com/wiki/Token) during it has [no token](https://robloxislands.fandom.com/wiki/Category:No_tokens) and no [hostile mobs](https://robloxislands.fandom.com/wiki/Category:Hostile_mobs), unless forced players to wait for 60 minutes; 1 hour and able to re-summon it. Due to the Maple Isles has no [hostile mobs](https://robloxislands.fandom.com/wiki/Category:Hostile_mobs), it [doesn't have its own token](https://robloxislands.fandom.com/wiki/Category:No_tokens) to bypass 1-hour cooldown.Since the [October 28, 2022](https://robloxislands.fandom.com/wiki/October_28,_2022) update, it doesn't have any token requirement on its summoning UI while on cooldown.
+78. It was the first and only [boss](https://robloxislands.fandom.com/wiki/Category:Bosses) of the Maple Isles in Islands that doesn't have the "Failed to Summon" notification.
+79. Before the [September 18, 2020](https://robloxislands.fandom.com/wiki/September_18,_2020) update, the steel rod and [gilded steel rod](https://robloxislands.fandom.com/wiki/Gilded_Steel_Rod) shared the same model before the steel rod was updated to a newer one.
+80. The steel  rod is the only moldable item that can be crafted outside the [steel](https://robloxislands.fandom.com/wiki/Steel_Press) or [copper press](https://robloxislands.fandom.com/wiki/Copper_Press).
+81. The spellbook used to use the [tidal spellbook's](https://robloxislands.fandom.com/wiki/Tidal_Spellbook) model from [July 25, 2020](https://robloxislands.fandom.com/wiki/July_25,_2020) - [October 1, 2022](https://robloxislands.fandom.com/wiki/October_1,_2022) before being changed to a new one on July 25, 2020  when the aforementioned weapon was released.
+82. The spellbook's animation used to be a "two hand shove" animation. However, it was changed to the melee swing animation after the [March 19, 2021](https://robloxislands.fandom.com/wiki/March_19,_2021) update. Despite [wizard lizards](https://robloxislands.fandom.com/wiki/Wizard_Lizard) using spellbooks, they continue to use the two hand shove animation instead of the melee swing animation.
+83. Despite exploding upon disappearing, fireballs shot from spellbooks don't deal AOE damage.
+84. The spellbook's projectiles can collide with a wizard lizard's projectile, causing one or both projectiles to explode mid-path.
+85. The spellbook can fire through terrain and island parts, but cannot fire through game-generated structures.
+86. The angle the fireball launches is slightly delayed from the player's actual rotation, making shots inaccurate if the player is moving their camera very quickly.
+87. Spellbooks do not function correctly on private servers, as well as tidal spellbooks and [ruby staffs](https://robloxislands.fandom.com/wiki/Ruby_Staff).
+88. Spellbooks and [Slime Queen's scepters](https://robloxislands.fandom.com/wiki/Slime_Queen%27s_Scepter) are the only magic weapons that can be crafted without a [Magic](https://robloxislands.fandom.com/wiki/Magic) level requirement.
+89. [Seaweed seeds](https://robloxislands.fandom.com/wiki/Seaweed_Seeds) are the only seeds that can be obtained through fishing.
+90. In all servers, the amount of fish in a body of water is determined by the amount of players in and around that body of water.
+91. As of [May 13, 2022](https://robloxislands.fandom.com/wiki/May_13,_2022), fish tank blueprints can no longer be fished.
+92. [Basic fertilizer](https://robloxislands.fandom.com/wiki/Basic_Fertilizer) is referred to as "Fertilizer" when fished.
+93. Blue tang is referred to as "Royal Blue Tang" when fished.
+94. Puffer fish is referred to as "Pufferfish" when fished.
+95. From May 13, 2022 to [May 14, 2022](https://robloxislands.fandom.com/wiki/May_13,_2022#May_14,_2022), fishing basic fertilizer would not reward the player any item. In the same time period, fish-related quests given by [Azur](https://robloxislands.fandom.com/wiki/Azur) and [Odlum](https://robloxislands.fandom.com/wiki/Odlum) could not be completed.
+96. The fishing minigame is also present in Easy.gg's other game: [BedWars](https://robloxislands.fandom.comhttps://robloxbedwars.fandom.com/wiki/Fishing_Rod).
+97. The Azarathian Serpent is the first and only mini-boss in Islands that can be summoned by itself and cannot be summoned by players or [tokens](https://robloxislands.fandom.com/wiki/Token).
+98. Azarathian Serpent is the fourth boss in Islands that doesn't have its own token
+99. Upon defeat, Azarathian Serpent can drop other boss tokens, much like how the [Slime King](https://robloxislands.fandom.com/wiki/Slime_King) drops [Slime Queen Tokens](https://robloxislands.fandom.com/wiki/Slime_Queen_Token).
+100. When the Azaranthian Serpent burrows into the ground, its model is condensed into a ball and hidden until it unburrows and plays its pop-up animation.
+101. Azarathian Serpent is the only boss that can possibly spawn on another boss's arena
