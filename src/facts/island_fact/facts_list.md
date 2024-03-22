@@ -1,8 +1,8 @@
 # FACTS LIST
-**Version: 33**
+**Version: 34**
 
 **Updated by: stageddat**
-**Updated at: 20:41 EST**
+**Updated at: 20:44 EST**
 1. Upon using a blueprint, it disappears from the player’s [inventory](https://robloxislands.fandom.com/wiki/Inventory) and a visual icon of the [item](https://robloxislands.fandom.com/wiki/Item) on will appear temporarily on the player’s head.
 2. The in-game loading tips refer to fertile flowers as "source flowers".
 3. Before breeding became possible, flowers could not be placed.
@@ -104,3 +104,6 @@
 99. Upon defeat, Azarathian Serpent can drop other boss tokens, much like how the [Slime King](https://robloxislands.fandom.com/wiki/Slime_King) drops [Slime Queen Tokens](https://robloxislands.fandom.com/wiki/Slime_Queen_Token).
 100. When the Azaranthian Serpent burrows into the ground, its model is condensed into a ball and hidden until it unburrows and plays its pop-up animation.
 101. Azarathian Serpent is the only boss that can possibly spawn on another boss's arena
+102. Prior to a patch on [June 11, 2022](https://robloxislands.fandom.com/wiki/June_10,_2022#June_11,_2022), fireballs did not need to hit an entity to heal the player, thus providing a free infinite healing mechanism. 
+103. The projectiles fired by the spirit spellbook are slightly slower compared to other projectiles fired by other magic weapons. 
+104. The chance of shooting a specific color fireball corresponds to its respective [spirit](https://robloxislands.fandom.com/wiki/Spirit) counterpart spawn chance. 

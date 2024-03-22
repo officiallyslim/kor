@@ -604,5 +604,23 @@
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Azarathian_Serpent#Trivia"
+    },
+    "102": {
+        "fact": "Prior to a patch on [June 11, 2022](https://robloxislands.fandom.com/wiki/June_10,_2022#June_11,_2022), fireballs did not need to hit an entity to heal the player, thus providing a free infinite healing mechanism. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Spirit_Spellbook#Trivia"
+    },
+    "103": {
+        "fact": "The projectiles fired by the spirit spellbook are slightly slower compared to other projectiles fired by other magic weapons. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Spirit_Spellbook#Trivia"
+    },
+    "104": {
+        "fact": "The chance of shooting a specific color fireball corresponds to its respective [spirit](https://robloxislands.fandom.com/wiki/Spirit) counterpart spawn chance. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Spirit_Spellbook#Trivia"
     }
 }
