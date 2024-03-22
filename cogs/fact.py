@@ -235,9 +235,9 @@ async def dailyfact():
         if fact['Image Link'] != None:
             randomislandfact_embed.set_image(f"{fact['Image Link']}")
         if fact["Source Link"] == None:
-            await channel.send(f'## <@&1134794106195955772> Random Fact #{fact_number}\n', embed=randomislandfact_embed)
+            await channel.send(f'## <@&1198106586309201950> Random Fact #{fact_number}\n', embed=randomislandfact_embed)
         else:
-            await channel.send(f'## <@&1134794106195955772> Random Fact #{fact_number}\n', embed=randomislandfact_embed, view=source_island(fact['Source Link']))
+            await channel.send(f'## <@&1198106586309201950> Random Fact #{fact_number}\n', embed=randomislandfact_embed, view=source_island(fact['Source Link']))
 
         increment_fact_number()
         
