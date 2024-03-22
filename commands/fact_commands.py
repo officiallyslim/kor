@@ -49,7 +49,7 @@ async def island_fact(ctx: discord.ApplicationContext):
         colour=discord.Colour(int("d1e8fa", 16))
     )
     if fact['Image Link'] != None:
-        randomislandfact_embed.set_image(f"{fact['Image Link']}")
+        randomislandfact_embed.set_image(url=f"{str(fact['Image Link'])}")
     if fact["Source Link"] == None:
         await ctx.respond(embed=randomislandfact_embed)
     else:
