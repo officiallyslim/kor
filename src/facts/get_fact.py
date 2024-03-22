@@ -78,7 +78,6 @@ async def get_daily_islandfact():
 
     available_keys = [key for key, value in json_content.items() if not value["daily"]]
 
-    # Continúa buscando una clave aleatoria hasta que encuentres una donde "daily" sea falso
     while True:
         random_key = random.choice(available_keys)
         if not json_content[random_key]["daily"]:
@@ -103,16 +102,13 @@ def count_daily_status():
     with open(island_fact_database_path, encoding= "utf8") as f:
         json_content = json.load(f)
 
-    # Inicializa los contadores
     true_count = 0
     false_count = 0
 
-    # Recorre cada elemento en la base de datos
     for key, value in json_content.items():
         if value["daily"]:
             true_count += 1
         else:
             false_count += 1
 
-    # Devuelve los conteos
     return {"True": true_count, "False": false_count}
