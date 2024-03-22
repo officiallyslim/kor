@@ -70,6 +70,6 @@ async def reload_cog(ctx: discord.ApplicationContext,):
             mr_boomsteak] for role in ctx.author.roles):
         await ctx.respond(embed=no_perm_embed, ephemeral=True)
         return
-    await ctx.respond("**Alpha v1.0 Local**", ephemeral=True)
+    await ctx.respond("**Alpha v1.1**", ephemeral=True)
 
 bot.run(token)
