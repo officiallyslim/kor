@@ -1,8 +1,8 @@
 # FACTS LIST
-**Version: 29**
+**Version: 30**
 
 **Updated by: stageddat**
-**Updated at: 19:07 EST**
+**Updated at: 20:26 EST**
 1. Upon using a blueprint, it disappears from the player’s [inventory](https://robloxislands.fandom.com/wiki/Inventory) and a visual icon of the [item](https://robloxislands.fandom.com/wiki/Item) on will appear temporarily on the player’s head.
 2. The in-game loading tips refer to fertile flowers as "source flowers".
 3. Before breeding became possible, flowers could not be placed.
