@@ -4,6 +4,10 @@ from config import facts_md_path, island_fact_database_path, added_trivia_path
 from src.facts.push_facts_github import push_facts_github
 from datetime import datetime
 import pytz
+import dotenv
+
+dotenv.load_dotenv()
+token = str(os.getenv("GITHUB_TOKEN"))
 
 def sync_database():
     with open(facts_md_path, "r", encoding="utf-8") as f:
