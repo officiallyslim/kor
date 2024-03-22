@@ -11,6 +11,10 @@ import json
 import os
 import dotenv
 
+
+dotenv.load_dotenv()
+token = str(os.getenv("GITHUB_TOKEN"))
+
 async def send_facts_as_file(ctx: discord.ApplicationContext, facts, added_numbers):
     facts_str = '\n'.join(facts) if isinstance(facts, list) else str(facts)
 
@@ -19,7 +23,7 @@ async def send_facts_as_file(ctx: discord.ApplicationContext, facts, added_numbe
 
     with open(new_fact_path, 'rb') as file:
         await ctx.respond(f"Added the following facts {added_numbers}. **PLEASE CHECK IF THERE ARE ANY ERRORS**. Click the below button if u need help.\nIf you want see the whole log, visit [Github]({fact_list_github})", file=discord.File(file, 'facts.txt'), ephemeral=True, view=error_trivia_help())
-    push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path], f'Add new facts', 'kor', 'https://github.com/Stageddat/kor')
+    push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path], f'Add new facts', 'kor', 'https://github.com/Stageddat/kor', token)
 
 class error_trivia_help(discord.ui.View):
     def __init__(self):
@@ -106,7 +110,7 @@ class fact(commands.Cog):
 
                 if facts == "No trivia":
                     await ctx.respond(f"No trivia found!", ephemeral=True)
-                    push_facts_github('./', [added_trivia_path], f'Add new facts', 'kor', 'https://github.com/Stageddat/kor')
+                    push_facts_github('./', [added_trivia_path], f'Add new facts', 'kor', 'https://github.com/Stageddat/kor', token)
                 else:
                     await send_facts_as_file(ctx, facts, added_numbers)
 
@@ -157,7 +161,7 @@ class fact(commands.Cog):
             await ctx.respond("Detected Github facts are newer. Copying from Github to bot local storage.", ephemeral=True)
 
         elif github_version < local_version:
-            push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path], f'Update fact data from local v:{local_version}', 'kor', 'https://github.com/Stageddat/kor')
+            push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path], f'Update fact data from local v:{local_version}', 'kor', 'https://github.com/Stageddat/kor', token)
             await ctx.respond("Detected local facts are newer. Uploading from local to Github.", ephemeral=True)
         else:
             await ctx.respond(embed=error_embed, ephemeral=True)
