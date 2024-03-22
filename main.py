@@ -58,4 +58,18 @@ async def reload_cog(ctx: discord.ApplicationContext,):
     await ctx.respond("Killing bot...", ephemeral=True)
     await bot.close()
 
+@bot.slash_command(name="version", description="View bot version")
+async def reload_cog(ctx: discord.ApplicationContext,):
+    await ctx.defer(ephemeral=True)
+    if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
+            staff_manager,
+            community_manager,
+            assistant_director,
+            head_of_operations,
+            developer,
+            mr_boomsteak] for role in ctx.author.roles):
+        await ctx.respond(embed=no_perm_embed, ephemeral=True)
+        return
+    await ctx.respond("**Alpha v1.0 Local**", ephemeral=True)
+
 bot.run(token)
