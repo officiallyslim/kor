@@ -2,6 +2,7 @@ from config import *
 import os
 import traceback
 import dotenv
+from src.global_embeds import no_perm_embed
 
 dotenv.load_dotenv()
 token = str(os.getenv("TOKEN"))
@@ -41,5 +42,20 @@ async def reload_cog(
         await ctx.respond(f"I can't find \"{name}\" :c")
     else:
         await ctx.respond("You are not allowed to use this command")
+
+@bot.slash_command(name="kill", description="ONLY USE URGENCY CASE")
+async def reload_cog(ctx: discord.ApplicationContext,):
+    await ctx.defer(ephemeral=True)
+    if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
+            staff_manager,
+            community_manager,
+            assistant_director,
+            head_of_operations,
+            developer,
+            mr_boomsteak] for role in ctx.author.roles):
+        await ctx.respond(embed=no_perm_embed, ephemeral=True)
+        return
+    await ctx.respond("Killing bot...", ephemeral=True)
+    await bot.close()
 
 bot.run(token)
