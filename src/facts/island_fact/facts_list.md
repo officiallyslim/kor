@@ -1,5 +1,5 @@
 # FACTS LIST
-**Version: 34**
+**Version: 35**
 
 **Updated by: stageddat**
 **Updated at: 20:44 EST**
@@ -107,3 +107,7 @@
 102. Prior to a patch on [June 11, 2022](https://robloxislands.fandom.com/wiki/June_10,_2022#June_11,_2022), fireballs did not need to hit an entity to heal the player, thus providing a free infinite healing mechanism. 
 103. The projectiles fired by the spirit spellbook are slightly slower compared to other projectiles fired by other magic weapons. 
 104. The chance of shooting a specific color fireball corresponds to its respective [spirit](https://robloxislands.fandom.com/wiki/Spirit) counterpart spawn chance. 
+105. The drop rate for crystallized iron has been changed multiple times since it was added to the game.On [September 18, 2020](https://robloxislands.fandom.com/wiki/September_18,_2020) it was increased, likely due to the addition of [drills](https://robloxislands.fandom.com/wiki/Drill), which required crystallized iron in its recipe. 
+106. On [September 18, 2020](https://robloxislands.fandom.com/wiki/September_18,_2020) it was increased, likely due to the addition of [drills](https://robloxislands.fandom.com/wiki/Drill), which required crystallized iron in its recipe. 
+107. The limit for crystallized iron is 5,000. Joining a new server with an amount more than the limit in the [inventory](https://robloxislands.fandom.com/wiki/Inventory) or [hotbar](https://robloxislands.fandom.com/wiki/Hotbar) will reset it back to 5,000.Utilizing [chests](https://robloxislands.fandom.com/wiki/Chest) or [vending machines](https://robloxislands.fandom.com/wiki/Vending_Machine) can allow one to bypass the limit. 
+108. Utilizing [chests](https://robloxislands.fandom.com/wiki/Chest) or [vending machines](https://robloxislands.fandom.com/wiki/Vending_Machine) can allow one to bypass the limit. 

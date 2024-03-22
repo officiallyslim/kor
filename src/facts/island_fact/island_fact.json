@@ -622,5 +622,29 @@
         "daily": false,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Spirit_Spellbook#Trivia"
+    },
+    "105": {
+        "fact": "The drop rate for crystallized iron has been changed multiple times since it was added to the game.On [September 18, 2020](https://robloxislands.fandom.com/wiki/September_18,_2020) it was increased, likely due to the addition of [drills](https://robloxislands.fandom.com/wiki/Drill), which required crystallized iron in its recipe. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Crystallized_Iron"
+    },
+    "106": {
+        "fact": "On [September 18, 2020](https://robloxislands.fandom.com/wiki/September_18,_2020) it was increased, likely due to the addition of [drills](https://robloxislands.fandom.com/wiki/Drill), which required crystallized iron in its recipe. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Crystallized_Iron"
+    },
+    "107": {
+        "fact": "The limit for crystallized iron is 5,000. Joining a new server with an amount more than the limit in the [inventory](https://robloxislands.fandom.com/wiki/Inventory) or [hotbar](https://robloxislands.fandom.com/wiki/Hotbar) will reset it back to 5,000.Utilizing [chests](https://robloxislands.fandom.com/wiki/Chest) or [vending machines](https://robloxislands.fandom.com/wiki/Vending_Machine) can allow one to bypass the limit. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Crystallized_Iron"
+    },
+    "108": {
+        "fact": "Utilizing [chests](https://robloxislands.fandom.com/wiki/Chest) or [vending machines](https://robloxislands.fandom.com/wiki/Vending_Machine) can allow one to bypass the limit. ",
+        "daily": false,
+        "img_link": null,
+        "source_link": "https://robloxislands.fandom.com/wiki/Crystallized_Iron"
     }
 }
