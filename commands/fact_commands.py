@@ -39,7 +39,7 @@ async def dog_fact(ctx: discord.ApplicationContext):
 
     await ctx.respond(embed=randomdogfact_embed)
 
-@fact_group.command(name = "island", description = "Get island dog fact 🏝️")
+@fact_group.command(name = "island", description = "Get random Island Roblox fact 🏝️")
 async def island_fact(ctx: discord.ApplicationContext):
     fact = get_islandfact()
     print(f"Random island fact: {fact['Fact']}")
