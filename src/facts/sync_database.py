@@ -5,6 +5,7 @@ from src.facts.push_facts_github import push_facts_github
 from datetime import datetime
 import pytz
 import dotenv
+import os
 
 dotenv.load_dotenv()
 token = str(os.getenv("GITHUB_TOKEN"))
