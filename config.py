@@ -24,7 +24,8 @@ daily_fact_log_channel_id = 1217895141902123111
 general_log_channel_id = 1217894520658722866
 new_members_log_channel_id = 1220141824979505193
 
-welcome_channel_id = 1220135931659554908
+welcome_channel_id = 1151613295384592454
+
 # Path
 facts_md_path = 'src/facts/island_fact/facts_list.md'
 daily_count_path = 'src/facts/daily_count.txt'

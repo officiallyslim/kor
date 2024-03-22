@@ -39,7 +39,7 @@ async def create_welcome_card(member: discord.Member):
     welcome_img_path = welcome_img_folder_path + member_name + "_welcome.png"
 
     background.save(welcome_img_path)
-    await send_welcome_message(member, welcome_img_path)
+    await send_welcome_message_and_DM(member, welcome_img_path)
     return welcome_img_path
 
 async def send_welcome_message(member: discord.Member, welcome_img_path):
