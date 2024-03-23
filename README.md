@@ -34,6 +34,14 @@ git clone https://github.com/Stageddat/kor.git
 ```sh
 $ pip3 install -r requirements.txt
 ```
+3. Create a file with `.env` name and insert the tokens:
+```.env
+TOKEN = DISCORD_BOT_TOKEN
+GITHUB_TOKEN = GITHUB_PAT_TOKEN
+```
+4. Edit the variables of `config.py`
+5. Run :P
+
 ## Wiki
 - [Home](wiki/home.md)
 - Commands
