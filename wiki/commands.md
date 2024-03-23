@@ -1,4 +1,4 @@
-# Wiki Home
+# Wiki Commands
 
 <details>
 <summary>Wiki Index</summary>
@@ -18,13 +18,15 @@
     - Test welcome message with specific user
 </details>
 
-## What is this?
-This is the wiki for the Discord Custom Bot Kor for Boom Building Corporation Discord server made by Stageddat
-<br>Theres no reason for clone and edit this bot from zero, but who cares, so do what u want to do 😉.
+## Wait a min...
+The following wiki is separating the commands of different classes and sub-classes.
+<br>You can use the index command to go to the one you like
 
-## For who is this wiki?
-This wiki is made principally for the administrators of Boom Building Corporation Discord server or any nerd who want read this boring thing :D.
-
-## How use the bot?
-1. Download the bot
-2. Follow [Installation](../README.md/#installation)
+### Facts
+  - Facts public commands
+    - `/fact dog` - Get a random dog fact
+    <details>
+      <summary>Example</summary>
+      <img src="wiki_src/fact_img/fact_dog_1.png" alt="drawing" width="400"/>
+      <img src="wiki_src/fact_img/fact_dog_2.png" alt="drawing" width="400"/>
+    </details>
