@@ -32,8 +32,7 @@ class new_member(commands.Cog):
                 mr_boomsteak] for role in ctx.author.roles):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
-        welcome_img_path = await create_welcome_card(member)
-        await send_welcome_message_and_DM(member, welcome_img_path)
+        await create_welcome_card(member)
         await ctx.respond("Done xd")
 
 def setup(bot):
