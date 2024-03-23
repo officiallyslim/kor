@@ -27,6 +27,6 @@ The following wiki is separating the commands of different classes and sub-class
     - `/fact dog` - Get a random dog fact
     <details>
       <summary>Example</summary>
-      <img src="wiki_src/fact_img/fact_dog_1.png" alt="drawing" width="400"/>
-      <img src="wiki_src/fact_img/fact_dog_2.png" alt="drawing" width="400"/>
+      <img src="wiki_src/fact_img/fact_dog_1.png" alt="drawing" width="500"/><br>
+      <img src="wiki_src/fact_img/fact_dog_2.png" alt="drawing" width="500"/>
     </details>
