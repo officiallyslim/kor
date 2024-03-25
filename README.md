@@ -44,7 +44,7 @@ GITHUB_TOKEN = GITHUB_PAT_TOKEN
 
 ## Wiki
 - [Home](wiki/home.md)
-- Commands
+- [Commands](wiki/commands.md)
 - Config
 - Troubleshooting
   - Facts sync

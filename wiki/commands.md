@@ -4,7 +4,7 @@
 <summary>Wiki Index</summary>
 
 - [Home](home.md)
-- Commands
+- [Commands](commands.md)
 - Config
 - Troubleshooting
   - Facts sync
