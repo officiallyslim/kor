@@ -7,6 +7,7 @@ from src.facts.push_facts_github import push_facts_github
 from src.facts.get_version import get_version
 from src.facts.get_fact import get_randomfact, get_randomdogfact, get_randomcatfact, get_islandfact, get_daily_islandfact, count_daily_status
 from src.facts.sync_database import sync_database
+from src.facts.sync_island_fact_github import sync_github_database
 import json
 import os
 import dotenv
@@ -142,34 +143,16 @@ class fact(commands.Cog):
         except Exception as e:
             await ctx.respond(f"**Error**:\n```{e}```",embed=error_embed, ephemeral=True)
 
-        if github_version == local_version:
+        sync_status = await sync_github_database(github_version, local_version)
+        if sync_status == "Already synchronized":
             await ctx.respond("It is already synchronized")
-
-        elif github_version > local_version:
-            # Facts list
-            headers = {'Authorization': f'token {github_token}'}
-            r = requests.get(raw_fact_list_github, allow_redirects=True, headers=headers)
-            open(facts_md_path, 'wb').write(r.content)
-
-            # Facts database
-            r = requests.get(raw_fact_database_github, allow_redirects=True, headers=headers)
-            open(island_fact_database_path, 'wb').write(r.content)
-
-            # Added facts link
-            r = requests.get(raw_added_fact_github, allow_redirects=True, headers=headers)
-            open(added_trivia_path, 'wb').write(r.content)
-
-            # Daily count
-            r = requests.get(raw_daily_count_github, allow_redirects=True, headers=headers)
-            open(daily_count_path, 'wb').write(r.content)
-
+        elif sync_status == "Github newer":
             await ctx.respond("Detected Github facts are newer. Copying from Github to bot local storage.", ephemeral=True)
-
-        elif github_version < local_version:
-            push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path, daily_count_path], f'[BOT] Update fact data from local v:{local_version}', 'kor', 'https://github.com/Stageddat/kor', token)
+        elif sync_status == "Local newer":
             await ctx.respond("Detected local facts are newer. Uploading from local to Github.", ephemeral=True)
         else:
             await ctx.respond(embed=error_embed, ephemeral=True)
+
 
     @discord.slash_command(name = "sync_island_fact_database", description = "Sync between island fact list and database")
     async def sync_island_fact_database(self, ctx: discord.ApplicationContext):
