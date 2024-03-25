@@ -1,19 +1,40 @@
-from getpass import getpass
-from git import Repo
-import dotenv
+import requests
+import base64
 import os
+from dotenv import load_dotenv
 
-def push_facts_github(repo_path, file_paths, commit_message, remote_name, remote_url, token):
-    repo = Repo(repo_path)
+load_dotenv()
 
-    repo.index.add(file_paths)
+def push_facts_github(file_paths, commit_message):
+    repo_name = "kor"
+    branch = "main"
+    github_token = os.getenv("GITHUB_TOKEN")
+    files_updated = []
 
-    repo.index.commit(commit_message)
+    for file_path in file_paths:
+        api_url = f"https://api.github.com/repos/Stageddat/{repo_name}/contents/{file_path}"
 
-    remote_url_with_token = remote_url.replace("https://", f"https://{token}@")
-    
-    try:
-        origin = repo.remote(name=remote_name)
-    except ValueError:
-        origin = repo.create_remote(remote_name, url=remote_url_with_token)
-    origin.push()
+        get_response = requests.get(api_url, headers={"Authorization": f"token {github_token}"})
+        file_content = get_response.json()
+
+        with open(file_path, "rb") as file:
+            encoded_content = base64.b64encode(file.read()).decode("utf-8")
+
+        payload = {
+            "message": commit_message,
+            "content": encoded_content,
+            "sha": file_content.get("sha", ""),
+            "branch": branch
+        }
+
+        put_response = requests.put(api_url, json=payload, headers={"Authorization": f"token {github_token}"})
+
+        if put_response.status_code == 200 or put_response.status_code == 201:
+            files_updated.append(file_path)
+        else:
+            print(f"Error al subir el archivo: {file_path} - {put_response.json()['message']}")
+
+    if files_updated:
+        print(f"Archivos subidos correctamente al repositorio '{repo_name}': {', '.join(files_updated)}")
+    else:
+        print(f"No se pudo subir ningún archivo al repositorio '{repo_name}'.")

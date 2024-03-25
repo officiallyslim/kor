@@ -125,7 +125,7 @@ async def get_daily_islandfact():
         with open(facts_md_path, "w", encoding="utf-8") as f:
             f.writelines(lines)
 
-    push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path, daily_count_path], f'[BOT] Update after send daily facy', 'kor', 'https://github.com/Stageddat/kor', token)
+    push_facts_github([facts_md_path, added_trivia_path, island_fact_database_path, daily_count_path], f'[BOT] Update after send daily facy')
     return fact_object
 
 def count_daily_status():
