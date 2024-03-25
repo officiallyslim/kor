@@ -32,9 +32,9 @@ def push_facts_github(file_paths, commit_message):
         if put_response.status_code == 200 or put_response.status_code == 201:
             files_updated.append(file_path)
         else:
-            print(f"Error al subir el archivo: {file_path} - {put_response.json()['message']}")
+            print(f"Failed uploading: {file_path} - {put_response.json()['message']}")
 
     if files_updated:
-        print(f"Archivos subidos correctamente al repositorio '{repo_name}': {', '.join(files_updated)}")
+        print(f"Files pushed '{repo_name}': {', '.join(files_updated)}")
     else:
-        print(f"No se pudo subir ningún archivo al repositorio '{repo_name}'.")
+        print(f"Failed push '{repo_name}'.")
