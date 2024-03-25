@@ -2,7 +2,13 @@ from better_profanity import profanity
 import requests
 import random
 import json
-from config import island_fact_database_path
+from config import island_fact_database_path, facts_md_path, added_trivia_path, daily_count_path
+from src.facts.push_facts_github import push_facts_github
+import os
+import dotenv
+
+dotenv.load_dotenv()
+token = str(os.getenv("TOKEN"))
 
 # API REQUEST
 def get_randomfact():
@@ -96,6 +102,31 @@ async def get_daily_islandfact():
         "Source Link": random_value["source_link"]
     }
 
+
+    # Update Github
+    version_prefix = "**Version: "
+    version_suffix = "**"
+    
+    with open(facts_md_path, "r", encoding="utf-8") as f:
+        lines = f.readlines()
+
+    # get version
+    version_line = next((line for line in lines if line.startswith(version_prefix)), None)
+    if version_line is None:
+        print(f"No line starts with '{version_prefix}'")
+    else:
+        version_index = lines.index(version_line)
+        version = int(version_line.strip().replace(version_prefix, "").replace(version_suffix, ""))
+
+        version += 1
+
+        # Update version
+        lines[version_index] = version_prefix + str(version) + version_suffix + "\n"
+
+        with open(facts_md_path, "w", encoding="utf-8") as f:
+            f.writelines(lines)
+
+    push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path, daily_count_path], f'[BOT] Update after send daily facy', 'kor', 'https://github.com/Stageddat/kor', token)
     return fact_object
 
 def count_daily_status():
