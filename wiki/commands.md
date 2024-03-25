@@ -51,3 +51,14 @@ The following wiki is separating the commands of different classes and sub-class
         <img src="wiki_src/fact_img/fact_island_1.png" alt="drawing" width="500"/><br>
         <img src="wiki_src/fact_img/fact_island_2.png" alt="drawing" width="500"/>
       </details>
+  - Facts admin commands
+    - `/change_fact_number (number=int)`<br>
+    Change the **next day faily fact number**
+    - `/add_custom_island_fact (fact=str, img_link=Optional(str), source_link=Optional(str))`<br>
+    Add a new Roblox Island custom fact
+    - `/add_island_trivia (link=str)`<br>
+    Extract facts from Roblox Island trivia
+    - `/sync_island_fact_database`<br>
+    Sync between Fact list MD and JSON database
+    - `/sync_island_fact_github`<br>
+    Sync the local and Github files
