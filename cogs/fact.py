@@ -193,7 +193,7 @@ class fact(commands.Cog):
     @discord.Cog.listener()
     async def on_ready(self):
         dailyfact.start()
-        start_sync()
+        await start_sync()
         bot.add_view(error_trivia_help())
 
     print("Loading commands")
