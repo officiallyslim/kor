@@ -102,7 +102,6 @@ async def get_daily_islandfact():
         "Source Link": random_value["source_link"]
     }
 
-
     # Update Github
     version_prefix = "**Version: "
     version_suffix = "**"
