@@ -55,5 +55,5 @@ def sync_database():
         f.write(f"**Updated at: {est_time}**\n")
         for i, fact in enumerate(md_facts.values(), start=1):
             f.write(f"{i}. {fact}\n")
-    push_facts_github([facts_md_path, island_fact_database_path], f'[BOT] Update sync database')
+    push_facts_github('./', [facts_md_path, island_fact_database_path], f'[BOT] Update sync database', 'kor', 'https://github.com/Stageddat/kor', token)
     return True

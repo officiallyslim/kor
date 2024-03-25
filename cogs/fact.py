@@ -24,7 +24,7 @@ async def send_facts_as_file(ctx: discord.ApplicationContext, facts, added_numbe
 
     with open(new_fact_path, 'rb') as file:
         await ctx.respond(f"Added the following facts {added_numbers}. **PLEASE CHECK IF THERE ARE ANY ERRORS**. Click the below button if u need help.\nIf you want see the whole log, visit [Github]({fact_list_github})", file=discord.File(file, 'facts.txt'), ephemeral=True, view=error_trivia_help())
-    push_facts_github([facts_md_path, added_trivia_path, island_fact_database_path], f'[BOT] Add new facts')
+    push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path], f'[BOT] Add new facts', 'kor', 'https://github.com/Stageddat/kor', token)
 
 async def start_sync():
     try:
@@ -128,7 +128,7 @@ class fact(commands.Cog):
 
                 if facts == "No trivia":
                     await ctx.respond(f"No trivia found!", ephemeral=True)
-                    push_facts_github([added_trivia_path], f'[BOT] Add new facts') # Send the added trivia file
+                    push_facts_github('./', [added_trivia_path], f'[BOT] Add new facts', 'kor', 'https://github.com/Stageddat/kor', token) # Send the added trivia file
                 else:
                     await send_facts_as_file(ctx, facts, added_numbers)
 

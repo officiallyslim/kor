@@ -36,7 +36,7 @@ async def sync_github_database(github_version, local_version):
         return "Github newer"
 
     elif github_version < local_version:
-        push_facts_github([facts_md_path, added_trivia_path, island_fact_database_path, daily_count_path], f'[BOT] Update fact data from local v:{local_version}')
+        push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path, daily_count_path], f'[BOT] Update fact data from local v:{local_version}', 'kor', 'https://github.com/Stageddat/kor', github_token)
         return "Local newer"
     else:
         await "Error"
