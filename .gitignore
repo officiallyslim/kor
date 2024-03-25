@@ -3,7 +3,6 @@
 **/tests
 **/old_welcome_img
 .env
-daily_count.txt
 .VSCodeCounter
 src/facts/new_fact.txt
 src/embed_sender/embed.json
