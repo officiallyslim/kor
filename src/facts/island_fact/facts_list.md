@@ -1,7 +1,7 @@
 # FACTS LIST
-**Version: 38**
+**Version: 40**
 
-**Updated by: stageddat**
+**Updated by: his mom**
 
 **Updated at: 06:06 EST**
 1. Upon using a blueprint, it disappears from the player’s [inventory](https://robloxislands.fandom.com/wiki/Inventory) and a visual icon of the [item](https://robloxislands.fandom.com/wiki/Item) on will appear temporarily on the player’s head.
