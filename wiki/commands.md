@@ -24,9 +24,30 @@ The following wiki is separating the commands of different classes and sub-class
 
 ### Facts
   - Facts public commands
+    - `/fact random` - Get a random fact
+        <details>
+          <summary>Example</summary>
+          <img src="wiki_src/fact_img/fact_random_1.png" alt="drawing" width="500"/><br>
+          <img src="wiki_src/fact_img/fact_random_2.png" alt="drawing" width="500"/>
+        </details>
+
     - `/fact dog` - Get a random dog fact
-    <details>
-      <summary>Example</summary>
-      <img src="wiki_src/fact_img/fact_dog_1.png" alt="drawing" width="500"/><br>
-      <img src="wiki_src/fact_img/fact_dog_2.png" alt="drawing" width="500"/>
-    </details>
+      <details>
+        <summary>Example</summary>
+        <img src="wiki_src/fact_img/fact_dog_1.png" alt="drawing" width="500"/><br>
+        <img src="wiki_src/fact_img/fact_dog_2.png" alt="drawing" width="500"/>
+      </details>
+
+
+    - `/fact cat` - Get a random cat fact
+      <details>
+        <summary>Example</summary>
+        <img src="wiki_src/fact_img/fact_cat_1.png" alt="drawing" width="500"/><br>
+        <img src="wiki_src/fact_img/fact_cat_2.png" alt="drawing" width="500"/>
+      </details>
+    - `/fact island` - Get a random Roblox Island fact
+      <details>
+        <summary>Example</summary>
+        <img src="wiki_src/fact_img/fact_island_1.png" alt="drawing" width="500"/><br>
+        <img src="wiki_src/fact_img/fact_island_2.png" alt="drawing" width="500"/>
+      </details>
