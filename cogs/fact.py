@@ -26,6 +26,23 @@ async def send_facts_as_file(ctx: discord.ApplicationContext, facts, added_numbe
         await ctx.respond(f"Added the following facts {added_numbers}. **PLEASE CHECK IF THERE ARE ANY ERRORS**. Click the below button if u need help.\nIf you want see the whole log, visit [Github]({fact_list_github})", file=discord.File(file, 'facts.txt'), ephemeral=True, view=error_trivia_help())
     push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path], f'[BOT] Add new facts', 'kor', 'https://github.com/Stageddat/kor', token)
 
+async def start_sync():
+    try:
+        github_version, local_version = await get_version()
+    except Exception as e:
+        print("Failed load version, starting bot without sync")
+        return
+
+    sync_status = await sync_github_database(github_version, local_version)
+    if sync_status == "Already synchronized":
+        print("It is already synchronized")
+    elif sync_status == "Github newer":
+        print("Detected Github facts are newer. Copying from Github to bot local storage.")
+    elif sync_status == "Local newer":
+        print("Detected local facts are newer. Uploading from local to Github.")
+    else:
+        print("Error downloading/uploading database")
+
 class error_trivia_help(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
@@ -176,6 +193,7 @@ class fact(commands.Cog):
     @discord.Cog.listener()
     async def on_ready(self):
         dailyfact.start()
+        start_sync()
         bot.add_view(error_trivia_help())
 
     print("Loading commands")
