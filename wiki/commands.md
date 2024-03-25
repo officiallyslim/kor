@@ -62,3 +62,7 @@ The following wiki is separating the commands of different classes and sub-class
     Sync between Fact list MD and JSON database
     - `/sync_island_fact_github`<br>
     Sync the local and Github files
+
+### Welcome System
+  - `/test_welcome (member=discord.Member)` - Get a random fact<br>
+      This will act like someone new joined but for the selected member
