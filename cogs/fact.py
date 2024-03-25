@@ -23,7 +23,7 @@ async def send_facts_as_file(ctx: discord.ApplicationContext, facts, added_numbe
 
     with open(new_fact_path, 'rb') as file:
         await ctx.respond(f"Added the following facts {added_numbers}. **PLEASE CHECK IF THERE ARE ANY ERRORS**. Click the below button if u need help.\nIf you want see the whole log, visit [Github]({fact_list_github})", file=discord.File(file, 'facts.txt'), ephemeral=True, view=error_trivia_help())
-    push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path], f'Add new facts', 'kor', 'https://github.com/Stageddat/kor', token)
+    push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path], f'[BOT] Add new facts', 'kor', 'https://github.com/Stageddat/kor', token)
 
 class error_trivia_help(discord.ui.View):
     def __init__(self):
@@ -110,7 +110,7 @@ class fact(commands.Cog):
 
                 if facts == "No trivia":
                     await ctx.respond(f"No trivia found!", ephemeral=True)
-                    push_facts_github('./', [added_trivia_path], f'Add new facts', 'kor', 'https://github.com/Stageddat/kor')
+                    push_facts_github('./', [added_trivia_path], f'[BOT] Add new facts', 'kor', 'https://github.com/Stageddat/kor', token) # Send the added trivia file
                 else:
                     await send_facts_as_file(ctx, facts, added_numbers)
 
@@ -158,15 +158,20 @@ class fact(commands.Cog):
             # Added facts link
             r = requests.get(raw_added_fact_github, allow_redirects=True, headers=headers)
             open(added_trivia_path, 'wb').write(r.content)
+
+            # Daily count
+            r = requests.get(raw_daily_count_github, allow_redirects=True, headers=headers)
+            open(daily_count_path, 'wb').write(r.content)
+
             await ctx.respond("Detected Github facts are newer. Copying from Github to bot local storage.", ephemeral=True)
 
         elif github_version < local_version:
-            push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path], f'Update fact data from local v:{local_version}', 'kor', 'https://github.com/Stageddat/kor')
+            push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path, daily_count_path], f'[BOT] Update fact data from local v:{local_version}', 'kor', 'https://github.com/Stageddat/kor', token)
             await ctx.respond("Detected local facts are newer. Uploading from local to Github.", ephemeral=True)
         else:
             await ctx.respond(embed=error_embed, ephemeral=True)
 
-    @discord.slash_command(name = "sync_island_fact_database", description = "Sync between island fact list and database and upload to Github")
+    @discord.slash_command(name = "sync_island_fact_database", description = "Sync between island fact list and database")
     async def sync_island_fact_database(self, ctx: discord.ApplicationContext):
         await ctx.defer(ephemeral=True)
         if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
@@ -194,7 +199,7 @@ class fact(commands.Cog):
     bot.add_application_command(fact_group)
 
 def setup(bot):
-    bot.add_cog(fact(bot)) # add the cog to the bot
+    bot.add_cog(fact(bot))
 
 # DAILY RANDOM FACT HERE
 last_sent = None
