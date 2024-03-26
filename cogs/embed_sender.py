@@ -1,4 +1,5 @@
 from config import *
+from src.global_src.global_path import embed_path
 import requests
 import json
 from global_src.global_embed import no_perm_embed
