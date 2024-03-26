@@ -1,7 +1,7 @@
 from config import *
 from discord.commands import Option
 from src.new_member.create_welcome_card import create_welcome_card, send_welcome_message_and_DM
-from src.global_embeds import *
+from src.global_src.global_embeds import no_perm_embed
 
 class new_member(commands.Cog):
     def __init__(self, bot):
