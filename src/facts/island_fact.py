@@ -1,7 +1,8 @@
 import re
 from bs4 import BeautifulSoup as bs
 from urllib.request import urlopen
-from config import facts_md_path, island_base_url, added_trivia_path, island_fact_database_path
+from config import island_base_url
+from src.global_src.global_path import facts_md_path, added_trivia_path, island_fact_database_path
 import json
 from urllib.parse import urlparse, urlunparse
 from datetime import datetime

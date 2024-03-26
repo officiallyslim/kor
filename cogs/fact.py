@@ -8,6 +8,7 @@ from src.facts.get_version import get_version
 from src.facts.get_fact import get_randomfact, get_randomdogfact, get_randomcatfact, get_islandfact, get_daily_islandfact, count_daily_status
 from src.facts.sync_database import sync_database
 from src.facts.sync_island_fact_github import sync_github_database
+from src.global_src.global_path import new_fact_path, facts_md_path, added_trivia_path, island_fact_database_path, daily_count_path, error_fact_path
 import json
 import os
 import dotenv

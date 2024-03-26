@@ -2,7 +2,7 @@ from better_profanity import profanity
 import requests
 import random
 import json
-from config import island_fact_database_path, facts_md_path, added_trivia_path, daily_count_path
+from src.global_src.global_path import island_fact_database_path, facts_md_path, added_trivia_path, daily_count_path
 from src.facts.push_facts_github import push_facts_github
 import os
 import dotenv

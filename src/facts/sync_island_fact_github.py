@@ -1,11 +1,14 @@
 import requests
 from config import (
-    facts_md_path,
     github_token,
     raw_added_fact_github,
     raw_daily_count_github,
     raw_fact_database_github,
     raw_fact_list_github,
+)
+
+from src.global_src.global_path import (
+    facts_md_path,
     island_fact_database_path,
     added_trivia_path,
     daily_count_path,
