@@ -1,7 +1,8 @@
 from git import Repo, Actor
+from config import github_token
 
 def push_facts_github(repo_path, file_paths, commit_message, remote_name, remote_url, token):
-    # Definir el autor y el committer
+    # def autor and mail
     author = Actor("Stageddat", "chmarc72@gmail.com")
     committer = Actor("Stageddat", "chmarc72@gmail.com")
 
@@ -9,21 +10,20 @@ def push_facts_github(repo_path, file_paths, commit_message, remote_name, remote
     repo.index.add(file_paths)
     repo.index.commit(commit_message, author=author, committer=committer)
 
-    # Incluir el token en la URL del remoto
-    remote_url_with_token = remote_url.replace("https://", f"https://{token}@")
+    # add token to url
+    remote_url_with_token = remote_url.replace("https://", f"https://{github_token}@")
 
     try:
         origin = repo.remote(name=remote_name)
-        # Establecer la URL con el token para el remoto existente
+        # set url to token
         origin.set_url(remote_url_with_token)
     except ValueError:
         origin = repo.create_remote(remote_name, url=remote_url_with_token)
 
-    # Hacer push al remoto
+    # push
     try:
         origin.push()
-        # Imprimir un mensaje de éxito
-        print("El push a GitHub fue exitoso.")
+        print("Exit push.")
 
     except Exception as e:
-        print(f"Ocurrió un error al hacer push al remoto: {e}")
+        print(f"Failed push: {e}")
