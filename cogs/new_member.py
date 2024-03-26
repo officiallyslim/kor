@@ -2,6 +2,7 @@ from config import *
 from discord.commands import Option
 from src.new_member.create_welcome_card import create_welcome_card, send_welcome_message_and_DM
 from global_src.global_embed import no_perm_embed
+from src.global_src.global_channel_id import new_members_log_channel_id
 
 class new_member(commands.Cog):
     def __init__(self, bot):

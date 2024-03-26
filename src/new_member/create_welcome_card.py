@@ -1,5 +1,6 @@
 import discord
-from config import bot, welcome_channel_id, new_members_log_channel_id
+from config import bot
+from src.global_src.global_channel_id import welcome_channel_id, new_members_log_channel_id
 from src.global_src.global_path import default_pfp_path, pfp_img_path, background_img_path, welcome_img_folder_path
 from easy_pil import Canvas, Editor, Font, Text, font
 import requests
