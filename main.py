@@ -2,7 +2,7 @@ from config import *
 import os
 import traceback
 import dotenv
-from src.global_embeds import no_perm_embed
+from global_src.global_embed import no_perm_embed
 
 dotenv.load_dotenv()
 token = str(os.getenv("TOKEN"))

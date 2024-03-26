@@ -1,7 +1,7 @@
 from config import *
 import requests
 import json
-from src.global_src.global_embeds import no_perm_embed
+from global_src.global_embed import no_perm_embed
 
 class ConfirmView(discord.ui.View):
     def __init__(self, ctx, channel, content=None, embeds=None):

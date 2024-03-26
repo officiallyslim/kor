@@ -1,7 +1,7 @@
 from config import *
 from discord.commands import Option
 from commands.fact_commands import fact_group, source_island
-from src.global_src.global_embeds import no_perm_embed, soon_embed, error_embed, failed_fetch_daily_channel
+from global_src.global_embed import no_perm_embed, soon_embed, error_embed, failed_fetch_daily_channel
 from src.facts.island_fact import check_existing_link, check_link, extract_trivia
 from src.facts.push_facts_github import push_facts_github
 from src.facts.get_version import get_version
