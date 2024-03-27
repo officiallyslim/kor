@@ -1,12 +1,18 @@
-import discord
-from src.global_src.global_emojis import smile_pixel_emoji
-from src.ticket.utils.create_overwrites import create_overwrites
-from typing import Union
-from src.ticket.utils.gen_ticket_key import gen_key
-from datetime import datetime
 import json
-from src.global_src.global_path import pixel_art_welcome_embed_path, ticket_success_embed_path
+from datetime import datetime
+
+import discord
+
 from src.global_src.global_embed import error_embed
+from src.global_src.global_emojis import smile_pixel_emoji
+from src.global_src.global_path import (
+    pixel_art_welcome_embed_path,
+    ticket_success_embed_path,
+)
+from src.ticket.utils.add_db.add_db_pixel_art import add_db_pixel_art
+from src.ticket.utils.create_overwrites import create_overwrites
+from src.ticket.utils.gen_ticket_key import gen_key
+from src.ticket.view.form_pixel_art import form_pixel_art_view
 from src.ticket.view.jump_channel import jump_channel
 
 mod_role_id = 1222579667207192626
@@ -40,8 +46,9 @@ class pixel_art_panel_view(discord.ui.View):
                 reason="New channel for Pixel Art Builder request",
                 category=discord.Object(id=category_id)
             )
-        except:
+        except Exception as e:
             await interaction.response.send_message(error_embed, ephemeral=True)
+            print(f"Error when creating channel: {e}")
             return
 
         # Send welcome message
@@ -54,15 +61,38 @@ class pixel_art_panel_view(discord.ui.View):
         embed_info['footer']['text'] = embed_info['footer']['text'].replace('[KEY]', ticket_id)
         embed = discord.Embed.from_dict(embed_info)
 
-        await new_channel.send(f"{interaction.user.mention}",embed=embed)
+        await new_channel.send(f"{interaction.user.mention}",embed=embed, view=form_pixel_art_view())
 
-
-        #Respond the message
+        # Respond the message
         with open(ticket_success_embed_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
 
         for embed_info in data['embeds']:
             embed = discord.Embed.from_dict(embed_info)
-        
+
         channel_id = new_channel.id
         await interaction.followup.send(embed=embed, view=jump_channel(guild_id, channel_id), ephemeral=True)
+
+        # Add data to database
+        add_db_pixel_art(
+            ticket_id='test2',
+            open_user_id=123,
+            open_time=1234567890,
+            open_reason='Prueba',
+            form_name='FormularioTest',
+            form_roblox_user='UsuarioRoblox',
+            form_island_code='CódigoIsla',
+            form_build='Construcción',
+            form_build_desp='DescripciónConstrucción',
+            form_build_img='ImagenConstrucción',
+            channel_id=123456789,
+            welcome_msg_id=123456789,
+            dm_msg_id=123456789,
+            queue_msg_id=123456789,
+            log_msg_id=123456789,
+            claim_status=1,
+            claim_user_id=123456789,
+            close_user_id=123456789,
+            close_time=1234567890,
+            close_reason='RazónCierre'
+        )
