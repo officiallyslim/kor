@@ -14,3 +14,5 @@ welcome_img_folder_path = 'src/new_member/old_welcome_img/'
 
 pixel_art_panel_embed_path = "src/ticket/embed/pixel_art_panel.json"
 pixel_art_welcome_embed_path = "src/ticket/embed/pixel_art_welcome.json"
+
+ticket_success_embed_path = "src/ticket/embed/success_ticket.json"
