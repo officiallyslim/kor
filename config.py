@@ -1,8 +1,8 @@
-import discord
-from discord.ext import commands
-import dotenv
 import os
-from src.global_src.global_path import ticket_database_path
+
+import discord
+import dotenv
+from discord.ext import commands
 
 bot = discord.Bot()
 intents = discord.Intents.all()
