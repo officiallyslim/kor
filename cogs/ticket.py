@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from ticket.utils.is_message_from_ticket import is_message_from_ticket
 
 from config import bot
 from src.global_src.global_embed import no_perm_embed
@@ -13,6 +14,7 @@ from src.global_src.global_roles import (
 )
 from src.ticket.view.panel_selector import panel_selector
 from src.ticket.view.pixel_art import pixel_art_panel_view
+
 
 class ticket(commands.Cog):
     def __init__(self, bot):
@@ -28,6 +30,11 @@ class ticket(commands.Cog):
     @discord.Cog.listener()
     async def on_ready(self):
         bot.add_view(pixel_art_panel_view())
+
+    @discord.Cog.listener()
+    async def on_message(self, message: discord.Message):
+        if is_message_from_ticket(message.channel.id):
+            print(f"El mensaje pertenece al ticket en el canal {message.channel.id}")
 
 def setup(bot):
     bot.add_cog(ticket(bot))
