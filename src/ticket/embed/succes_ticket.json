@@ -1,0 +1,11 @@
+{
+    "content": null,
+    "embeds": [
+        {
+            "title": "Ticket created",
+            "description": "A new ticket has been created. To access the ticket, click the button below or join the channel.",
+            "color": 2664261
+        }
+    ],
+    "attachments": []
+}
