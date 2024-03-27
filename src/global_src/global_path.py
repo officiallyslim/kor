@@ -12,4 +12,5 @@ pfp_img_path = 'src/new_member/new_member_img/user_pfp.png'
 background_img_path = 'src/new_member/new_member_img/background.png'
 welcome_img_folder_path = 'src/new_member/old_welcome_img/'
 
-pixel_art_embed_path = "src/ticket/embed/pixel_art_panel.json"
+pixel_art_panel_embed_path = "src/ticket/embed/pixel_art_panel.json"
+pixel_art_welcome_embed_path = "src/ticket/embed/pixel_art_welcome.json"
