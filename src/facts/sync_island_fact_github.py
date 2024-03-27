@@ -1,12 +1,13 @@
 import requests
 from config import (
-    github_token,
+    github_token
+)
+from src.global_src.global_raw_links import (
     raw_added_fact_github,
     raw_daily_count_github,
     raw_fact_database_github,
     raw_fact_list_github,
 )
-
 from src.global_src.global_path import (
     facts_md_path,
     island_fact_database_path,

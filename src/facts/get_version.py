@@ -1,5 +1,6 @@
 import requests
-from config import github_token, raw_fact_list_github
+from config import github_token
+from src.global_src.global_raw_links import raw_fact_list_github
 from src.global_src.global_path import facts_md_path
 
 async def get_version():

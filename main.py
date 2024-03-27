@@ -3,12 +3,13 @@ import os
 import traceback
 import dotenv
 from global_src.global_embed import no_perm_embed
+from src.global_src.global_roles import *
 
 dotenv.load_dotenv()
 token = str(os.getenv("TOKEN"))
 
 cogs = ['cogs.fact', 'cogs.embed_sender', 'cogs.new_member']
-
+#xd
 for cog in cogs:
     try:
         bot.load_extension(cog)

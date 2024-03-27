@@ -10,6 +10,7 @@ from src.facts.sync_database import sync_database
 from src.facts.sync_island_fact_github import sync_github_database
 from src.global_src.global_path import new_fact_path, facts_md_path, added_trivia_path, island_fact_database_path, daily_count_path, error_fact_path
 from src.global_src.global_channel_id import daily_fact_log_channel_id, general_log_channel_id, fact_channel_id
+from src.global_src.global_roles import *
 import json
 import os
 import dotenv
