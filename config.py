@@ -1,13 +1,8 @@
 import discord
 from discord.ext import commands
-import requests
-import pytz
-from discord.ext import tasks, commands
-import random
-from datetime import datetime
-import asyncio
 import dotenv
 import os
+from src.global_src.global_path import ticket_database_path
 
 bot = discord.Bot()
 intents = discord.Intents.all()
