@@ -2,7 +2,7 @@ import discord
 from src.global_src.global_emojis import smile_pixel_emoji
 import json
 
-from src.global_src.global_path import pixel_art_embed_path
+from src.global_src.global_path import pixel_art_panel_embed_path
 from src.ticket.view.pixel_art import pixel_art_panel_view
 
 class panel_selector(discord.ui.View):
@@ -31,7 +31,7 @@ class panel_selector(discord.ui.View):
             await interaction.response.edit_message(view=panel_selector())
             await interaction.followup.send(f"Sending...", ephemeral=True)
 
-            with open(pixel_art_embed_path, 'r', encoding='utf-8') as f:
+            with open(pixel_art_panel_embed_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
 
             for embed_info in data['embeds']:
