@@ -29,7 +29,7 @@ class panel_selector(discord.ui.View):
     async def select_callback(self, select: discord.ui.Select, interaction: discord.Interaction):
         if select.values[0] == 'Request A Pixel Art Builder':
             await interaction.response.edit_message(view=panel_selector())
-            await interaction.followup.send(f"Sending...", ephemeral=True)
+            await interaction.followup.send("Sending...", ephemeral=True)
 
             with open(pixel_art_panel_embed_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
@@ -40,4 +40,4 @@ class panel_selector(discord.ui.View):
                 await interaction.channel.send(embed=embed, view=pixel_art_panel_view())
 
         else:
-            await interaction.response.send_message(f"SOON!", ephemeral=True)
+            await interaction.response.send_message("SOON!", ephemeral=True)
