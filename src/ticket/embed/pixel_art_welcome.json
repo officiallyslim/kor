@@ -1,0 +1,14 @@
+{
+    "content": null,
+    "embeds": [
+        {
+            "title": "Welcome [user]",
+            "description": "Thank you for reaching out for a pixel art builder!\n\nTo get started, simply complete this form:\n```\n1. Your Discord Name\n2. Roblox Username\n3. Island Code\n4. The build you need\n```\nAdd a **description** or **images of the build** you're envisioning if possible.\n\nWe're excited to bring your pixel art dreams to life!",
+            "color": 5814783,
+            "footer": {
+                "text": "Ticket ID: [KEY]"
+            }
+        }
+    ],
+    "attachments": []
+}
