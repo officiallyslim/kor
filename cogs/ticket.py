@@ -2,7 +2,6 @@ import asyncio
 
 import discord
 from discord.ext import commands
-from ticket.utils.transcript_webhook import transcript
 
 from config import bot, guild_id
 from src.global_src.global_embed import no_perm_embed
@@ -15,6 +14,9 @@ from src.global_src.global_roles import (
     staff_manager,
 )
 from src.ticket.utils.is_message_from_ticket import is_message_from_ticket
+from src.ticket.utils.transcript_webhook import transcript
+from src.ticket.view.confirm_form_pixel_art import confirm_form_pixel_art_view
+from src.ticket.view.form_pixel_art import form_pixel_art_view
 from src.ticket.view.panel_selector import panel_selector
 from src.ticket.view.pixel_art import pixel_art_panel_view
 
@@ -33,6 +35,8 @@ class ticket(commands.Cog):
     @discord.Cog.listener()
     async def on_ready(self):
         bot.add_view(pixel_art_panel_view())
+        bot.add_view(form_pixel_art_view())
+        bot.add_view(confirm_form_pixel_art_view())
 
     @discord.Cog.listener()
     async def on_message(self, message: discord.Message):
