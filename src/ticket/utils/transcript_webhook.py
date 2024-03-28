@@ -37,7 +37,6 @@ def send_discord_message(profile, thread_id, name, message_content, embeds):
     # Send msg
     response = requests.post(webhook_url, data=json.dumps(data), headers={"Content-Type": "application/json"})
 
-    # Retry
     if response.status_code != 204:
         raise ValueError(f"Request to Discord returned an error {response.status_code}, the response is:\n{response.text}")
 
@@ -54,15 +53,14 @@ async def transcript(message: discord.Message):
     # Close the database connection
     conn.close()
 
-    # Si 'ticket' no es None, entonces hay datos para almacenar
+    # Save variables
     if ticket is not None:
         transcript_thread_id = ticket[0]
         ticket_id = ticket[1]
         open_user_id = ticket[2]
-        # Ahora puedes usar las variables 'transcript_thread_id', 'ticket_id' y 'open_user_id' en tu código
     else:
         # No se encontraron datos
-        print("No se encontraron registros para el channel_id proporcionado.")
+        print("Ticket not found")
 
 
     user = bot.get_user(message.author.id)
@@ -80,8 +78,9 @@ async def transcript(message: discord.Message):
         send_discord_message(pfp_url, transcript_thread_id, user.name, message.content, message.embeds)
     else:
         print(f"El ticket en el canal {message.channel.id} no tiene un transcript_thread_id asociado.")
-        thread = await log_channel.create_thread(name=f"Pixel Art Request - {ticket_id} - {open_user_id}", content="Starting new transcript...")
-        send_discord_message(pfp_url,thread.id, user.name, message.content, message.embeds)
+        open_user = bot.get_user(open_user_id)
+        thread = await log_channel.create_thread(name=f"Pixel Art Request - {ticket_id} - {open_user.name}", content="Starting new transcript...")
+        send_discord_message(pfp_url, thread.id, user.name, message.content, message.embeds)
         print(thread.id)
         edit_db_pixel_art(
         ticket_id=ticket_id,
