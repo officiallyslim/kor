@@ -17,11 +17,9 @@ class confirm_form_pixel_art_view(discord.ui.View):
 
         # Get old data
         embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
-        print(embed)
         name = embed[0]['fields'][0]['value'].replace("```", "")
         roblox_username = embed[0]['fields'][1]['value'].replace("```", "")
         island_code = embed[0]['fields'][2]['value'].replace("```", "")
         build = embed[0]['fields'][3]['value'].replace("```", "")
-        print(type(name))
         modal = form_pixel_art_modal(title="Pixel Art Form", name=name, status="edit", roblox_user=roblox_username, island_code=island_code, build=build)
         await interaction.response.send_modal(modal)
