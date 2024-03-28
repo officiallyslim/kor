@@ -1,22 +1,27 @@
 import discord
-from src.ticket.modal.form_pixel_art import form_pixel_art_modal
-from src.global_src.global_emojis import claim_emoji
+from src.global_src.global_emojis import send_emoji
 
-class form_pixel_art_view(discord.ui.View):
+from src.global_src.embed_to_dict import embed_to_dict
+
+class confirm_form_pixel_art_view(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None) 
 
-    @discord.ui.button(label="Send", style=discord.ButtonStyle.green, emoji="✏️", custom_id="fill_form_pixel_art_view")
-    async def fill_form_pixel_art_view_callback(self, button: discord.ui.Button, interaction: discord.Interaction):
-        modal = form_pixel_art_modal(title="Pixel Art Form",name=interaction.user.name)
-        await interaction.response.send_modal(modal)
+    @discord.ui.button(label="Send", style=discord.ButtonStyle.green, emoji=send_emoji, custom_id="send_form_pixel_art_view")
+    async def send_form_pixel_art_view(self, button: discord.ui.Button, interaction: discord.Interaction):
+        pass
 
-    @discord.ui.button(label="Claim", style=discord.ButtonStyle.gray, emoji=claim_emoji, custom_id="claim_form_pixel_art_view")
-    async def claim_form_pixel_art_view(self, button: discord.ui.Button, interaction: discord.Interaction):
-        modal = form_pixel_art_modal(title="Pixel Art Form",name=interaction.user.name)
-        await interaction.response.send_modal(modal)
+    @discord.ui.button(label="Edit", style=discord.ButtonStyle.gray, emoji="✏️", custom_id="edit_form_pixel_art_view")
+    async def edit_form_pixel_art_view(self, button: discord.ui.Button, interaction: discord.Interaction):
+        from src.ticket.modal.form_pixel_art import form_pixel_art_modal
 
-    @discord.ui.button(label="Close", style=discord.ButtonStyle.red, emoji="🔒", custom_id="close_form_pixel_art_view")
-    async def close_form_pixel_art_view(self, button: discord.ui.Button, interaction: discord.Interaction):
-        modal = form_pixel_art_modal(title="Pixel Art Form",name=interaction.user.name)
+        # Get old data
+        embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
+        print(embed)
+        name = embed[0]['fields'][0]['value'].replace("```", "")
+        roblox_username = embed[0]['fields'][1]['value'].replace("```", "")
+        island_code = embed[0]['fields'][2]['value'].replace("```", "")
+        build = embed[0]['fields'][3]['value'].replace("```", "")
+        print(type(name))
+        modal = form_pixel_art_modal(title="Pixel Art Form", name=name, status="edit", roblox_user=roblox_username, island_code=island_code, build=build)
         await interaction.response.send_modal(modal)
