@@ -4,6 +4,11 @@ import requests
 import json
 from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_roles import *
+import dotenv
+import os
+
+dotenv.load_dotenv()
+private_url = str(os.getenv("PRIVATE_API"))
 
 class ConfirmView(discord.ui.View):
     def __init__(self, ctx, channel, content=None, embeds=None):
@@ -39,7 +44,7 @@ class embed_sender(commands.Cog):
 
         try:
             if discohook_link:
-                response = requests.get(embed_url, params={'url': discohook_link})
+                response = requests.get(f"{private_url}/getEmbed", params={'url': discohook_link})
                 data = response.json()
                 with open(embed_path, 'w', encoding='utf-8') as f:
                     json.dump(data, f, ensure_ascii=False)
@@ -96,7 +101,7 @@ class embed_sender(commands.Cog):
 
         try:
             if discohook_link:
-                response = requests.get(embed_url, params={'url': discohook_link})
+                response = requests.get(f"{private_url}/getEmbed", params={'url': discohook_link})
                 data = response.json()
                 with open(embed_path, 'w', encoding='utf-8') as f:
                     json.dump(data, f, ensure_ascii=False)
