@@ -3,10 +3,8 @@ import re
 import discord
 
 from config import bot
-from src.ticket.view.confirm_form_pixel_art import (
-    confirm_form_pixel_art_view,
-    get_welcome_msg,
-)
+from src.ticket.utils.db_utils.get_db_data_pixel_art import get_welcome_msg
+from src.ticket.view.confirm_form_pixel_art import confirm_form_pixel_art_view
 
 
 class form_pixel_art_modal(discord.ui.Modal):
