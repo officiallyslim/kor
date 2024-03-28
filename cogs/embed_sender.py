@@ -1,11 +1,22 @@
-from config import *
-from src.global_src.global_path import embed_path
-import requests
+
 import json
-from src.global_src.global_embed import no_perm_embed
-from src.global_src.global_roles import *
-import dotenv
 import os
+
+import discord
+import dotenv
+import requests
+from discord.ext import commands
+
+from src.global_src.global_embed import no_perm_embed
+from src.global_src.global_path import embed_path
+from src.global_src.global_roles import (
+    assistant_director,
+    community_manager,
+    developer,
+    head_of_operations,
+    mr_boomsteak,
+    staff_manager,
+)
 
 dotenv.load_dotenv()
 private_url = str(os.getenv("PRIVATE_API"))
