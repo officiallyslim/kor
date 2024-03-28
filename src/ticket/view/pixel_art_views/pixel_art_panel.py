@@ -3,23 +3,41 @@ from datetime import datetime
 
 import discord
 
-from src.global_src.global_embed import error_embed
+from config import guild_id
+from src.global_src.global_embed import error_embed, ticket_ban_embed
 from src.global_src.global_emojis import smile_pixel_emoji
 from src.global_src.global_path import (
+    pixel_art_dm_embed_path,
     pixel_art_welcome_embed_path,
+    ticket_banned_path,
     ticket_success_embed_path,
-    pixel_art_dm_embed_path
 )
-from src.ticket.utils.db_utils.add_db_pixel_art import add_db_pixel_art
 from src.ticket.utils.create_overwrites import create_custom_overwrites
+from src.ticket.utils.db_utils.add_db_pixel_art import add_db_pixel_art
+from src.ticket.utils.db_utils.get_db_data_pixel_art import check_open_art_pixel_ticket
 from src.ticket.utils.gen_ticket_key import gen_key
-from src.ticket.view.pixel_art_views.form_pixel_art import form_pixel_art_view
 from src.ticket.view.jump_channel import jump_channel
-from config import guild_id
+from src.ticket.view.pixel_art_views.form_pixel_art import form_pixel_art_view
 
 mod_role_id = 1222579667207192626
 category_id = 1222316215884582924
 general_log = 1222664107338240171
+
+"""
+Workflow chart:
+
+1. Check if user is banned from ticket
+2. Check if user already have ticket open
+3. Defer Interaction Response
+4. Generate Ticket ID
+5. Retrieve User and Moderator Role
+6. Set Custom Overwrites
+7. Create Text Channel
+8. Send Welcome Message
+9. Respond to Interaction
+10. Send Direct Message
+11. Add Data to Database
+"""
 
 class pixel_art_panel_view(discord.ui.View):
     def __init__(self):
@@ -32,6 +50,26 @@ class pixel_art_panel_view(discord.ui.View):
         custom_id="pixel_art_panel_button",
     )
     async def pixel_art_panel_button(self, button: discord.ui.Button, interaction: discord.Interaction):
+        # Check if user is banned from tickets
+        with open(ticket_banned_path, 'r') as f:
+            data = json.load(f)
+
+        if interaction.user.id in data:
+            await interaction.response.send_message(embed=ticket_ban_embed)
+            return
+
+        # Check user have current open channel
+        ticket_id, channel_id = check_open_art_pixel_ticket(interaction.user.id)
+        if check_open_art_pixel_ticket is not False:
+            embed = discord.Embed(
+                title="You already have an open pixel art ticket!",
+                description=f"You have the pixel art ticket: `{ticket_id}` already opened.\nYou can enter by clicking the button below.",
+                color=0xff0000
+            )
+            await interaction.response.send_message(embed=embed, view=jump_channel(guild_id, channel_id))
+            return
+
+        # Defer response
         await interaction.response.defer(ephemeral=True)
 
         # Gen ticket id
@@ -50,9 +88,6 @@ class pixel_art_panel_view(discord.ui.View):
             view_only_objects=(whoami,),
             view_and_chat_objects=(mod_role,),
         )
-
-        # Get time
-        open_time = int(datetime.now().timestamp())
 
         # Create ticket
         try:
@@ -108,6 +143,9 @@ class pixel_art_panel_view(discord.ui.View):
             )
         except discord.Forbidden:
             print(f"Failed send DM to {interaction.user.name}")
+
+        # Get time
+        open_time = int(datetime.now().timestamp())
 
         # Add data to database
         add_db_pixel_art(
