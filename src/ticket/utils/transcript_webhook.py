@@ -43,7 +43,7 @@ def send_discord_message(profile, thread_id, name, message_content, embeds):
     response = requests.post(webhook_url, data=json.dumps(data), headers={"Content-Type": "application/json"})
 
     if response.status_code != 204:
-        raise ValueError(f"Request to Discord returned an error {response.status_code}, the response is:\n{response.text}")
+        raise ValueError(f"Request to Discord returned an error {response.status_code}: {response.text}.")
 
 
 async def transcript(message: discord.Message):
@@ -64,8 +64,7 @@ async def transcript(message: discord.Message):
         ticket_id = ticket[1]
         open_user_id = ticket[2]
     else:
-        # No se encontraron datos
-        print("Ticket not found")
+        print(f"Ticket {ticket_id} information not found.")
 
 
     user = bot.get_user(message.author.id)
@@ -79,11 +78,9 @@ async def transcript(message: discord.Message):
 
     # Check if the ticket has a transcript_thread_id
     if transcript_thread_id is not None:
-        print(f"El ticket en el canal {message.channel.id} tiene un transcript_thread_id: {ticket[0]}")
-        send_discord_message(pfp_url, transcript_thread_id, user.name, message.content, message.embeds)
+        send_discord_message(pfp_url, transcript_thread_id, user.name, message.content, message.embeds) # Ticket have thread
     else:
-        print(f"El ticket en el canal {message.channel.id} no tiene un transcript_thread_id asociado.")
-        open_user = bot.get_user(open_user_id)
+        open_user = bot.get_user(open_user_id) # Ticket dont have thread
         thread = await log_channel.create_thread(name=f"Pixel Art Request - {ticket_id} - {open_user.name}", content="Starting new transcript...")
         send_discord_message(pfp_url, thread.id, user.name, message.content, message.embeds)
         print(thread.id)
