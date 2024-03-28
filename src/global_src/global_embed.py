@@ -24,7 +24,7 @@ failed_fetch_daily_channel = discord.Embed(
     colour=discord.Colour(int("ff0000", 16))
 )
 
-ticket_ban = discord.Embed(
+ticket_ban_embed = discord.Embed(
     title="You are banned!",
     description="Sorry, you are banned from ticket.",
     colour=discord.Colour(int("ff0000", 16))
