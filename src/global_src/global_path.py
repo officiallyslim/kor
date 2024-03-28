@@ -24,4 +24,4 @@ pixel_art_welcome_embed_path = "src/ticket/embed/pixel_art_welcome.json"
 pixel_art_dm_embed_path = "src/ticket/embed/pixel_art_dm.json"
 
 # Database
-ticket_database_path = "src/ticket/db/ticket.db"
+ticket_database_path = "src/ticket/db/ticket_data.db"
