@@ -181,7 +181,7 @@
     },
     "31": {
         "fact": "Even though [starfruits](https://robloxislands.fandom.com/wiki/Starfruit) and [pineapples](https://robloxislands.fandom.com/wiki/Pineapple) have an oily variant and recipe in the [washing station](https://robloxislands.fandom.com/wiki/Washing_Station), it cannot become oily.",
-        "daily": false,
+        "daily": true,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Crop#Trivia"
     },
