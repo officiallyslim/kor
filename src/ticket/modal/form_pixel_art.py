@@ -55,7 +55,7 @@ class form_pixel_art_modal(discord.ui.Modal):
         embed = discord.Embed(
             title="Pixel Art form answers",
             description="",
-            color=0x28a745,
+            color=0x28a745
             )
 
         embed.add_field(name="Discord name", value=f"```{self.children[0].value}```", inline=False)
