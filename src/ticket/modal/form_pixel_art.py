@@ -1,5 +1,13 @@
+import re
+
 import discord
-from src.ticket.view.confirm_form_pixel_art import confirm_form_pixel_art_view
+
+from config import bot
+from src.ticket.view.confirm_form_pixel_art import (
+    confirm_form_pixel_art_view,
+    get_welcome_msg,
+)
+
 
 class form_pixel_art_modal(discord.ui.Modal):
     def __init__(self, name, roblox_user=None, island_code=None, build=None, status=None, *args, **kwargs) -> None:
@@ -44,13 +52,26 @@ class form_pixel_art_modal(discord.ui.Modal):
             ))
 
     async def callback(self, interaction: discord.Interaction):
-        embed = discord.Embed(title="Pixel Art form answers")
+        embed = discord.Embed(
+            title="Pixel Art form answers",
+            description="",
+            color=0x28a745,
+            )
+
         embed.add_field(name="Discord name", value=f"```{self.children[0].value}```", inline=False)
         embed.add_field(name="Roblox username", value=f"```{self.children[1].value}```", inline=False)
         embed.add_field(name="Island Code", value=f"```{self.children[2].value}```", inline=False)
         embed.add_field(name="Build", value=f"```{self.children[3].value}```", inline=False)
 
-        if self.status == "new":
-            await interaction.response.send_message(content="Please, confirm your answer before send to moderators", embeds=[embed], view=confirm_form_pixel_art_view())
-        elif self.status == "edit":
-            await interaction.response.edit_message(content="Please, confirm your answer before send to moderators", embeds=[embed], view=confirm_form_pixel_art_view())
+        # Send form or edit
+        if self.status == "new": # Send the message if is new form and change view in original welcome message
+            await interaction.response.send_message(content="Please, confirm your answer before send to moderators", embed=embed, view=confirm_form_pixel_art_view())
+            ticket_id = re.findall(r"Ticket ID: (\w+)", interaction.channel.topic)[0]
+            welcome_msg_id, channel_id = get_welcome_msg(ticket_id)
+            welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
+
+            from src.ticket.view.actions_pixel_art import actions_pixel_art_view
+            await welcome_msg.edit(view=actions_pixel_art_view())
+
+        elif self.status == "edit": # Edit if is trying edit the form
+            await interaction.response.edit_message(content="Please, confirm your answer before send to moderators", embed=embed, view=confirm_form_pixel_art_view())
