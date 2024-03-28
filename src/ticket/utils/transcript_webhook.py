@@ -56,7 +56,6 @@ async def transcript(message: discord.Message):
     else:
         pfp_url = "https://discord.com/assets/1f0bfc0865d324c2587920a7d80c609b.png"
 
-    print(pfp_url)
     log_channel = bot.get_channel(1222548503251648522)
 
     # Check if the ticket has a transcript_thread_id
