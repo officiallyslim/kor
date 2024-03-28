@@ -7,27 +7,10 @@ import json
 from src.ticket.utils.db_utils.edit_db_pixel_art import edit_db_pixel_art
 import dotenv
 import os
+from src.global_src.embed_to_dict import embed_to_dict
 
 dotenv.load_dotenv()
 webhook_link = str(os.getenv("WEBHOOK_LINK"))
-
-def embed_to_dict(embed):
-    embed_dict = {
-        "title": embed.title,
-        "description": embed.description,
-        "color": embed.color.value if embed.color else None,  # Convierte el color a un valor entero
-        "fields": [{"name": field.name, "value": field.value, "inline": field.inline} for field in embed.fields],
-    }
-
-    if embed.footer:
-        embed_dict["footer"] = {"text": embed.footer.text}
-    if embed.image:
-        embed_dict["image"] = {"url": embed.image.url}
-    if embed.thumbnail:
-        embed_dict["thumbnail"] = {"url": embed.thumbnail.url}
-
-    return embed_dict
-
 
 def send_discord_message(profile, thread_id, name, message_content, embeds):
     webhook_url = f"{webhook_link}?thread_id={thread_id}"
