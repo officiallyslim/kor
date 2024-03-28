@@ -11,7 +11,7 @@ from src.global_src.global_path import (
     pixel_art_dm_embed_path
 )
 from src.ticket.utils.db_utils.add_db_pixel_art import add_db_pixel_art
-from src.ticket.utils.create_overwrites import create_overwrites
+from src.ticket.utils.create_overwrites import create_custom_overwrites
 from src.ticket.utils.gen_ticket_key import gen_key
 from src.ticket.view.form_pixel_art import form_pixel_art_view
 from src.ticket.view.jump_channel import jump_channel
@@ -41,10 +41,15 @@ class pixel_art_panel_view(discord.ui.View):
         # Get users and roles
         whoami = interaction.user
         mod_role = interaction.guild.get_role(mod_role_id)
-        objects = (whoami, mod_role)
+        # objects = (whoami, mod_role)
 
         # Set roles perms
-        overwrites = create_overwrites(interaction, *objects)
+        overwrites = create_custom_overwrites(
+            interaction,
+            no_perm_objects=(),
+            view_only_objects=(whoami,),
+            view_and_chat_objects=(mod_role,),
+        )
 
         # Get time
         open_time = int(datetime.now().timestamp())
@@ -103,7 +108,6 @@ class pixel_art_panel_view(discord.ui.View):
             )
         except discord.Forbidden:
             print(f"Failed send DM to {interaction.user.name}")
-
 
         # Add data to database
         add_db_pixel_art(
