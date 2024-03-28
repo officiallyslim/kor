@@ -1,23 +1,19 @@
 import re
-import sqlite3
 
 import discord
 
 from config import bot
 from src.global_src.embed_to_dict import embed_to_dict
+from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_emojis import send_emoji
-from src.global_src.global_path import ticket_database_path
-from src.ticket.utils.db_utils.edit_db_pixel_art import edit_db_pixel_art
 from src.ticket.utils.create_overwrites import create_view_and_chat_overwrites
+from src.ticket.utils.db_utils.edit_db_pixel_art import edit_db_pixel_art
+from src.ticket.utils.db_utils.get_db_data_pixel_art import (
+    get_open_user_id,
+    get_welcome_msg,
+)
 from src.ticket.view.actions_pixel_art import actions_pixel_art_view
 
-def get_welcome_msg(ticket_id):
-    conn = sqlite3.connect(ticket_database_path)
-    cursor = conn.cursor()
-    cursor.execute('SELECT welcome_msg_id, channel_id FROM pixel_art WHERE ticket_id = ? AND close_time IS NULL', (ticket_id,))
-    welcome_msg_id, channel_id = cursor.fetchone()
-    conn.close()
-    return welcome_msg_id, channel_id
 
 class confirm_form_pixel_art_view(discord.ui.View):
     def __init__(self):
@@ -25,11 +21,13 @@ class confirm_form_pixel_art_view(discord.ui.View):
 
     @discord.ui.button(label="Send!", style=discord.ButtonStyle.green, emoji=send_emoji, custom_id="send_form_pixel_art_view")
     async def send_form_pixel_art_view(self, button: discord.ui.Button, interaction: discord.Interaction):
-        # Verify
-        
-
         # Get ticket ID
         ticket_id = re.findall(r"Ticket ID: (\w+)", interaction.channel.topic)[0]
+
+        # Verify user
+        open_user_id = get_open_user_id(ticket_id)
+        if int(interaction.user.id) != int(open_user_id):
+            await interaction.response.send_message(embed=no_perm_embed, ephemeral=True)
 
         # Get form data
         embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
@@ -98,6 +96,14 @@ class confirm_form_pixel_art_view(discord.ui.View):
 
     @discord.ui.button(label="Edit", style=discord.ButtonStyle.gray, emoji="✏️", custom_id="edit_form_pixel_art_view")
     async def edit_form_pixel_art_view(self, button: discord.ui.Button, interaction: discord.Interaction):
+        # Get ticket ID
+        ticket_id = re.findall(r"Ticket ID: (\w+)", interaction.channel.topic)[0]
+
+        # Verify user
+        open_user_id = get_open_user_id(ticket_id)
+        if int(interaction.user.id) != int(open_user_id):
+            await interaction.response.send_message(embed=no_perm_embed, ephemeral=True)
+
         # Get old data
         embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
         name = embed[0]['fields'][0]['value'].replace("```", "")
