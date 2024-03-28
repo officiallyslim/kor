@@ -5,6 +5,11 @@ from src.global_src.global_path import ticket_database_path
 import requests
 import json
 from src.ticket.utils.db_utils.edit_db_pixel_art import edit_db_pixel_art
+import dotenv
+import os
+
+dotenv.load_dotenv()
+webhook_link = str(os.getenv("WEBHOOK_LINK"))
 
 def embed_to_dict(embed):
     embed_dict = {
@@ -25,7 +30,7 @@ def embed_to_dict(embed):
 
 
 def send_discord_message(profile, thread_id, name, message_content, embeds):
-    webhook_url = f"https://discord.com/api/webhooks/1222702893463765173/tx2nGBzu1CsO002I5l7rY5HjHD9HW6cydEE3ZpT_UCzNqjN9TlJeBp7JItR2lP8pv3BB?thread_id={thread_id}"
+    webhook_url = f"{webhook_link}?thread_id={thread_id}"
     # Message format
     data = {
         "avatar_url": profile,
