@@ -12,7 +12,6 @@ from src.ticket.utils.db_utils.get_db_data_pixel_art import (
     get_open_user_id,
     get_welcome_msg,
 )
-from src.ticket.view.pixel_art_views.actions_pixel_art import actions_pixel_art_view
 
 
 class confirm_form_pixel_art_view(discord.ui.View):
@@ -92,6 +91,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         embed.add_field(name="Island Code", value=f"```{island_code}```", inline=False)
         embed.add_field(name="Build", value=f"```{build}```", inline=False)
         embed.set_footer(text=f"Ticket ID: {ticket_id}")
+        from src.ticket.view.pixel_art_views.actions_pixel_art import actions_pixel_art_view
         await pixel_art_queue_channel.send("<@&1222579667207192626>", embed=embed, view=actions_pixel_art_view())
 
     @discord.ui.button(label="Edit", style=discord.ButtonStyle.gray, emoji="✏️", custom_id="edit_form_pixel_art_view")
