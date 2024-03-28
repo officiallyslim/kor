@@ -6,7 +6,7 @@ class form_pixel_art_view(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @discord.ui.button(label="Fill", style=discord.ButtonStyle.green, emoji="✏️", custom_id="fill_form_pixel_art_view")
+    @discord.ui.button(label="Fill", style=discord.ButtonStyle.green, emoji="📝", custom_id="fill_form_pixel_art_view")
     async def fill_form_pixel_art_view_callback(self, button: discord.ui.Button, interaction: discord.Interaction):
         modal = form_pixel_art_modal(title="Pixel Art Form",name=interaction.user.name, status="new")
         await interaction.response.send_modal(modal)
