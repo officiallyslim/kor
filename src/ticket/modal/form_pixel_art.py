@@ -4,7 +4,7 @@ import discord
 
 from config import bot
 from src.ticket.utils.db_utils.get_db_data_pixel_art import get_welcome_msg
-from src.ticket.view.confirm_form_pixel_art import confirm_form_pixel_art_view
+from src.ticket.view.pixel_art_views.confirm_form_pixel_art import confirm_form_pixel_art_view
 
 
 class form_pixel_art_modal(discord.ui.Modal):
@@ -68,7 +68,7 @@ class form_pixel_art_modal(discord.ui.Modal):
             welcome_msg_id, channel_id = get_welcome_msg(ticket_id)
             welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
 
-            from src.ticket.view.actions_pixel_art import actions_pixel_art_view
+            from src.ticket.view.pixel_art_views.actions_pixel_art import actions_pixel_art_view
             await welcome_msg.edit(view=actions_pixel_art_view())
 
         elif self.status == "edit": # Edit if is trying edit the form

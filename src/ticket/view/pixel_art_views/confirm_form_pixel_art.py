@@ -12,7 +12,7 @@ from src.ticket.utils.db_utils.get_db_data_pixel_art import (
     get_open_user_id,
     get_welcome_msg,
 )
-from src.ticket.view.actions_pixel_art import actions_pixel_art_view
+from src.ticket.view.pixel_art_views.actions_pixel_art import actions_pixel_art_view
 
 
 class confirm_form_pixel_art_view(discord.ui.View):
