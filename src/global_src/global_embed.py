@@ -23,3 +23,9 @@ failed_fetch_daily_channel = discord.Embed(
     description="Failed log mod action becouse daily fact log channel not found",
     colour=discord.Colour(int("ff0000", 16))
 )
+
+ticket_ban = discord.Embed(
+    title="You are banned!",
+    description="Sorry, you are banned from ticket.",
+    colour=discord.Colour(int("ff0000", 16))
+)
