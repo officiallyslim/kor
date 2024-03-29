@@ -10,7 +10,7 @@ from src.global_src.global_roles import pixel_art_role_id
 from src.ticket.utils.create_overwrites import create_view_and_chat_overwrites
 from src.ticket.utils.db_utils.edit_db_pixel_art import edit_db_pixel_art
 from src.ticket.utils.db_utils.get_db_data_pixel_art import (
-    get_open_user_id,
+    get_pixel_art_ticket_open_user_id,
     get_welcome_msg,
 )
 from src.global_src.global_channel_id import pixel_art_queue_channel_id
@@ -25,7 +25,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         ticket_id = re.findall(r"Ticket ID: (\w+)", interaction.channel.topic)[0]
 
         # Verify user
-        open_user_id = get_open_user_id(ticket_id)
+        open_user_id = get_pixel_art_ticket_open_user_id(ticket_id)
         if open_user_id is not None and int(interaction.user.id) != int(open_user_id):
             await interaction.response.send_message(embed=no_perm_embed, ephemeral=True)
 
@@ -106,7 +106,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         ticket_id = re.findall(r"Ticket ID: (\w+)", interaction.channel.topic)[0]
 
         # Verify user
-        open_user_id = get_open_user_id(ticket_id)
+        open_user_id = get_pixel_art_ticket_open_user_id(ticket_id)
         if int(interaction.user.id) != int(open_user_id):
             await interaction.response.send_message(embed=no_perm_embed, ephemeral=True)
 
