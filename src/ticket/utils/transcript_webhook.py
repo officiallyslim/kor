@@ -1,14 +1,16 @@
-import discord
-from config import bot
-import sqlite3
-from src.global_src.global_path import ticket_database_path
-import requests
 import json
-from src.ticket.utils.db_utils.edit_db_pixel_art import edit_db_pixel_art
-import dotenv
 import os
+import sqlite3
+
+import discord
+import dotenv
+import requests
+
+from config import bot
 from src.global_src.embed_to_dict import embed_to_dict
 from src.global_src.global_channel_id import ticket_transcript_forum_id
+from src.global_src.global_path import ticket_database_path
+from src.ticket.utils.db_utils.edit_db_pixel_art import edit_db_pixel_art
 
 dotenv.load_dotenv()
 webhook_link = str(os.getenv("WEBHOOK_LINK"))
