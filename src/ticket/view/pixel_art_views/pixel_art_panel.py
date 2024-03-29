@@ -1,9 +1,10 @@
 import json
 from datetime import datetime
-from config import bot
+
 import discord
 
-from config import guild_id
+from config import bot, guild_id
+from src.global_src.global_channel_id import ticket_log_channel_id
 from src.global_src.global_embed import error_embed, ticket_ban_embed
 from src.global_src.global_emojis import smile_pixel_emoji
 from src.global_src.global_path import (
@@ -13,27 +14,16 @@ from src.global_src.global_path import (
     ticket_success_embed_path,
 )
 from src.global_src.global_roles import (
-    assistant_director_role_id,
-    community_manager_role_id,
-    developer_role_id,
-    head_administration_role_id,
-    head_of_operations_role_id,
-    junior_administration_role_id,
-    mr_boomsteak_role_id,
-    mr_boomsteaks_controller_role_id,
-    official_administration_role_id,
     pixel_art_role_id,
-    senior_administration_role_id,
-    staff_manager_role_id,
-    trial_administration_role_id,
 )
 from src.ticket.utils.create_overwrites import create_custom_overwrites
-from src.ticket.utils.pixel_art_utils.db_utils.add_db_pixel_art import add_db_pixel_art
-from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import check_open_art_pixel_ticket
 from src.ticket.utils.gen_ticket_key import gen_key
+from src.ticket.utils.pixel_art_utils.db_utils.add_db_pixel_art import add_db_pixel_art
+from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
+    check_open_art_pixel_ticket,
+)
 from src.ticket.view.jump_channel import jump_channel
 from src.ticket.view.pixel_art_views.form_pixel_art import form_pixel_art_view
-from src.global_src.global_channel_id import ticket_log_channel_id
 
 """
 Workflow chart:
