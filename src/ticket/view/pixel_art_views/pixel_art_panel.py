@@ -12,14 +12,27 @@ from src.global_src.global_path import (
     ticket_banned_path,
     ticket_success_embed_path,
 )
-from src.global_src.global_roles import pixel_art_debug_role_id
+from src.global_src.global_roles import (
+    assistant_director_role_id,
+    community_manager_role_id,
+    developer_role_id,
+    head_administration_role_id,
+    head_of_operations_role_id,
+    junior_administration_role_id,
+    mr_boomsteak_role_id,
+    mr_boomsteaks_controller_role_id,
+    official_administration_role_id,
+    pixel_art_role_id,
+    senior_administration_role_id,
+    staff_manager_role_id,
+    trial_administration_role_id,
+)
 from src.ticket.utils.create_overwrites import create_custom_overwrites
 from src.ticket.utils.db_utils.add_db_pixel_art import add_db_pixel_art
 from src.ticket.utils.db_utils.get_db_data_pixel_art import check_open_art_pixel_ticket
 from src.ticket.utils.gen_ticket_key import gen_key
 from src.ticket.view.jump_channel import jump_channel
 from src.ticket.view.pixel_art_views.form_pixel_art import form_pixel_art_view
-from src.global_src.global_categories import pixel_art_catergory_debug
 
 """
 Workflow chart:
@@ -77,15 +90,40 @@ class pixel_art_panel_view(discord.ui.View):
 
         # Get users and roles
         whoami = interaction.user
-        mod_role = interaction.guild.get_role(pixel_art_debug_role_id)
-        # objects = (whoami, mod_role)
+        pixel_art_role = interaction.guild.get_role(pixel_art_role_id)
+        mr_boomsteak_role = interaction.guild.get_role(mr_boomsteak_role_id)
+        developer_role = interaction.guild.get_role(developer_role_id)
+        head_of_operations_role = interaction.guild.get_role(head_of_operations_role_id)
+        assistant_director_role = interaction.guild.get_role(assistant_director_role_id)
+        community_manager_role = interaction.guild.get_role(community_manager_role_id)
+        staff_manager_role = interaction.guild.get_role(staff_manager_role_id)
+        head_administration_role = interaction.guild.get_role(head_administration_role_id)
+        senior_administration_role = interaction.guild.get_role(senior_administration_role_id)
+        official_administration_role = interaction.guild.get_role(official_administration_role_id)
+        junior_administration_role = interaction.guild.get_role(junior_administration_role_id)
+        trial_administration_role = interaction.guild.get_role(trial_administration_role_id)
+        mr_boomsteaks_controller_role = interaction.guild.get_role(mr_boomsteaks_controller_role_id)
 
         # Set roles perms
         overwrites = create_custom_overwrites(
             interaction,
             no_perm_objects=(),
             view_only_objects=(whoami,),
-            view_and_chat_objects=(mod_role,),
+            view_and_chat_objects=(
+                pixel_art_role,
+                mr_boomsteak_role,
+                developer_role,
+                head_of_operations_role,
+                assistant_director_role,
+                community_manager_role,
+                staff_manager_role,
+                head_administration_role,
+                senior_administration_role,
+                official_administration_role,
+                junior_administration_role,
+                trial_administration_role,
+                mr_boomsteaks_controller_role,
+            ),
         )
 
         # Create ticket
@@ -95,11 +133,13 @@ class pixel_art_panel_view(discord.ui.View):
                 overwrites=overwrites,
                 topic=f"Ticket ID: {ticket_id}",
                 reason="New channel for Pixel Art Builder request",
-                category=discord.Object(id=pixel_art_catergory_debug),
+                category=discord.Object(id=1223274346429288480),
             )
         except Exception as e:
-            await interaction.response.send_message(error_embed, ephemeral=True)
+            await interaction.followup.send(embed=error_embed, ephemeral=True)
             print(f"Error when creating channel: {e}")
+            import traceback
+            traceback.print_exc()
             return
 
         # Send welcome message
