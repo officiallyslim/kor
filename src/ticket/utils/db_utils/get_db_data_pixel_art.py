@@ -34,7 +34,7 @@ def check_open_art_pixel_ticket(user_id):
     else:
         return False
 
-def check_ticket_claimed(ticket_id):
+def check_claimed_pixeL_art_ticket(ticket_id):
     conn = sqlite3.connect(ticket_database_path)
     cursor = conn.cursor()
     cursor.execute('SELECT claim_user_id FROM pixel_art WHERE ticket_id = ? AND close_time IS NULL', (ticket_id,))
