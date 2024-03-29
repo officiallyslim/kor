@@ -18,7 +18,7 @@ island_base_url = "https://robloxislands.fandom.com"
 fact_list_github = "https://github.com/Stageddat/kor/blob/main/src/facts/island_fact/facts_list.md"
 
 # Server ID
-guild_id = 1222316215884582922
+guild_id = 1151612424785494116
 
 # Github token
 dotenv.load_dotenv()
