@@ -14,6 +14,10 @@ from src.ticket.utils.db_utils.get_db_data_pixel_art import (
     get_pixel_art_welcome_msg,
 )
 from src.global_src.global_channel_id import pixel_art_queue_channel_id
+from src.ticket.view.pixel_art_views.actions_pixel_art_with_jump import (
+    actions_pixel_art_with_jump_view,
+)
+from config import guild_id
 
 class confirm_form_pixel_art_view(discord.ui.View):
     def __init__(self):
@@ -91,12 +95,9 @@ class confirm_form_pixel_art_view(discord.ui.View):
         embed.add_field(name="Island Code", value=f"```{island_code}```", inline=False)
         embed.add_field(name="Build", value=f"```{build}```", inline=False)
         embed.set_footer(text=f"Ticket ID: {ticket_id}")
-        from src.ticket.view.pixel_art_views.actions_pixel_art import (
-            actions_pixel_art_view,
-        )
 
         # Save queue msg to database
-        queue_msg = await pixel_art_queue_channel.send(f"<@&{pixel_art_role_id}.disable>", embed=embed, view=actions_pixel_art_view())
+        queue_msg = await pixel_art_queue_channel.send(f"<@&{pixel_art_role_id}.disable>", embed=embed, view=actions_pixel_art_with_jump_view(guild_id=guild_id, channel_id=channel_id))
         queue_msg_id = queue_msg.id
         edit_db_pixel_art(ticket_id, queue_msg_id=queue_msg_id)
 
