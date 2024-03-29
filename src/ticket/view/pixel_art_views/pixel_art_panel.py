@@ -12,7 +12,7 @@ from src.global_src.global_path import (
     ticket_banned_path,
     ticket_success_embed_path,
 )
-from src.global_src.global_roles import pixel_art_debug
+from src.global_src.global_roles import pixel_art_debug_role_id
 from src.ticket.utils.create_overwrites import create_custom_overwrites
 from src.ticket.utils.db_utils.add_db_pixel_art import add_db_pixel_art
 from src.ticket.utils.db_utils.get_db_data_pixel_art import check_open_art_pixel_ticket
@@ -78,7 +78,7 @@ class pixel_art_panel_view(discord.ui.View):
 
         # Get users and roles
         whoami = interaction.user
-        mod_role = interaction.guild.get_role(pixel_art_debug)
+        mod_role = interaction.guild.get_role(pixel_art_debug_role_id)
         # objects = (whoami, mod_role)
 
         # Set roles perms

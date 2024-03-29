@@ -13,10 +13,8 @@ class form_pixel_art_view(discord.ui.View):
 
     @discord.ui.button(label="Claim", style=discord.ButtonStyle.gray, emoji=claim_emoji, custom_id="claim_form_pixel_art_view")
     async def claim_form_pixel_art_view(self, button: discord.ui.Button, interaction: discord.Interaction):
-        modal = form_pixel_art_modal(title="Pixel Art Form",name=interaction.user.name)
-        await interaction.response.send_modal(modal)
+        pass
 
     @discord.ui.button(label="Close", style=discord.ButtonStyle.red, emoji="🔒", custom_id="close_form_pixel_art_view")
     async def close_form_pixel_art_view(self, button: discord.ui.Button, interaction: discord.Interaction):
-        modal = form_pixel_art_modal(title="Pixel Art Form",name=interaction.user.name)
-        await interaction.response.send_modal(modal)
+        pass
