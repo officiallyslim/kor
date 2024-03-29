@@ -50,6 +50,9 @@ class pixel_art_panel_view(discord.ui.View):
         custom_id="pixel_art_panel_button",
     )
     async def pixel_art_panel_button(self, button: discord.ui.Button, interaction: discord.Interaction):
+        # Defer response
+        await interaction.response.defer(ephemeral=True)
+
         # Check if user is banned from tickets
         with open(ticket_banned_path, 'r') as f:
             data = json.load(f)
@@ -66,11 +69,8 @@ class pixel_art_panel_view(discord.ui.View):
                 description=f"You have the pixel art ticket: `{ticket_id}` already opened.\nYou can enter by clicking the button below.",
                 color=0xff0000
             )
-            await interaction.response.send_message(embed=embed, view=jump_channel(guild_id, channel_id))
+            await interaction.response.send_message(embed=embed, view=jump_channel(guild_id, channel_id), ephemeral=True)
             return
-
-        # Defer response
-        await interaction.response.defer(ephemeral=True)
 
         # Gen ticket id
         ticket_id = gen_key(15)
