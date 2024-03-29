@@ -427,7 +427,7 @@
     },
     "72": {
         "fact": "It is the first and only [weapon](https://robloxislands.fandom.com/wiki/Weapon) that can modify the drop chances of [mob drops](https://robloxislands.fandom.com/wiki/Category:Mob_drops).",
-        "daily": false,
+        "daily": true,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/The_Captain%27s_Rapier#Trivia"
     },
