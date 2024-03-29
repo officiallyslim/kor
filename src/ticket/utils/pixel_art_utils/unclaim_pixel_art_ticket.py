@@ -4,21 +4,8 @@ import discord
 
 from config import bot
 from src.global_src.embed_to_dict import embed_to_dict
-from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_roles import (
-    assistant_director_role_id,
-    community_manager_role_id,
-    developer_role_id,
-    head_administration_role_id,
-    head_of_operations_role_id,
-    junior_administration_role_id,
-    mr_boomsteak_role_id,
-    mr_boomsteaks_controller_role_id,
-    official_administration_role_id,
     pixel_art_role_id,
-    senior_administration_role_id,
-    staff_manager_role_id,
-    trial_administration_role_id,
 )
 from src.ticket.utils.create_overwrites import create_custom_overwrites
 from src.ticket.utils.pixel_art_utils.db_utils.edit_db_pixel_art import (
