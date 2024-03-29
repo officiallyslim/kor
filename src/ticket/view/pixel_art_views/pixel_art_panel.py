@@ -224,6 +224,7 @@ class pixel_art_panel_view(discord.ui.View):
             queue_msg_id=None,
             log_msg_id=log_message.id,
             transcript_thread_id = None,
+            transcript_key = None,
             claim_user_id=None,
             close_user_id=None,
             close_time=None,
