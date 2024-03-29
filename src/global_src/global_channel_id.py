@@ -6,6 +6,5 @@ welcome_channel_id = 1151613295384592454
 
 # tickets
 ticket_log_channel_id = 1223282977924976764
-ticket_transcript_forum_id = 1223282718352211990
 
 pixel_art_queue_channel_id = 1223277420677959812
