@@ -19,8 +19,8 @@ class actions_claimed_pixel_art_view(discord.ui.View):
         ticket_id = re.findall(r"Ticket ID: (\w+)", embed[0]["footer"]["text"])[0]
 
         # Check if user is the claimer
-        claimed_users_id = check_claimed_pixeL_art_ticket(ticket_id)
-        if interaction.user.id not in claimed_users_id:
+        claim_user_id = check_claimed_pixeL_art_ticket(ticket_id)
+        if interaction.user.id != claim_user_id:
             await interaction.response.send_message("Sorry, only claim user can unclaim.", ephemeral=True)
         button.disabled = True
         await interaction.response.edit_message(view=self)

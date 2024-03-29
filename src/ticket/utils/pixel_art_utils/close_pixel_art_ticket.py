@@ -56,12 +56,10 @@ async def close_ticket(interaction: discord.Interaction, reason):
     ticket_id = re.findall(r"Ticket ID: (\w+)", embed[0]['footer']['text'])[0]
 
     # Check if user is in claimed user for close
-    claimed_users_id = check_claimed_pixeL_art_ticket(ticket_id)
-    if claimed_users_id is not None:
-        print(claimed_users_id)
-        if interaction.user.id not in claimed_users_id:
-            await interaction.response.send_message(embed=claimed_ticket_embed, ephemeral=True)
-            return
+    claim_user_id = check_claimed_pixeL_art_ticket(ticket_id)
+    if interaction.user.id != claim_user_id:
+        await interaction.response.send_message(embed=claimed_ticket_embed, ephemeral=True)
+        return
 
     # Gen transcript
     await interaction.response.send_message("🔒Closing ticket...\n\n🔄 Creating transcript... This may take a while!", ephemeral=True)

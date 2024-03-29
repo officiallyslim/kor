@@ -40,8 +40,8 @@ def check_claimed_pixeL_art_ticket(ticket_id):
     cursor.execute('SELECT claim_user_id FROM pixel_art WHERE ticket_id = ? AND close_time IS NULL', (ticket_id,))
     fetch_result = cursor.fetchone()
     conn.close()
-    if fetch_result is not None and fetch_result[0] is not None:
-        claimed_users_id = literal_eval(fetch_result[0])
+    if fetch_result is not None:
+        claimed_users_id = fetch_result[0]
         return claimed_users_id
     else:
         return None

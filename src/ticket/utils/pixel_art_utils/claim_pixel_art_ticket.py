@@ -61,5 +61,4 @@ async def claim_ticket(interaction: discord.Interaction):
     await welcome_msg.edit(view=actions_claimed_pixel_art_view())
 
     # Save to database
-    claimed_user_id = [interaction.user.id, ]
-    edit_db_pixel_art(ticket_id=ticket_id, claim_user_id=json.dumps(claimed_user_id))
+    edit_db_pixel_art(ticket_id=ticket_id, claim_user_id=interaction.user.id)
