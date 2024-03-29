@@ -8,6 +8,7 @@ from src.ticket.utils.db_utils.edit_db_pixel_art import edit_db_pixel_art
 import dotenv
 import os
 from src.global_src.embed_to_dict import embed_to_dict
+from src.global_src.global_channel_id import ticket_transcript_forum_id
 
 dotenv.load_dotenv()
 webhook_link = str(os.getenv("WEBHOOK_LINK"))
@@ -55,7 +56,7 @@ async def webhook_transcript(message: discord.Message):
     else:
         pfp_url = "https://discord.com/assets/1f0bfc0865d324c2587920a7d80c609b.png"
 
-    log_channel = bot.get_channel(1222548503251648522)
+    log_channel = bot.get_channel(ticket_transcript_forum_id)
 
     # Check if the ticket has a transcript_thread_id
     if transcript_thread_id is not None:
