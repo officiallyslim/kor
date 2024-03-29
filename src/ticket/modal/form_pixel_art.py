@@ -3,7 +3,7 @@ import re
 import discord
 
 from config import bot
-from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import get_welcome_msg
+from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import get_pixel_art_welcome_msg
 from src.ticket.view.pixel_art_views.confirm_form_pixel_art import confirm_form_pixel_art_view
 
 
@@ -65,7 +65,7 @@ class form_pixel_art_modal(discord.ui.Modal):
         if self.status == "new": # Send the message if is new form and change view in original welcome message
             await interaction.response.send_message(content="Please, confirm your answer before send to moderators", embed=embed, view=confirm_form_pixel_art_view())
             ticket_id = re.findall(r"Ticket ID: (\w+)", interaction.channel.topic)[0]
-            welcome_msg_id, channel_id = get_welcome_msg(ticket_id)
+            welcome_msg_id, channel_id = get_pixel_art_welcome_msg(ticket_id)
             welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
 
             from src.ticket.view.pixel_art_views.actions_pixel_art import actions_pixel_art_view
