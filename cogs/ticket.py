@@ -1,9 +1,8 @@
-import asyncio
 
 import discord
 from discord.ext import commands
 
-from config import bot, guild_id
+from config import bot
 from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_roles import (
     assistant_director_role_id,
@@ -13,7 +12,6 @@ from src.global_src.global_roles import (
     mr_boomsteak_role_id,
     staff_manager_role_id,
 )
-from src.ticket.utils.is_message_from_ticket import is_message_from_ticket
 from src.ticket.view.confirm_close_ticket import confirm_close_ticket
 from src.ticket.view.panel_selector import panel_selector
 from src.ticket.view.pixel_art_views.actions_claimed_pixel_art import (
