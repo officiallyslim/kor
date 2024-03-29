@@ -14,9 +14,6 @@ from src.global_src.global_roles import (
     staff_manager_role_id,
 )
 from src.ticket.utils.is_message_from_ticket import is_message_from_ticket
-from src.ticket.utils.pixel_art_utils.transcript_pixel_art_webhook import (
-    webhook_transcript,
-)
 from src.ticket.view.confirm_close_ticket import confirm_close_ticket
 from src.ticket.view.panel_selector import panel_selector
 from src.ticket.view.pixel_art_views.actions_claimed_pixel_art import (
@@ -49,21 +46,6 @@ class ticket(commands.Cog):
         bot.add_view(actions_pixel_art_view())
         bot.add_view(confirm_close_ticket())
         bot.add_view(actions_claimed_pixel_art_view())
-
-    @discord.Cog.listener()
-    async def on_message(self, message: discord.Message):
-        if isinstance(message.channel, discord.DMChannel):
-            return
-        if message.guild.id != guild_id:
-            return
-
-        if is_message_from_ticket(message.channel.id):
-            await webhook_transcript(message)
-        else:
-            await asyncio.sleep(1)
-            if is_message_from_ticket(message.channel.id):
-                await webhook_transcript(message)
-
 
 def setup(bot):
     bot.add_cog(ticket(bot))
