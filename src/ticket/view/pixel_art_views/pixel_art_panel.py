@@ -19,8 +19,7 @@ from src.ticket.utils.db_utils.get_db_data_pixel_art import check_open_art_pixel
 from src.ticket.utils.gen_ticket_key import gen_key
 from src.ticket.view.jump_channel import jump_channel
 from src.ticket.view.pixel_art_views.form_pixel_art import form_pixel_art_view
-
-category_id = 1222316215884582924
+from src.global_src.global_categories import pixel_art_catergory_debug
 
 """
 Workflow chart:
@@ -96,7 +95,7 @@ class pixel_art_panel_view(discord.ui.View):
                 overwrites=overwrites,
                 topic=f"Ticket ID: {ticket_id}",
                 reason="New channel for Pixel Art Builder request",
-                category=discord.Object(id=category_id),
+                category=discord.Object(id=pixel_art_catergory_debug),
             )
         except Exception as e:
             await interaction.response.send_message(error_embed, ephemeral=True)
