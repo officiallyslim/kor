@@ -48,12 +48,12 @@ async def reload_cog(
 async def reload_cog(ctx: discord.ApplicationContext,):
     await ctx.defer(ephemeral=True)
     if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
-            staff_manager,
-            community_manager,
-            assistant_director,
-            head_of_operations,
-            developer,
-            mr_boomsteak] for role in ctx.author.roles):
+            staff_manager_role_id,
+            community_manager_role_id,
+            assistant_director_role_id,
+            head_of_operations_role_id,
+            developer_role_id,
+            mr_boomsteak_role_id] for role in ctx.author.roles):
         await ctx.respond(embed=no_perm_embed, ephemeral=True)
         return
     await ctx.respond("Killing bot...", ephemeral=True)
@@ -63,12 +63,12 @@ async def reload_cog(ctx: discord.ApplicationContext,):
 async def reload_cog(ctx: discord.ApplicationContext,):
     await ctx.defer(ephemeral=True)
     if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
-            staff_manager,
-            community_manager,
-            assistant_director,
-            head_of_operations,
-            developer,
-            mr_boomsteak] for role in ctx.author.roles):
+            staff_manager_role_id,
+            community_manager_role_id,
+            assistant_director_role_id,
+            head_of_operations_role_id,
+            developer_role_id,
+            mr_boomsteak_role_id] for role in ctx.author.roles):
         await ctx.respond(embed=no_perm_embed, ephemeral=True)
         return
     await ctx.respond(f"**Alpha v1.2 Local**.\nPing: `{round(bot.latency * 1000, 2)}`ms", ephemeral=True)

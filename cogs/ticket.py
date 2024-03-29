@@ -6,12 +6,12 @@ from discord.ext import commands
 from config import bot, guild_id
 from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_roles import (
-    assistant_director,
-    community_manager,
-    developer,
-    head_of_operations,
-    mr_boomsteak,
-    staff_manager,
+    assistant_director_role_id,
+    community_manager_role_id,
+    developer_role_id,
+    head_of_operations_role_id,
+    mr_boomsteak_role_id,
+    staff_manager_role_id,
 )
 from src.ticket.utils.is_message_from_ticket import is_message_from_ticket
 from src.ticket.utils.transcript_webhook import transcript
@@ -28,7 +28,7 @@ class ticket(commands.Cog):
 
     @discord.slash_command(name = "send_panel", description = "Send embed in specifically channel")
     async def embed_sender(self, ctx: discord.ApplicationContext):
-        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager, community_manager, assistant_director, head_of_operations, developer, mr_boomsteak] for role in ctx.author.roles):
+        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager_role_id, community_manager_role_id, assistant_director_role_id, head_of_operations_role_id, developer_role_id, mr_boomsteak_role_id] for role in ctx.author.roles):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
         await ctx.respond("Select a panel",view=panel_selector(), ephemeral=True)

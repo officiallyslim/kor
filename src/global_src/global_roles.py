@@ -1,22 +1,22 @@
 # Staff Roles
-mr_boomsteak = 1210006813945106492
-developer = 1214469615808417812
-head_of_operations = 1168385225349406771
-assistant_director = 1151613202669514813
-community_manager = 1175981569656225862
-staff_manager = 1175986076125515786
-head_administration = 1216518080889622538
-senior_administration = 1216518078649860198
-official_administration = 1216518079433936975
-junior_administration = 1175985559743774791
-trial_administration = 1175985971565694987
-mr_boomsteaks_controller = 1151613201377677382
-management_team = 1175984805620494426
-head_of_moderation = 1216518081032093766
-senior_moderator = 1175982839481782353
-official_moderator = 1151613205089628212
-junior_moderator = 1216506577251733615
-trial_moderator = 1151613206939324578
+mr_boomsteak_role_id = 1210006813945106492
+developer_role_id = 1214469615808417812
+head_of_operations_role_id = 1168385225349406771
+assistant_director_role_id = 1151613202669514813
+community_manager_role_id = 1175981569656225862
+staff_manager_role_id = 1175986076125515786
+head_administration_role_id = 1216518080889622538
+senior_administration_role_id = 1216518078649860198
+official_administration_role_id = 1216518079433936975
+junior_administration_role_id = 1175985559743774791
+trial_administration_role_id = 1175985971565694987
+mr_boomsteaks_controller_role_id = 1151613201377677382
+management_team_role_id = 1175984805620494426
+head_of_moderation_role_id = 1216518081032093766
+senior_moderator_role_id = 1175982839481782353
+official_moderator_role_id = 1151613205089628212
+junior_moderator_role_id = 1216506577251733615
+trial_moderator_role_id = 1151613206939324578
 
 # Others roles
 pixel_art = 1151613225255841893
@@ -30,4 +30,4 @@ support = 1198698005138767952
 giveaway = 1151613212727451708
 
 # Debug roles
-pixel_art_debug = 1151613225255841893
+pixel_art_debug = 1222579667207192626

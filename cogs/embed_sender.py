@@ -10,12 +10,12 @@ from discord.ext import commands
 from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_path import embed_path
 from src.global_src.global_roles import (
-    assistant_director,
-    community_manager,
-    developer,
-    head_of_operations,
-    mr_boomsteak,
-    staff_manager,
+    assistant_director_role_id,
+    community_manager_role_id,
+    developer_role_id,
+    head_of_operations_role_id,
+    mr_boomsteak_role_id,
+    staff_manager_role_id,
 )
 
 dotenv.load_dotenv()
@@ -43,7 +43,7 @@ class embed_sender(commands.Cog):
 
     @discord.slash_command(name = "send_embed", description = "Send embed in specifically channel")
     async def embed_sender(self, ctx: discord.ApplicationContext, channel: discord.TextChannel, file: discord.Attachment = None, discohook_link: str = None):
-        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager, community_manager, assistant_director, head_of_operations, developer, mr_boomsteak] for role in ctx.author.roles):
+        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager_role_id, community_manager_role_id, assistant_director_role_id, head_of_operations_role_id, developer_role_id, mr_boomsteak_role_id] for role in ctx.author.roles):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
         if file and discohook_link:
@@ -100,7 +100,7 @@ class embed_sender(commands.Cog):
 
     @discord.slash_command(name = "send_dm_embed", description = "Send embed in DM")
     async def dm_sender(self, ctx: discord.ApplicationContext, user: discord.User, file: discord.Attachment = None, discohook_link: str = None):
-        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager, community_manager, assistant_director, head_of_operations, developer, mr_boomsteak] for role in ctx.author.roles):
+        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager_role_id, community_manager_role_id, assistant_director_role_id, head_of_operations_role_id, developer_role_id, mr_boomsteak_role_id] for role in ctx.author.roles):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
         if file and discohook_link:
