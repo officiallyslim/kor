@@ -29,3 +29,9 @@ ticket_ban_embed = discord.Embed(
     description="Sorry, you are banned from ticket.",
     colour=discord.Colour(int("ff0000", 16))
 )
+
+claimed_ticket_embed = discord.Embed(
+    title="This ticket is claimed!",
+    description="Sorry, only people who have claimed the ticket can close.",
+    colour=discord.Colour(int("ff0000", 16))
+)
