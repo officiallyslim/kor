@@ -11,7 +11,7 @@ from src.ticket.utils.create_overwrites import create_view_and_chat_overwrites
 from src.ticket.utils.db_utils.edit_db_pixel_art import edit_db_pixel_art
 from src.ticket.utils.db_utils.get_db_data_pixel_art import (
     get_pixel_art_ticket_open_user_id,
-    get_welcome_msg,
+    get_pixel_art_welcome_msg,
 )
 from src.global_src.global_channel_id import pixel_art_queue_channel_id
 
@@ -52,7 +52,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         await interaction.response.send_message(embed=embed)
         await interaction.message.delete(reason=f"Deleting form confirm message from the ticket {ticket_id}")
 
-        welcome_msg_id, channel_id = get_welcome_msg(ticket_id)
+        welcome_msg_id, channel_id = get_pixel_art_welcome_msg(ticket_id)
         welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
 
         new_welcome_embed = discord.Embed(
