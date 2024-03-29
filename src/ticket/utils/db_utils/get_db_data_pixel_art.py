@@ -21,9 +21,10 @@ def check_open_art_pixel_ticket(user_id):
     conn = sqlite3.connect(ticket_database_path)
     cursor = conn.cursor()
     cursor.execute('SELECT ticket_id, channel_id FROM pixel_art WHERE open_user_id = ? AND close_time IS NULL', (user_id,))
-    ticket_id, channel_id = cursor.fetchone()
+    fetch_result = cursor.fetchone()
     conn.close()
-    if ticket_id is not None:
+    if fetch_result is not None:
+        ticket_id, channel_id = fetch_result
         return ticket_id, channel_id
     else:
         return False
