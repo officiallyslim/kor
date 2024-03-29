@@ -58,18 +58,19 @@ class pixel_art_panel_view(discord.ui.View):
             data = json.load(f)
 
         if interaction.user.id in data:
-            await interaction.response.send_message(embed=ticket_ban_embed)
+            await interaction.followup.send(embed=ticket_ban_embed, ephemeral=True)
             return
 
         # Check user have current open channel
-        ticket_id, channel_id = check_open_art_pixel_ticket(interaction.user.id)
-        if check_open_art_pixel_ticket is not False:
+        open_ticket = check_open_art_pixel_ticket(int(interaction.user.id))
+        if open_ticket is not False:  # compare with False, not the function
+            ticket_id, channel_id = open_ticket
             embed = discord.Embed(
                 title="You already have an open pixel art ticket!",
                 description=f"You have the pixel art ticket: `{ticket_id}` already opened.\nYou can enter by clicking the button below.",
                 color=0xff0000
             )
-            await interaction.response.send_message(embed=embed, view=jump_channel(guild_id, channel_id), ephemeral=True)
+            await interaction.followup.send(embed=embed, view=jump_channel(guild_id, channel_id), ephemeral=True)
             return
 
         # Gen ticket id
