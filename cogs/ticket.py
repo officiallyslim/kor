@@ -20,7 +20,7 @@ from src.ticket.view.pixel_art_views.form_pixel_art import form_pixel_art_view
 from src.ticket.view.panel_selector import panel_selector
 from src.ticket.view.pixel_art_views.pixel_art_panel import pixel_art_panel_view
 from src.ticket.view.pixel_art_views.actions_pixel_art import actions_pixel_art_view
-
+from src.ticket.view.confirm_close_ticket import confirm_close_ticket
 
 class ticket(commands.Cog):
     def __init__(self, bot):
@@ -39,6 +39,7 @@ class ticket(commands.Cog):
         bot.add_view(form_pixel_art_view())
         bot.add_view(confirm_form_pixel_art_view())
         bot.add_view(actions_pixel_art_view())
+        bot.add_view(confirm_close_ticket())
 
     @discord.Cog.listener()
     async def on_message(self, message: discord.Message):

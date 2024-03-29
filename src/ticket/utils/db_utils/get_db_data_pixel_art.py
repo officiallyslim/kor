@@ -45,3 +45,17 @@ def check_claimed_pixeL_art_ticket(ticket_id):
         return claimed_users_id
     else:
         return None
+
+def get_pixel_art_channel_id(ticket_id):
+    print(ticket_id)
+    conn = sqlite3.connect(ticket_database_path)
+    cursor = conn.cursor()
+    cursor.execute('SELECT channel_id FROM pixel_art WHERE ticket_id = ?', (ticket_id,))
+    fetch_result = cursor.fetchone()
+    print(f"In function {fetch_result}")
+    conn.close()
+    if fetch_result is not None:
+        channel_id = fetch_result[0]
+        return channel_id
+    else:
+        return None
