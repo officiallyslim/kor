@@ -1,5 +1,6 @@
 import sqlite3
 from src.global_src.global_path import ticket_database_path
+from ast import literal_eval
 
 def get_welcome_msg(ticket_id):
     conn = sqlite3.connect(ticket_database_path)
@@ -30,5 +31,17 @@ def check_open_art_pixel_ticket(user_id):
     if fetch_result is not None:
         ticket_id, channel_id = fetch_result
         return ticket_id, channel_id
+    else:
+        return False
+
+def check_ticket_claimed(ticket_id):
+    conn = sqlite3.connect(ticket_database_path)
+    cursor = conn.cursor()
+    cursor.execute('SELECT claim_user_id FROM pixel_art WHERE ticket_id = ? AND close_time IS NULL', (ticket_id,))
+    fetch_result = cursor.fetchone()
+    conn.close()
+    if fetch_result is not None:
+        claimed_users_id = literal_eval(fetch_result[0])
+        return claimed_users_id
     else:
         return False
