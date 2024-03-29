@@ -3,10 +3,8 @@ import re
 import discord
 
 from src.global_src.embed_to_dict import embed_to_dict
-from src.global_src.global_emojis import claim_emoji
 from src.ticket.modal.form_pixel_art import form_pixel_art_modal
 from src.ticket.view.confirm_close_ticket import confirm_close_ticket
-from src.ticket.utils.pixel_art_utils.claim_pixel_art_ticket import claim_ticket
 
 
 class form_pixel_art_view(discord.ui.View):

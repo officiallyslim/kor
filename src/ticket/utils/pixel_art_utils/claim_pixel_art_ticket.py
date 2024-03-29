@@ -1,12 +1,10 @@
-import asyncio
-import re
-from datetime import datetime
 import json
+import re
+
 import discord
 
 from config import bot
 from src.global_src.embed_to_dict import embed_to_dict
-from src.global_src.global_embed import claimed_ticket_embed, no_perm_embed
 from src.global_src.global_roles import (
     assistant_director_role_id,
     community_manager_role_id,
@@ -22,16 +20,15 @@ from src.global_src.global_roles import (
     staff_manager_role_id,
     trial_administration_role_id,
 )
+from src.ticket.utils.create_overwrites import create_custom_overwrites
 from src.ticket.utils.pixel_art_utils.db_utils.edit_db_pixel_art import (
     edit_db_pixel_art,
 )
 from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
-    get_pixel_art_ticket_open_user_id,
     get_pixel_art_channel_id,
-    get_pixel_art_welcome_msg
+    get_pixel_art_ticket_open_user_id,
+    get_pixel_art_welcome_msg,
 )
-from src.ticket.utils.transcript_website import get_transcript
-from src.ticket.utils.create_overwrites import create_custom_overwrites
 
 
 async def claim_ticket(interaction: discord.Interaction):
@@ -97,7 +94,9 @@ async def claim_ticket(interaction: discord.Interaction):
     
     welcome_msg_id, channel_id = get_pixel_art_welcome_msg(ticket_id=ticket_id)
     welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
-    from src.ticket.view.pixel_art_views.actions_claimed_pixel_art import actions_claimed_pixel_art_view
+    from src.ticket.view.pixel_art_views.actions_claimed_pixel_art import (
+        actions_claimed_pixel_art_view,
+    )
     await welcome_msg.edit(view=actions_claimed_pixel_art_view())
 
     # Save to database
