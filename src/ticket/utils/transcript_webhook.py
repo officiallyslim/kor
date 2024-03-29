@@ -28,7 +28,7 @@ def send_discord_message(profile, thread_id, name, message_content, embeds):
     if response.status_code != 204:
         raise ValueError(f"Request to Discord returned an error {response.status_code}: {response.text}.")
 
-async def transcript(message: discord.Message):
+async def webhook_transcript(message: discord.Message):
     # Connect to the database
     conn = sqlite3.connect(ticket_database_path)
     cursor = conn.cursor()
