@@ -76,7 +76,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         # Advise ticket to mods
         pixel_art_queue_channel = bot.get_channel(1222959134455107585)
         embed = discord.Embed(
-            title=f"New pixel art ticket - {interaction.user.id}",
+            title=f"New pixel art ticket - {ticket_id}",
             color=0xffa500,
             description=f"""
             User: {interaction.user.mention}
