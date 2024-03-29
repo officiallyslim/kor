@@ -50,5 +50,3 @@ async def get_transcript(channel: discord.TextChannel, ticket_id):
     else:
         print('Error sending transcript:', response.status_code, response.text)
         return "Failed"
-
-    

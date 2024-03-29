@@ -8,8 +8,8 @@ from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_emojis import send_emoji
 from src.global_src.global_roles import pixel_art_role_id
 from src.ticket.utils.create_overwrites import create_view_and_chat_overwrites
-from src.ticket.utils.db_utils.edit_db_pixel_art import edit_db_pixel_art
-from src.ticket.utils.db_utils.get_db_data_pixel_art import (
+from src.ticket.utils.pixel_art_utils.db_utils.edit_db_pixel_art import edit_db_pixel_art
+from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
     get_pixel_art_ticket_open_user_id,
     get_pixel_art_welcome_msg,
 )

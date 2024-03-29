@@ -1,10 +1,12 @@
+import asyncio
 import re
-from config import bot
-import discord
 from datetime import datetime
+
+import discord
+
+from config import bot
 from src.global_src.embed_to_dict import embed_to_dict
 from src.global_src.global_embed import claimed_ticket_embed, no_perm_embed
-import asyncio
 from src.global_src.global_roles import (
     assistant_director_role_id,
     community_manager_role_id,
@@ -20,10 +22,15 @@ from src.global_src.global_roles import (
     staff_manager_role_id,
     trial_administration_role_id,
 )
-from src.ticket.utils.db_utils.get_db_data_pixel_art import check_claimed_pixeL_art_ticket
+from src.ticket.utils.pixel_art_utils.db_utils.edit_db_pixel_art import (
+    edit_db_pixel_art,
+)
+from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
+    check_claimed_pixeL_art_ticket,
+    get_pixel_art_channel_id,
+)
 from src.ticket.utils.transcript_website import get_transcript
-from src.ticket.utils.db_utils.edit_db_pixel_art import edit_db_pixel_art
-from src.ticket.utils.db_utils.get_db_data_pixel_art import get_pixel_art_channel_id
+
 
 async def close_ticket(interaction: discord.Interaction, reason):
         # Check if user have allowed roles

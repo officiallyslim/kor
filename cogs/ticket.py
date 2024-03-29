@@ -14,7 +14,7 @@ from src.global_src.global_roles import (
     staff_manager_role_id,
 )
 from src.ticket.utils.is_message_from_ticket import is_message_from_ticket
-from src.ticket.utils.transcript_webhook import webhook_transcript
+from src.ticket.utils.pixel_art_utils.transcript_pixel_art_webhook import webhook_transcript
 from src.ticket.view.pixel_art_views.confirm_form_pixel_art import confirm_form_pixel_art_view
 from src.ticket.view.pixel_art_views.form_pixel_art import form_pixel_art_view
 from src.ticket.view.panel_selector import panel_selector

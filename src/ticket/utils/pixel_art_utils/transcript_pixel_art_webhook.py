@@ -10,7 +10,7 @@ from config import bot
 from src.global_src.embed_to_dict import embed_to_dict
 from src.global_src.global_channel_id import ticket_transcript_forum_id
 from src.global_src.global_path import ticket_database_path
-from src.ticket.utils.db_utils.edit_db_pixel_art import edit_db_pixel_art
+from src.ticket.utils.pixel_art_utils.db_utils.edit_db_pixel_art import edit_db_pixel_art
 
 dotenv.load_dotenv()
 webhook_link = str(os.getenv("WEBHOOK_LINK"))

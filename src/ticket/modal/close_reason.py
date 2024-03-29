@@ -1,7 +1,7 @@
 
 import discord
 
-from src.ticket.utils.close_ticket import close_ticket
+from src.ticket.utils.pixel_art_utils.close_pixel_art_ticket import close_ticket
 
 
 class close_reason(discord.ui.Modal):
