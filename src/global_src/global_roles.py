@@ -28,6 +28,3 @@ structure_role_id = 1151613229496270880
 recruitment_role_id = 1175600821812076626
 support_role_id = 1198698005138767952
 giveaway_role_id = 1151613212727451708
-
-# Debug roles
-pixel_art_debug_role_id = 1222579667207192626
