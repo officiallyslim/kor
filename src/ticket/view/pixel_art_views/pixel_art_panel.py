@@ -1,6 +1,6 @@
 import json
 from datetime import datetime
-
+from config import bot
 import discord
 
 from config import guild_id
@@ -33,6 +33,7 @@ from src.ticket.utils.db_utils.get_db_data_pixel_art import check_open_art_pixel
 from src.ticket.utils.gen_ticket_key import gen_key
 from src.ticket.view.jump_channel import jump_channel
 from src.ticket.view.pixel_art_views.form_pixel_art import form_pixel_art_view
+from src.global_src.global_channel_id import ticket_log_channel_id
 
 """
 Workflow chart:
@@ -47,6 +48,7 @@ Workflow chart:
 8. Send Welcome Message
 9. Respond to Interaction
 10. Send Direct Message
+11. Send to Log
 11. Add Data to Database
 """
 
@@ -186,6 +188,24 @@ class pixel_art_panel_view(discord.ui.View):
         # Get time
         open_time = int(datetime.now().timestamp())
 
+        # Send to log
+        embed = discord.Embed(
+            title="New pixel art ticket registered",
+            description="User details:",
+            color=0xff8000,
+        )
+        embed.add_field(name="👤 User", value=interaction.user.mention, inline=False)
+        embed.add_field(name="🆔 User ID", value=f"`{interaction.user.id}`", inline=False)
+        embed.add_field(name="📛 User name", value=interaction.user.name, inline=False)
+        embed.add_field(name="📅 Joined", value=f"<t:{int(interaction.user.joined_at.timestamp())}:R>", inline=False)
+        embed.add_field(name="👥 Claim users", value="`No claimed`", inline=False)
+        embed.add_field(name="📑 Open reason", value="```Request a Pixel Art Builder```", inline=False)
+        embed.add_field(name="🕒 Open time", value=f"<t:{open_time}>", inline=False)
+        embed.set_footer(text=f"Ticket ID: {ticket_id}")
+
+        log_channel = bot.get_channel(ticket_log_channel_id)
+        log_message = await log_channel.send(embed=embed, view=jump_channel(guild_id, channel_id))
+
         # Add data to database
         add_db_pixel_art(
             ticket_id=ticket_id,
@@ -202,9 +222,8 @@ class pixel_art_panel_view(discord.ui.View):
             welcome_msg_id=welcome_message.id,
             dm_msg_id=dm_message.id,
             queue_msg_id=None,
-            log_msg_id=None,
+            log_msg_id=log_message.id,
             transcript_thread_id = None,
-            claim_status=0,
             claim_user_id=None,
             close_user_id=None,
             close_time=None,
