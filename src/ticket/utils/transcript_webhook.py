@@ -28,7 +28,6 @@ def send_discord_message(profile, thread_id, name, message_content, embeds):
     if response.status_code != 204:
         raise ValueError(f"Request to Discord returned an error {response.status_code}: {response.text}.")
 
-
 async def transcript(message: discord.Message):
     # Connect to the database
     conn = sqlite3.connect(ticket_database_path)
@@ -60,10 +59,17 @@ async def transcript(message: discord.Message):
 
     # Check if the ticket has a transcript_thread_id
     if transcript_thread_id is not None:
+        if message.content == "" and not message.embeds:
+            print("Empty message. Ignoring...")
+            return
         send_discord_message(pfp_url, transcript_thread_id, user.name, message.content, message.embeds) # Ticket have thread
+
     else:
         open_user = bot.get_user(open_user_id) # Ticket dont have thread
         thread = await log_channel.create_thread(name=f"Pixel Art Request - {ticket_id} - {open_user.name}", content="Starting new transcript...")
+        if message.content == "" and not message.embeds:
+            print("Empty message. Ignoring...")
+            return
         send_discord_message(pfp_url, thread.id, user.name, message.content, message.embeds)
         print(thread.id)
         edit_db_pixel_art(
