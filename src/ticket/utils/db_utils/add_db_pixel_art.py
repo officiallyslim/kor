@@ -19,7 +19,6 @@ def add_db_pixel_art(
     queue_msg_id,
     log_msg_id,
     transcript_thread_id,
-    claim_status,
     claim_user_id,
     close_user_id,
     close_time,
@@ -30,8 +29,8 @@ def add_db_pixel_art(
 
     cursor.execute(
         """
-        INSERT INTO pixel_art (ticket_id, open_user_id, open_time, open_reason, form_name, form_roblox_user, form_island_code, form_build, form_build_desp, form_build_img, channel_id, welcome_msg_id, dm_msg_id, queue_msg_id, log_msg_id, transcript_thread_id, claim_status, claim_user_id, close_user_id, close_time, close_reason)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO pixel_art (ticket_id, open_user_id, open_time, open_reason, form_name, form_roblox_user, form_island_code, form_build, form_build_desp, form_build_img, channel_id, welcome_msg_id, dm_msg_id, queue_msg_id, log_msg_id, transcript_thread_id, claim_user_id, close_user_id, close_time, close_reason)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """,
         (
             ticket_id,
@@ -50,7 +49,6 @@ def add_db_pixel_art(
             queue_msg_id,
             log_msg_id,
             transcript_thread_id,
-            claim_status,
             claim_user_id,
             close_user_id,
             close_time,
