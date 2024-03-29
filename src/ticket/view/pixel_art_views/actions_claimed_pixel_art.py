@@ -23,7 +23,8 @@ class actions_claimed_pixel_art_view(discord.ui.View):
 
         embed = discord.Embed(
             title="Closing ticket...",
-            description="Are you u want close the ticket?"
+            description="Are you u want close the ticket?",
+            color=0xff0000
         )
         embed.set_footer(text=f"Ticket ID: {ticket_id}")
-        await interaction.response.send_message(embed=embed, view=confirm_close_ticket())
+        await interaction.response.send_message(embed=embed, view=confirm_close_ticket(), ephemeral=True)

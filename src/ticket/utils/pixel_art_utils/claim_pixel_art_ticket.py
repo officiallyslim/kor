@@ -120,7 +120,8 @@ async def claim_ticket(interaction: discord.Interaction):
     
     welcome_msg_id, channel_id = get_pixel_art_welcome_msg(ticket_id=ticket_id)
     welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
-    await welcome_msg.edit()
+    from src.ticket.view.pixel_art_views.actions_claimed_pixel_art import actions_claimed_pixel_art_view
+    await welcome_msg.edit(view=actions_claimed_pixel_art_view())
 
     # Save to database
     claimed_user_id = [interaction.user.id, ]

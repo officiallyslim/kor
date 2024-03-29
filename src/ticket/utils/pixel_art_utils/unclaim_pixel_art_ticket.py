@@ -122,7 +122,8 @@ async def unclaim_ticket(interaction: discord.Interaction):
 
     welcome_msg_id, channel_id = get_pixel_art_welcome_msg(ticket_id=ticket_id)
     welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
-    await welcome_msg.edit()
+    from src.ticket.view.pixel_art_views.actions_pixel_art import actions_pixel_art_view
+    await welcome_msg.edit(view=actions_pixel_art_view())
 
     # Save to database
     edit_db_pixel_art(ticket_id=ticket_id, claim_user_id=None)

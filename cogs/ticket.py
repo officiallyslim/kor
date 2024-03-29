@@ -14,13 +14,21 @@ from src.global_src.global_roles import (
     staff_manager_role_id,
 )
 from src.ticket.utils.is_message_from_ticket import is_message_from_ticket
-from src.ticket.utils.pixel_art_utils.transcript_pixel_art_webhook import webhook_transcript
-from src.ticket.view.pixel_art_views.confirm_form_pixel_art import confirm_form_pixel_art_view
-from src.ticket.view.pixel_art_views.form_pixel_art import form_pixel_art_view
-from src.ticket.view.panel_selector import panel_selector
-from src.ticket.view.pixel_art_views.pixel_art_panel import pixel_art_panel_view
-from src.ticket.view.pixel_art_views.actions_pixel_art import actions_pixel_art_view
+from src.ticket.utils.pixel_art_utils.transcript_pixel_art_webhook import (
+    webhook_transcript,
+)
 from src.ticket.view.confirm_close_ticket import confirm_close_ticket
+from src.ticket.view.panel_selector import panel_selector
+from src.ticket.view.pixel_art_views.actions_claimed_pixel_art import (
+    actions_claimed_pixel_art_view,
+)
+from src.ticket.view.pixel_art_views.actions_pixel_art import actions_pixel_art_view
+from src.ticket.view.pixel_art_views.confirm_form_pixel_art import (
+    confirm_form_pixel_art_view,
+)
+from src.ticket.view.pixel_art_views.form_pixel_art import form_pixel_art_view
+from src.ticket.view.pixel_art_views.pixel_art_panel import pixel_art_panel_view
+
 
 class ticket(commands.Cog):
     def __init__(self, bot):
@@ -40,6 +48,7 @@ class ticket(commands.Cog):
         bot.add_view(confirm_form_pixel_art_view())
         bot.add_view(actions_pixel_art_view())
         bot.add_view(confirm_close_ticket())
+        bot.add_view(actions_claimed_pixel_art_view())
 
     @discord.Cog.listener()
     async def on_message(self, message: discord.Message):

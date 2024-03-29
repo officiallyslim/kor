@@ -33,7 +33,7 @@ from src.ticket.utils.transcript_website import get_transcript
 
 
 async def close_ticket(interaction: discord.Interaction, reason):
-        # Check if user have allowed roles
+    # Check if user have allowed roles
     if int(interaction.user.id) != 756509638169460837 and not any(role.id in [
             pixel_art_role_id,
             junior_administration_role_id,
