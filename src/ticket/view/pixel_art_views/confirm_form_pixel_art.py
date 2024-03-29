@@ -6,14 +6,14 @@ from config import bot
 from src.global_src.embed_to_dict import embed_to_dict
 from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_emojis import send_emoji
-from src.global_src.global_roles import pixel_art_debug_role_id
+from src.global_src.global_roles import pixel_art_role_id
 from src.ticket.utils.create_overwrites import create_view_and_chat_overwrites
 from src.ticket.utils.db_utils.edit_db_pixel_art import edit_db_pixel_art
 from src.ticket.utils.db_utils.get_db_data_pixel_art import (
     get_open_user_id,
     get_welcome_msg,
 )
-
+from src.global_src.global_channel_id import pixel_art_queue_channel_id
 
 class confirm_form_pixel_art_view(discord.ui.View):
     def __init__(self):
@@ -75,7 +75,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         await ticket_channel.set_permissions(interaction.user, overwrite=new_overwrites[interaction.user])
 
         # Advise ticket to mods
-        pixel_art_queue_channel = bot.get_channel(1222959134455107585)
+        pixel_art_queue_channel = bot.get_channel(pixel_art_queue_channel_id)
         embed = discord.Embed(
             title=f"New pixel art ticket - {ticket_id}",
             color=0xffa500,
@@ -84,8 +84,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
             User ID: `{interaction.user.id}`
             User name: {interaction.user.name}
             Joined <t:{int(interaction.user.joined_at.timestamp())}:R>
-            Claim users: `No claimed`
-            ## Form answers""",
+            Claim users: `No claimed`""",
         )
         embed.add_field(name="Discord name", value=f"```{name}```", inline=False)
         embed.add_field(name="Roblox username", value=f"```{roblox_username}```", inline=False)
@@ -97,7 +96,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         )
 
         # Save queue msg to database
-        queue_msg = await pixel_art_queue_channel.send(f"<@&{pixel_art_debug_role_id}>", embed=embed, view=actions_pixel_art_view())
+        queue_msg = await pixel_art_queue_channel.send(f"<@&{pixel_art_role_id}.disable>", embed=embed, view=actions_pixel_art_view())
         queue_msg_id = queue_msg.id
         edit_db_pixel_art(ticket_id, queue_msg_id=queue_msg_id)
 
