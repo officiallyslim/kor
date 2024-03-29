@@ -32,9 +32,6 @@ from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
 
 
 async def unclaim_ticket(interaction: discord.Interaction):
-    # Defer
-    await interaction.response.defer(ephemeral=True)
-
     # Check if user have allowed roles
     if int(interaction.user.id) != 756509638169460837 and not any(
         role.id

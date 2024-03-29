@@ -52,9 +52,9 @@ class actions_pixel_art_view(discord.ui.View):
         ):
             await interaction.response.send_message(embed=no_perm_embed, ephemeral=True)
             return
-        await claim_ticket(interaction=interaction)
-        self.disable_all_items()
+        button.disabled = True
         await interaction.response.edit_message(view=self)
+        await claim_ticket(interaction=interaction)
 
     @discord.ui.button(label="Close", style=discord.ButtonStyle.red, emoji="🔒", custom_id="close_actions_pixel_art_button")
     async def close_actions_pixel_art_callback(self, button: discord.ui.Button, interaction: discord.Interaction):

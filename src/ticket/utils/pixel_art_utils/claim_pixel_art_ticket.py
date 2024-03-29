@@ -32,9 +32,6 @@ from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
 
 
 async def claim_ticket(interaction: discord.Interaction):
-    # Defer
-    await interaction.response.defer(ephemeral=True)
-
     # Get ticket ID
     embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
     ticket_id = re.findall(r"Ticket ID: (\w+)", embed[0]["footer"]["text"])[0]
