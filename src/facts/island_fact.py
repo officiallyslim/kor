@@ -7,7 +7,6 @@ import json
 from urllib.parse import urlparse, urlunparse
 from datetime import datetime
 import pytz
-from git import Repo
 
 async def extract_trivia(url, name):
     # Open URL
