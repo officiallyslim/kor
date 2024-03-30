@@ -41,18 +41,3 @@ GITHUB_TOKEN = GITHUB_PAT_TOKEN
 ```
 4. Edit the variables of `config.py`
 5. Run :P
-
-## Wiki
-- [Home](wiki/home.md)
-- [Commands](wiki/commands.md)
-- Config
-- Troubleshooting
-  - Facts sync
-- Protocol and guide
-  - Facts
-    - Adding facts
-    - Adding facts from Trivia of Roblox [Island wiki website](https://robloxislands.fandom.com/wiki/Islands_Wiki)
-    - Change current number
-    - egg
-  - Welcome
-    - Test welcome message with specific user
