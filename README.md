@@ -11,7 +11,7 @@
 ## Description
 `Kor` is a Discord bot for [💣BOOM BUILDING CORPORATION 💣](https://discord.com/invite/boombuilding).
 
-This is bot is specific and only for `💣BOOM BUILDING CORPORATION 💣` server, theres no reason for fork and self host.
+This is bot is specific and only for `💣BOOM BUILDING CORPORATION 💣` server.
 
 ## Main features
 - **Welcome new members:** Gives a warm welcome to new users
@@ -23,7 +23,6 @@ This is bot is specific and only for `💣BOOM BUILDING CORPORATION 💣` server
 - Need python 3.8 or higher version (This bot programmed in Python 3.11.6). 
   - Get and install python [here](https://www.python.org/downloads/)
 - [Pip](https://pip.pypa.io/en/stable/)
-- [Git](https://git-scm.com/)
 
 ### Installation
 1. Clone the repository (requires [git](https://git-scm.com/)):
@@ -38,6 +37,8 @@ $ pip3 install -r requirements.txt
 ```.env
 TOKEN = DISCORD_BOT_TOKEN
 GITHUB_TOKEN = GITHUB_PAT_TOKEN
+PRIVATE_API = PRIVATE_API_URL
+PRIVATE_API_KEY_TOKEN = PRIVATE_API_URL_TOKEN
 ```
-4. Edit the variables of `config.py`
+4. Edit the variables of `config.py` and `src/global_src)`
 5. Run :P
