@@ -2,6 +2,7 @@
 import discord
 from discord.ext import commands
 
+from commands.ticket_commands import ticket_group
 from config import bot
 from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_roles import (
@@ -44,6 +45,10 @@ class ticket(commands.Cog):
         bot.add_view(actions_pixel_art_view())
         bot.add_view(confirm_close_ticket())
         bot.add_view(actions_claimed_pixel_art_view())
+
+    print("Loading ticket commands...")
+    bot.add_application_command(ticket_group)
+    print("Ticket commands loaded!")
 
 def setup(bot):
     bot.add_cog(ticket(bot))

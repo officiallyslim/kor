@@ -199,8 +199,9 @@ class fact(commands.Cog):
         await start_sync()
         bot.add_view(error_trivia_help())
 
-    print("Loading commands")
+    print("Loading fact commands...")
     bot.add_application_command(fact_group)
+    print("Fact commands loaded!")
 
 def setup(bot):
     bot.add_cog(fact(bot))
