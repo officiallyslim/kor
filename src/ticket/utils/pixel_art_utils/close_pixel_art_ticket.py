@@ -85,5 +85,9 @@ async def close_ticket(interaction: discord.Interaction, reason):
     await ticket_channel.delete(reason=f"Ticket {ticket_id} finished.")
 
     queue_message_id = get_queue_message_id(ticket_id)
-    queue_message = await bot.get_channel(pixel_art_queue_channel_id).fetch_message(queue_message_id)
-    await queue_message.delete(reason="Ticketd clsoed")
+    if queue_message_id is not None:
+        queue_message = await bot.get_channel(pixel_art_queue_channel_id).fetch_message(queue_message_id)
+        await queue_message.delete(reason="Ticketd clsoed")
+        print(f"Ticket {ticket_id} closed")
+    else:
+        print(f"Ticket {ticket_id} closed")
