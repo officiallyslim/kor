@@ -55,7 +55,7 @@
     },
     "10": {
         "fact": "Lavenders have the most number of variants, having all colors but mundane.",
-        "daily": false,
+        "daily": true,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Flower"
     },
@@ -109,7 +109,7 @@
     },
     "19": {
         "fact": "Crops harvested by totems will give [Farming](https://robloxislands.fandom.com/wiki/Farming) XP despite how no particles are emitted when this occurs.",
-        "daily": false,
+        "daily": true,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Totem"
     },
@@ -175,13 +175,13 @@
     },
     "30": {
         "fact": "The [Skorp Stinger](https://robloxislands.fandom.comhttps://robloxbedwars.fandom.com/wiki/Skorp_Stinger) from [BedWars](https://robloxislands.fandom.comhttps://robloxbedwars.fandom.com/wiki/Skorp_Stinger) is based off this weapon.",
-        "daily": false,
+        "daily": true,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Noxious_Stinger#Trivia"
     },
     "31": {
         "fact": "Even though [starfruits](https://robloxislands.fandom.com/wiki/Starfruit) and [pineapples](https://robloxislands.fandom.com/wiki/Pineapple) have an oily variant and recipe in the [washing station](https://robloxislands.fandom.com/wiki/Washing_Station), it cannot become oily.",
-        "daily": false,
+        "daily": true,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Crop#Trivia"
     },
@@ -193,7 +193,7 @@
     },
     "33": {
         "fact": "[Chili peppers](https://robloxislands.fandom.com/wiki/Chili_Pepper) and [seaweed](https://robloxislands.fandom.com/wiki/Seaweed) are the only crops that cannot be sold.",
-        "daily": false,
+        "daily": true,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Crop#Trivia"
     },
@@ -253,7 +253,7 @@
     },
     "43": {
         "fact": "The black personal orb was incorrectly capitalized as \"Black Personal orb\" in-game.",
-        "daily": false,
+        "daily": true,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Orb#Trivia"
     },
@@ -427,7 +427,7 @@
     },
     "72": {
         "fact": "It is the first and only [weapon](https://robloxislands.fandom.com/wiki/Weapon) that can modify the drop chances of [mob drops](https://robloxislands.fandom.com/wiki/Category:Mob_drops).",
-        "daily": false,
+        "daily": true,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/The_Captain%27s_Rapier#Trivia"
     },
@@ -493,7 +493,7 @@
     },
     "83": {
         "fact": "Despite exploding upon disappearing, fireballs shot from spellbooks don't deal AOE damage.",
-        "daily": false,
+        "daily": true,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Spellbook"
     },
