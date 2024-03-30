@@ -188,7 +188,7 @@ class pixel_art_panel_view(discord.ui.View):
         embed.set_footer(text=f"Ticket ID: {ticket_id}")
 
         log_channel = bot.get_channel(ticket_log_channel_id)
-        log_message = await log_channel.send(embed=embed, view=jump_channel(guild_id, channel_id))
+        log_message = await log_channel.send(embed=embed)
 
         # Add data to database
         add_db_pixel_art(

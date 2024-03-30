@@ -12,11 +12,13 @@ from src.ticket.utils.pixel_art_utils.db_utils.edit_db_pixel_art import edit_db_
 from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
     get_pixel_art_ticket_open_user_id,
     get_pixel_art_welcome_msg,
+    get_log_message_id
 )
 from src.global_src.global_channel_id import pixel_art_queue_channel_id
 from src.ticket.view.pixel_art_views.actions_pixel_art import (
     actions_pixel_art_view,
 )
+from src.global_src.global_channel_id import ticket_log_channel_id
 from config import guild_id
 from src.global_src.global_emojis import roblox_emoji, discord_emoji
 
@@ -100,6 +102,21 @@ class confirm_form_pixel_art_view(discord.ui.View):
         queue_msg = await pixel_art_queue_channel.send(f"<@&{pixel_art_role_id}.>", embed=embed, view=actions_pixel_art_view(guild_id=guild_id, channel_id=channel_id))
         queue_msg_id = queue_msg.id
         edit_db_pixel_art(ticket_id, queue_msg_id=queue_msg_id)
+
+        # Send to logs
+        log_msg_id = get_log_message_id(ticket_id)
+        log_msg = bot.get_channel(ticket_log_channel_id).fetch_message(log_msg_id)
+        embed = discord.Embed(
+            title=f"New form answers in ticket {ticket_id}",
+            description="",
+            color=0x85b3fa
+        )
+        embed.add_field(name=f"{discord_emoji} Discord name", value=f"```{name}```", inline=False)
+        embed.add_field(name=f"{roblox_emoji} Roblox username", value=f"```{roblox_username}```", inline=False)
+        embed.add_field(name="🔢 Island Code", value=f"```{island_code}```", inline=False)
+        embed.add_field(name="🏠 Build", value=f"```{build}```", inline=False)
+        embed.set_footer(text=f"Ticket ID: {ticket_id}")
+        await log_msg.reply(embed=embed)
 
     @discord.ui.button(label="Edit", style=discord.ButtonStyle.gray, emoji="✏️", custom_id="edit_form_pixel_art_view")
     async def edit_form_pixel_art_view(self, button: discord.ui.Button, interaction: discord.Interaction):

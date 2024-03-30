@@ -68,3 +68,15 @@ def get_queue_message_id(ticket_id):
         return queue_msg_id
     else:
         return None
+
+def get_log_message_id(ticket_id):
+    conn = sqlite3.connect(ticket_database_path)
+    cursor = conn.cursor()
+    cursor.execute('SELECT log_msg_id FROM pixel_art WHERE ticket_id = ?', (ticket_id,))
+    fetch_result = cursor.fetchone()
+    conn.close()
+    if fetch_result is not None:
+        queue_msg_id = fetch_result[0]
+        return queue_msg_id
+    else:
+        return None

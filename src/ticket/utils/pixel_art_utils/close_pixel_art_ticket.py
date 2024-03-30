@@ -30,9 +30,10 @@ from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
     check_claimed_pixeL_art_ticket,
     get_pixel_art_channel_id,
     get_queue_message_id,
+    get_log_message_id
 )
 from src.ticket.utils.transcript_website import get_transcript
-
+from src.global_src.global_channel_id import ticket_log_channel_id
 
 async def close_ticket(interaction: discord.Interaction, reason):
     # Check if user have allowed roles
@@ -78,7 +79,7 @@ async def close_ticket(interaction: discord.Interaction, reason):
     await asyncio.sleep(5)
 
     close_time = int(datetime.now().timestamp())
-    edit_db_pixel_art(ticket_id=ticket_id, close_time=close_time, close_user_id=interaction.user.id)
+    edit_db_pixel_art(ticket_id=ticket_id, close_time=close_time, close_user_id=interaction.user.id, close_reason=reason)
 
     print(channel_id)
     print(ticket_channel)
@@ -91,3 +92,15 @@ async def close_ticket(interaction: discord.Interaction, reason):
         print(f"Ticket {ticket_id} closed")
     else:
         print(f"Ticket {ticket_id} closed")
+
+    log_msg_id = get_log_message_id(ticket_id)
+    log_msg = bot.get_channel(ticket_log_channel_id).fetch_message(log_msg_id)
+    embed = discord.Embed(
+        title=f"Ticket {ticket_id} closed",
+        description="",
+        color=0x85B3FA
+    )
+    embed.add_field(name="🕐 Close time", value=f"<t:{close_time}>", inline=False)
+    embed.add_field(name="✏️ Close reason",value=f"```{reason}```",inline=False,)
+    embed.set_footer(text=f"Ticket ID: {ticket_id}")
+    await log_msg.reply(embed=embed)
