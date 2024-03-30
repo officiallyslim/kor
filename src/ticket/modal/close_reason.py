@@ -12,8 +12,8 @@ class close_reason(discord.ui.Modal):
             label="Reason",
             placeholder="Close reason",
             min_length = 1,
-            max_length = 30,
-            style=discord.InputTextStyle.short,
+            max_length = 200,
+            style=discord.InputTextStyle.long,
             ))
 
     async def callback(self, interaction: discord.Interaction):
