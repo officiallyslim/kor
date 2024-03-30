@@ -12,6 +12,7 @@ from src.global_src.global_path import (
     pixel_art_welcome_embed_path,
     ticket_banned_path,
     ticket_success_embed_path,
+    ticket_cooldown_path
 )
 from src.global_src.global_roles import (
     pixel_art_role_id,
@@ -56,6 +57,9 @@ class pixel_art_panel_view(discord.ui.View):
         # Defer response
         await interaction.response.defer(ephemeral=True)
 
+        # Get time
+        open_time = int(datetime.now().timestamp())
+
         # Check if user is banned from tickets
         with open(ticket_banned_path, 'r') as f:
             data = json.load(f)
@@ -63,6 +67,22 @@ class pixel_art_panel_view(discord.ui.View):
         if interaction.user.id in data:
             await interaction.followup.send(embed=ticket_ban_embed, ephemeral=True)
             return
+
+        # Check if is in cooldown
+        with open(ticket_cooldown_path, 'r') as f:
+            data = json.load(f)
+            last_time = data.get(str(interaction.user.id), "Not found")
+
+        if last_time == "Not found":
+            data[str(interaction.user.id)] = open_time
+            with open(ticket_cooldown_path, 'w') as f:
+                json.dump(data, f, indent=4)
+        else:
+            timeout_time = last_time + 300
+            if open_time < timeout_time:
+                await interaction.followup.send("You're opening tickets so fast! Please wait a moment to open another one.", ephemeral=True)
+                return
+
 
         # Check user have current open channel
         open_ticket = check_open_art_pixel_ticket(int(interaction.user.id))
@@ -150,9 +170,6 @@ class pixel_art_panel_view(discord.ui.View):
             )
         except discord.Forbidden:
             print(f"Failed send DM to {interaction.user.name}")
-
-        # Get time
-        open_time = int(datetime.now().timestamp())
 
         # Send to log
         embed = discord.Embed(

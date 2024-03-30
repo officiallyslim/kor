@@ -26,3 +26,4 @@ pixel_art_dm_embed_path = "src/ticket/embed/pixel_art_dm.json"
 # Database
 ticket_database_path = "src/ticket/db/ticket_data.db"
 ticket_banned_path = "src/ticket/db/ticket_ban_id.json"
+ticket_cooldown_path = "src/ticket/db/ticket_cooldown.json"

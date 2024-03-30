@@ -75,7 +75,7 @@ async def unclaim_ticket(interaction: discord.Interaction):
     new_embed.add_field(name="👤 User", value=old_embed[0]['fields'][0]['value'], inline=False)
     new_embed.add_field(name="🆔 User ID", value=old_embed[0]['fields'][1]['value'], inline=False)
     new_embed.add_field(name="📛 User name", value=old_embed[0]['fields'][2]['value'], inline=False)
-    new_embed.add_field(name="👥 Claim user", value="`No claim`", inline=False)
+    new_embed.add_field(name="👥 Claim user", value="`No claimed`", inline=False)
     new_embed.add_field(name=f"{discord_emoji} Discord name", value=old_embed[0]['fields'][4]['value'], inline=False)
     new_embed.add_field(name=f"{roblox_emoji} Roblox username", value=old_embed[0]['fields'][5]['value'], inline=False)
     new_embed.add_field(name="🔢 Island Code", value=old_embed[0]['fields'][6]['value'], inline=False)

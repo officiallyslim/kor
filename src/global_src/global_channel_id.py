@@ -5,6 +5,6 @@ new_members_log_channel_id = 1220141824979505193
 welcome_channel_id = 1151613295384592454
 
 # tickets
-ticket_log_channel_id = 1223396891178565732
+ticket_log_channel_id = 1153496542066528307
 
 pixel_art_queue_channel_id = 1223277420677959812
