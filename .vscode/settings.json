@@ -1,5 +1,8 @@
 {
     "docify.commentService.docstringFormat": "XML",
     "docify.commentService.sidePanelReviewMode": false,
-    "discord.enabled": true
+    "discord.enabled": true,
+    "python.analysis.stubPath": "",
+    "python.analysis.indexing": true,
+    "python.analysis.autoImportCompletions": true
 }
