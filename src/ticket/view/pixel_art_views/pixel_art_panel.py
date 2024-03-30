@@ -169,7 +169,7 @@ class pixel_art_panel_view(discord.ui.View):
             embed = discord.Embed.from_dict(embed_info)
 
             dm_message = await dm.send(
-                f"{interaction.user.mention}", embed=embed, view=jump_channel(guild_id, channel_id)
+                content="", embed=embed, view=jump_channel(guild_id, channel_id)
             )
         except discord.Forbidden:
             print(f"Failed send DM to {interaction.user.name}")

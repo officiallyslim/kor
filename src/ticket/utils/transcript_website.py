@@ -45,8 +45,14 @@ async def get_transcript(channel: discord.TextChannel, ticket_id):
     response = requests.post(private_api_url, headers=headers, json=data)
 
     if response.status_code == 201:
-        print(f'Transcript {ticket_id} sent correctly!')
-        return f"{private_api}/getTranscript/{ticket_id}?ticket_key={ticket_key}"
+        print(f"Transcript {ticket_id} sent correctly!")
+        return [
+            f"{private_api}/getTranscript/{ticket_id}?ticket_key={ticket_key}",
+            ticket_key,
+        ]
     else:
         print('Error sending transcript:', response.status_code, response.text)
-        return "Failed"
+        return [
+            "Failed",
+            ticket_key,
+        ]

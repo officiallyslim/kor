@@ -30,7 +30,8 @@ from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
     check_claimed_pixeL_art_ticket,
     get_pixel_art_channel_id,
     get_queue_message_id,
-    get_log_message_id
+    get_log_message_id,
+    get_dm_message_id
 )
 from src.ticket.utils.transcript_website import get_transcript
 from src.global_src.global_channel_id import ticket_log_channel_id
@@ -71,15 +72,15 @@ async def close_ticket(interaction: discord.Interaction, reason):
     ticket_channel = bot.get_channel(channel_id)
     status = await get_transcript(ticket_channel, ticket_id)
 
-    if status == "Failed":
+    if status[0] == "Failed":
         await interaction.edit_original_response(content="🔒**Closing ticket...**\n\n🔄 **Creating transcript...** This may take a while!\n\n❌ Failed generating transcript! Please, report to admins with the ticket id")
         return
 
-    await interaction.edit_original_response(content=f"🔒**Closing ticket...**\n\n🔄 **Creating transcript...** This may take a while!\n\n✅ [Transcript]({status}) generated correctly! Deleting channel in 5 seconds.")
+    await interaction.edit_original_response(content=f"🔒**Closing ticket...**\n\n🔄 **Creating transcript...** This may take a while!\n\n✅ [Transcript]({status[0]}) generated correctly! Deleting channel in 5 seconds.")
     await asyncio.sleep(5)
 
     close_time = int(datetime.now().timestamp())
-    edit_db_pixel_art(ticket_id=ticket_id, close_time=close_time, close_user_id=interaction.user.id, close_reason=reason)
+    edit_db_pixel_art(ticket_id=ticket_id, close_time=close_time, close_user_id=interaction.user.id, close_reason=reason, transcript_key=status[1])
 
     print(channel_id)
     print(ticket_channel)
@@ -95,6 +96,16 @@ async def close_ticket(interaction: discord.Interaction, reason):
 
     log_msg_id = get_log_message_id(ticket_id)
     log_message = await bot.get_channel(ticket_log_channel_id).fetch_message(log_msg_id)
+
+    open_user_data = get_dm_message_id(ticket_id)
+    if open_user_data is not None:
+        open_user = bot.get_user(open_user_data[0])
+        dm_channel = open_user.dm_channel
+        if dm_channel is None:
+            dm_channel = await open_user.create_dm()
+        dm_message = await dm_channel.fetch_message(open_user_data[1])
+        await dm_message.edit(view=None)
+
     embed = discord.Embed(
         title=f"Ticket {ticket_id} closed",
         description="",
@@ -102,5 +113,7 @@ async def close_ticket(interaction: discord.Interaction, reason):
     )
     embed.add_field(name="🕐 Close time", value=f"<t:{close_time}>", inline=False)
     embed.add_field(name="✏️ Close reason",value=f"```{reason}```",inline=False,)
+    embed.add_field(name="🗝️ Web transcript key",value=f"```{status[1]}```",inline=False,)
+    embed.add_field(name="🌐 Web Transcript",value=f"[Open in browser]({status[0]})",inline=False,)
     embed.set_footer(text=f"Ticket ID: {ticket_id}")
     await log_message.reply(embed=embed)
