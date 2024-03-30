@@ -1,20 +1,48 @@
-from config import *
-from discord.commands import Option
-from commands.fact_commands import fact_group, source_island
-from global_src.global_embed import no_perm_embed, soon_embed, error_embed, failed_fetch_daily_channel
-from src.facts.island_fact import check_existing_link, check_link, extract_trivia
-from src.facts.push_facts_github import push_facts_github
-from src.facts.get_version import get_version
-from src.facts.get_fact import get_daily_islandfact, count_daily_status
-from src.facts.sync_database import sync_database
-from src.facts.sync_island_fact_github import sync_github_database
-from src.global_src.global_path import new_fact_path, facts_md_path, added_trivia_path, island_fact_database_path, daily_count_path, error_fact_path
-from src.global_src.global_channel_id import daily_fact_log_channel_id, general_log_channel_id, fact_channel_id
-from src.global_src.global_roles import *
 import json
 import os
-import dotenv
+from datetime import datetime
 
+import discord
+import dotenv
+import pytz
+from discord.commands import Option
+from discord.ext import commands, tasks
+
+from commands.fact_commands import fact_group, source_island
+from config import bot, fact_list_github
+from src.facts.get_fact import count_daily_status, get_daily_islandfact
+from src.facts.get_version import get_version
+from src.facts.island_fact import check_existing_link, check_link, extract_trivia
+from src.facts.push_facts_github import push_facts_github
+from src.facts.sync_database import sync_database
+from src.facts.sync_island_fact_github import sync_github_database
+from src.global_src.global_channel_id import (
+    daily_fact_log_channel_id,
+    fact_channel_id,
+    general_log_channel_id,
+)
+from src.global_src.global_embed import (
+    error_embed,
+    failed_fetch_daily_channel,
+    no_perm_embed,
+    soon_embed,
+)
+from src.global_src.global_path import (
+    added_trivia_path,
+    daily_count_path,
+    error_fact_path,
+    facts_md_path,
+    island_fact_database_path,
+    new_fact_path,
+)
+from src.global_src.global_roles import (
+    assistant_director_role_id,
+    community_manager_role_id,
+    developer_role_id,
+    head_of_operations_role_id,
+    mr_boomsteak_role_id,
+    staff_manager_role_id,
+)
 
 dotenv.load_dotenv()
 token = str(os.getenv("GITHUB_TOKEN"))
@@ -27,12 +55,12 @@ async def send_facts_as_file(ctx: discord.ApplicationContext, facts, added_numbe
 
     with open(new_fact_path, 'rb') as file:
         await ctx.respond(f"Added the following facts {added_numbers}. **PLEASE CHECK IF THERE ARE ANY ERRORS**. Click the below button if u need help.\nIf you want see the whole log, visit [Github]({fact_list_github})", file=discord.File(file, 'facts.txt'), ephemeral=True, view=error_trivia_help())
-    push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path], f'[BOT] Add new facts', 'kor', 'https://github.com/Stageddat/kor', token)
+    push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path], '[BOT] Add new facts', 'kor', 'https://github.com/Stageddat/kor', token)
 
 async def start_sync():
     try:
         github_version, local_version = await get_version()
-    except Exception as e:
+    except Exception:
         print("Failed load version, starting bot without sync")
         return
 
@@ -130,8 +158,8 @@ class fact(commands.Cog):
                 facts, added_numbers = await extract_trivia(link, ctx.user.name)
 
                 if facts == "No trivia":
-                    await ctx.respond(f"No trivia found!", ephemeral=True)
-                    push_facts_github('./', [added_trivia_path], f'[BOT] Add new facts', 'kor', 'https://github.com/Stageddat/kor', token) # Send the added trivia file
+                    await ctx.respond("No trivia found!", ephemeral=True)
+                    push_facts_github('./', [added_trivia_path], '[BOT] Add new facts', 'kor', 'https://github.com/Stageddat/kor', token) # Send the added trivia file
                 else:
                     await send_facts_as_file(ctx, facts, added_numbers)
 
@@ -188,7 +216,7 @@ class fact(commands.Cog):
             return
 
         status = sync_database()
-        if status == True:
+        if status is True:
             await ctx.respond("Synchronized!", ephemeral=True)
         else:
             await ctx.respond(embed=error_embed, ephemeral=True)
@@ -245,9 +273,9 @@ async def dailyfact():
             colour=discord.Colour(int("d1e8fa", 16))
         )
         fact_number = get_fact_number()
-        if fact['Image Link'] != None:
+        if fact['Image Link'] is not None:
             randomislandfact_embed.set_image(url=f"{str(fact['Image Link'])}")
-        if fact["Source Link"] == None:
+        if fact["Source Link"] is None:
             await channel.send(f'## <@&1198106586309201950> Random Fact #{fact_number}\n', embed=randomislandfact_embed)
         else:
             await channel.send(f'## <@&1198106586309201950> Random Fact #{fact_number}\n', embed=randomislandfact_embed, view=source_island(fact['Source Link']))
