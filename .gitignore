@@ -8,3 +8,7 @@ src/facts/new_fact.txt
 src/embed_sender/embed.json
 src/new_member/new_member_img/user_pfp.png
 **/env
+src/ticket/db/ticket_data.db
+src/ticket/db/ticket_ban_id.json
+src/ticket/db/transcript
+src/ticket/db/ticket_cooldown.json

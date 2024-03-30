@@ -1,13 +1,8 @@
-import discord
-from discord.ext import commands
-import requests
-import pytz
-from discord.ext import tasks, commands
-import random
-from datetime import datetime
-import asyncio
-import dotenv
 import os
+
+import discord
+import dotenv
+from discord.ext import commands
 
 bot = discord.Bot()
 intents = discord.Intents.all()
@@ -20,8 +15,10 @@ admins = [756509638169460837]
 
 # Links
 island_base_url = "https://robloxislands.fandom.com"
-embed_url = "http://144.76.143.198:8165/getEmbed"
 fact_list_github = "https://github.com/Stageddat/kor/blob/main/src/facts/island_fact/facts_list.md"
+
+# Server ID
+guild_id = 1151612424785494116
 
 # Github token
 dotenv.load_dotenv()

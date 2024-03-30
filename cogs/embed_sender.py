@@ -1,9 +1,25 @@
-from config import *
-from src.global_src.global_path import embed_path
-import requests
+
 import json
+import os
+
+import discord
+import dotenv
+import requests
+from discord.ext import commands
+
 from src.global_src.global_embed import no_perm_embed
-from src.global_src.global_roles import *
+from src.global_src.global_path import embed_path
+from src.global_src.global_roles import (
+    assistant_director_role_id,
+    community_manager_role_id,
+    developer_role_id,
+    head_of_operations_role_id,
+    mr_boomsteak_role_id,
+    staff_manager_role_id,
+)
+
+dotenv.load_dotenv()
+private_url = str(os.getenv("PRIVATE_API"))
 
 class ConfirmView(discord.ui.View):
     def __init__(self, ctx, channel, content=None, embeds=None):
@@ -27,7 +43,7 @@ class embed_sender(commands.Cog):
 
     @discord.slash_command(name = "send_embed", description = "Send embed in specifically channel")
     async def embed_sender(self, ctx: discord.ApplicationContext, channel: discord.TextChannel, file: discord.Attachment = None, discohook_link: str = None):
-        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager, community_manager, assistant_director, head_of_operations, developer, mr_boomsteak] for role in ctx.author.roles):
+        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager_role_id, community_manager_role_id, assistant_director_role_id, head_of_operations_role_id, developer_role_id, mr_boomsteak_role_id] for role in ctx.author.roles):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
         if file and discohook_link:
@@ -39,7 +55,7 @@ class embed_sender(commands.Cog):
 
         try:
             if discohook_link:
-                response = requests.get(embed_url, params={'url': discohook_link})
+                response = requests.get(f"{private_url}/getEmbed", params={'url': discohook_link})
                 data = response.json()
                 with open(embed_path, 'w', encoding='utf-8') as f:
                     json.dump(data, f, ensure_ascii=False)
@@ -84,7 +100,7 @@ class embed_sender(commands.Cog):
 
     @discord.slash_command(name = "send_dm_embed", description = "Send embed in DM")
     async def dm_sender(self, ctx: discord.ApplicationContext, user: discord.User, file: discord.Attachment = None, discohook_link: str = None):
-        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager, community_manager, assistant_director, head_of_operations, developer, mr_boomsteak] for role in ctx.author.roles):
+        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager_role_id, community_manager_role_id, assistant_director_role_id, head_of_operations_role_id, developer_role_id, mr_boomsteak_role_id] for role in ctx.author.roles):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
         if file and discohook_link:
@@ -96,7 +112,7 @@ class embed_sender(commands.Cog):
 
         try:
             if discohook_link:
-                response = requests.get(embed_url, params={'url': discohook_link})
+                response = requests.get(f"{private_url}/getEmbed", params={'url': discohook_link})
                 data = response.json()
                 with open(embed_path, 'w', encoding='utf-8') as f:
                     json.dump(data, f, ensure_ascii=False)

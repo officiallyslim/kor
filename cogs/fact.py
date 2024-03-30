@@ -66,12 +66,12 @@ class fact(commands.Cog):
     @discord.slash_command(name = "change_fact_number", description = "Change the daily fact number")
     async def change_fact_number(self, ctx: discord.ApplicationContext, number: Option(int, "The next say fact number")): # type: ignore
         if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
-                staff_manager,
-                community_manager,
-                assistant_director,
-                head_of_operations,
-                developer,
-                mr_boomsteak] for role in ctx.author.roles):
+                staff_manager_role_id,
+                community_manager_role_id,
+                assistant_director_role_id,
+                head_of_operations_role_id,
+                developer_role_id,
+                mr_boomsteak_role_id] for role in ctx.author.roles):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
 
@@ -101,12 +101,12 @@ class fact(commands.Cog):
     @discord.slash_command(name = "add_custom_island_fact", description = "Add new island fact to database")
     async def add_custom_island_fact(self, ctx: discord.ApplicationContext, fact: Option(str, "Fact about Islands (Roblox)"), img_link: Option(str, "Related image of the fact") = None, source_link: Option(str, "Source link of the fact") = None):# type: ignore
         if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
-                staff_manager,
-                community_manager,
-                assistant_director,
-                head_of_operations,
-                developer,
-                mr_boomsteak] for role in ctx.author.roles):
+                staff_manager_role_id,
+                community_manager_role_id,
+                assistant_director_role_id,
+                head_of_operations_role_id,
+                developer_role_id,
+                mr_boomsteak_role_id] for role in ctx.author.roles):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
 
@@ -116,12 +116,12 @@ class fact(commands.Cog):
     async def add_island_trivia(self, ctx: discord.ApplicationContext, link: Option(str, "Island Wiki link")):# type: ignore
         await ctx.defer(ephemeral=True)
         if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
-                staff_manager,
-                community_manager,
-                assistant_director,
-                head_of_operations,
-                developer,
-                mr_boomsteak] for role in ctx.author.roles):
+                staff_manager_role_id,
+                community_manager_role_id,
+                assistant_director_role_id,
+                head_of_operations_role_id,
+                developer_role_id,
+                mr_boomsteak_role_id] for role in ctx.author.roles):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
         
@@ -149,12 +149,12 @@ class fact(commands.Cog):
     async def sync_island_fact_github(self, ctx: discord.ApplicationContext):
         await ctx.defer(ephemeral=True)
         if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
-                staff_manager,
-                community_manager,
-                assistant_director,
-                head_of_operations,
-                developer,
-                mr_boomsteak] for role in ctx.author.roles):
+                staff_manager_role_id,
+                community_manager_role_id,
+                assistant_director_role_id,
+                head_of_operations_role_id,
+                developer_role_id,
+                mr_boomsteak_role_id] for role in ctx.author.roles):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
 
@@ -178,12 +178,12 @@ class fact(commands.Cog):
     async def sync_island_fact_database(self, ctx: discord.ApplicationContext):
         await ctx.defer(ephemeral=True)
         if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
-                staff_manager,
-                community_manager,
-                assistant_director,
-                head_of_operations,
-                developer,
-                mr_boomsteak] for role in ctx.author.roles):
+                staff_manager_role_id,
+                community_manager_role_id,
+                assistant_director_role_id,
+                head_of_operations_role_id,
+                developer_role_id,
+                mr_boomsteak_role_id] for role in ctx.author.roles):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
 

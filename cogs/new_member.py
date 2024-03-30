@@ -26,12 +26,12 @@ class new_member(commands.Cog):
     async def test_welcome(self, ctx: discord.ApplicationContext, member: Option(discord.Member, "Test subject :D")):# type: ignore
         await ctx.defer(ephemeral=True)
         if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
-                staff_manager,
-                community_manager,
-                assistant_director,
-                head_of_operations,
-                developer,
-                mr_boomsteak] for role in ctx.author.roles):
+                staff_manager_role_id,
+                community_manager_role_id,
+                assistant_director_role_id,
+                head_of_operations_role_id,
+                developer_role_id,
+                mr_boomsteak_role_id] for role in ctx.author.roles):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
         await create_welcome_card(member)
