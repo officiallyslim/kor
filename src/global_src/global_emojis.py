@@ -1,3 +1,5 @@
 smile_pixel_emoji = "<:smile_pixel:1222512011326390272>"
 claim_emoji = "<:claim:1222976228823404645>"
 send_emoji = "<:send:1222919710438592593>"
+discord_emoji = "<:discord:1223401581811073167>"
+roblox_emoji = "<:roblox:1223401584269201458>"

@@ -6,6 +6,7 @@ import discord
 
 from config import bot
 from src.global_src.embed_to_dict import embed_to_dict
+from src.global_src.global_channel_id import pixel_art_queue_channel_id
 from src.global_src.global_embed import claimed_ticket_embed, no_perm_embed
 from src.global_src.global_roles import (
     assistant_director_role_id,
@@ -28,6 +29,7 @@ from src.ticket.utils.pixel_art_utils.db_utils.edit_db_pixel_art import (
 from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
     check_claimed_pixeL_art_ticket,
     get_pixel_art_channel_id,
+    get_queue_message_id,
 )
 from src.ticket.utils.transcript_website import get_transcript
 
@@ -57,13 +59,16 @@ async def close_ticket(interaction: discord.Interaction, reason):
 
     # Check if user is in claimed user for close
     claim_user_id = check_claimed_pixeL_art_ticket(ticket_id)
-    if interaction.user.id != claim_user_id:
-        await interaction.response.send_message(embed=claimed_ticket_embed, ephemeral=True)
-        return
+    if claim_user_id is not None:
+        if interaction.user.id != claim_user_id:
+            await interaction.response.send_message(embed=claimed_ticket_embed, ephemeral=True)
+            return
 
     # Gen transcript
     await interaction.response.send_message("🔒Closing ticket...\n\n🔄 Creating transcript... This may take a while!", ephemeral=True)
-    status = await get_transcript(interaction.channel, ticket_id)
+    channel_id = get_pixel_art_channel_id(ticket_id)
+    ticket_channel = bot.get_channel(channel_id)
+    status = await get_transcript(ticket_channel, ticket_id)
 
     if status == "Failed":
         await interaction.edit_original_response(content="🔒**Closing ticket...**\n\n🔄 **Creating transcript...** This may take a while!\n\n❌ Failed generating transcript! Please, report to admins with the ticket id")
@@ -75,8 +80,10 @@ async def close_ticket(interaction: discord.Interaction, reason):
     close_time = int(datetime.now().timestamp())
     edit_db_pixel_art(ticket_id=ticket_id, close_time=close_time, close_user_id=interaction.user.id)
 
-    channel_id = get_pixel_art_channel_id(ticket_id)
-    ticket_channel = bot.get_channel(channel_id)
     print(channel_id)
     print(ticket_channel)
     await ticket_channel.delete(reason=f"Ticket {ticket_id} finished.")
+
+    queue_message_id = get_queue_message_id(ticket_id)
+    queue_message = await bot.get_channel(pixel_art_queue_channel_id).fetch_message(queue_message_id)
+    await queue_message.delete(reason="Ticketd clsoed")

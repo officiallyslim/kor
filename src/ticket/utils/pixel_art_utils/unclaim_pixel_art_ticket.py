@@ -4,6 +4,8 @@ import discord
 
 from config import bot
 from src.global_src.embed_to_dict import embed_to_dict
+from src.global_src.global_channel_id import pixel_art_queue_channel_id
+from src.global_src.global_emojis import discord_emoji, roblox_emoji
 from src.global_src.global_roles import (
     pixel_art_role_id,
 )
@@ -15,6 +17,7 @@ from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
     get_pixel_art_channel_id,
     get_pixel_art_ticket_open_user_id,
     get_pixel_art_welcome_msg,
+    get_queue_message_id,
 )
 
 
@@ -59,5 +62,26 @@ async def unclaim_ticket(interaction: discord.Interaction):
     from src.ticket.view.pixel_art_views.actions_pixel_art import actions_pixel_art_view
     await welcome_msg.edit(view=actions_pixel_art_view())
 
+    # Edit queue message
+    queue_message_id = get_queue_message_id(ticket_id)
+    queue_message = await bot.get_channel(pixel_art_queue_channel_id).fetch_message(queue_message_id)
+    old_embed = [embed_to_dict(embed) for embed in queue_message.embeds]
+    
+    new_embed = discord.Embed(
+        title=f"New pixel art ticket - {ticket_id}",
+        color=0xffa500,
+        description=""
+    )
+    new_embed.add_field(name="👤 User", value=old_embed[0]['fields'][0]['value'], inline=False)
+    new_embed.add_field(name="🆔 User ID", value=old_embed[0]['fields'][1]['value'], inline=False)
+    new_embed.add_field(name="📛 User name", value=old_embed[0]['fields'][2]['value'], inline=False)
+    new_embed.add_field(name="👥 Claim user", value="`No claim`", inline=False)
+    new_embed.add_field(name=f"{discord_emoji} Discord name", value=old_embed[0]['fields'][4]['value'], inline=False)
+    new_embed.add_field(name=f"{roblox_emoji} Roblox username", value=old_embed[0]['fields'][5]['value'], inline=False)
+    new_embed.add_field(name="🔢 Island Code", value=old_embed[0]['fields'][6]['value'], inline=False)
+    new_embed.add_field(name="🏠 Build", value=old_embed[0]['fields'][7]['value'], inline=False)
+    new_embed.add_field(name="🏢 Channel", value=f"<#{channel_id}>", inline=False)
+    new_embed.set_footer(text=old_embed[0]['footer']['text'])
+    await queue_message.edit(embed=new_embed, view=actions_pixel_art_view())
     # Save to database
     edit_db_pixel_art(ticket_id=ticket_id, claim_user_id=None)

@@ -156,15 +156,15 @@ class pixel_art_panel_view(discord.ui.View):
 
         # Send to log
         embed = discord.Embed(
-            title="New pixel art ticket registered",
-            description="User details:",
+            title="New Pixel Art ticket registered",
+            description="Ticket details:",
             color=0xff8000,
         )
         embed.add_field(name="👤 User", value=interaction.user.mention, inline=False)
         embed.add_field(name="🆔 User ID", value=f"`{interaction.user.id}`", inline=False)
         embed.add_field(name="📛 User name", value=interaction.user.name, inline=False)
         embed.add_field(name="📅 Joined", value=f"<t:{int(interaction.user.joined_at.timestamp())}:R>", inline=False)
-        embed.add_field(name="👥 Claim users", value="`No claimed`", inline=False)
+        embed.add_field(name="👥 Claim user", value="`No claimed`", inline=False)
         embed.add_field(name="📑 Open reason", value="```Request a Pixel Art Builder```", inline=False)
         embed.add_field(name="🕒 Open time", value=f"<t:{open_time}>", inline=False)
         embed.set_footer(text=f"Ticket ID: {ticket_id}")

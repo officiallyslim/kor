@@ -18,6 +18,7 @@ from src.ticket.view.pixel_art_views.actions_pixel_art_with_jump import (
     actions_pixel_art_with_jump_view,
 )
 from config import guild_id
+from src.global_src.global_emojis import roblox_emoji, discord_emoji
 
 class confirm_form_pixel_art_view(discord.ui.View):
     def __init__(self):
@@ -83,21 +84,20 @@ class confirm_form_pixel_art_view(discord.ui.View):
         embed = discord.Embed(
             title=f"New pixel art ticket - {ticket_id}",
             color=0xffa500,
-            description=f"""
-            User: {interaction.user.mention}
-            User ID: `{interaction.user.id}`
-            User name: {interaction.user.name}
-            Joined <t:{int(interaction.user.joined_at.timestamp())}:R>
-            Claim users: `No claimed`""",
+            description=""
         )
-        embed.add_field(name="Discord name", value=f"```{name}```", inline=False)
-        embed.add_field(name="Roblox username", value=f"```{roblox_username}```", inline=False)
-        embed.add_field(name="Island Code", value=f"```{island_code}```", inline=False)
-        embed.add_field(name="Build", value=f"```{build}```", inline=False)
+        embed.add_field(name="👤 User", value=interaction.user.mention, inline=False)
+        embed.add_field(name="🆔 User ID", value=f"`{interaction.user.id}`", inline=False)
+        embed.add_field(name="📛 User name", value=interaction.user.name, inline=False)
+        embed.add_field(name="👥 Claim user", value="`No claimed`", inline=False)
+        embed.add_field(name=f"{discord_emoji} Discord name", value=f"```{name}```", inline=False)
+        embed.add_field(name=f"{roblox_emoji} Roblox username", value=f"```{roblox_username}```", inline=False)
+        embed.add_field(name="🔢 Island Code", value=f"```{island_code}```", inline=False)
+        embed.add_field(name="🏠 Build", value=f"```{build}```", inline=False)
         embed.set_footer(text=f"Ticket ID: {ticket_id}")
 
         # Save queue msg to database
-        queue_msg = await pixel_art_queue_channel.send(f"<@&{pixel_art_role_id}.disable>", embed=embed, view=actions_pixel_art_with_jump_view(guild_id=guild_id, channel_id=channel_id))
+        queue_msg = await pixel_art_queue_channel.send(f"<@&{pixel_art_role_id}.>", embed=embed, view=actions_pixel_art_with_jump_view(guild_id=guild_id, channel_id=channel_id))
         queue_msg_id = queue_msg.id
         edit_db_pixel_art(ticket_id, queue_msg_id=queue_msg_id)
 
