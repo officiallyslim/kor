@@ -167,6 +167,7 @@ class pixel_art_panel_view(discord.ui.View):
         embed.add_field(name="👥 Claim user", value="`No claimed`", inline=False)
         embed.add_field(name="📑 Open reason", value="```Request a Pixel Art Builder```", inline=False)
         embed.add_field(name="🕒 Open time", value=f"<t:{open_time}>", inline=False)
+        embed.add_field(name="🏢 Ticket Channel", value=f"<t:{channel_id}>", inline=False)
         embed.set_footer(text=f"Ticket ID: {ticket_id}")
 
         log_channel = bot.get_channel(ticket_log_channel_id)
