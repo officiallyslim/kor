@@ -105,7 +105,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
 
         # Send to logs
         log_msg_id = get_log_message_id(ticket_id)
-        log_msg = bot.get_channel(ticket_log_channel_id).fetch_message(log_msg_id)
+        log_msg = await bot.get_channel(ticket_log_channel_id).fetch_message(log_msg_id)
         embed = discord.Embed(
             title=f"New form answers in ticket {ticket_id}",
             description="",

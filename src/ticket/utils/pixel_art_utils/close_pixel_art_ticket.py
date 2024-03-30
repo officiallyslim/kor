@@ -94,7 +94,7 @@ async def close_ticket(interaction: discord.Interaction, reason):
         print(f"Ticket {ticket_id} closed")
 
     log_msg_id = get_log_message_id(ticket_id)
-    log_msg = bot.get_channel(ticket_log_channel_id).fetch_message(log_msg_id)
+    log_msg = await bot.get_channel(ticket_log_channel_id).fetch_message(log_msg_id)
     embed = discord.Embed(
         title=f"Ticket {ticket_id} closed",
         description="",

@@ -82,7 +82,10 @@ class pixel_art_panel_view(discord.ui.View):
             if open_time < timeout_time:
                 await interaction.followup.send("You're opening tickets so fast! Please wait a moment to open another one.", ephemeral=True)
                 return
-
+            else:
+                data[str(interaction.user.id)] = open_time
+                with open(ticket_cooldown_path, 'w') as f:
+                    json.dump(data, f, indent=4)
 
         # Check user have current open channel
         open_ticket = check_open_art_pixel_ticket(int(interaction.user.id))
