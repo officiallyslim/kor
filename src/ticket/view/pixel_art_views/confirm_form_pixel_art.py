@@ -55,7 +55,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
             description=f"Please, wait our <@&{pixel_art_role_id}> contact you.\nYou can now send a **image** of the construction that you want!",
             color=0x28a745
         )
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.send_message(content="<@&{pixel_art_role_id}>", embed=embed)
         await interaction.message.delete(reason=f"Deleting form confirm message from the ticket {ticket_id}")
 
         welcome_msg_id, channel_id = get_pixel_art_welcome_msg(ticket_id)
@@ -98,7 +98,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         embed.set_footer(text=f"Ticket ID: {ticket_id}")
 
         # Save queue msg to database
-        queue_msg = await pixel_art_queue_channel.send(f"<@&{pixel_art_role_id}>", embed=embed, view=actions_pixel_art_view())
+        queue_msg = await pixel_art_queue_channel.send(content="", embed=embed, view=actions_pixel_art_view())
         queue_msg_id = queue_msg.id
         edit_db_pixel_art(ticket_id, queue_msg_id=queue_msg_id)
 
