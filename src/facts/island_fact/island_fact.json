@@ -109,7 +109,7 @@
     },
     "19": {
         "fact": "Crops harvested by totems will give [Farming](https://robloxislands.fandom.com/wiki/Farming) XP despite how no particles are emitted when this occurs.",
-        "daily": false,
+        "daily": true,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Totem"
     },
