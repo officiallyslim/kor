@@ -95,6 +95,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         embed.add_field(name=f"{roblox_emoji} Roblox username", value=f"```{roblox_username}```", inline=False)
         embed.add_field(name="🔢 Island Code", value=f"```{island_code}```", inline=False)
         embed.add_field(name="🏠 Build", value=f"```{build}```", inline=False)
+        embed.add_field(name="🏢 Channel", value=f"<#{channel_id}>", inline=False)
         embed.set_footer(text=f"Ticket ID: {ticket_id}")
 
         # Save queue msg to database
@@ -114,6 +115,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         embed.add_field(name=f"{roblox_emoji} Roblox username", value=f"```{roblox_username}```", inline=False)
         embed.add_field(name="🔢 Island Code", value=f"```{island_code}```", inline=False)
         embed.add_field(name="🏠 Build", value=f"```{build}```", inline=False)
+        embed.add_field(name="🏢 Channel", value=f"<#{channel_id}>", inline=False)
         embed.set_footer(text=f"Ticket ID: {ticket_id}")
         await log_message.reply(embed=embed)
 
