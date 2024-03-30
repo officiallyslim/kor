@@ -104,7 +104,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
 
         # Send to logs
         log_msg_id = get_log_message_id(ticket_id)
-        log_msg = await bot.get_channel(ticket_log_channel_id).fetch_message(log_msg_id)
+        log_message = await bot.get_channel(ticket_log_channel_id).fetch_message(log_msg_id)
         embed = discord.Embed(
             title=f"New form answers in ticket {ticket_id}",
             description="",
@@ -115,7 +115,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         embed.add_field(name="🔢 Island Code", value=f"```{island_code}```", inline=False)
         embed.add_field(name="🏠 Build", value=f"```{build}```", inline=False)
         embed.set_footer(text=f"Ticket ID: {ticket_id}")
-        await log_msg.reply(embed=embed)
+        await log_message.reply(embed=embed)
 
     @discord.ui.button(label="Edit", style=discord.ButtonStyle.gray, emoji="✏️", custom_id="edit_form_pixel_art_view")
     async def edit_form_pixel_art_view(self, button: discord.ui.Button, interaction: discord.Interaction):

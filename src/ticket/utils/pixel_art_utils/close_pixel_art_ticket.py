@@ -94,7 +94,7 @@ async def close_ticket(interaction: discord.Interaction, reason):
         print(f"Ticket {ticket_id} closed")
 
     log_msg_id = get_log_message_id(ticket_id)
-    log_msg = await bot.get_channel(ticket_log_channel_id).fetch_message(log_msg_id)
+    log_message = await bot.get_channel(ticket_log_channel_id).fetch_message(log_msg_id)
     embed = discord.Embed(
         title=f"Ticket {ticket_id} closed",
         description="",
@@ -103,4 +103,4 @@ async def close_ticket(interaction: discord.Interaction, reason):
     embed.add_field(name="🕐 Close time", value=f"<t:{close_time}>", inline=False)
     embed.add_field(name="✏️ Close reason",value=f"```{reason}```",inline=False,)
     embed.set_footer(text=f"Ticket ID: {ticket_id}")
-    await log_msg.reply(embed=embed)
+    await log_message.reply(embed=embed)
