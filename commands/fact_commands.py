@@ -1,4 +1,4 @@
-from config import *
+import discord
 from src.facts.get_fact import get_randomfact, get_randomcatfact, get_randomdogfact, get_islandfact
 
 fact_group = discord.SlashCommandGroup("fact", "Send a fact!")
@@ -48,9 +48,9 @@ async def island_fact(ctx: discord.ApplicationContext):
         description=f"{fact['Fact']}",
         colour=discord.Colour(int("d1e8fa", 16))
     )
-    if fact['Image Link'] != None:
+    if fact['Image Link'] is not None:
         randomislandfact_embed.set_image(url=f"{str(fact['Image Link'])}")
-    if fact["Source Link"] == None:
+    if fact["Source Link"] is None:
         await ctx.respond(embed=randomislandfact_embed)
     else:
         await ctx.respond(embed=randomislandfact_embed, view=source_island(fact['Source Link']))
