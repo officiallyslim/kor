@@ -19,7 +19,6 @@ from src.ticket.view.pixel_art_views.actions_pixel_art import (
     actions_pixel_art_view,
 )
 from src.global_src.global_channel_id import ticket_log_channel_id
-from config import guild_id
 from src.global_src.global_emojis import roblox_emoji, discord_emoji
 
 class confirm_form_pixel_art_view(discord.ui.View):
@@ -99,7 +98,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         embed.set_footer(text=f"Ticket ID: {ticket_id}")
 
         # Save queue msg to database
-        queue_msg = await pixel_art_queue_channel.send(f"<@&{pixel_art_role_id}.>", embed=embed, view=actions_pixel_art_view(guild_id=guild_id, channel_id=channel_id))
+        queue_msg = await pixel_art_queue_channel.send(f"<@&{pixel_art_role_id}.>", embed=embed, view=actions_pixel_art_view())
         queue_msg_id = queue_msg.id
         edit_db_pixel_art(ticket_id, queue_msg_id=queue_msg_id)
 
