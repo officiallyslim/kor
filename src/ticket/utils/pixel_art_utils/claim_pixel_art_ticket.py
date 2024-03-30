@@ -68,8 +68,8 @@ async def claim_ticket(interaction: discord.Interaction):
     old_embed = [embed_to_dict(embed) for embed in queue_message.embeds]
     
     new_embed = discord.Embed(
-        title=f"New pixel art ticket - {ticket_id}",
-        color=0xffa500,
+        title=f"Pixel art ticket - {ticket_id}",
+        color=0x28a745,
         description=""
     )
     new_embed.add_field(name="👤 User", value=old_embed[0]['fields'][0]['value'], inline=False)

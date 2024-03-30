@@ -68,7 +68,7 @@ async def unclaim_ticket(interaction: discord.Interaction):
     old_embed = [embed_to_dict(embed) for embed in queue_message.embeds]
     
     new_embed = discord.Embed(
-        title=f"New pixel art ticket - {ticket_id}",
+        title=f"Pixel art ticket - {ticket_id}",
         color=0xffa500,
         description=""
     )
