@@ -4,23 +4,24 @@ import discord
 
 from config import bot, guild_id
 from src.global_src.embed_to_dict import embed_to_dict
+from src.global_src.global_channel_id import (
+    pixel_art_queue_channel_id,
+    ticket_log_channel_id,
+)
 from src.global_src.global_embed import no_perm_embed
-from src.global_src.global_emojis import send_emoji
+from src.global_src.global_emojis import discord_emoji, roblox_emoji, send_emoji
 from src.global_src.global_roles import pixel_art_role_id
 from src.ticket.utils.create_overwrites import create_view_and_chat_overwrites
-from src.ticket.utils.pixel_art_utils.db_utils.edit_db_pixel_art import edit_db_pixel_art
+from src.ticket.utils.pixel_art_utils.db_utils.edit_db_pixel_art import (
+    edit_db_pixel_art,
+)
 from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
+    get_log_message_id,
     get_pixel_art_ticket_open_user_id,
     get_pixel_art_welcome_msg,
-    get_log_message_id
 )
-from src.global_src.global_channel_id import pixel_art_queue_channel_id
-from src.ticket.view.pixel_art_views.actions_pixel_art import (
-    actions_pixel_art_view,
-)
-from src.global_src.global_channel_id import ticket_log_channel_id
-from src.global_src.global_emojis import roblox_emoji, discord_emoji
-from ticket.view.jump_channel import jump_channel
+from src.ticket.view.jump_channel import jump_channel
+
 
 class confirm_form_pixel_art_view(discord.ui.View):
     def __init__(self):
