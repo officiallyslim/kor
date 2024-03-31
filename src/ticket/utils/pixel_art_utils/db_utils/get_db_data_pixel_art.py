@@ -93,3 +93,15 @@ def get_dm_message_id(ticket_id):
         return open_user_id, dm_msg_id
     else:
         return None
+
+def get_confirm_message_id(ticket_id):
+    conn = sqlite3.connect(ticket_database_path)
+    cursor = conn.cursor()
+    cursor.execute('SELECT confirm_message_id FROM pixel_art WHERE ticket_id = ?', (ticket_id,))
+    fetch_result = cursor.fetchone()
+    conn.close()
+    if fetch_result is not None:
+        confirm_message_id = fetch_result[0]
+        return confirm_message_id
+    else:
+        return None

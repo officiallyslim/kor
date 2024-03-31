@@ -1,10 +1,23 @@
+
+import asyncio
 import re
 
 import discord
 
-from config import bot
-from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import get_pixel_art_welcome_msg
-from src.ticket.view.pixel_art_views.confirm_form_pixel_art import confirm_form_pixel_art_view
+from config import bot, guild_id
+from src.global_src.global_emojis import loading_emoji
+from src.ticket.utils.pixel_art_utils.db_utils.edit_db_pixel_art import (
+    edit_db_pixel_art,
+)
+from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
+    check_open_art_pixel_ticket,
+    get_confirm_message_id,
+    get_pixel_art_welcome_msg,
+)
+from src.ticket.view.jump_channel import jump_channel
+from src.ticket.view.pixel_art_views.confirm_form_pixel_art import (
+    confirm_form_pixel_art_view,
+)
 
 
 class form_pixel_art_modal(discord.ui.Modal):
@@ -61,15 +74,35 @@ class form_pixel_art_modal(discord.ui.Modal):
         embed.add_field(name="Island Code", value=f"```{self.children[2].value}```", inline=False)
         embed.add_field(name="Build", value=f"```{self.children[3].value}```", inline=False)
 
+        open_ticket = check_open_art_pixel_ticket(int(interaction.user.id))
+        if open_ticket is False:
+            loading_message = await interaction.response.send_message(f"{loading_emoji} Processing...", ephemeral=True)
+            await asyncio.sleep(5)
+            open_ticket = check_open_art_pixel_ticket(int(interaction.user.id))
+            ticket_id, channel_id = open_ticket
+            await loading_message.edit(content="Please, go to the ticket channel for proceed.", view=jump_channel(guild_id=guild_id, channel_id=channel_id))
+        else:
+            ticket_id, channel_id = open_ticket
+
         # Send form or edit
         if self.status == "new": # Send the message if is new form and change view in original welcome message
-            await interaction.response.send_message(content="Please, confirm your answer before send to moderators", embed=embed, view=confirm_form_pixel_art_view())
-            ticket_id = re.findall(r"Ticket ID: (\w+)", interaction.channel.topic)[0]
             welcome_msg_id, channel_id = get_pixel_art_welcome_msg(ticket_id)
             welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
 
-            from src.ticket.view.pixel_art_views.actions_pixel_art import actions_pixel_art_view
+            from src.ticket.view.pixel_art_views.actions_pixel_art import (
+                actions_pixel_art_view,
+            )
             await welcome_msg.edit(view=actions_pixel_art_view())
+            confirm_message = await welcome_msg.reply(content="Please, confirm your answer before send to moderators", embed=embed, view=confirm_form_pixel_art_view())
+            edit_db_pixel_art(ticket_id=ticket_id, confirm_message_id=confirm_message.id)
+            try:
+                await interaction.response.send_message("Please, go to the ticket channel for proceed", ephemeral=True, view=jump_channel(guild_id, channel_id))
+            except Exception:
+                pass
 
         elif self.status == "edit": # Edit if is trying edit the form
-            await interaction.response.edit_message(content="Please, confirm your answer before send to moderators", embed=embed, view=confirm_form_pixel_art_view())
+            confirm_message_id = get_confirm_message_id(ticket_id)
+            confirm_message = await bot.get_channel(channel_id).fetch_message(confirm_message_id)
+            await confirm_message.edit(content="Please, confirm your answer before send to moderators", embed=embed, view=confirm_form_pixel_art_view())
+            await interaction.response.defer()
+            return

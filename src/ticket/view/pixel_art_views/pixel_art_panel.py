@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from src.ticket.modal.form_pixel_art import form_pixel_art_modal
 
 import discord
 
@@ -54,9 +55,6 @@ class pixel_art_panel_view(discord.ui.View):
         custom_id="pixel_art_panel_button",
     )
     async def pixel_art_panel_button(self, button: discord.ui.Button, interaction: discord.Interaction):
-        # Defer response
-        await interaction.response.defer(ephemeral=True)
-
         # Get time
         open_time = int(datetime.now().timestamp())
 
@@ -64,8 +62,8 @@ class pixel_art_panel_view(discord.ui.View):
         with open(ticket_banned_path, 'r') as f:
             data = json.load(f)
 
-        if interaction.user.id in data:
-            await interaction.followup.send(embed=ticket_ban_embed, ephemeral=True)
+        if str(interaction.user.id) in data:
+            await interaction.response.send_message(embed=ticket_ban_embed, ephemeral=True)
             return
 
         # Check if is in cooldown
@@ -80,7 +78,7 @@ class pixel_art_panel_view(discord.ui.View):
         else:
             timeout_time = last_time + 300
             if open_time < timeout_time:
-                await interaction.followup.send("You're opening tickets so fast! Please wait a moment to open another one.", ephemeral=True)
+                await interaction.response.send_message("You're opening tickets so fast! Please wait a moment to open another one.", ephemeral=True)
                 return
             else:
                 data[str(interaction.user.id)] = open_time
@@ -96,8 +94,12 @@ class pixel_art_panel_view(discord.ui.View):
                 description=f"You have the pixel art ticket: `{ticket_id}` already opened.\nYou can enter by clicking the button below.",
                 color=0xff0000
             )
-            await interaction.followup.send(embed=embed, view=jump_channel(guild_id, channel_id), ephemeral=True)
+            await interaction.response.send_message(embed=embed, view=jump_channel(guild_id, channel_id), ephemeral=True)
             return
+
+        # Defer response
+        modal = form_pixel_art_modal(title="Pixel Art Form",name=interaction.user.name, status="new")
+        await interaction.response.send_modal(modal)
 
         # Gen ticket id
         ticket_id = gen_key(15)
@@ -208,6 +210,7 @@ class pixel_art_panel_view(discord.ui.View):
             channel_id=channel_id,
             welcome_msg_id=welcome_message.id,
             dm_msg_id=dm_message.id,
+            confirm_message_id=None,
             queue_msg_id=None,
             log_msg_id=log_message.id,
             transcript_key = None,

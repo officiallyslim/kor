@@ -82,8 +82,6 @@ async def close_ticket(interaction: discord.Interaction, reason):
     close_time = int(datetime.now().timestamp())
     edit_db_pixel_art(ticket_id=ticket_id, close_time=close_time, close_user_id=interaction.user.id, close_reason=reason, transcript_key=status[1])
 
-    print(channel_id)
-    print(ticket_channel)
     await ticket_channel.delete(reason=f"Ticket {ticket_id} finished.")
 
     queue_message_id = get_queue_message_id(ticket_id)
@@ -105,6 +103,13 @@ async def close_ticket(interaction: discord.Interaction, reason):
             dm_channel = await open_user.create_dm()
         dm_message = await dm_channel.fetch_message(open_user_data[1])
         await dm_message.edit(view=None)
+        embed = discord.Embed (
+            title="Thank you for contacting us!",
+            description=f"Your ticket `{ticket_id}` has been closed by one of our staff members with the following reason: ```{reason}```",
+            color=0x28a745
+        )
+        embed.set_footer(text=f"Ticket ID: {ticket_id}")
+        await dm_message.reply(embed=embed)
 
     embed = discord.Embed(
         title=f"Ticket {ticket_id} closed",
