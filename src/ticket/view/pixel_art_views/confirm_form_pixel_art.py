@@ -51,17 +51,18 @@ class confirm_form_pixel_art_view(discord.ui.View):
             form_build=build,
         )
 
+        # Get welcome message
+        welcome_msg_id, channel_id = get_pixel_art_welcome_msg(ticket_id)
+        welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
+
         # Respond and delete self message
         embed = discord.Embed(
             title="Thank you for complete the form!",
             description=f"Please, wait our <@&{pixel_art_role_id}> contact you.\nYou can now send a **image** of the construction that you want!",
             color=0x28a745
         )
-        await interaction.response.send_message(content=f"<@&{pixel_art_role_id}>", embed=embed)
+        await welcome_msg.reply(content=f"<@&{pixel_art_role_id}>", embed=embed)
         await interaction.message.delete(reason=f"Deleting form confirm message from the ticket {ticket_id}")
-
-        welcome_msg_id, channel_id = get_pixel_art_welcome_msg(ticket_id)
-        welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
 
         new_welcome_embed = discord.Embed(
             title=f"Welcome {interaction.user.name}",
