@@ -2,7 +2,7 @@ import re
 
 import discord
 
-from config import bot
+from config import bot, guild_id
 from src.global_src.embed_to_dict import embed_to_dict
 from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_emojis import send_emoji
@@ -20,6 +20,7 @@ from src.ticket.view.pixel_art_views.actions_pixel_art import (
 )
 from src.global_src.global_channel_id import ticket_log_channel_id
 from src.global_src.global_emojis import roblox_emoji, discord_emoji
+from ticket.view.jump_channel import jump_channel
 
 class confirm_form_pixel_art_view(discord.ui.View):
     def __init__(self):
@@ -99,7 +100,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         embed.set_footer(text=f"Ticket ID: {ticket_id}")
 
         # Save queue msg to database
-        queue_msg = await pixel_art_queue_channel.send(content="", embed=embed, view=actions_pixel_art_view())
+        queue_msg = await pixel_art_queue_channel.send(content="", embed=embed, view=jump_channel(guild_id=guild_id, channel_id=channel_id))
         queue_msg_id = queue_msg.id
         edit_db_pixel_art(ticket_id, queue_msg_id=queue_msg_id)
 

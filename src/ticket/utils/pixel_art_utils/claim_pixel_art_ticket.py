@@ -82,6 +82,6 @@ async def claim_ticket(interaction: discord.Interaction):
     new_embed.add_field(name="🏠 Build", value=old_embed[0]['fields'][7]['value'], inline=False)
     new_embed.add_field(name="🏢 Channel", value=f"<#{channel_id}>", inline=False)
     new_embed.set_footer(text=old_embed[0]['footer']['text'])
-    await queue_message.edit(embed=new_embed, view=actions_claimed_pixel_art_view())
+    await queue_message.edit(embed=new_embed)
     # Save to database
     edit_db_pixel_art(ticket_id=ticket_id, claim_user_id=interaction.user.id)
