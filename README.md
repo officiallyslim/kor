@@ -42,4 +42,8 @@ PRIVATE_API = PRIVATE_API_URL
 PRIVATE_API_KEY_TOKEN = PRIVATE_API_URL_TOKEN
 ```
 4. Edit the variables of `config.py` and `src/global_src`.
-5. Run :P.
+5. Install and setup API, you can find the resources in the `api` folder.
+6. Run:
+```sh
+py main.py
+```
