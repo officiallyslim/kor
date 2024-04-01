@@ -541,7 +541,7 @@
     },
     "91": {
         "fact": "As of [May 13, 2022](https://robloxislands.fandom.com/wiki/May_13,_2022), fish tank blueprints can no longer be fished.",
-        "daily": false,
+        "daily": true,
         "img_link": null,
         "source_link": "https://robloxislands.fandom.com/wiki/Fishing"
     },
