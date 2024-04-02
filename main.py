@@ -1,9 +1,19 @@
-from config import *
 import os
 import traceback
+
+import discord
 import dotenv
+
+from config import admins, bot
 from src.global_src.global_embed import no_perm_embed
-from src.global_src.global_roles import *
+from src.global_src.global_roles import (
+    assistant_director_role_id,
+    community_manager_role_id,
+    developer_role_id,
+    head_of_operations_role_id,
+    mr_boomsteak_role_id,
+    staff_manager_role_id,
+)
 
 dotenv.load_dotenv()
 token = str(os.getenv("TOKEN"))
@@ -37,7 +47,7 @@ async def reload_cog(
             try:
                 bot.reload_extension(name.lower())
                 await ctx.respond(f"Cog \"{name}\" reloaded correctly")
-            except:
+            except Exception:
                 await ctx.respond(f"Failed to reload cog \"{name}\"")
             return
         await ctx.respond(f"I can't find \"{name}\" :c")
@@ -45,7 +55,7 @@ async def reload_cog(
         await ctx.respond("You are not allowed to use this command")
 
 @bot.slash_command(name="kill", description="ONLY USE URGENCY CASE")
-async def reload_cog(ctx: discord.ApplicationContext,):
+async def kill(ctx: discord.ApplicationContext,):
     await ctx.defer(ephemeral=True)
     if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
             staff_manager_role_id,
@@ -60,7 +70,7 @@ async def reload_cog(ctx: discord.ApplicationContext,):
     await bot.close()
 
 @bot.slash_command(name="version", description="View bot version")
-async def reload_cog(ctx: discord.ApplicationContext,):
+async def version(ctx: discord.ApplicationContext,):
     await ctx.defer(ephemeral=True)
     if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
             staff_manager_role_id,
