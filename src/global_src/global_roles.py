@@ -20,7 +20,7 @@ trial_moderator_role_id = 1151613206939324578
 
 # Others roles
 pixel_art_role_id = 1151613225255841893
-expo_demo_role_id = 1151613230532280400
+expo_role_id = 1151613230532280400
 shop_role_id = 1151613226283446423
 industrial_role_id = 1151613228212813914
 farm_role_id = 1151613227361382490

@@ -57,7 +57,7 @@ def get_pixel_art_channel_id(ticket_id):
     else:
         return None
 
-def get_queue_message_id(ticket_id):
+def get_pixel_art_queue_message_id(ticket_id):
     conn = sqlite3.connect(ticket_database_path)
     cursor = conn.cursor()
     cursor.execute('SELECT queue_msg_id FROM pixel_art WHERE ticket_id = ?', (ticket_id,))
@@ -69,7 +69,7 @@ def get_queue_message_id(ticket_id):
     else:
         return None
 
-def get_log_message_id(ticket_id):
+def get_pixel_art_log_message_id(ticket_id):
     conn = sqlite3.connect(ticket_database_path)
     cursor = conn.cursor()
     cursor.execute('SELECT log_msg_id FROM pixel_art WHERE ticket_id = ?', (ticket_id,))
@@ -81,7 +81,7 @@ def get_log_message_id(ticket_id):
     else:
         return None
 
-def get_dm_message_id(ticket_id):
+def get_pixel_art_dm_message_id(ticket_id):
     conn = sqlite3.connect(ticket_database_path)
     cursor = conn.cursor()
     cursor.execute('SELECT open_user_id, dm_msg_id FROM pixel_art WHERE ticket_id = ?', (ticket_id,))
@@ -94,7 +94,7 @@ def get_dm_message_id(ticket_id):
     else:
         return None
 
-def get_confirm_message_id(ticket_id):
+def get_pixel_art_confirm_message_id(ticket_id):
     conn = sqlite3.connect(ticket_database_path)
     cursor = conn.cursor()
     cursor.execute('SELECT confirm_message_id FROM pixel_art WHERE ticket_id = ?', (ticket_id,))

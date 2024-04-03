@@ -16,7 +16,7 @@ from src.ticket.utils.pixel_art_utils.db_utils.edit_db_pixel_art import (
     edit_db_pixel_art,
 )
 from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
-    get_log_message_id,
+    get_pixel_art_log_message_id,
     get_pixel_art_ticket_open_user_id,
     get_pixel_art_welcome_msg,
 )
@@ -107,7 +107,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         edit_db_pixel_art(ticket_id, queue_msg_id=queue_msg_id)
 
         # Send to logs
-        log_msg_id = get_log_message_id(ticket_id)
+        log_msg_id = get_pixel_art_log_message_id(ticket_id)
         log_message = await bot.get_channel(ticket_log_channel_id).fetch_message(log_msg_id)
         embed = discord.Embed(
             title=f"New form answers in ticket {ticket_id}",

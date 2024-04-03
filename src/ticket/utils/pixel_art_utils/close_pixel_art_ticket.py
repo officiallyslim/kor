@@ -29,9 +29,9 @@ from src.ticket.utils.pixel_art_utils.db_utils.edit_db_pixel_art import (
 from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
     check_claimed_pixeL_art_ticket,
     get_pixel_art_channel_id,
-    get_queue_message_id,
-    get_log_message_id,
-    get_dm_message_id
+    get_pixel_art_queue_message_id,
+    get_pixel_art_log_message_id,
+    get_pixel_art_dm_message_id
 )
 from src.ticket.utils.transcript_website import get_transcript
 from src.global_src.global_channel_id import ticket_log_channel_id
@@ -84,7 +84,7 @@ async def close_ticket(interaction: discord.Interaction, reason):
 
     await ticket_channel.delete(reason=f"Ticket {ticket_id} finished.")
 
-    queue_message_id = get_queue_message_id(ticket_id)
+    queue_message_id = get_pixel_art_queue_message_id(ticket_id)
     if queue_message_id is not None:
         queue_message = await bot.get_channel(pixel_art_queue_channel_id).fetch_message(queue_message_id)
         await queue_message.delete(reason="Ticketd clsoed")
@@ -92,10 +92,10 @@ async def close_ticket(interaction: discord.Interaction, reason):
     else:
         print(f"Ticket {ticket_id} closed")
 
-    log_msg_id = get_log_message_id(ticket_id)
+    log_msg_id = get_pixel_art_log_message_id(ticket_id)
     log_message = await bot.get_channel(ticket_log_channel_id).fetch_message(log_msg_id)
 
-    open_user_data = get_dm_message_id(ticket_id)
+    open_user_data = get_pixel_art_dm_message_id(ticket_id)
     if open_user_data is not None:
         open_user = bot.get_user(open_user_data[0])
         dm_channel = open_user.dm_channel
