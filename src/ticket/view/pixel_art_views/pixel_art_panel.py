@@ -22,7 +22,7 @@ from src.ticket.utils.create_overwrites import create_custom_overwrites
 from src.ticket.utils.gen_ticket_key import gen_key
 from src.ticket.utils.pixel_art_utils.db_utils.add_db_pixel_art import add_db_pixel_art
 from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
-    check_open_art_pixel_ticket,
+    check_open_pixel_art_ticket,
 )
 from src.ticket.view.jump_channel import jump_channel
 from src.ticket.view.pixel_art_views.form_pixel_art import form_pixel_art_view
@@ -86,7 +86,7 @@ class pixel_art_panel_view(discord.ui.View):
                     json.dump(data, f, indent=4)
 
         # Check user have current open channel
-        open_ticket = check_open_art_pixel_ticket(int(interaction.user.id))
+        open_ticket = check_open_pixel_art_ticket(int(interaction.user.id))
         if open_ticket is not False:  # compare with False, not the function
             ticket_id, channel_id = open_ticket
             embed = discord.Embed(

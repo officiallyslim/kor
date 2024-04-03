@@ -9,8 +9,8 @@ from src.ticket.utils.pixel_art_utils.db_utils.edit_db_pixel_art import (
     edit_db_pixel_art,
 )
 from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
-    check_open_art_pixel_ticket,
-    get_confirm_message_id,
+    check_open_pixel_art_ticket,
+    get_pixel_art_confirm_message_id,
     get_pixel_art_welcome_msg,
 )
 from src.ticket.view.jump_channel import jump_channel
@@ -73,11 +73,11 @@ class form_pixel_art_modal(discord.ui.Modal):
         embed.add_field(name="Island Code", value=f"```{self.children[2].value}```", inline=False)
         embed.add_field(name="Build", value=f"```{self.children[3].value}```", inline=False)
 
-        open_ticket = check_open_art_pixel_ticket(int(interaction.user.id))
+        open_ticket = check_open_pixel_art_ticket(int(interaction.user.id))
         if open_ticket is False:
             loading_message = await interaction.response.send_message(f"{loading_emoji} Processing...", ephemeral=True)
             await asyncio.sleep(5)
-            open_ticket = check_open_art_pixel_ticket(int(interaction.user.id))
+            open_ticket = check_open_pixel_art_ticket(int(interaction.user.id))
             ticket_id, channel_id = open_ticket
             await loading_message.edit(content="Please, go to the ticket channel for proceed.", view=jump_channel(guild_id=guild_id, channel_id=channel_id))
         else:
@@ -100,7 +100,7 @@ class form_pixel_art_modal(discord.ui.Modal):
                 pass
 
         elif self.status == "edit": # Edit if is trying edit the form
-            confirm_message_id = get_confirm_message_id(ticket_id)
+            confirm_message_id = get_pixel_art_confirm_message_id(ticket_id)
             confirm_message = await bot.get_channel(channel_id).fetch_message(confirm_message_id)
             await confirm_message.edit(content="Please, confirm your answer before send to moderators", embed=embed, view=confirm_form_pixel_art_view())
             await interaction.response.defer()
