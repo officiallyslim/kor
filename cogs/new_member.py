@@ -1,9 +1,20 @@
-from config import *
+import discord
 from discord.commands import Option
-from src.new_member.create_welcome_card import create_welcome_card, send_welcome_message_and_DM
+from discord.ext import commands
 from global_src.global_embed import no_perm_embed
+
+from config import bot
 from src.global_src.global_channel_id import new_members_log_channel_id
-from src.global_src.global_roles import *
+from src.global_src.global_roles import (
+    assistant_director_role_id,
+    community_manager_role_id,
+    developer_role_id,
+    head_of_operations_role_id,
+    mr_boomsteak_role_id,
+    staff_manager_role_id,
+)
+from src.new_member.create_welcome_card import create_welcome_card
+
 
 class new_member(commands.Cog):
     def __init__(self, bot):
