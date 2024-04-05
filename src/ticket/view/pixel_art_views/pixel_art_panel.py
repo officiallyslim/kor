@@ -1,6 +1,6 @@
 import json
 from datetime import datetime
-from src.ticket.modal.form_pixel_art import form_pixel_art_modal
+from src.ticket.modal.form_builder_request import form_pixel_art_modal
 
 import discord
 

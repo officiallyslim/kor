@@ -3,7 +3,7 @@ import re
 import discord
 
 from src.global_src.embed_to_dict import embed_to_dict
-from src.ticket.modal.form_pixel_art import form_pixel_art_modal
+from src.ticket.modal.form_builder_request import form_pixel_art_modal
 from src.ticket.view.confirm_close_ticket import confirm_close_ticket
 
 

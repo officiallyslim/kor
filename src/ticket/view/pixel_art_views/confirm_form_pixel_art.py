@@ -140,6 +140,6 @@ class confirm_form_pixel_art_view(discord.ui.View):
         build = embed[0]['fields'][3]['value'].replace("```", "")
 
         # Send modal
-        from src.ticket.modal.form_pixel_art import form_pixel_art_modal
+        from src.ticket.modal.form_builder_request import form_pixel_art_modal
         modal = form_pixel_art_modal(title="Pixel Art Form", name=name, status="edit", roblox_user=roblox_username, island_code=island_code, build=build)
         await interaction.response.send_modal(modal)
