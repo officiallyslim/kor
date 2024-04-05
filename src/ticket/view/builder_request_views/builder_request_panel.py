@@ -20,29 +20,12 @@ from src.global_src.global_roles import (
 )
 from src.ticket.utils.create_overwrites import create_custom_overwrites
 from src.ticket.utils.gen_ticket_key import gen_key
-from src.ticket.utils.pixel_art_utils.db_utils.add_db_pixel_art import add_db_pixel_art
-from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
+from src.ticket.utils.builder_request_utils.db_utils.add_db_builder_request import add_db_pixel_art
+from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
     check_open_pixel_art_ticket,
 )
 from src.ticket.view.jump_channel import jump_channel
-from src.ticket.view.pixel_art_views.form_pixel_art import form_pixel_art_view
-
-"""
-Workflow chart:
-
-1. Check if user is banned from ticket
-2. Check if user already have ticket open
-3. Defer Interaction Response
-4. Generate Ticket ID
-5. Retrieve User and Moderator Role
-6. Set Custom Overwrites
-7. Create Text Channel
-8. Send Welcome Message
-9. Respond to Interaction
-10. Send Direct Message
-11. Send to Log
-11. Add Data to Database
-"""
+from src.ticket.view.builder_request_views.form_builder_request import form_pixel_art_view
 
 class pixel_art_panel_view(discord.ui.View):
     def __init__(self):

@@ -4,9 +4,9 @@ import discord
 
 from src.global_src.embed_to_dict import embed_to_dict
 from src.global_src.global_emojis import claim_emoji
-from src.ticket.utils.pixel_art_utils.unclaim_pixel_art_ticket import unclaim_ticket
+from src.ticket.utils.builder_request_utils.unclaim_builder_request_ticket import unclaim_ticket
 from src.ticket.view.confirm_close_ticket import confirm_close_ticket
-from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import check_claimed_pixeL_art_ticket
+from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import check_claimed_pixeL_art_ticket
 
 class actions_claimed_pixel_art_view(discord.ui.View):
     def __init__(self):

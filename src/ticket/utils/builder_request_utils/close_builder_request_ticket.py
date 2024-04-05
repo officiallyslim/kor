@@ -23,10 +23,10 @@ from src.global_src.global_roles import (
     staff_manager_role_id,
     trial_administration_role_id,
 )
-from src.ticket.utils.pixel_art_utils.db_utils.edit_db_pixel_art import (
+from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request import (
     edit_db_pixel_art,
 )
-from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
+from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request import (
     check_claimed_pixeL_art_ticket,
     get_pixel_art_channel_id,
     get_pixel_art_queue_message_id,

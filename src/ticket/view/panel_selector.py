@@ -3,7 +3,7 @@ from src.global_src.global_emojis import smile_pixel_emoji
 import json
 
 from src.global_src.global_path import pixel_art_panel_embed_path
-from src.ticket.view.pixel_art_views.pixel_art_panel import pixel_art_panel_view
+from src.ticket.view.builder_request_views.builder_request_panel import pixel_art_panel_view
 
 class panel_selector(discord.ui.View):
     @discord.ui.select(

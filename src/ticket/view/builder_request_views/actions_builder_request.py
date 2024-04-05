@@ -20,7 +20,7 @@ from src.global_src.global_roles import (
     staff_manager_role_id,
     trial_administration_role_id,
 )
-from src.ticket.utils.pixel_art_utils.claim_pixel_art_ticket import claim_ticket
+from src.ticket.utils.builder_request_utils.claim_builder_request_ticket import claim_ticket
 from src.ticket.view.confirm_close_ticket import confirm_close_ticket
 
 
