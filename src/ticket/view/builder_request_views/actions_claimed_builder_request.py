@@ -2,7 +2,7 @@ import re
 
 import discord
 
-from src.global_src.embed_to_dict import embed_to_dict
+from src.utils.embed_to_dict import embed_to_dict
 from src.global_src.global_emojis import claim_emoji
 from src.ticket.utils.builder_request_utils.unclaim_builder_request_ticket import unclaim_ticket
 from src.ticket.view.confirm_close_ticket import confirm_close_ticket

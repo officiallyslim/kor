@@ -4,7 +4,7 @@ from datetime import datetime
 import discord
 
 from config import bot, guild_id
-from src.global_src.embed_to_dict import embed_to_dict
+from src.utils.embed_to_dict import embed_to_dict
 from src.global_src.global_channel_id import ticket_log_channel_id
 from src.global_src.global_embed import error_embed, ticket_ban_embed
 from src.global_src.global_path import (

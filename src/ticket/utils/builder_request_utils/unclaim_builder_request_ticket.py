@@ -3,7 +3,7 @@ import re
 import discord
 
 from config import bot
-from src.global_src.embed_to_dict import embed_to_dict
+from src.utils.embed_to_dict import embed_to_dict
 from src.global_src.global_emojis import discord_emoji, roblox_emoji
 from src.ticket.utils.builder_request_utils.builder_ticket_type import ticket_type_dict
 from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request import (

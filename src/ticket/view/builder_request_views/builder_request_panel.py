@@ -1,6 +1,6 @@
 import discord
 
-from src.global_src.embed_to_dict import embed_to_dict
+from src.utils.embed_to_dict import embed_to_dict
 from src.ticket.utils.builder_request_utils.builder_ticket_type import ticket_type_dict
 from src.ticket.utils.builder_request_utils.panel_callback_builder_request import (
     builder_request_panel_callback,

@@ -2,7 +2,7 @@ import re
 
 import discord
 
-from src.global_src.embed_to_dict import embed_to_dict
+from src.utils.embed_to_dict import embed_to_dict
 from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_emojis import claim_emoji
 from src.global_src.global_roles import (

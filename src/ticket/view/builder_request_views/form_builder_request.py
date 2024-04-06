@@ -2,7 +2,7 @@ import re
 
 import discord
 
-from src.global_src.embed_to_dict import embed_to_dict
+from src.utils.embed_to_dict import embed_to_dict
 from src.global_src.global_embed import error_embed, no_perm_embed
 from src.ticket.modal.form_builder_request import builder_request_modal
 from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
