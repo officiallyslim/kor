@@ -4,7 +4,7 @@ added_trivia_path = 'db/facts/island_fact/added_trivia.json'
 new_fact_path = 'db/facts/new_fact.txt'
 
 # Embed sender
-embed_path = 'src/embed_sender/embed.json'
+embed_path = 'db/embed_sender/embed.json'
 
 # Welcome image
 default_pfp_path = 'src/new_member/new_member_img/defaultpfp.png'
