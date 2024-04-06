@@ -10,7 +10,7 @@ embed_path = 'db/embed_sender/embed.json'
 default_pfp_path = 'src/new_member/new_member_img/defaultpfp.png'
 pfp_img_path = 'src/new_member/new_member_img/user_pfp.png'
 background_img_path = 'src/new_member/new_member_img/background.png'
-welcome_img_folder_path = 'src/new_member/old_welcome_img/'
+welcome_img_folder_path = 'db/welcomer/old_welcome_img/'
 
 # Ticket
 ticket_success_embed_path = "src/ticket/embed/success_ticket.json"
