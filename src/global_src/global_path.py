@@ -1,10 +1,7 @@
 # Facts file
-facts_md_path = 'src/facts/island_fact/facts_list.md'
-daily_count_path = 'src/facts/daily_count.txt'
-added_trivia_path = 'src/facts/island_fact/added_trivia.json'
-island_fact_database_path = 'src/facts/island_fact/island_fact.json'
-new_fact_path = 'src/facts/new_fact.txt'
-error_fact_path = 'src/facts/error_fact/error_fact.json'
+daily_count_path = 'db/facts/daily_count.txt'
+added_trivia_path = 'db/facts/island_fact/added_trivia.json'
+new_fact_path = 'db/facts/new_fact.txt'
 
 # Embed sender
 embed_path = 'src/embed_sender/embed.json'
