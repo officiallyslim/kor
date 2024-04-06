@@ -13,7 +13,7 @@ private_api_token = str(os.getenv("PRIVATE_API_KEY_TOKEN"))
 async def get_transcript(channel: discord.TextChannel, ticket_id):
     print(f"Creating transcript for {ticket_id}...")
     export = await chat_exporter.export(channel=channel)
-    file_name=f"src/ticket/db/transcript/{ticket_id}.html"
+    file_name=f"db/ticket/transcript/{ticket_id}.html"
 
     if not os.path.exists(file_name):
         with open(file_name, "w", encoding="utf-8") as f:
