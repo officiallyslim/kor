@@ -5,16 +5,16 @@ import discord
 
 from config import bot, guild_id
 from src.global_src.global_emojis import loading_emoji
-from src.ticket.utils.pixel_art_utils.db_utils.edit_db_pixel_art import (
+from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request import (
     edit_db_pixel_art,
 )
-from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
+from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
     check_open_pixel_art_ticket,
     get_pixel_art_confirm_message_id,
     get_pixel_art_welcome_msg,
 )
 from src.ticket.view.jump_channel import jump_channel
-from src.ticket.view.pixel_art_views.confirm_form_pixel_art import (
+from src.ticket.view.builder_request_views.confirm_form_builder_request import (
     confirm_form_pixel_art_view,
 )
 
@@ -88,7 +88,7 @@ class form_pixel_art_modal(discord.ui.Modal):
             welcome_msg_id, channel_id = get_pixel_art_welcome_msg(ticket_id)
             welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
 
-            from src.ticket.view.pixel_art_views.actions_pixel_art import (
+            from src.ticket.view.builder_request_views import (
                 actions_pixel_art_view,
             )
             await welcome_msg.edit(view=actions_pixel_art_view())
