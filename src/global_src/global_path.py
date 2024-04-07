@@ -7,9 +7,9 @@ new_fact_path = 'db/facts/new_fact.txt'
 embed_path = 'db/embed_sender/embed.json'
 
 # Welcome image
-default_pfp_path = 'src/new_member/new_member_img/defaultpfp.png'
-pfp_img_path = 'src/new_member/new_member_img/user_pfp.png'
-background_img_path = 'src/new_member/new_member_img/background.png'
+default_pfp_path = 'src/new_member/welcome_img_template/defaultpfp.png'
+pfp_img_path = 'src/new_member/welcome_img_template/user_pfp.png'
+background_img_path = 'src/new_member/welcome_img_template/background.png'
 welcome_img_folder_path = 'db/welcomer/old_welcome_img/'
 
 # Ticket
