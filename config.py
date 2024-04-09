@@ -11,8 +11,6 @@ intents.messages = True
 intents.guild_messages = True
 bot = commands.Bot(command_prefix="a!", intents=intents)
 
-admins = [756509638169460837]
-
 # Server ID
 guild_id = 1151612424785494116
 

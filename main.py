@@ -19,7 +19,7 @@ dotenv.load_dotenv()
 token = str(os.getenv("TOKEN"))
 
 cogs = ['cogs.ticket']
-#xd
+
 for cog in cogs:
     try:
         bot.load_extension(cog)
