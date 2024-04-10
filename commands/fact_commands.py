@@ -42,7 +42,6 @@ async def dog_fact(ctx: discord.ApplicationContext):
 @fact_group.command(name = "island", description = "Get random Island Roblox fact 🏝️")
 async def island_fact(ctx: discord.ApplicationContext):
     fact = get_islandfact()
-    print(f"Random island fact: {fact['Fact']}")
     randomislandfact_embed = discord.Embed(
         title="Random island fact 🏝️",
         description=f"{fact['Fact']}",
@@ -59,7 +58,3 @@ class source_island(discord.ui.View):
     def __init__(self, source_link):
         super().__init__()
         self.add_item(discord.ui.Button(label="Information source", url=f'{source_link}'))
-
-# @fact_group.command(name = "help", description = "Random facts help")
-# async def fact_help(ctx: discord.ApplicationContext):
-#     await ctx.respond("# Random facts bot help\n**Commands**\n`/help` --> Show this message\n`/randomfact` or `/fact` --> Send a random fact\n`/catfact` --> Send a cat fact\n`/dogfact` --> Send a dog fact\n\nBot developed by <@798463397443403786> and <@756509638169460837>", allowed_mentions=discord.AllowedMentions(users=False))

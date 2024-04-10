@@ -1,14 +1,13 @@
-from better_profanity import profanity
-import requests
-import random
-import json
-from src.global_src.global_path import island_fact_database_path, facts_md_path, added_trivia_path, daily_count_path
-from src.facts.push_facts_github import push_facts_github
 import os
+
 import dotenv
+import requests
+from better_profanity import profanity
+from requests.exceptions import HTTPError
 
 dotenv.load_dotenv()
-token = str(os.getenv("TOKEN"))
+private_api = str(os.getenv("PRIVATE_API"))
+private_api_token = str(os.getenv("PRIVATE_API_KEY_TOKEN"))
 
 # API REQUEST
 def get_randomfact():
@@ -63,82 +62,47 @@ def get_randomdogfact():
         return None
 
 def get_islandfact():
-    with open(island_fact_database_path, encoding= "utf8") as f:
-        json_content = json.load(f)
+    try:
+        headers = {'Authorization': private_api_token}
+        response = requests.get("http://144.76.143.198:8163/get_island_fact", headers=headers)
+        response.raise_for_status()
+        fact = response.json()
 
-    random_key = random.choice(list(json_content.keys()))
-
-    random_value = json_content[random_key]
+    except Exception as e:
+        print("Failed get island fact on the private API", e)
+        return
 
     fact_object = {
-        "Fact": random_value["fact"],
-        "Image Link": random_value["img_link"],
-        "Source Link": random_value["source_link"]
+        "Fact": fact['Fact'],
+        "Image Link": fact['Image Link'],
+        "Source Link": fact['Source Link']
     }
-
     return fact_object
 
 async def get_daily_islandfact():
-    with open(island_fact_database_path, encoding= "utf8") as f:
-        json_content = json.load(f)
+    try:
+        headers = {'Authorization': private_api_token}
+        response = requests.get(f"{private_api}/get_daily_island_fact", headers=headers)
+        response.raise_for_status()
+        fact = response.json()
 
-    available_keys = [key for key, value in json_content.items() if not value["daily"]]
-
-    while True:
-        random_key = random.choice(available_keys)
-        if not json_content[random_key]["daily"]:
-            break
-
-    random_value = json_content[random_key]
-
-    json_content[random_key]["daily"] = True
-
-    with open(island_fact_database_path, 'w', encoding="utf8") as f:
-        json.dump(json_content, f, indent=4)
-
-    fact_object = {
-        "Fact": random_value["fact"],
-        "Image Link": random_value["img_link"],
-        "Source Link": random_value["source_link"]
-    }
-
-    # Update Github
-    version_prefix = "**Version: "
-    version_suffix = "**"
-    
-    with open(facts_md_path, "r", encoding="utf-8") as f:
-        lines = f.readlines()
-
-    # get version
-    version_line = next((line for line in lines if line.startswith(version_prefix)), None)
-    if version_line is None:
-        print(f"No line starts with '{version_prefix}'")
-    else:
-        version_index = lines.index(version_line)
-        version = int(version_line.strip().replace(version_prefix, "").replace(version_suffix, ""))
-
-        version += 1
-
-        # Update version
-        lines[version_index] = version_prefix + str(version) + version_suffix + "\n"
-
-        with open(facts_md_path, "w", encoding="utf-8") as f:
-            f.writelines(lines)
-
-    push_facts_github('./', [facts_md_path, added_trivia_path, island_fact_database_path, daily_count_path], '[BOT] Update after send daily facy', 'kor', 'https://github.com/Stageddat/kor', token)
-    return fact_object
-
-def count_daily_status():
-    with open(island_fact_database_path, encoding= "utf8") as f:
-        json_content = json.load(f)
-
-    true_count = 0
-    false_count = 0
-
-    for key, value in json_content.items():
-        if value["daily"]:
-            true_count += 1
+    except HTTPError as e:
+        if e.response.status_code == 404:
+            print("No fact avaible!")
+            return None
         else:
-            false_count += 1
+            print(f"HTTP ERROR: {e}")
 
-    return {"True": true_count, "False": false_count}
+    except Exception:
+        print("Failed get daily fact on the private API")
+
+    if fact:
+        fact_object = {
+            "Fact": fact['Fact'],
+            "Image Link": fact['Image Link'],
+            "Source Link": fact['Source Link'],
+            "Available Facts": fact['Available Facts']
+        }
+        return fact_object
+    else:
+        print("No fact avaible!")

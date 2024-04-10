@@ -18,7 +18,7 @@ from src.global_src.global_roles import (
 dotenv.load_dotenv()
 token = str(os.getenv("TOKEN"))
 
-cogs = ['cogs.ticket']
+cogs = ['cogs.fact']
 #xd
 for cog in cogs:
     try:
