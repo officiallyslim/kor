@@ -4,7 +4,7 @@ import traceback
 import discord
 import dotenv
 
-from config import admins, bot
+from config import bot
 from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_roles import (
     assistant_director_role_id,
@@ -42,7 +42,13 @@ async def reload_cog(
     ctx: discord.ApplicationContext,
     name: discord.Option(str, "Cog name to reload", autocomplete=get_cog_names) # type: ignore
 ):
-    if ctx.author.id in admins:
+    if int(ctx.author.id) != 756509638169460837 and not any(role.id in [
+            staff_manager_role_id,
+            community_manager_role_id,
+            assistant_director_role_id,
+            head_of_operations_role_id,
+            developer_role_id,
+            mr_boomsteak_role_id] for role in ctx.author.roles):
         if name.lower() in cogs:
             try:
                 bot.reload_extension(name.lower())
