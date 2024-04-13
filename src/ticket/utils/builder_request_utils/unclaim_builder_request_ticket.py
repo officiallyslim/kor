@@ -10,14 +10,14 @@ from src.global_src.global_roles import (
     pixel_art_role_id,
 )
 from src.ticket.utils.create_overwrites import create_custom_overwrites
-from src.ticket.utils.pixel_art_utils.db_utils.edit_db_pixel_art import (
+from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request import (
     edit_db_pixel_art,
 )
-from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import (
+from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
     get_pixel_art_channel_id,
     get_pixel_art_ticket_open_user_id,
     get_pixel_art_welcome_msg,
-    get_queue_message_id,
+    get_pixel_art_queue_message_id,
 )
 
 
@@ -59,11 +59,11 @@ async def unclaim_ticket(interaction: discord.Interaction):
 
     welcome_msg_id, channel_id = get_pixel_art_welcome_msg(ticket_id=ticket_id)
     welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
-    from src.ticket.view.pixel_art_views.actions_pixel_art import actions_pixel_art_view
+    from src.ticket.view.builder_request_views.actions_builder_request import actions_pixel_art_view
     await welcome_msg.edit(view=actions_pixel_art_view())
 
     # Edit queue message
-    queue_message_id = get_queue_message_id(ticket_id)
+    queue_message_id = get_pixel_art_queue_message_id(ticket_id)
     queue_message = await bot.get_channel(pixel_art_queue_channel_id).fetch_message(queue_message_id)
     old_embed = [embed_to_dict(embed) for embed in queue_message.embeds]
     

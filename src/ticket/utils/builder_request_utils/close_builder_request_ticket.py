@@ -26,7 +26,7 @@ from src.global_src.global_roles import (
 from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request import (
     edit_db_pixel_art,
 )
-from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request import (
+from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
     check_claimed_pixeL_art_ticket,
     get_pixel_art_channel_id,
     get_pixel_art_queue_message_id,

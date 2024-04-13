@@ -5,7 +5,7 @@ import discord
 from src.global_src.global_embed import no_perm_embed
 
 from src.global_src.global_roles import (
-    expo_demo_role_id,
+    expo_role_id,
     farm_role_id,
     giveaway_role_id,
     industrial_role_id,
@@ -16,14 +16,14 @@ from src.global_src.global_roles import (
     support_role_id,
 )
 from src.ticket.utils.create_overwrites import create_no_perm_overwrites, create_view_and_chat_overwrites
-from src.ticket.utils.pixel_art_utils.db_utils.get_db_data_pixel_art import get_pixel_art_channel_id
+from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import get_pixel_art_channel_id
 ticket_group = discord.SlashCommandGroup("ticket", "Ticket utils command")
 
 @ticket_group.command(name = "add", description = "Add someone to the current ticket channel")
 async def add_user_ticket(ctx: discord.ApplicationContext, user: discord.Member):
     if int(ctx.user.id) != 756509638169460837 and not any(role.id in [
             pixel_art_role_id,
-            expo_demo_role_id,
+            expo_role_id,
             shop_role_id,
             industrial_role_id,
             farm_role_id,
@@ -60,7 +60,7 @@ async def add_user_ticket(ctx: discord.ApplicationContext, user: discord.Member)
 async def remove_user_ticket(ctx: discord.ApplicationContext, user: discord.Member):
     if int(ctx.user.id) != 756509638169460837 and not any(role.id in [
             pixel_art_role_id,
-            expo_demo_role_id,
+            expo_role_id,
             shop_role_id,
             industrial_role_id,
             farm_role_id,

@@ -15,7 +15,7 @@ from src.global_src.global_roles import (
 )
 from src.ticket.view.confirm_close_ticket import confirm_close_ticket
 from src.ticket.view.panel_selector import panel_selector
-from src.ticket.view.builder_request_views.actions_builder_request import (
+from src.ticket.view.builder_request_views.actions_claimed_builder_request import (
     actions_claimed_pixel_art_view,
 )
 from src.ticket.view.builder_request_views.actions_builder_request import actions_pixel_art_view
@@ -39,7 +39,7 @@ class ticket(commands.Cog):
 
     @discord.Cog.listener()
     async def on_ready(self):
-        bot.add_view(pixel_art_panel_view())
+        bot.add_view(pixel_art_panel_view(builder_type=None))
         bot.add_view(form_pixel_art_view())
         bot.add_view(confirm_form_pixel_art_view())
         bot.add_view(actions_pixel_art_view())
