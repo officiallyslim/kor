@@ -1,7 +1,7 @@
 import discord
 from discord.commands import Option
 from discord.ext import commands
-from global_src.global_embed import no_perm_embed
+from src.global_src.global_embed import no_perm_embed
 
 from config import bot
 from src.global_src.global_channel_id import new_members_log_channel_id
