@@ -1,0 +1,14 @@
+{
+    "content": null,
+    "embeds": [
+        {
+            "title": "Request for Farm Builder 🧑‍🌾",
+            "description": "Thank you for reaching out to a `Farm Builder`!\n\nOur team will get back to you promptly. We appreciate your interest and look forward to assisting you.",
+            "color": 5814783,
+            "footer": {
+                "text": "Ticket ID: [KEY]"
+            }
+        }
+    ],
+    "attachments": []
+}
