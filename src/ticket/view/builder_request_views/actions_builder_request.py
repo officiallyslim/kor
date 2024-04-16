@@ -24,7 +24,7 @@ from src.ticket.utils.builder_request_utils.claim_builder_request_ticket import 
 from src.ticket.view.confirm_close_ticket import confirm_close_ticket
 
 
-class actions_pixel_art_view(discord.ui.View):
+class actions_builder_view(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 

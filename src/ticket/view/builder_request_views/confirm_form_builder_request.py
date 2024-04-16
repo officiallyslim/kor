@@ -13,7 +13,7 @@ from src.global_src.global_emojis import discord_emoji, roblox_emoji, send_emoji
 from src.global_src.global_roles import pixel_art_role_id
 from src.ticket.utils.create_overwrites import create_view_and_chat_overwrites
 from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request import (
-    edit_db_pixel_art,
+    edit_builder_request_db,
 )
 from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
     get_pixel_art_log_message_id,
@@ -43,7 +43,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         roblox_username = embed[0]['fields'][1]['value'].replace("```", "")
         island_code = embed[0]['fields'][2]['value'].replace("```", "")
         build = embed[0]['fields'][3]['value'].replace("```", "")
-        edit_db_pixel_art(
+        edit_builder_request_db(
             ticket_id=ticket_id,
             form_name=name,
             form_roblox_user=roblox_username,
@@ -104,7 +104,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         # Save queue msg to database
         queue_msg = await pixel_art_queue_channel.send(content="", embed=embed, view=jump_channel(guild_id=guild_id, channel_id=channel_id))
         queue_msg_id = queue_msg.id
-        edit_db_pixel_art(ticket_id, queue_msg_id=queue_msg_id)
+        edit_builder_request_db(ticket_id, queue_msg_id=queue_msg_id)
 
         # Send to logs
         log_msg_id = get_pixel_art_log_message_id(ticket_id)

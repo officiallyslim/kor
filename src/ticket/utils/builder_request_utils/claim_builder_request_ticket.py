@@ -11,7 +11,7 @@ from src.global_src.global_roles import (
 )
 from src.ticket.utils.create_overwrites import create_custom_overwrites
 from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request import (
-    edit_db_pixel_art,
+    edit_builder_request_db,
 )
 from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
     get_pixel_art_channel_id,
@@ -84,4 +84,4 @@ async def claim_ticket(interaction: discord.Interaction):
     new_embed.set_footer(text=old_embed[0]['footer']['text'])
     await queue_message.edit(embed=new_embed)
     # Save to database
-    edit_db_pixel_art(ticket_id=ticket_id, claim_user_id=interaction.user.id)
+    edit_builder_request_db(ticket_id=ticket_id, claim_user_id=interaction.user.id)

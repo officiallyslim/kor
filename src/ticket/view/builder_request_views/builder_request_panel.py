@@ -15,7 +15,7 @@ class pixel_art_panel_view(discord.ui.View):
     )
 
     async def pixel_art_panel_button(self, button: discord.ui.Button, interaction: discord.Interaction):
-        builder_request_panel_callback(button=button, interaction=interaction, builder_type=self.builder_type)
+        await builder_request_panel_callback(button=button, interaction=interaction, builder_type=self.builder_type)
 
 class farm_panel_view(discord.ui.View):
     def __init__(self, builder_type):
@@ -30,4 +30,4 @@ class farm_panel_view(discord.ui.View):
     )
 
     async def farm_panel_button(self, button: discord.ui.Button, interaction: discord.Interaction):
-        builder_request_panel_callback(button=button, interaction=interaction, builder_type=self.builder_type)
+        await builder_request_panel_callback(button=button, interaction=interaction, builder_type=self.builder_type)

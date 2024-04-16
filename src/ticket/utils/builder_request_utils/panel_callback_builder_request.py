@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from src.global_src.embed_to_dict import embed_to_dict
 from src.ticket.modal.form_builder_request import form_pixel_art_modal
 
 import discord
@@ -19,12 +20,21 @@ from src.global_src.global_roles import (
 )
 from src.ticket.utils.create_overwrites import create_custom_overwrites
 from src.ticket.utils.gen_ticket_key import gen_key
-from src.ticket.utils.builder_request_utils.db_utils.add_db_builder_request import add_db_pixel_art
+from src.ticket.utils.builder_request_utils.db_utils.add_db_builder_request import add_builder_request_db
 from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
-    check_open_pixel_art_ticket,
+    check_open_builder_ticket,
 )
 from src.ticket.view.jump_channel import jump_channel
-from src.ticket.view.builder_request_views.form_builder_request import form_pixel_art_view
+from src.ticket.view.builder_request_views.form_builder_request import form_builder_request_view
+
+ticket_type_dict = {
+    "👾Request A Pixel Art Builder 👾": "pixel_art",
+    "🧑‍🌾Request A Farm Builder🧑‍🌾": "farm",
+    "🏠Request a Structure Builder🏠": "structure",
+    "⚒️Request an Expo/Demo worker ⚒️": "expodemo_worker",
+    "🤖Request A Industrial Builder🤖": "industrial",
+    "🛒Request a Shop Builder🛒": "shop"
+}
 
 async def builder_request_panel_callback(button: discord.ui.Button, interaction: discord.Interaction, builder_type):
         # Get time
@@ -58,7 +68,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
                     json.dump(data, f, indent=4)
 
         # Check user have current open channel
-        open_ticket = check_open_pixel_art_ticket(int(interaction.user.id))
+        open_ticket = check_open_builder_ticket(int(interaction.user.id))
         if open_ticket is not False:  # compare with False, not the function
             ticket_id, channel_id = open_ticket
             embed = discord.Embed(
@@ -72,6 +82,11 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
         # Defer response
         modal = form_pixel_art_modal(title="Pixel Art Form",name=interaction.user.name, status="new")
         await interaction.response.send_modal(modal)
+
+        # Get ticket type:
+        embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
+        ticket_title = embed[0]['title']
+        ticket_type = ticket_type_dict[ticket_title]
 
         # Gen ticket id
         ticket_id = gen_key(15)
@@ -117,7 +132,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
         embed = discord.Embed.from_dict(embed_info)
 
         welcome_message = await new_channel.send(
-            f"{interaction.user.mention}", embed=embed, view=form_pixel_art_view()
+            f"{interaction.user.mention}", embed=embed, view=form_builder_request_view()
         )
 
         # Respond the message
@@ -168,8 +183,9 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
         log_message = await log_channel.send(embed=embed)
 
         # Add data to database
-        add_db_pixel_art(
+        add_builder_request_db(
             ticket_id=ticket_id,
+            ticket_type=ticket_type,
             open_user_id=interaction.user.id,
             open_time=open_time,
             open_reason="Request A Pixel Art Builder",

@@ -7,7 +7,7 @@ from src.ticket.modal.form_builder_request import form_pixel_art_modal
 from src.ticket.view.confirm_close_ticket import confirm_close_ticket
 
 
-class form_pixel_art_view(discord.ui.View):
+class form_builder_request_view(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 

@@ -24,7 +24,7 @@ from src.global_src.global_roles import (
     trial_administration_role_id,
 )
 from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request import (
-    edit_db_pixel_art,
+    edit_builder_request_db,
 )
 from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
     check_claimed_pixeL_art_ticket,
@@ -80,7 +80,7 @@ async def close_ticket(interaction: discord.Interaction, reason):
     await asyncio.sleep(5)
 
     close_time = int(datetime.now().timestamp())
-    edit_db_pixel_art(ticket_id=ticket_id, close_time=close_time, close_user_id=interaction.user.id, close_reason=reason, transcript_key=status[1])
+    edit_builder_request_db(ticket_id=ticket_id, close_time=close_time, close_user_id=interaction.user.id, close_reason=reason, transcript_key=status[1])
 
     await ticket_channel.delete(reason=f"Ticket {ticket_id} finished.")
 

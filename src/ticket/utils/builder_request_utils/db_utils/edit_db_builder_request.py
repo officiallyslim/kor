@@ -1,12 +1,12 @@
 import sqlite3
 from src.global_src.global_path import ticket_database_path
 
-def edit_db_pixel_art(ticket_id, **kwargs):
+def edit_builder_request_db(ticket_id, **kwargs):
     conn = sqlite3.connect(ticket_database_path)
     cursor = conn.cursor()
     
     # Start edit
-    query = "UPDATE pixel_art SET "
+    query = "UPDATE builder_request SET "
     update_values = []
     
     # Add args
