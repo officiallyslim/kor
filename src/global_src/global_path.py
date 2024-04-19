@@ -1,16 +1,19 @@
+# Version Files
+version_path = "db/version.txt"
+
 # Facts file
-daily_count_path = 'db/facts/daily_count.txt'
-added_trivia_path = 'db/facts/island_fact/added_trivia.json'
-new_fact_path = 'db/facts/new_fact.txt'
+daily_count_path = "db/facts/daily_count.txt"
+added_trivia_path = "db/facts/island_fact/added_trivia.json"
+new_fact_path = "db/facts/new_fact.txt"
 
 # Embed sender
-embed_path = 'db/embed_sender/embed.json'
+embed_path = "db/embed_sender/embed.json"
 
 # Welcome image
-default_pfp_path = 'src/new_member/welcome_img_template/defaultpfp.png'
-pfp_img_path = 'src/new_member/welcome_img_template/user_pfp.png'
-background_img_path = 'src/new_member/welcome_img_template/background.png'
-welcome_img_folder_path = 'db/welcomer/old_welcome_img/'
+default_pfp_path = "src/new_member/welcome_img_template/defaultpfp.png"
+pfp_img_path = "src/new_member/welcome_img_template/user_pfp.png"
+background_img_path = "src/new_member/welcome_img_template/background.png"
+welcome_img_folder_path = "db/welcomer/old_welcome_img/"
 
 # Ticket
 ticket_success_embed_path = "src/ticket/embed/success_ticket.json"
