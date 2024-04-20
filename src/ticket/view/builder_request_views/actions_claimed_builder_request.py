@@ -6,7 +6,7 @@ from src.global_src.embed_to_dict import embed_to_dict
 from src.global_src.global_emojis import claim_emoji
 from src.ticket.utils.builder_request_utils.unclaim_builder_request_ticket import unclaim_ticket
 from src.ticket.view.confirm_close_ticket import confirm_close_ticket
-from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import check_claimed_pixeL_art_ticket
+from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import check_claimed_builder_ticket
 
 class actions_claimed_pixel_art_view(discord.ui.View):
     def __init__(self):
@@ -19,7 +19,7 @@ class actions_claimed_pixel_art_view(discord.ui.View):
         ticket_id = re.findall(r"Ticket ID: (\w+)", embed[0]["footer"]["text"])[0]
 
         # Check if user is the claimer
-        claim_user_id = check_claimed_pixeL_art_ticket(ticket_id)
+        claim_user_id = check_claimed_builder_ticket(ticket_id)
         if claim_user_id is not None:
             if interaction.user.id != claim_user_id:
                 await interaction.response.send_message("Sorry, only claim user can unclaim.", ephemeral=True)

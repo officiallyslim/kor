@@ -15,9 +15,9 @@ from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request imp
 )
 from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
     get_builder_channel_id,
-    get_pixel_art_ticket_open_user_id,
+    get_builder_open_user_id,
     get_builder_welcome_msg,
-    get_pixel_art_queue_message_id,
+    get_builder_queue_message_id,
 )
 
 
@@ -30,7 +30,7 @@ async def unclaim_ticket(interaction: discord.Interaction):
     channel_id = get_builder_channel_id(ticket_id=ticket_id)
 
     # Get open user ID
-    open_user_id = get_pixel_art_ticket_open_user_id(ticket_id=ticket_id)
+    open_user_id = get_builder_open_user_id(ticket_id=ticket_id)
 
     # Get users and roles
     whoami = interaction.user
@@ -63,7 +63,7 @@ async def unclaim_ticket(interaction: discord.Interaction):
     await welcome_msg.edit(view=actions_pixel_art_view())
 
     # Edit queue message
-    queue_message_id = get_pixel_art_queue_message_id(ticket_id)
+    queue_message_id = get_builder_queue_message_id(ticket_id)
     queue_message = await bot.get_channel(pixel_art_queue_channel_id).fetch_message(queue_message_id)
     old_embed = [embed_to_dict(embed) for embed in queue_message.embeds]
     

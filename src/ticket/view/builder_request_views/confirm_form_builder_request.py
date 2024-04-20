@@ -16,9 +16,10 @@ from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request imp
     edit_builder_request_db,
 )
 from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
-    get_pixel_art_log_message_id,
-    get_pixel_art_ticket_open_user_id,
+    get_builder_log_message_id,
+    get_builder_open_user_id,
     get_builder_welcome_msg,
+    get_builder_ticket_type
 )
 from src.ticket.view.jump_channel import jump_channel
 
@@ -33,7 +34,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         ticket_id = re.findall(r"Ticket ID: (\w+)", interaction.channel.topic)[0]
 
         # Verify user
-        open_user_id = get_pixel_art_ticket_open_user_id(ticket_id)
+        open_user_id = get_builder_open_user_id(ticket_id)
         if open_user_id is not None and int(interaction.user.id) != int(open_user_id):
             await interaction.response.send_message(embed=no_perm_embed, ephemeral=True)
 
@@ -107,7 +108,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         edit_builder_request_db(ticket_id, queue_msg_id=queue_msg_id)
 
         # Send to logs
-        log_msg_id = get_pixel_art_log_message_id(ticket_id)
+        log_msg_id = get_builder_log_message_id(ticket_id)
         log_message = await bot.get_channel(ticket_log_channel_id).fetch_message(log_msg_id)
         embed = discord.Embed(
             title=f"New form answers in ticket {ticket_id}",
@@ -128,7 +129,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         ticket_id = re.findall(r"Ticket ID: (\w+)", interaction.channel.topic)[0]
 
         # Verify user
-        open_user_id = get_pixel_art_ticket_open_user_id(ticket_id)
+        open_user_id = get_builder_open_user_id(ticket_id)
         if int(interaction.user.id) != int(open_user_id):
             await interaction.response.send_message(embed=no_perm_embed, ephemeral=True)
 
@@ -139,7 +140,9 @@ class confirm_form_pixel_art_view(discord.ui.View):
         island_code = embed[0]['fields'][2]['value'].replace("```", "")
         build = embed[0]['fields'][3]['value'].replace("```", "")
 
+        ticket_type = get_builder_ticket_type(ticket_id=ticket_id)
+
         # Send modal
         from src.ticket.modal.form_builder_request import builder_request_modal
-        modal = builder_request_modal(title="Builder Request Form", name=name, status="edit", roblox_user=roblox_username, island_code=island_code, build=build)
+        modal = builder_request_modal(title="Builder Request Form", name=name, status="edit", roblox_user=roblox_username, island_code=island_code, build=build, ticket_type=ticket_type)
         await interaction.response.send_modal(modal)

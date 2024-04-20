@@ -1,7 +1,10 @@
 import discord
+
 from src.global_src.embed_to_dict import embed_to_dict
-from src.ticket.utils.builder_request_utils.panel_callback_builder_request import builder_request_panel_callback
 from src.ticket.utils.builder_request_utils.builder_ticket_type import ticket_type_dict
+from src.ticket.utils.builder_request_utils.panel_callback_builder_request import (
+    builder_request_panel_callback,
+)
 
     # "⚒️Request an Expo/Demo worker ⚒️": "expodemo_worker",
     # "🤖Request A Industrial Builder🤖": "industrial",
@@ -13,7 +16,7 @@ class builder_panel_view(discord.ui.View):
 
     @discord.ui.button(
         label="Setting up!",
-        style=discord.ButtonStyle.primary,
+        style=discord.ButtonStyle.red,
         emoji="🚀",
         custom_id="builder_panel_button",
     )
@@ -26,6 +29,7 @@ class builder_panel_view(discord.ui.View):
         if button.label == "Setting up!":
             button.label = ticket_data['button_label']
             button.emoji = ticket_data['emoji']
+            button.style = discord.ButtonStyle.grey
 
             await interaction.response.edit_message(view=self)
             await interaction.followup.send("Starting...\nPlease click again to create a ticket.", ephemeral=True)

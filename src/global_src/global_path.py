@@ -27,9 +27,9 @@ farm_panel_embed_path = "src/ticket/embed/farm_panel.json"
 farm_welcome_embed_path = "src/ticket/embed/farm_welcome.json"
 farm_dm_embed_path = "src/ticket/embed/farm_dm.json"
 # Structure
-strucure_panel_embed_path = "src/ticket/embed/farm_panel.json"
-strucure_welcome_embed_path = "src/ticket/embed/farm_welcome.json"
-strucure_dm_embed_path = "src/ticket/embed/farm_dm.json"
+strucure_panel_embed_path = "src/ticket/embed/structure_panel.json"
+strucure_welcome_embed_path = "src/ticket/embed/structure_welcome.json"
+strucure_dm_embed_path = "src/ticket/embed/structure_dm.json"
 
 
 # Database

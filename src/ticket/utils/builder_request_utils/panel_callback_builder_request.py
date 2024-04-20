@@ -67,8 +67,8 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
         ticket_data = ticket_type_dict[ticket_title]
 
         # Check user have current open channel
-        open_ticket = check_open_builder_ticket(int(interaction.user.id))
-        if open_ticket is not False:  # compare with False, not the function
+        open_ticket = check_open_builder_ticket(int(interaction.user.id), ticket_data['type'])
+        if open_ticket is not False:
             ticket_id, channel_id = open_ticket
             embed = discord.Embed(
                 title=f"You already have an open {ticket_data['button_label']} ticket!",
@@ -79,7 +79,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
             return
 
         # Defer response
-        modal = builder_request_modal(title=f"{ticket_data['button_label']} Form",name=interaction.user.name, status="new")
+        modal = builder_request_modal(title=f"{ticket_data['button_label']} Form",name=interaction.user.name, status="new", ticket_type=ticket_data['type'])
         await interaction.response.send_modal(modal)
 
         # Gen ticket id

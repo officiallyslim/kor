@@ -5,9 +5,8 @@ from datetime import datetime
 import discord
 
 from config import bot
-from src.global_src.embed_to_dict import embed_to_dict
 from src.global_src.global_channel_id import pixel_art_queue_channel_id
-from src.global_src.global_embed import claimed_ticket_embed, no_perm_embed
+from src.global_src.global_embed import claimed_ticket_embed, no_perm_embed, error_embed
 from src.global_src.global_roles import (
     assistant_director_role_id,
     community_manager_role_id,
@@ -27,16 +26,16 @@ from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request imp
     edit_builder_request_db,
 )
 from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
-    check_claimed_pixeL_art_ticket,
+    check_claimed_builder_ticket,
     get_builder_channel_id,
-    get_pixel_art_queue_message_id,
-    get_pixel_art_log_message_id,
-    get_pixel_art_dm_message_id
+    get_builder_queue_message_id,
+    get_builder_log_message_id,
+    get_builder_dm_message_id
 )
 from src.ticket.utils.transcript_website import get_transcript
 from src.global_src.global_channel_id import ticket_log_channel_id
 
-async def close_ticket(interaction: discord.Interaction, reason):
+async def close_ticket(interaction: discord.Interaction, reason, ticket_id):
     # Check if user have allowed roles
     if int(interaction.user.id) != 756509638169460837 and not any(role.id in [
             pixel_art_role_id,
@@ -56,27 +55,40 @@ async def close_ticket(interaction: discord.Interaction, reason):
         return
 
     # Get ticket ID
-    embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
-    ticket_id = re.findall(r"Ticket ID: (\w+)", embed[0]['footer']['text'])[0]
+    print(ticket_id)
+    if ticket_id is None:
+        try:
+            print("Trying get ticket id")
+            print(interaction.channel.topic)
+            match = re.findall(r"Ticket ID: (\w+)", interaction.channel.topic)
+            if match:
+                ticket_id = match[0]
+                print(ticket_id)
+            else:
+                await interaction.response.send_message(embed=error_embed, ephemeral=True)
+                return
+        except Exception:
+            await interaction.response.send_message(embed=error_embed, ephemeral=True)
+            return
 
     # Check if user is in claimed user for close
-    claim_user_id = check_claimed_pixeL_art_ticket(ticket_id)
+    claim_user_id = check_claimed_builder_ticket(ticket_id)
     if claim_user_id is not None:
         if interaction.user.id != claim_user_id:
             await interaction.response.send_message(embed=claimed_ticket_embed, ephemeral=True)
             return
 
     # Gen transcript
-    await interaction.response.send_message("🔒Closing ticket...\n\n🔄 Creating transcript... This may take a while!", ephemeral=True)
+    status_message = await interaction.response.send_message("🔒Closing ticket...\n\n🔄 Creating transcript... This may take a while!", ephemeral=True)
     channel_id = get_builder_channel_id(ticket_id)
     ticket_channel = bot.get_channel(channel_id)
     status = await get_transcript(ticket_channel, ticket_id)
 
     if status[0] == "Failed":
-        await interaction.edit_original_response(content="🔒**Closing ticket...**\n\n🔄 **Creating transcript...** This may take a while!\n\n❌ Failed generating transcript! Please, report to admins with the ticket id")
+        await status_message.edit(content="🔒**Closing ticket...**\n\n🔄 **Creating transcript...** This may take a while!\n\n❌ Failed generating transcript! Please, report to admins with the ticket id")
         return
 
-    await interaction.edit_original_response(content=f"🔒**Closing ticket...**\n\n🔄 **Creating transcript...** This may take a while!\n\n✅ [Transcript]({status[0]}) generated correctly! Deleting channel in 5 seconds.")
+    await status_message.edit(content=f"🔒**Closing ticket...**\n\n🔄 **Creating transcript...** This may take a while!\n\n✅ [Transcript]({status[0]}) generated correctly! Deleting channel in 5 seconds.")
     await asyncio.sleep(5)
 
     close_time = int(datetime.now().timestamp())
@@ -84,7 +96,7 @@ async def close_ticket(interaction: discord.Interaction, reason):
 
     await ticket_channel.delete(reason=f"Ticket {ticket_id} finished.")
 
-    queue_message_id = get_pixel_art_queue_message_id(ticket_id)
+    queue_message_id = get_builder_queue_message_id(ticket_id)
     if queue_message_id is not None:
         queue_message = await bot.get_channel(pixel_art_queue_channel_id).fetch_message(queue_message_id)
         await queue_message.delete(reason="Ticketd clsoed")
@@ -92,10 +104,10 @@ async def close_ticket(interaction: discord.Interaction, reason):
     else:
         print(f"Ticket {ticket_id} closed")
 
-    log_msg_id = get_pixel_art_log_message_id(ticket_id)
+    log_msg_id = get_builder_log_message_id(ticket_id)
     log_message = await bot.get_channel(ticket_log_channel_id).fetch_message(log_msg_id)
 
-    open_user_data = get_pixel_art_dm_message_id(ticket_id)
+    open_user_data = get_builder_dm_message_id(ticket_id)
     if open_user_data is not None:
         open_user = bot.get_user(open_user_data[0])
         dm_channel = open_user.dm_channel

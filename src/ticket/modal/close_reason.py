@@ -17,4 +17,4 @@ class close_reason(discord.ui.Modal):
             ))
 
     async def callback(self, interaction: discord.Interaction):
-        await close_ticket(interaction=interaction, reason=self.children[0].value)
+        await close_ticket(interaction=interaction, reason=self.children[0].value, ticket_id=None)

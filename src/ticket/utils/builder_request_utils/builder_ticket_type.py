@@ -1,17 +1,21 @@
-from src.global_src.global_emojis import smile_pixel_emoji
-from src.global_src.global_roles import (
-        pixel_art_role_id,
-        farm_role_id,
-        structure_role_id
+from src.global_src.global_channel_id import (
+    farm_queue_channel_id,
+    pixel_art_queue_channel_id,
+    structure_queue_channel_id,
 )
-
+from src.global_src.global_emojis import smile_pixel_emoji
 from src.global_src.global_path import (
-        pixel_art_dm_embed_path,
-        pixel_art_welcome_embed_path,
-        farm_dm_embed_path,
-        farm_welcome_embed_path,
-        strucure_dm_embed_path,
-        strucure_welcome_embed_path
+    farm_dm_embed_path,
+    farm_welcome_embed_path,
+    pixel_art_dm_embed_path,
+    pixel_art_welcome_embed_path,
+    strucure_dm_embed_path,
+    strucure_welcome_embed_path,
+)
+from src.global_src.global_roles import (
+    farm_role_id,
+    pixel_art_role_id,
+    structure_role_id,
 )
 
 ticket_type_dict = {
@@ -24,6 +28,7 @@ ticket_type_dict = {
         "dm_embed_path": pixel_art_dm_embed_path,
         "welcome_embed_path": pixel_art_welcome_embed_path,
         "short_name": "pixel",
+        "queue_channel_id": pixel_art_queue_channel_id,
     },
     "🧑‍🌾Request A Farm Builder🧑‍🌾": {
         "type": "farm",
@@ -33,7 +38,8 @@ ticket_type_dict = {
         "category_id": 1151613274589253745,
         "dm_embed_path": farm_dm_embed_path,
         "welcome_embed_path": farm_welcome_embed_path,
-        "short_name": "farm"
+        "short_name": "farm",
+        "queue_channel_id": farm_queue_channel_id,
     },
     "🏠Request a Structure Builder🏠": {
         "type": "structure",
@@ -43,6 +49,7 @@ ticket_type_dict = {
         "category_id": 1151613279458828439,
         "dm_embed_path": strucure_dm_embed_path,
         "welcome_embed_path": strucure_welcome_embed_path,
-        "short_name": "structure"
+        "short_name": "structure",
+        "queue_channel_id": structure_queue_channel_id,
     }
 }
