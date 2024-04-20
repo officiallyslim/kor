@@ -16,7 +16,10 @@ class form_builder_request_view(discord.ui.View):
     async def fill_form_pixel_art_view_callback(self, button: discord.ui.Button, interaction: discord.Interaction):
         # Get ticket ID
         try:
-            ticket_id = re.findall(r"Ticket ID: (\w+)", interaction.channel.topic)
+            print(interaction.channel.topic)
+            match = re.findall(r"Ticket ID: (\w+)", interaction.channel.topic)
+            if match:
+                ticket_id = match[0]
         except Exception:
             await interaction.response.send_message(embed=error_embed, ephemeral=True)
             return

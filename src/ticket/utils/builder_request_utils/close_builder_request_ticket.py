@@ -58,12 +58,9 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id):
     print(ticket_id)
     if ticket_id is None:
         try:
-            print("Trying get ticket id")
-            print(interaction.channel.topic)
             match = re.findall(r"Ticket ID: (\w+)", interaction.channel.topic)
             if match:
                 ticket_id = match[0]
-                print(ticket_id)
             else:
                 await interaction.response.send_message(embed=error_embed, ephemeral=True)
                 return
