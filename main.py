@@ -58,7 +58,7 @@ async def reload_cog(
             return
         await ctx.respond(f"I can't find \"{name}\" :c")
     else:
-        await ctx.respond("You are not allowed to use this command")
+        await ctx.respond("You are not allowed to use this")
 
 @bot.slash_command(name="kill", description="ONLY USE URGENCY CASE")
 async def kill(ctx: discord.ApplicationContext,):
