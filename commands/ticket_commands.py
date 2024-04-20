@@ -1,9 +1,11 @@
 import re
-from config import bot
+
 import discord
+from discord import option
+from src.ticket.utils.builder_request_utils.close_builder_request_ticket import close_ticket
 
+from config import bot
 from src.global_src.global_embed import no_perm_embed
-
 from src.global_src.global_roles import (
     expo_role_id,
     farm_role_id,
@@ -15,13 +17,24 @@ from src.global_src.global_roles import (
     structure_role_id,
     support_role_id,
 )
-from src.ticket.utils.create_overwrites import create_no_perm_overwrites, create_view_and_chat_overwrites
-from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import get_builder_channel_id
+from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
+    get_builder_channel_id,
+)
+from src.ticket.utils.create_overwrites import (
+    create_no_perm_overwrites,
+    create_view_and_chat_overwrites,
+)
+
 ticket_group = discord.SlashCommandGroup("ticket", "Ticket utils command")
 
-@ticket_group.command(name = "add", description = "Add someone to the current ticket channel")
+
+@ticket_group.command(
+    name="add", description="Add someone to the current ticket channel"
+)
 async def add_user_ticket(ctx: discord.ApplicationContext, user: discord.Member):
-    if int(ctx.user.id) != 756509638169460837 and not any(role.id in [
+    if int(ctx.user.id) != 756509638169460837 and not any(
+        role.id
+        in [
             pixel_art_role_id,
             expo_role_id,
             shop_role_id,
@@ -44,7 +57,10 @@ async def add_user_ticket(ctx: discord.ApplicationContext, user: discord.Member)
         ticket_id = None
 
     if ticket_id is None:
-        await ctx.response.send_message("Sorry, you need be in the same ticket channel for add someone new!", ephemeral=True)
+        await ctx.response.send_message(
+            "Sorry, you need be in the same ticket channel for add someone new!",
+            ephemeral=True,
+        )
         return
 
     # Get datas
@@ -56,9 +72,14 @@ async def add_user_ticket(ctx: discord.ApplicationContext, user: discord.Member)
     await ticket_channel.set_permissions(user, overwrite=new_overwrites[user])
     await ctx.response.send_message(f"{user.mention} added correctly!", ephemeral=True)
 
-@ticket_group.command(name = "remove", description = "Remove someone to the current ticket channel")
+
+@ticket_group.command(
+    name="remove", description="Remove someone to the current ticket channel"
+)
 async def remove_user_ticket(ctx: discord.ApplicationContext, user: discord.Member):
-    if int(ctx.user.id) != 756509638169460837 and not any(role.id in [
+    if int(ctx.user.id) != 756509638169460837 and not any(
+        role.id
+        in [
             pixel_art_role_id,
             expo_role_id,
             shop_role_id,
@@ -81,7 +102,10 @@ async def remove_user_ticket(ctx: discord.ApplicationContext, user: discord.Memb
         ticket_id = None
 
     if ticket_id is None:
-        await ctx.response.send_message("Sorry, you need be in the same ticket channel for remove someone!", ephemeral=True)
+        await ctx.response.send_message(
+            "Sorry, you need be in the same ticket channel for remove someone!",
+            ephemeral=True,
+        )
         return
 
     # Get datas
@@ -91,4 +115,32 @@ async def remove_user_ticket(ctx: discord.ApplicationContext, user: discord.Memb
     new_overwrites = create_no_perm_overwrites(ctx, user)
     ticket_channel = bot.get_channel(ticket_channel_id)
     await ticket_channel.set_permissions(user, overwrite=new_overwrites[user])
-    await ctx.response.send_message(f"{user.mention} removed correctly!", ephemeral=True)
+    await ctx.response.send_message(
+        f"{user.mention} removed correctly!", ephemeral=True
+    )
+
+
+@ticket_group.command(name="close", description="Close the ticket")
+@option("close_reason", description="Close ticket reason")
+@option("ticket_id", description="The ID of the ticket you want to close", default=None)
+
+async def close_ticket_cmd(ctx: discord.ApplicationContext, close_reason: str, ticket_id: str,):
+    if int(ctx.user.id) != 756509638169460837 and not any(
+        role.id
+        in [
+            pixel_art_role_id,
+            expo_role_id,
+            shop_role_id,
+            industrial_role_id,
+            farm_role_id,
+            structure_role_id,
+            recruitment_role_id,
+            support_role_id,
+            giveaway_role_id,
+        ]
+        for role in ctx.user.roles
+    ):
+        await ctx.response.send_message(embed=no_perm_embed, ephemeral=True)
+        return
+
+    await close_ticket(interaction=ctx, reason=close_reason, ticket_id=ticket_id)
