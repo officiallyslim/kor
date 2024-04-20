@@ -1,7 +1,7 @@
 py-cord==2.5.0
 requests==2.31.0
 pytz==2023.3.post1
-aiohttp==3.9.2
+aiohttp==3.9.4
 python-dotenv==1.0.0
 better_profanity==0.7.0
 bs4==0.0.1
