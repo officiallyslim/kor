@@ -23,7 +23,7 @@ class form_builder_request_view(discord.ui.View):
 
         embed = discord.Embed(
             title="Closing ticket...",
-            description="Are you u want close the ticket?",
+            description="Are you sure do you want close the ticket?",
             color=0xff0000
         )
         embed.set_footer(text=f"Ticket ID: {ticket_id}")
