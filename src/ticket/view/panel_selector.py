@@ -1,18 +1,18 @@
-import discord
-from src.global_src.global_emojis import smile_pixel_emoji
 import json
+
+import discord
+
 from src.global_src.global_embed import error_embed
-from src.global_src.global_path import pixel_art_panel_embed_path, farm_panel_embed_path
-from src.ticket.view.builder_request_views.builder_request_panel import pixel_art_panel_view, farm_panel_view
+from src.global_src.global_emojis import smile_pixel_emoji
+from src.global_src.global_path import farm_panel_embed_path, pixel_art_panel_embed_path
+from src.ticket.view.builder_request_views.builder_request_panel import (
+    builder_panel_view,
+)
 
 ticket_panel_embed_dict = {
     "pixel_art": pixel_art_panel_embed_path,
-    "farm": farm_panel_embed_path
-}
-
-ticket_panel_view_dict = {
-    "pixel_art": pixel_art_panel_view,
-    "farm": farm_panel_view
+    "farm": farm_panel_embed_path,
+    "structure": farm_panel_embed_path
 }
 
 class panel_selector(discord.ui.View):
@@ -28,11 +28,13 @@ class panel_selector(discord.ui.View):
             ),
             discord.SelectOption(
                 label="farm",
-                description=""
+                description="",
+                emoji="🧑‍🌾"
             ),
             discord.SelectOption(
-                label="TEST4",
-                description=""
+                label="structure",
+                description="",
+                emoji="🏠"
             )
         ]
     )
@@ -44,8 +46,8 @@ class panel_selector(discord.ui.View):
             for embed_info in data['embeds']:
                 embed = discord.Embed.from_dict(embed_info)
                 await interaction.response.send_message(content="Sending!", ephemeral=True)
-                await interaction.channel.send(embed=embed, view=ticket_panel_view_dict[select.values[0]](builder_type=select.values[0]))
+                await interaction.channel.send(embed=embed, view=builder_panel_view())
 
-        except Exception:
-            await interaction.response.send_message(content="Sending!", ephemeral=True)
-            await interaction.channel.send(embed=error_embed, ephemeral=True)
+        except Exception as e:
+            print(e)
+            await interaction.followup.send(embed=error_embed, ephemeral=True)

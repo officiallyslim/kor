@@ -3,7 +3,7 @@ import re
 import discord
 
 from src.global_src.embed_to_dict import embed_to_dict
-from src.ticket.modal.form_builder_request import form_pixel_art_modal
+from src.ticket.modal.form_builder_request import builder_request_modal
 from src.ticket.view.confirm_close_ticket import confirm_close_ticket
 
 
@@ -13,7 +13,7 @@ class form_builder_request_view(discord.ui.View):
 
     @discord.ui.button(label="Fill", style=discord.ButtonStyle.green, emoji="📝", custom_id="fill_form_pixel_art_view")
     async def fill_form_pixel_art_view_callback(self, button: discord.ui.Button, interaction: discord.Interaction):
-        modal = form_pixel_art_modal(title="Pixel Art Form",name=interaction.user.name, status="new")
+        modal = builder_request_modal(title="Builder Request Form",name=interaction.user.name, status="new")
         await interaction.response.send_modal(modal)
 
     @discord.ui.button(label="Close", style=discord.ButtonStyle.red, emoji="🔒", custom_id="close_form_pixel_art_view")

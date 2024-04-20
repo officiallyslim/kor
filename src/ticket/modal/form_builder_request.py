@@ -11,7 +11,7 @@ from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request imp
 from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
     check_open_builder_ticket,
     get_pixel_art_confirm_message_id,
-    get_pixel_art_welcome_msg,
+    get_builder_welcome_msg,
 )
 from src.ticket.view.builder_request_views.confirm_form_builder_request import (
     confirm_form_pixel_art_view,
@@ -19,7 +19,7 @@ from src.ticket.view.builder_request_views.confirm_form_builder_request import (
 from src.ticket.view.jump_channel import jump_channel
 
 
-class form_pixel_art_modal(discord.ui.Modal):
+class builder_request_modal(discord.ui.Modal):
     def __init__(self, name, roblox_user=None, island_code=None, build=None, status=None, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self.status = status
@@ -63,7 +63,7 @@ class form_pixel_art_modal(discord.ui.Modal):
 
     async def callback(self, interaction: discord.Interaction):
         embed = discord.Embed(
-            title="Pixel Art form answers",
+            title="Form answers",
             description="",
             color=0x28a745
             )
@@ -72,6 +72,7 @@ class form_pixel_art_modal(discord.ui.Modal):
         embed.add_field(name="Roblox username", value=f"```{self.children[1].value}```", inline=False)
         embed.add_field(name="Island Code", value=f"```{self.children[2].value}```", inline=False)
         embed.add_field(name="Build", value=f"```{self.children[3].value}```", inline=False)
+        embed.set_footer(text="Please, confirm your answer before send to builder team.")
 
         open_ticket = check_open_builder_ticket(int(interaction.user.id))
         if open_ticket is False:
@@ -85,14 +86,14 @@ class form_pixel_art_modal(discord.ui.Modal):
 
         # Send form or edit
         if self.status == "new": # Send the message if is new form and change view in original welcome message
-            welcome_msg_id, channel_id = get_pixel_art_welcome_msg(ticket_id)
+            welcome_msg_id, channel_id = get_builder_welcome_msg(ticket_id)
             welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
 
             from src.ticket.view.builder_request_views.actions_builder_request import (
                 actions_builder_view,
             )
             await welcome_msg.edit(view=actions_builder_view())
-            confirm_message = await welcome_msg.reply(content="Please, confirm your answer before send to moderators", embed=embed, view=confirm_form_pixel_art_view())
+            confirm_message = await welcome_msg.reply(content="Please, confirm your answer before send to builder team.", embed=embed, view=confirm_form_pixel_art_view())
             edit_builder_request_db(ticket_id=ticket_id, confirm_message_id=confirm_message.id)
             try:
                 await interaction.response.send_message("Please, go to the ticket channel for proceed", ephemeral=True, view=jump_channel(guild_id, channel_id))
@@ -102,6 +103,6 @@ class form_pixel_art_modal(discord.ui.Modal):
         elif self.status == "edit": # Edit if is trying edit the form
             confirm_message_id = get_pixel_art_confirm_message_id(ticket_id)
             confirm_message = await bot.get_channel(channel_id).fetch_message(confirm_message_id)
-            await confirm_message.edit(content="Please, confirm your answer before send to moderators", embed=embed, view=confirm_form_pixel_art_view())
+            await confirm_message.edit(content="Please, confirm your answer before send to builder team.", embed=embed, view=confirm_form_pixel_art_view())
             await interaction.response.defer()
             return

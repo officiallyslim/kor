@@ -1,40 +1,34 @@
 import json
 from datetime import datetime
-from src.global_src.embed_to_dict import embed_to_dict
-from src.ticket.modal.form_builder_request import form_pixel_art_modal
 
 import discord
 
 from config import bot, guild_id
+from src.global_src.embed_to_dict import embed_to_dict
 from src.global_src.global_channel_id import ticket_log_channel_id
 from src.global_src.global_embed import error_embed, ticket_ban_embed
 from src.global_src.global_path import (
-    pixel_art_dm_embed_path,
-    pixel_art_welcome_embed_path,
-    ticket_banned_path,
-    ticket_success_embed_path,
-    ticket_cooldown_path
+        ticket_banned_path,
+        ticket_cooldown_path,
+        ticket_success_embed_path,
 )
-from src.global_src.global_roles import (
-    pixel_art_role_id,
+
+from src.ticket.modal.form_builder_request import builder_request_modal
+from src.ticket.utils.builder_request_utils.builder_ticket_type import ticket_type_dict
+from src.ticket.utils.builder_request_utils.db_utils.add_db_builder_request import (
+        add_builder_request_db,
+)
+from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
+        check_open_builder_ticket,
 )
 from src.ticket.utils.create_overwrites import create_custom_overwrites
 from src.ticket.utils.gen_ticket_key import gen_key
-from src.ticket.utils.builder_request_utils.db_utils.add_db_builder_request import add_builder_request_db
-from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
-    check_open_builder_ticket,
+from src.ticket.view.builder_request_views.form_builder_request import (
+        form_builder_request_view,
 )
 from src.ticket.view.jump_channel import jump_channel
-from src.ticket.view.builder_request_views.form_builder_request import form_builder_request_view
 
-ticket_type_dict = {
-    "👾Request A Pixel Art Builder 👾": "pixel_art",
-    "🧑‍🌾Request A Farm Builder🧑‍🌾": "farm",
-    "🏠Request a Structure Builder🏠": "structure",
-    "⚒️Request an Expo/Demo worker ⚒️": "expodemo_worker",
-    "🤖Request A Industrial Builder🤖": "industrial",
-    "🛒Request a Shop Builder🛒": "shop"
-}
+ticket_cooldown = 1
 
 async def builder_request_panel_callback(button: discord.ui.Button, interaction: discord.Interaction, builder_type):
         # Get time
@@ -58,7 +52,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
             with open(ticket_cooldown_path, 'w') as f:
                 json.dump(data, f, indent=4)
         else:
-            timeout_time = last_time + 300
+            timeout_time = last_time + ticket_cooldown
             if open_time < timeout_time:
                 await interaction.response.send_message("You're opening tickets so fast! Please wait a moment to open another one.", ephemeral=True)
                 return
@@ -67,26 +61,26 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
                 with open(ticket_cooldown_path, 'w') as f:
                     json.dump(data, f, indent=4)
 
+        # Get ticket type:
+        embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
+        ticket_title = embed[0]['title']
+        ticket_data = ticket_type_dict[ticket_title]
+
         # Check user have current open channel
         open_ticket = check_open_builder_ticket(int(interaction.user.id))
         if open_ticket is not False:  # compare with False, not the function
             ticket_id, channel_id = open_ticket
             embed = discord.Embed(
-                title="You already have an open pixel art ticket!",
-                description=f"You have the pixel art ticket: `{ticket_id}` already opened.\nYou can enter by clicking the button below.",
+                title=f"You already have an open {ticket_data['button_label']} ticket!",
+                description=f"You have the `{ticket_data['button_label']}` ticket: `{ticket_id}` already opened.\nYou can enter by clicking the button below.",
                 color=0xff0000
             )
             await interaction.response.send_message(embed=embed, view=jump_channel(guild_id, channel_id), ephemeral=True)
             return
 
         # Defer response
-        modal = form_pixel_art_modal(title="Pixel Art Form",name=interaction.user.name, status="new")
+        modal = builder_request_modal(title=f"{ticket_data['button_label']} Form",name=interaction.user.name, status="new")
         await interaction.response.send_modal(modal)
-
-        # Get ticket type:
-        embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
-        ticket_title = embed[0]['title']
-        ticket_type = ticket_type_dict[ticket_title]
 
         # Gen ticket id
         ticket_id = gen_key(15)
@@ -94,7 +88,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
 
         # Get users and roles
         whoami = interaction.user
-        pixel_art_role = interaction.guild.get_role(pixel_art_role_id)
+        ticket_role = interaction.guild.get_role(ticket_data['role_id'])
 
         # Set roles perms
         overwrites = create_custom_overwrites(
@@ -102,18 +96,18 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
             no_perm_objects=(),
             view_only_objects=(whoami,),
             view_and_chat_objects=(
-                pixel_art_role,
+                ticket_role,
             ),
         )
 
         # Create ticket
         try:
             new_channel = await interaction.guild.create_text_channel(
-                name=f"{interaction.user.name} - pixel",
+                name=f"{interaction.user.name} - {ticket_data['short_name']}",
                 overwrites=overwrites,
                 topic=f"Ticket ID: {ticket_id}",
-                reason="New channel for Pixel Art Builder request",
-                category=discord.Object(id=1223274346429288480),
+                reason=f"New channel for {ticket_data['button_label']} Builder request",
+                category=discord.Object(id=ticket_data['category_id']),
             )
         except Exception as e:
             await interaction.followup.send(embed=error_embed, ephemeral=True)
@@ -123,7 +117,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
             return
 
         # Send welcome message
-        with open(pixel_art_welcome_embed_path, "r", encoding="utf-8") as f:
+        with open(ticket_data['welcome_embed_path'], "r", encoding="utf-8") as f:
             data = json.load(f)
 
         embed_info = data["embeds"][0]
@@ -150,7 +144,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
         # Send DM
         try:    
             dm = await interaction.user.create_dm()
-            with open(pixel_art_dm_embed_path, "r", encoding="utf-8") as f:
+            with open(ticket_data['dm_embed_path'], "r", encoding="utf-8") as f:
                 data = json.load(f)
 
             embed_info = data["embeds"][0]
@@ -165,7 +159,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
 
         # Send to log
         embed = discord.Embed(
-            title="New Pixel Art ticket registered",
+            title=f"New {ticket_data['button_label']} ticket registered",
             description="Ticket details:",
             color=0xff8000,
         )
@@ -174,7 +168,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
         embed.add_field(name="📛 User name", value=interaction.user.name, inline=False)
         embed.add_field(name="📅 Joined", value=f"<t:{int(interaction.user.joined_at.timestamp())}:R>", inline=False)
         embed.add_field(name="👥 Claim user", value="`No claimed`", inline=False)
-        embed.add_field(name="📑 Open reason", value="```Request a Pixel Art Builder```", inline=False)
+        embed.add_field(name="📑 Open reason", value=f"```Request a {ticket_data['button_label']} Builder```", inline=False)
         embed.add_field(name="🕒 Open time", value=f"<t:{open_time}>", inline=False)
         embed.add_field(name="🏢 Ticket Channel", value=f"<#{channel_id}>", inline=False)
         embed.set_footer(text=f"Ticket ID: {ticket_id}")
@@ -185,10 +179,10 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
         # Add data to database
         add_builder_request_db(
             ticket_id=ticket_id,
-            ticket_type=ticket_type,
+            ticket_type=ticket_data['type'],
             open_user_id=interaction.user.id,
             open_time=open_time,
-            open_reason="Request A Pixel Art Builder",
+            open_reason=f"Request A {ticket_data['button_label']} Builder",
             form_name=None,
             form_roblox_user=None,
             form_island_code=None,

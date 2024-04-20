@@ -23,7 +23,7 @@ from src.ticket.view.builder_request_views.confirm_form_builder_request import (
     confirm_form_pixel_art_view,
 )
 from src.ticket.view.builder_request_views.form_builder_request import form_builder_request_view
-from src.ticket.view.builder_request_views.builder_request_panel import pixel_art_panel_view
+from src.ticket.view.builder_request_views.builder_request_panel import builder_panel_view
 
 
 class ticket(commands.Cog):
@@ -39,7 +39,7 @@ class ticket(commands.Cog):
 
     @discord.Cog.listener()
     async def on_ready(self):
-        bot.add_view(pixel_art_panel_view(builder_type=None))
+        bot.add_view(builder_panel_view())
         bot.add_view(form_builder_request_view())
         bot.add_view(confirm_form_pixel_art_view())
         bot.add_view(actions_builder_view())

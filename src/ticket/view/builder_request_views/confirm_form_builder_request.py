@@ -18,7 +18,7 @@ from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request imp
 from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
     get_pixel_art_log_message_id,
     get_pixel_art_ticket_open_user_id,
-    get_pixel_art_welcome_msg,
+    get_builder_welcome_msg,
 )
 from src.ticket.view.jump_channel import jump_channel
 
@@ -52,7 +52,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         )
 
         # Get welcome message
-        welcome_msg_id, channel_id = get_pixel_art_welcome_msg(ticket_id)
+        welcome_msg_id, channel_id = get_builder_welcome_msg(ticket_id)
         welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
 
         # Respond and delete self message
@@ -140,6 +140,6 @@ class confirm_form_pixel_art_view(discord.ui.View):
         build = embed[0]['fields'][3]['value'].replace("```", "")
 
         # Send modal
-        from src.ticket.modal.form_builder_request import form_pixel_art_modal
-        modal = form_pixel_art_modal(title="Pixel Art Form", name=name, status="edit", roblox_user=roblox_username, island_code=island_code, build=build)
+        from src.ticket.modal.form_builder_request import builder_request_modal
+        modal = builder_request_modal(title="Builder Request Form", name=name, status="edit", roblox_user=roblox_username, island_code=island_code, build=build)
         await interaction.response.send_modal(modal)

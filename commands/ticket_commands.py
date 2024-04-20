@@ -16,7 +16,7 @@ from src.global_src.global_roles import (
     support_role_id,
 )
 from src.ticket.utils.create_overwrites import create_no_perm_overwrites, create_view_and_chat_overwrites
-from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import get_pixel_art_channel_id
+from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import get_builder_channel_id
 ticket_group = discord.SlashCommandGroup("ticket", "Ticket utils command")
 
 @ticket_group.command(name = "add", description = "Add someone to the current ticket channel")
@@ -48,7 +48,7 @@ async def add_user_ticket(ctx: discord.ApplicationContext, user: discord.Member)
         return
 
     # Get datas
-    ticket_channel_id = get_pixel_art_channel_id(ticket_id[0])
+    ticket_channel_id = get_builder_channel_id(ticket_id[0])
 
     # Set new perms
     new_overwrites = create_view_and_chat_overwrites(ctx, user)
@@ -85,7 +85,7 @@ async def remove_user_ticket(ctx: discord.ApplicationContext, user: discord.Memb
         return
 
     # Get datas
-    ticket_channel_id = get_pixel_art_channel_id(ticket_id[0])
+    ticket_channel_id = get_builder_channel_id(ticket_id[0])
 
     # Set new perms
     new_overwrites = create_no_perm_overwrites(ctx, user)

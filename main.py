@@ -87,6 +87,6 @@ async def version(ctx: discord.ApplicationContext,):
             mr_boomsteak_role_id] for role in ctx.author.roles):
         await ctx.respond(embed=no_perm_embed, ephemeral=True)
         return
-    await ctx.respond(f"**Alpha v1.2 Local**.\nPing: `{round(bot.latency * 1000, 2)}`ms", ephemeral=True)
+    await ctx.respond(f"**Alpha v1.3 Local**.\nPing: `{round(bot.latency * 1000, 2)}`ms", ephemeral=True)
 
 bot.run(token)

@@ -28,7 +28,7 @@ from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request imp
 )
 from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
     check_claimed_pixeL_art_ticket,
-    get_pixel_art_channel_id,
+    get_builder_channel_id,
     get_pixel_art_queue_message_id,
     get_pixel_art_log_message_id,
     get_pixel_art_dm_message_id
@@ -68,7 +68,7 @@ async def close_ticket(interaction: discord.Interaction, reason):
 
     # Gen transcript
     await interaction.response.send_message("🔒Closing ticket...\n\n🔄 Creating transcript... This may take a while!", ephemeral=True)
-    channel_id = get_pixel_art_channel_id(ticket_id)
+    channel_id = get_builder_channel_id(ticket_id)
     ticket_channel = bot.get_channel(channel_id)
     status = await get_transcript(ticket_channel, ticket_id)
 

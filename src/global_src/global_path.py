@@ -20,9 +20,17 @@ ticket_success_embed_path = "src/ticket/embed/success_ticket.json"
 
 # Pixel art
 pixel_art_panel_embed_path = "src/ticket/embed/pixel_art_panel.json"
-farm_panel_embed_path = "src/ticket/embed/farm_panel.json"
 pixel_art_welcome_embed_path = "src/ticket/embed/pixel_art_welcome.json"
 pixel_art_dm_embed_path = "src/ticket/embed/pixel_art_dm.json"
+# Farm
+farm_panel_embed_path = "src/ticket/embed/farm_panel.json"
+farm_welcome_embed_path = "src/ticket/embed/farm_welcome.json"
+farm_dm_embed_path = "src/ticket/embed/farm_dm.json"
+# Structure
+strucure_panel_embed_path = "src/ticket/embed/farm_panel.json"
+strucure_welcome_embed_path = "src/ticket/embed/farm_welcome.json"
+strucure_dm_embed_path = "src/ticket/embed/farm_dm.json"
+
 
 # Database
 ticket_database_path = "src/ticket/db/ticket_data.db"

@@ -14,9 +14,9 @@ from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request imp
     edit_builder_request_db,
 )
 from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
-    get_pixel_art_channel_id,
+    get_builder_channel_id,
     get_pixel_art_ticket_open_user_id,
-    get_pixel_art_welcome_msg,
+    get_builder_welcome_msg,
     get_pixel_art_queue_message_id,
 )
 
@@ -27,7 +27,7 @@ async def claim_ticket(interaction: discord.Interaction):
     ticket_id = re.findall(r"Ticket ID: (\w+)", embed[0]["footer"]["text"])[0]
 
     # Get channel ID
-    channel_id = get_pixel_art_channel_id(ticket_id=ticket_id)
+    channel_id = get_builder_channel_id(ticket_id=ticket_id)
 
     # Get open user ID
     open_user_id = get_pixel_art_ticket_open_user_id(ticket_id=ticket_id)
@@ -55,7 +55,7 @@ async def claim_ticket(interaction: discord.Interaction):
     # Respond and edit
     await interaction.followup.send("Claimed!", ephemeral=True)
     
-    welcome_msg_id, channel_id = get_pixel_art_welcome_msg(ticket_id=ticket_id)
+    welcome_msg_id, channel_id = get_builder_welcome_msg(ticket_id=ticket_id)
     welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
     from ticket.view.builder_request_views.actions_claimed_builder_request import (
         actions_claimed_pixel_art_view,
