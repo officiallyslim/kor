@@ -133,6 +133,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         open_user_id = get_builder_open_user_id(ticket_id)
         if int(interaction.user.id) != int(open_user_id):
             await interaction.response.send_message(embed=no_perm_embed, ephemeral=True)
+            return
 
         # Get old data
         embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
