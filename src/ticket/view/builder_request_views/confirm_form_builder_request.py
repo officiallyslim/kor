@@ -37,6 +37,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         open_user_id = get_builder_open_user_id(ticket_id)
         if open_user_id is not None and int(interaction.user.id) != int(open_user_id):
             await interaction.response.send_message(embed=no_perm_embed, ephemeral=True)
+            return
 
         # Get form data
         embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
