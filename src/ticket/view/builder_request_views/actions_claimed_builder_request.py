@@ -23,6 +23,8 @@ class actions_claimed_pixel_art_view(discord.ui.View):
         if claim_user_id is not None:
             if interaction.user.id != claim_user_id:
                 await interaction.response.send_message("Sorry, only claim user can unclaim.", ephemeral=True)
+                return
+
         button.disabled = True
         await interaction.response.edit_message(view=self)
         await unclaim_ticket(interaction=interaction)

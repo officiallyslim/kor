@@ -59,8 +59,8 @@ async def unclaim_ticket(interaction: discord.Interaction):
 
     welcome_msg_id, channel_id = get_builder_welcome_msg(ticket_id=ticket_id)
     welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
-    from src.ticket.view.builder_request_views.actions_builder_request import actions_pixel_art_view
-    await welcome_msg.edit(view=actions_pixel_art_view())
+    from src.ticket.view.builder_request_views.actions_builder_request import actions_builder_view
+    await welcome_msg.edit(view=actions_builder_view())
 
     # Edit queue message
     queue_message_id = get_builder_queue_message_id(ticket_id)

@@ -79,7 +79,7 @@ class builder_request_modal(discord.ui.Modal):
         if open_ticket is False:
             loading_message = await interaction.response.send_message(f"{loading_emoji} Processing...", ephemeral=True)
             await asyncio.sleep(5)
-            open_ticket = check_open_builder_ticket(int(interaction.user.id))
+            open_ticket = check_open_builder_ticket(int(interaction.user.id), ticket_type=self.ticket_type)
             ticket_id, channel_id = open_ticket
             await loading_message.edit(content="Please, go to the ticket channel for proceed.", view=jump_channel(guild_id=guild_id, channel_id=channel_id))
         else:

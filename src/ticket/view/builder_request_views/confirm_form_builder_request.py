@@ -10,7 +10,6 @@ from src.global_src.global_channel_id import (
 )
 from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_emojis import discord_emoji, roblox_emoji, send_emoji
-from src.global_src.global_roles import pixel_art_role_id
 from src.ticket.utils.create_overwrites import create_view_and_chat_overwrites
 from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request import (
     edit_builder_request_db,
@@ -22,7 +21,7 @@ from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request
     get_builder_ticket_type
 )
 from src.ticket.view.jump_channel import jump_channel
-
+from src.ticket.utils.builder_request_utils.builder_ticket_type import ticket_type_dict
 
 class confirm_form_pixel_art_view(discord.ui.View):
     def __init__(self):
@@ -32,7 +31,10 @@ class confirm_form_pixel_art_view(discord.ui.View):
     async def send_form_pixel_art_view(self, button: discord.ui.Button, interaction: discord.Interaction):
         # Get ticket ID
         ticket_id = re.findall(r"Ticket ID: (\w+)", interaction.channel.topic)[0]
-
+        ticket_type = get_builder_ticket_type(ticket_id=ticket_id)
+        for key, value in ticket_type_dict.items():
+            if value["type"] == ticket_type:
+                builder_role_id = value["role_id"]
         # Verify user
         open_user_id = get_builder_open_user_id(ticket_id)
         if open_user_id is not None and int(interaction.user.id) != int(open_user_id):
@@ -60,10 +62,10 @@ class confirm_form_pixel_art_view(discord.ui.View):
         # Respond and delete self message
         embed = discord.Embed(
             title="Thank you for complete the form!",
-            description=f"Please, wait our <@&{pixel_art_role_id}> contact you.\nYou can now send a **image** of the construction that you want!",
+            description=f"Please, wait our <@&{builder_role_id}> contact you.\nYou can now send a **image** of the construction that you want!",
             color=0x28a745
         )
-        await welcome_msg.reply(content=f"<@&{pixel_art_role_id}>", embed=embed)
+        await welcome_msg.reply(content=f"<@&{builder_role_id}>", embed=embed)
         await interaction.message.delete(reason=f"Deleting form confirm message from the ticket {ticket_id}")
 
         new_welcome_embed = discord.Embed(
