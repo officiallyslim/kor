@@ -14,7 +14,7 @@ from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request
     get_builder_welcome_msg,
 )
 from src.ticket.view.builder_request_views.confirm_form_builder_request import (
-    confirm_form_pixel_art_view,
+    confirm_form_builder_view,
 )
 from src.ticket.view.jump_channel import jump_channel
 
@@ -94,7 +94,7 @@ class builder_request_modal(discord.ui.Modal):
                 actions_builder_view,
             )
             await welcome_msg.edit(view=actions_builder_view())
-            confirm_message = await welcome_msg.reply(content="", embed=embed, view=confirm_form_pixel_art_view())
+            confirm_message = await welcome_msg.reply(content="", embed=embed, view=confirm_form_builder_view())
             edit_builder_request_db(ticket_id=ticket_id, confirm_message_id=confirm_message.id)
             try:
                 await interaction.response.send_message("Please, go to the ticket channel for proceed", ephemeral=True, view=jump_channel(guild_id, channel_id))
@@ -104,6 +104,6 @@ class builder_request_modal(discord.ui.Modal):
         elif self.status == "edit": # Edit if is trying edit the form
             confirm_message_id = get_builder_confirm_message_id(ticket_id)
             confirm_message = await bot.get_channel(channel_id).fetch_message(confirm_message_id)
-            await confirm_message.edit(content="", embed=embed, view=confirm_form_pixel_art_view())
+            await confirm_message.edit(content="", embed=embed, view=confirm_form_builder_view())
             await interaction.response.defer()
             return

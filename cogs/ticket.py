@@ -20,7 +20,7 @@ from src.ticket.view.builder_request_views.actions_claimed_builder_request impor
 )
 from src.ticket.view.builder_request_views.actions_builder_request import actions_builder_view
 from src.ticket.view.builder_request_views.confirm_form_builder_request import (
-    confirm_form_pixel_art_view,
+    confirm_form_builder_view,
 )
 from src.ticket.view.builder_request_views.form_builder_request import form_builder_request_view
 from src.ticket.view.builder_request_views.builder_request_panel import builder_panel_view
@@ -41,7 +41,7 @@ class ticket(commands.Cog):
     async def on_ready(self):
         bot.add_view(builder_panel_view())
         bot.add_view(form_builder_request_view())
-        bot.add_view(confirm_form_pixel_art_view())
+        bot.add_view(confirm_form_builder_view())
         bot.add_view(actions_builder_view())
         bot.add_view(confirm_close_ticket())
         bot.add_view(actions_claimed_pixel_art_view())
