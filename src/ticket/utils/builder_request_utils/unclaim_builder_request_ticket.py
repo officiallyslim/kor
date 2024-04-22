@@ -4,21 +4,19 @@ import discord
 
 from config import bot
 from src.global_src.embed_to_dict import embed_to_dict
-from src.global_src.global_channel_id import pixel_art_queue_channel_id
 from src.global_src.global_emojis import discord_emoji, roblox_emoji
-from src.global_src.global_roles import (
-    pixel_art_role_id,
-)
-from src.ticket.utils.create_overwrites import create_custom_overwrites
+from src.ticket.utils.builder_request_utils.builder_ticket_type import ticket_type_dict
 from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request import (
     edit_builder_request_db,
 )
 from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
     get_builder_channel_id,
     get_builder_open_user_id,
-    get_builder_welcome_msg,
     get_builder_queue_message_id,
+    get_builder_ticket_type,
+    get_builder_welcome_msg,
 )
+from src.ticket.utils.create_overwrites import create_custom_overwrites
 
 
 async def unclaim_ticket(interaction: discord.Interaction):
@@ -26,6 +24,13 @@ async def unclaim_ticket(interaction: discord.Interaction):
     embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
     ticket_id = re.findall(r"Ticket ID: (\w+)", embed[0]["footer"]["text"])[0]
 
+    # Get ticket type
+    ticket_type = get_builder_ticket_type(ticket_id=ticket_id)
+    for key, value in ticket_type_dict.items():
+        if value["type"] == ticket_type:
+            builder_role_id = value["role_id"]
+            queue_channel_id = value["queue_channel_id"]
+            builder_name = value["button_label"]
     # Get channel ID
     channel_id = get_builder_channel_id(ticket_id=ticket_id)
 
@@ -35,7 +40,7 @@ async def unclaim_ticket(interaction: discord.Interaction):
     # Get users and roles
     whoami = interaction.user
     open_user = bot.get_user(open_user_id)
-    pixel_art_role = interaction.guild.get_role(pixel_art_role_id)
+    builder_role = interaction.guild.get_role(builder_role_id)
 
     # Set roles perms
     new_overwrites = create_custom_overwrites(
@@ -45,7 +50,7 @@ async def unclaim_ticket(interaction: discord.Interaction):
         view_and_chat_objects=(
             whoami,
             open_user,
-            pixel_art_role,
+            builder_role,
         ),
     )
 
@@ -59,16 +64,18 @@ async def unclaim_ticket(interaction: discord.Interaction):
 
     welcome_msg_id, channel_id = get_builder_welcome_msg(ticket_id=ticket_id)
     welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
-    from src.ticket.view.builder_request_views.actions_builder_request import actions_builder_view
+    from src.ticket.view.builder_request_views.actions_builder_request import (
+        actions_builder_view,
+    )
     await welcome_msg.edit(view=actions_builder_view())
 
     # Edit queue message
     queue_message_id = get_builder_queue_message_id(ticket_id)
-    queue_message = await bot.get_channel(pixel_art_queue_channel_id).fetch_message(queue_message_id)
+    queue_message = await bot.get_channel(queue_channel_id).fetch_message(queue_message_id) # e
     old_embed = [embed_to_dict(embed) for embed in queue_message.embeds]
     
     new_embed = discord.Embed(
-        title=f"Pixel art ticket - {ticket_id}",
+        title=f"{builder_name} ticket - {ticket_id}",
         color=0xffa500,
         description=""
     )

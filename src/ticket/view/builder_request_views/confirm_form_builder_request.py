@@ -5,7 +5,6 @@ import discord
 from config import bot, guild_id
 from src.global_src.embed_to_dict import embed_to_dict
 from src.global_src.global_channel_id import (
-    pixel_art_queue_channel_id,
     ticket_log_channel_id,
 )
 from src.global_src.global_embed import no_perm_embed
@@ -23,18 +22,23 @@ from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request
 from src.ticket.view.jump_channel import jump_channel
 from src.ticket.utils.builder_request_utils.builder_ticket_type import ticket_type_dict
 
-class confirm_form_pixel_art_view(discord.ui.View):
+class confirm_form_builder_view(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None) 
 
-    @discord.ui.button(label="Send!", style=discord.ButtonStyle.green, emoji=send_emoji, custom_id="send_form_pixel_art_view")
-    async def send_form_pixel_art_view(self, button: discord.ui.Button, interaction: discord.Interaction):
+    @discord.ui.button(label="Send!", style=discord.ButtonStyle.green, emoji=send_emoji, custom_id="send_form_builder_view")
+    async def send_form_builder_view(self, button: discord.ui.Button, interaction: discord.Interaction):
         # Get ticket ID
         ticket_id = re.findall(r"Ticket ID: (\w+)", interaction.channel.topic)[0]
+
+        # Get ticket type
         ticket_type = get_builder_ticket_type(ticket_id=ticket_id)
         for key, value in ticket_type_dict.items():
             if value["type"] == ticket_type:
                 builder_role_id = value["role_id"]
+                queue_channel_id = value["queue_channel_id"]
+                builder_name = value["button_label"]
+
         # Verify user
         open_user_id = get_builder_open_user_id(ticket_id)
         if open_user_id is not None and int(interaction.user.id) != int(open_user_id):
@@ -88,9 +92,9 @@ class confirm_form_pixel_art_view(discord.ui.View):
         await ticket_channel.set_permissions(interaction.user, overwrite=new_overwrites[interaction.user])
 
         # Advise ticket to mods
-        pixel_art_queue_channel = bot.get_channel(pixel_art_queue_channel_id)
+        builder_queue_channel_id = bot.get_channel(queue_channel_id)
         embed = discord.Embed(
-            title=f"New pixel art ticket - {ticket_id}",
+            title=f"New {builder_name} ticket - {ticket_id}",
             color=0xffa500,
             description=""
         )
@@ -106,7 +110,7 @@ class confirm_form_pixel_art_view(discord.ui.View):
         embed.set_footer(text=f"Ticket ID: {ticket_id}")
 
         # Save queue msg to database
-        queue_msg = await pixel_art_queue_channel.send(content="", embed=embed, view=jump_channel(guild_id=guild_id, channel_id=channel_id))
+        queue_msg = await builder_queue_channel_id.send(content="", embed=embed, view=jump_channel(guild_id=guild_id, channel_id=channel_id))
         queue_msg_id = queue_msg.id
         edit_builder_request_db(ticket_id, queue_msg_id=queue_msg_id)
 
@@ -126,8 +130,8 @@ class confirm_form_pixel_art_view(discord.ui.View):
         embed.set_footer(text=f"Ticket ID: {ticket_id}")
         await log_message.reply(embed=embed)
 
-    @discord.ui.button(label="Edit", style=discord.ButtonStyle.gray, emoji="✏️", custom_id="edit_form_pixel_art_view")
-    async def edit_form_pixel_art_view(self, button: discord.ui.Button, interaction: discord.Interaction):
+    @discord.ui.button(label="Edit", style=discord.ButtonStyle.gray, emoji="✏️", custom_id="edit_form_builder_view")
+    async def edit_form_builder_view(self, button: discord.ui.Button, interaction: discord.Interaction):
         # Get ticket ID
         ticket_id = re.findall(r"Ticket ID: (\w+)", interaction.channel.topic)[0]
 

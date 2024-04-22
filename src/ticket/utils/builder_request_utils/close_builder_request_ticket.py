@@ -5,8 +5,10 @@ from datetime import datetime
 import discord
 
 from config import bot
-from src.global_src.global_channel_id import pixel_art_queue_channel_id
-from src.global_src.global_embed import claimed_ticket_embed, no_perm_embed, error_embed
+from src.global_src.global_channel_id import (
+    ticket_log_channel_id,
+)
+from src.global_src.global_embed import claimed_ticket_embed, error_embed, no_perm_embed
 from src.global_src.global_roles import (
     assistant_director_role_id,
     community_manager_role_id,
@@ -22,18 +24,20 @@ from src.global_src.global_roles import (
     staff_manager_role_id,
     trial_administration_role_id,
 )
+from src.ticket.utils.builder_request_utils.builder_ticket_type import ticket_type_dict
 from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request import (
     edit_builder_request_db,
 )
 from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
     check_claimed_builder_ticket,
     get_builder_channel_id,
-    get_builder_queue_message_id,
+    get_builder_dm_message_id,
     get_builder_log_message_id,
-    get_builder_dm_message_id
+    get_builder_queue_message_id,
+    get_builder_ticket_type,
 )
 from src.ticket.utils.transcript_website import get_transcript
-from src.global_src.global_channel_id import ticket_log_channel_id
+
 
 async def close_ticket(interaction: discord.Interaction, reason, ticket_id):
     # Check if user have allowed roles
@@ -55,7 +59,6 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id):
         return
 
     # Get ticket ID
-    print(ticket_id)
     if ticket_id is None:
         try:
             match = re.findall(r"Ticket ID: (\w+)", interaction.channel.topic)
@@ -67,6 +70,12 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id):
         except Exception:
             await interaction.response.send_message(embed=error_embed, ephemeral=True)
             return
+
+    # Get ticket type
+    ticket_type = get_builder_ticket_type(ticket_id=ticket_id)
+    for key, value in ticket_type_dict.items():
+        if value["type"] == ticket_type:
+            queue_channel_id = value["queue_channel_id"]
 
     # Check if user is in claimed user for close
     claim_user_id = check_claimed_builder_ticket(ticket_id)
@@ -95,7 +104,7 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id):
 
     queue_message_id = get_builder_queue_message_id(ticket_id)
     if queue_message_id is not None:
-        queue_message = await bot.get_channel(pixel_art_queue_channel_id).fetch_message(queue_message_id)
+        queue_message = await bot.get_channel(queue_channel_id).fetch_message(queue_message_id) # e
         await queue_message.delete(reason="Ticketd clsoed")
         print(f"Ticket {ticket_id} closed")
     else:
