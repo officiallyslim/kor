@@ -30,7 +30,7 @@ async def claim_ticket(interaction: discord.Interaction):
         if value["type"] == ticket_type:
             queue_channel_id = value["queue_channel_id"]
             builder_name = value["button_label"]
-            builder_role_id = value["button_label"]
+            builder_role_id = value["role_id"]
 
     # Get channel ID
     channel_id = get_builder_channel_id(ticket_id=ticket_id)
