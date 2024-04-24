@@ -57,8 +57,8 @@ ticket_type_dict = {
         "queue_channel_id": structure_queue_channel_id,
     },
     "🏭Request a Industrial Builder🏭": {
-        "type": "structure",
-        "button_label": "Structure",
+        "type": "industrial",
+        "button_label": "Industrial",
         "emoji": "🏭",
         "role_id": industrial_role_id,
         "category_id": 1151613276510244974,
