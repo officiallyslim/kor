@@ -13,3 +13,4 @@ pixel_art_queue_channel_id = 1232798574618874030
 farm_queue_channel_id = 1232798098041077891
 structure_queue_channel_id = 1232798964710113300
 industrial_queue_channel_id = 1232802852846698579
+shop_queue_channel_id = 1232802852846698579

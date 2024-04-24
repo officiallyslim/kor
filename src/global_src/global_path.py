@@ -34,6 +34,10 @@ strucure_dm_embed_path = "src/ticket/embed/structure_dm.json"
 industrial_panel_embed_path = "src/ticket/embed/industrial_panel.json"
 industrial_welcome_embed_path = "src/ticket/embed/industrial_welcome.json"
 industrial_dm_embed_path = "src/ticket/embed/industrial_dm.json"
+# Shop
+shop_panel_embed_path = "src/ticket/embed/shop_panel.json"
+shop_welcome_embed_path = "src/ticket/embed/shop_welcome.json"
+shop_dm_embed_path = "src/ticket/embed/shop_dm.json"
 
 
 

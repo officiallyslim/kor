@@ -9,6 +9,7 @@ from src.global_src.global_path import (
     industrial_panel_embed_path,
     pixel_art_panel_embed_path,
     strucure_panel_embed_path,
+    shop_panel_embed_path
 )
 from src.ticket.view.builder_request_views.builder_request_panel import (
     builder_panel_view,
@@ -18,7 +19,8 @@ ticket_panel_embed_dict = {
     "pixel_art": pixel_art_panel_embed_path,
     "farm": farm_panel_embed_path,
     "structure": strucure_panel_embed_path,
-    "industrial": industrial_panel_embed_path
+    "industrial": industrial_panel_embed_path,
+    "shop": shop_panel_embed_path
 }
 
 class panel_selector(discord.ui.View):
@@ -46,6 +48,11 @@ class panel_selector(discord.ui.View):
                 label="industrial",
                 description="",
                 emoji="🏭"
+            ),
+            discord.SelectOption(
+                label="shop",
+                description="",
+                emoji="🛒"
             )
         ]
     )
