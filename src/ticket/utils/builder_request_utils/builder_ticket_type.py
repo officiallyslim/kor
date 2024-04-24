@@ -2,6 +2,7 @@ from src.global_src.global_channel_id import (
     farm_queue_channel_id,
     pixel_art_queue_channel_id,
     structure_queue_channel_id,
+    industrial_queue_channel_id,
 )
 from src.global_src.global_emojis import smile_pixel_emoji
 from src.global_src.global_path import (
@@ -11,15 +12,18 @@ from src.global_src.global_path import (
     pixel_art_welcome_embed_path,
     strucure_dm_embed_path,
     strucure_welcome_embed_path,
+    industrial_dm_embed_path,
+    industrial_welcome_embed_path
 )
 from src.global_src.global_roles import (
     farm_role_id,
     pixel_art_role_id,
     structure_role_id,
+    industrial_role_id
 )
 
 ticket_type_dict = {
-    "👾Request A Pixel Art Builder👾": {
+    "👾Request a Pixel Art Builder👾": {
         "type": "pixel_art",
         "button_label": "Pixel Art",
         "emoji": smile_pixel_emoji,
@@ -30,7 +34,7 @@ ticket_type_dict = {
         "short_name": "pixel",
         "queue_channel_id": pixel_art_queue_channel_id,
     },
-    "🧑‍🌾Request A Farm Builder🧑‍🌾": {
+    "🧑‍🌾Request a Farm Builder🧑‍🌾": {
         "type": "farm",
         "button_label": "Farm",
         "emoji": "🧑‍🌾",
@@ -51,5 +55,16 @@ ticket_type_dict = {
         "welcome_embed_path": strucure_welcome_embed_path,
         "short_name": "structure",
         "queue_channel_id": structure_queue_channel_id,
+    },
+    "🏭Request a Industrial Builder🏭": {
+        "type": "structure",
+        "button_label": "Structure",
+        "emoji": "🏭",
+        "role_id": industrial_role_id,
+        "category_id": 1151613276510244974,
+        "dm_embed_path": industrial_dm_embed_path,
+        "welcome_embed_path": industrial_welcome_embed_path,
+        "short_name": "structure",
+        "queue_channel_id": industrial_queue_channel_id,
     }
 }

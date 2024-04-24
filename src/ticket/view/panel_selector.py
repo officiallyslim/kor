@@ -4,7 +4,12 @@ import discord
 
 from src.global_src.global_embed import error_embed
 from src.global_src.global_emojis import smile_pixel_emoji
-from src.global_src.global_path import farm_panel_embed_path, pixel_art_panel_embed_path, strucure_panel_embed_path
+from src.global_src.global_path import (
+    farm_panel_embed_path,
+    industrial_panel_embed_path,
+    pixel_art_panel_embed_path,
+    strucure_panel_embed_path,
+)
 from src.ticket.view.builder_request_views.builder_request_panel import (
     builder_panel_view,
 )
@@ -12,7 +17,8 @@ from src.ticket.view.builder_request_views.builder_request_panel import (
 ticket_panel_embed_dict = {
     "pixel_art": pixel_art_panel_embed_path,
     "farm": farm_panel_embed_path,
-    "structure": strucure_panel_embed_path
+    "structure": strucure_panel_embed_path,
+    "industrial": industrial_panel_embed_path
 }
 
 class panel_selector(discord.ui.View):
@@ -35,6 +41,11 @@ class panel_selector(discord.ui.View):
                 label="structure",
                 description="",
                 emoji="🏠"
+            ),
+            discord.SelectOption(
+                label="industrial",
+                description="",
+                emoji="🏭"
             )
         ]
     )

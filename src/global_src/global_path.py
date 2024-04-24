@@ -30,6 +30,11 @@ farm_dm_embed_path = "src/ticket/embed/farm_dm.json"
 strucure_panel_embed_path = "src/ticket/embed/structure_panel.json"
 strucure_welcome_embed_path = "src/ticket/embed/structure_welcome.json"
 strucure_dm_embed_path = "src/ticket/embed/structure_dm.json"
+# Industrial
+industrial_panel_embed_path = "src/ticket/embed/industrial_panel.json"
+industrial_welcome_embed_path = "src/ticket/embed/industrial_welcome.json"
+industrial_dm_embed_path = "src/ticket/embed/industrial_dm.json"
+
 
 
 # Database

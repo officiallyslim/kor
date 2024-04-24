@@ -1,0 +1,17 @@
+{
+    "content": null,
+    "embeds": [
+        {
+            "title": "Welcome [USER]",
+            "description": "Thank you for reaching out for a `Industrial Builder`!\n\nTo get started, simply complete this form:\n```\n1. Your Discord Name\n2. Roblox Username\n3. Island Code\n4. The build you need\n```\nAdd a **description** or **images of the build** you're envisioning if possible.\n\nWe're excited to work with you!",
+            "color": 5814783,
+            "footer": {
+                "text": "Ticket ID: [KEY]"
+            },
+            "thumbnail": {
+                "url": "https://i.ibb.co/6gDf0Q0/msg-removebg-preview.png"
+            }
+        }
+    ],
+    "attachments": []
+}

@@ -9,6 +9,7 @@ mod_channel_id = 1151613298551291996
 ticket_log_channel_id = 1153496542066528307
 
 # Queue channel id's
-pixel_art_queue_channel_id = 1223277420677959812
-farm_queue_channel_id = 1231358840025645126
-structure_queue_channel_id = 1231358942701944953
+pixel_art_queue_channel_id = 1232798574618874030
+farm_queue_channel_id = 1232798098041077891
+structure_queue_channel_id = 1232798964710113300
+industrial_queue_channel_id = 1232802852846698579
