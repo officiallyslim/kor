@@ -38,6 +38,10 @@ industrial_dm_embed_path = "src/ticket/embed/industrial_dm.json"
 shop_panel_embed_path = "src/ticket/embed/shop_panel.json"
 shop_welcome_embed_path = "src/ticket/embed/shop_welcome.json"
 shop_dm_embed_path = "src/ticket/embed/shop_dm.json"
+# Expo/Demo
+expo_demo_panel_embed_path = "src/ticket/embed/expodemo_panel.json"
+expo_demo_welcome_embed_path = "src/ticket/embed/expodemo_welcome.json"
+expo_demo_dm_embed_path = "src/ticket/embed/expodemo_dm.json"
 
 
 

@@ -14,3 +14,4 @@ farm_queue_channel_id = 1232798098041077891
 structure_queue_channel_id = 1232798964710113300
 industrial_queue_channel_id = 1232802852846698579
 shop_queue_channel_id = 1233041786096713869
+expo_demo_queue_channel_id = 1233044628312293437

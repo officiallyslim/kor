@@ -17,6 +17,8 @@ from src.global_src.global_path import (
     shop_welcome_embed_path,
     strucure_dm_embed_path,
     strucure_welcome_embed_path,
+    expo_demo_dm_embed_path,
+    expo_demo_welcome_embed_path
 )
 from src.global_src.global_roles import (
     farm_role_id,
@@ -24,6 +26,7 @@ from src.global_src.global_roles import (
     pixel_art_role_id,
     shop_role_id,
     structure_role_id,
+    expo_role_id
 )
 
 ticket_type_dict = {
@@ -79,6 +82,17 @@ ticket_type_dict = {
         "category_id": 1151613278515118232,
         "dm_embed_path": shop_dm_embed_path,
         "welcome_embed_path": shop_welcome_embed_path,
+        "short_name": "shop",
+        "queue_channel_id": shop_queue_channel_id,
+    },
+    "⚒️Request an Expo/Demo worker⚒️": {
+        "type": "expo_demo",
+        "button_label": "Expo/Demo",
+        "emoji": "⚒️",
+        "role_id": expo_role_id,
+        "category_id": 1151613277491695626,
+        "dm_embed_path": expo_demo_dm_embed_path,
+        "welcome_embed_path": expo_demo_welcome_embed_path,
         "short_name": "shop",
         "queue_channel_id": shop_queue_channel_id,
     }

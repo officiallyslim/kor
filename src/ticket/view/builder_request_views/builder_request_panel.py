@@ -6,10 +6,6 @@ from src.ticket.utils.builder_request_utils.panel_callback_builder_request impor
     builder_request_panel_callback,
 )
 
-    # "⚒️Request an Expo/Demo worker ⚒️": "expodemo_worker",
-    # "🤖Request A Industrial Builder🤖": "industrial",
-    # "🛒Request a Shop Builder🛒": "shop"
-
 class builder_panel_view(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)

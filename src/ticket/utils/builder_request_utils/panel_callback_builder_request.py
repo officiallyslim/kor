@@ -182,7 +182,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
             ticket_type=ticket_data['type'],
             open_user_id=interaction.user.id,
             open_time=open_time,
-            open_reason=f"Request A {ticket_data['button_label']} Builder",
+            open_reason=f"Request a {ticket_data['button_label']} Builder",
             form_name=None,
             form_roblox_user=None,
             form_island_code=None,
