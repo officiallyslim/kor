@@ -1,14 +1,4 @@
 {
     "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Update at start",
-            "type": "shell",
-            "command": "git pull",
-            "problemMatcher": [],
-            "runOptions": {
-                "runOn": "folderOpen"
-            }
-        }
-    ]
+    "tasks": []
 }
