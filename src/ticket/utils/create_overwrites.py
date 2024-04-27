@@ -7,7 +7,8 @@ def create_custom_overwrites(
     ctx: commands.Context,
     no_perm_objects: Union[discord.Role, discord.Member],
     view_only_objects: Union[discord.Role, discord.Member],
-    view_and_chat_objects: Union[discord.Role, discord.Member]
+    view_and_chat_objects: Union[discord.Role, discord.Member],
+    moderator_objects: Union[discord.Role, discord.Member]
 ):
 
     overwrites = {}
@@ -42,6 +43,19 @@ def create_custom_overwrites(
             read_message_history=True,
         )
 
+    # Moderator object
+    for obj in moderator_objects:
+        overwrites[obj] = discord.PermissionOverwrite(
+            view_channel=True,
+            send_messages=True,
+            send_messages_in_threads=False,
+            create_public_threads=False,
+            create_private_threads=False,
+            attach_files=True,
+            read_messages=True,
+            read_message_history=True,
+            manage_messages=True
+        )
     # @everyone perm
     overwrites.setdefault(
         ctx.guild.default_role, discord.PermissionOverwrite(view_channel=False)

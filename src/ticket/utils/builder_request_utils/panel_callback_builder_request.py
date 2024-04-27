@@ -97,7 +97,9 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
             no_perm_objects=(),
             view_only_objects=(whoami,),
             view_and_chat_objects=(
-                ticket_role,
+                ticket_role
+            ),
+            moderator_objects=(
                 moderator_role
             ),
         )
