@@ -110,9 +110,9 @@ async def remove_user_ticket(ctx: discord.ApplicationContext, user: discord.Memb
         return
 
     # Deny remove claim user
-    claim_user_id = check_claimed_builder_ticket(ticket_id)
+    claim_user_id = check_claimed_builder_ticket(ticket_id[0])
     if claim_user_id is not None:
-        if ctx.user.id != claim_user_id:
+        if ctx.user.id == claim_user_id:
             await ctx.response.send_message("You cant remove claim user.", ephemeral=True)
             return
 
