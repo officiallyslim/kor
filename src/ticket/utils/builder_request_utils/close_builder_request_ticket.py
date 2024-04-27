@@ -135,6 +135,7 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id):
         color=0x85B3FA
     )
     embed.add_field(name="🕐 Close time", value=f"<t:{close_time}>", inline=False)
+    embed.add_field(name="🙍 Close user", value=f"{interaction.user.mention} - {interaction.user.id}", inline=False)
     embed.add_field(name="✏️ Close reason",value=f"```{reason}```",inline=False,)
     embed.add_field(name="🗝️ Web transcript key",value=f"```{status[1]}```",inline=False,)
     embed.add_field(name="🌐 Web Transcript",value=f"[Open in browser]({status[0]})",inline=False,)
