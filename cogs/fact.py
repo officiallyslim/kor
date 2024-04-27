@@ -126,7 +126,7 @@ async def dailyfact():
     cest = pytz.timezone('Europe/Madrid')
 
     # Check time
-    if now.astimezone(cest).hour == 19 and now.astimezone(cest).minute == 23 and not fact_sent:
+    if now.astimezone(cest).hour == 17 and now.astimezone(cest).minute == 00 and not fact_sent:
         channel = bot.get_channel(daily_fact_channel_id)
         fact = await get_daily_islandfact()
         mod_channel = bot.get_channel(mod_channel_id)
@@ -144,10 +144,10 @@ async def dailyfact():
                 randomislandfact_embed.set_image(url=f"{str(fact['Image Link'])}")
 
             if fact["Source Link"] is None:
-                await channel.send(f'## <@&11981065863092019501> Random Fact #{fact_number}\n', embed=randomislandfact_embed)
+                await channel.send(f'## <@&1198106586309201950> Random Fact #{fact_number}\n', embed=randomislandfact_embed)
                 print("Send daily fact without button")
             else:
-                await channel.send(f'## <@&11981065863092019501> Random Fact #{fact_number}\n', embed=randomislandfact_embed, view=source_island(fact['Source Link']))
+                await channel.send(f'## <@&1198106586309201950> Random Fact #{fact_number}\n', embed=randomislandfact_embed, view=source_island(fact['Source Link']))
                 print("Send daily fact with button")
 
             await increment_fact_number()
