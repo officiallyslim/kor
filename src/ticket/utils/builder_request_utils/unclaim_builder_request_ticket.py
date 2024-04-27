@@ -52,6 +52,7 @@ async def unclaim_ticket(interaction: discord.Interaction):
             open_user,
             builder_role,
         ),
+        moderator_objects=(),
     )
 
     # Set new perms

@@ -51,6 +51,7 @@ async def claim_ticket(interaction: discord.Interaction):
         ),
         view_only_objects=(),
         view_and_chat_objects=(whoami,open_user ),
+        moderator_objects=(),
     )
 
     # Set new perms
