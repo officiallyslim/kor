@@ -93,7 +93,7 @@ ticket_type_dict = {
         "category_id": 1151613277491695626,
         "dm_embed_path": expo_demo_dm_embed_path,
         "welcome_embed_path": expo_demo_welcome_embed_path,
-        "short_name": "shop",
+        "short_name": "expodemo",
         "queue_channel_id": shop_queue_channel_id,
     }
 }
