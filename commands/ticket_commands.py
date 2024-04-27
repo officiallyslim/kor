@@ -18,6 +18,7 @@ from src.global_src.global_roles import (
     support_role_id,
 )
 from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
+    check_claimed_builder_ticket,
     get_builder_channel_id,
 )
 from src.ticket.utils.create_overwrites import (
@@ -107,6 +108,13 @@ async def remove_user_ticket(ctx: discord.ApplicationContext, user: discord.Memb
             ephemeral=True,
         )
         return
+
+    # Deny remove claim user
+    claim_user_id = check_claimed_builder_ticket(ticket_id)
+    if claim_user_id is not None:
+        if ctx.user.id != claim_user_id:
+            await ctx.response.send_message("You cant remove claim user.", ephemeral=True)
+            return
 
     # Get datas
     ticket_channel_id = get_builder_channel_id(ticket_id[0])
