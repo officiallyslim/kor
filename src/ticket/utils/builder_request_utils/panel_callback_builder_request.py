@@ -12,7 +12,7 @@ from src.global_src.global_path import (
         ticket_cooldown_path,
         ticket_success_embed_path,
 )
-
+from src.global_src.global_roles import senior_moderator_role_id
 from src.ticket.modal.form_builder_request import builder_request_modal
 from src.ticket.utils.builder_request_utils.builder_ticket_type import ticket_type_dict
 from src.ticket.utils.builder_request_utils.db_utils.add_db_builder_request import (
@@ -89,6 +89,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
         # Get users and roles
         whoami = interaction.user
         ticket_role = interaction.guild.get_role(ticket_data['role_id'])
+        moderator_role = interaction.guild.get_role(senior_moderator_role_id)
 
         # Set roles perms
         overwrites = create_custom_overwrites(
@@ -97,6 +98,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
             view_only_objects=(whoami,),
             view_and_chat_objects=(
                 ticket_role,
+                moderator_role
             ),
         )
 
