@@ -116,18 +116,21 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id):
     open_user_data = get_builder_dm_message_id(ticket_id)
     if open_user_data is not None:
         open_user = bot.get_user(open_user_data[0])
-        dm_channel = open_user.dm_channel
-        if dm_channel is None:
-            dm_channel = await open_user.create_dm()
-        dm_message = await dm_channel.fetch_message(open_user_data[1])
-        await dm_message.edit(view=None)
-        embed = discord.Embed (
-            title="Thank you for contacting us!",
-            description=f"Your ticket `{ticket_id}` has been closed by one of our staff members with the following reason: ```{reason}```",
-            color=0x28a745
-        )
-        embed.set_footer(text=f"Ticket ID: {ticket_id}")
-        await dm_message.reply(embed=embed)
+        try:
+            dm_channel = open_user.dm_channel
+            if dm_channel is None:
+                dm_channel = await open_user.create_dm()
+            dm_message = await dm_channel.fetch_message(open_user_data[1])
+            await dm_message.edit(view=None)
+            embed = discord.Embed (
+                title="Thank you for contacting us!",
+                description=f"Your ticket `{ticket_id}` has been closed by one of our staff members with the following reason: ```{reason}```",
+                color=0x28a745
+            )
+            embed.set_footer(text=f"Ticket ID: {ticket_id}")
+            await dm_message.reply(embed=embed)
+        except Exception:
+            pass
 
     embed = discord.Embed(
         title=f"Ticket {ticket_id} closed",
