@@ -83,6 +83,7 @@ class confirm_form_builder_view(discord.ui.View):
         new_welcome_embed.add_field(name="Build", value=f"```{build}```", inline=False)
         new_welcome_embed.set_footer(text=f"Ticket ID: {ticket_id}")
         await welcome_msg.edit(content="", embed=new_welcome_embed)
+        await welcome_msg.pin(reason="Pinning the first message")
 
         # Give perm for chat to user
         new_overwrites = create_view_and_chat_overwrites(
