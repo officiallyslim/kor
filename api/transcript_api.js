@@ -1,5 +1,4 @@
-// This one part of the private api used in the bot.
-// This is really simple and require more features/security on deploy like 
+// Simplified Transcription API Storage
 const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -20,9 +19,12 @@ if (!fs.existsSync(jsonDir)){
     fs.mkdirSync(jsonDir);
 }
 
-// Accept transcripts if token is correct.
-// Try to have a better security system in place to check
-// if the token is correct and some anti-DDOS system
+const transcriptsDB = path.join(__dirname, 'transcripts.json');
+if (!fs.existsSync(transcriptsDB)){
+    fs.writeFileSync(transcriptsDB, '{}');
+}
+
+// Save the transcript for future previews
 app.post('/addTranscript', (req, res) => {
     const token = req.headers['authorization'];
     if (token !== 'CHANGE_YOUR_TOKEN_HERE') {
@@ -42,7 +44,7 @@ app.post('/addTranscript', (req, res) => {
     }
 });
 
-// Return web transcript
+// Return web transcript when requested
 app.get('/getTranscript/:ticket_id', (req, res) => {
     const { ticket_id } = req.params;
     const db = JSON.parse(fs.readFileSync(transcriptsDB));
