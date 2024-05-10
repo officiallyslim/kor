@@ -1,0 +1,15 @@
+builder_roles_hierarchy = {
+    1214738131136544859: {"level": 13, "description": "250+"},
+    1214737949896351744: {"level": 12, "description": "150+"},
+    1214737749043712020: {"level": 11, "description": "100+"},
+    1216794904915742720: {"level": 10, "description": "90+"},
+    1216794905976766535: {"level": 9, "description": "80+"},
+    1216794903086891028: {"level": 8, "description": "70+"},
+    1168329023953322125: {"level": 7, "description": "60+"},
+    1168258299070787615: {"level": 6, "description": "50+"},
+    1168258531821113405: {"level": 5, "description": "40+"},
+    1168258288400465963: {"level": 4, "description": "30+"},
+    1168258529044471888: {"level": 3, "description": "20+"},
+    1151613208126292018: {"level": 2, "description": "10+"},
+    1151613209648840754: {"level": 1, "description": "5+"},
+}
