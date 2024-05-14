@@ -101,6 +101,9 @@ class fact(commands.Cog):
     async def add_custom_island_fact(
         self,
         ctx: discord.ApplicationContext,
+        fact: str,
+        img_link: str,
+        source_link: str,
     ):
         if int(ctx.author.id) != 756509638169460837 and not any(
             role.id
