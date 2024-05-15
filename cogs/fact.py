@@ -1,11 +1,10 @@
 import os
 from datetime import datetime
-from discord import option
 
 import discord
 import dotenv
 import pytz
-from discord.commands import Option
+from discord import option
 from discord.ext import commands, tasks
 
 from commands.fact_commands import fact_group, source_island
@@ -45,11 +44,12 @@ class fact(commands.Cog):
     @discord.slash_command(
         name="change_fact_number", description="Change the daily fact number"
     )
+    @option("number", description="Source link of the fact")
     async def change_fact_number(
         self,
         ctx: discord.ApplicationContext,
-        number: Option(int, "The next say fact number"),
-    ):  # type: ignore
+        number: int,
+    ):
         if int(ctx.author.id) != 756509638169460837 and not any(
             role.id
             in [
