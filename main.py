@@ -24,10 +24,10 @@ cogs = ["cogs.loa_request"]
 for cog in cogs:
     try:
         bot.load_extension(cog)
-        print(f"Cog loaded \"{cog}\"")
+        print(f'Cog loaded "{cog}"')
     except Exception:
         e = traceback.format_exc()
-        print(f"Error loading cog: \"{cog}\": {e}")
+        print(f'Error loading cog: "{cog}": {e}')
 
 
 @bot.event
@@ -61,11 +61,11 @@ async def reload_cog(
         if name.lower() in cogs:
             try:
                 bot.reload_extension(name.lower())
-                await ctx.respond(f"Cog \"{name}\" reloaded correctly")
+                await ctx.respond(f'Cog "{name}" reloaded correctly')
             except Exception:
-                await ctx.respond(f"Failed to reload cog \"{name}\"")
+                await ctx.respond(f'Failed to reload cog "{name}"')
             return
-        await ctx.respond(f"I can\"t find \"{name}\" :c")
+        await ctx.respond(f'I can"t find "{name}" :c')
     else:
         await ctx.respond("You are not allowed to use this")
 
@@ -120,5 +120,6 @@ async def version(
     await ctx.respond(
         f"{version}.\nPing: `{round(bot.latency * 1000, 2)}`ms", ephemeral=True
     )
+
 
 bot.run(token)
