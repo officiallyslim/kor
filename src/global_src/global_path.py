@@ -43,8 +43,6 @@ expo_demo_panel_embed_path = "src/ticket/embed/expodemo_panel.json"
 expo_demo_welcome_embed_path = "src/ticket/embed/expodemo_welcome.json"
 expo_demo_dm_embed_path = "src/ticket/embed/expodemo_dm.json"
 
-
-
 # Database
 ticket_database_path = "db/ticket/ticket_data.db"
 ticket_banned_path = "db/ticket/ticket_ban_id.json"
