@@ -8,7 +8,7 @@ no_perm_embed = discord.Embed(
 
 soon_embed = discord.Embed(
     title="Soon!",
-    description="This command is not available for now. Try again later!",
+    description="This command/feature is not available for now. Try again later!",
     colour=discord.Colour(int("ff0000", 16))
 )
 
