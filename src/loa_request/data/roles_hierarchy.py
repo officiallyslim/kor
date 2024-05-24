@@ -13,3 +13,24 @@ builder_roles_hierarchy = {
     1151613208126292018: {"level": 2, "description": "10+"},
     1151613209648840754: {"level": 1, "description": "5+"},
 }
+
+moderator_roles_hierarchy = {
+    1210006813945106492: {"level": 18, "description": "Mr. Boomsteak"},
+    1214469615808417812: {"level": 17, "description": "Developer"},
+    1168385225349406771: {"level": 16, "description": "Head of operations"},
+    1151613202669514813: {"level": 15, "description": "Assistant director"},
+    1175981569656225862: {"level": 14, "description": "Community manager"},
+    1175986076125515786: {"level": 13, "description": "Staff manager"},
+    1216518080889622538: {"level": 12, "description": "Head administration"},
+    1216518078649860198: {"level": 11, "description": "Senior administration"},
+    1216518079433936975: {"level": 10, "description": "Official administration"},
+    1175985559743774791: {"level": 9, "description": "Junion administration"},
+    1175985971565694987: {"level": 8, "description": "Trial administration"},
+    1151613201377677382: {"level": 7, "description": "Mr. Boomstreaks controller"},
+    1175984805620494426: {"level": 6, "description": "Management team"},
+    1216518081032093766: {"level": 5, "description": "Head of moderation"},
+    1175982839481782353: {"level": 4, "description": "Senior moderator"},
+    1151613205089628212: {"level": 3, "description": "Official moderator"},
+    1216506577251733615: {"level": 2, "description": "Junior moderator"},
+    1151613206939324578: {"level": 1, "description": "Trial moderator"},
+}
