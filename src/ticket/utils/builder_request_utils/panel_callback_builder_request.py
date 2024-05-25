@@ -79,7 +79,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
             return
 
         # Defer response
-        modal = builder_request_modal(title=f"{ticket_data['button_label']} Form",name=interaction.user.name, status="new", ticket_type=ticket_data['type'])
+        modal = builder_request_modal(title=f"{ticket_data['button_label']} Form", status="new", ticket_type=ticket_data['type'])
         await interaction.response.send_modal(modal)
 
         # Gen ticket id
@@ -125,7 +125,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
             data = json.load(f)
 
         embed_info = data["embeds"][0]
-        embed_info["title"] = embed_info["title"].replace("[USER]", interaction.user.name)
+        embed_info["title"] = embed_info["title"].replace("[USER]", interaction.user.global_name)
         embed_info["footer"]["text"] = embed_info["footer"]["text"].replace("[KEY]", ticket_id)
         embed = discord.Embed.from_dict(embed_info)
 
@@ -167,7 +167,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
             description="Ticket details:",
             color=0xff8000,
         )
-        embed.add_field(name="👤 User", value=interaction.user.mention, inline=False)
+        embed.add_field(name="👤 User", value=f"{interaction.user.mention} ({interaction.user.id} - {interaction.user.global_name})", inline=False)
         embed.add_field(name="🆔 User ID", value=f"`{interaction.user.id}`", inline=False)
         embed.add_field(name="📛 User name", value=interaction.user.name, inline=False)
         embed.add_field(name="📅 Joined", value=f"<t:{int(interaction.user.joined_at.timestamp())}:R>", inline=False)
@@ -187,7 +187,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
             open_user_id=interaction.user.id,
             open_time=open_time,
             open_reason=f"Request a {ticket_data['button_label']} Builder",
-            form_name=None,
+            form_name=f"{interaction.user.mention} ({interaction.user.id} - {interaction.user.global_name})",
             form_roblox_user=None,
             form_island_code=None,
             form_build=None,
