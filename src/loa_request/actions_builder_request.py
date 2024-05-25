@@ -1,7 +1,7 @@
 import discord
 
 
-class actions_builder_view(discord.ui.View):
+class loa_request_view(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
