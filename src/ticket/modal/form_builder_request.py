@@ -20,19 +20,10 @@ from src.ticket.view.jump_channel import jump_channel
 
 
 class builder_request_modal(discord.ui.Modal):
-    def __init__(self, name, ticket_type, roblox_user=None, island_code=None, build=None, status=None, *args, **kwargs) -> None:
+    def __init__(self, ticket_type, roblox_user=None, island_code=None, build=None, status=None, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self.status = status
         self.ticket_type = ticket_type
-
-        self.add_item(discord.ui.InputText(
-            label="Discord name",
-            placeholder="Your discord name",
-            min_length = 1,
-            max_length = 30,
-            style=discord.InputTextStyle.short,
-            value=name
-            ))
 
         self.add_item(discord.ui.InputText(
             label="Roblox username",
@@ -40,7 +31,8 @@ class builder_request_modal(discord.ui.Modal):
             min_length = 1,
             max_length = 30,
             style=discord.InputTextStyle.short,
-            value=roblox_user
+            value=roblox_user,
+            row=0
             ))
 
         self.add_item(discord.ui.InputText(
@@ -49,7 +41,8 @@ class builder_request_modal(discord.ui.Modal):
             min_length = 1,
             max_length = 10,
             style=discord.InputTextStyle.short,
-            value=island_code
+            value=island_code,
+            row=1
             ))
 
         self.add_item(discord.ui.InputText(
@@ -59,7 +52,16 @@ class builder_request_modal(discord.ui.Modal):
             max_length = 400,
             row=3,
             style=discord.InputTextStyle.long,
-            value=build
+            value=build,
+            ))
+
+        self.add_item(discord.ui.InputText(
+            label="Payment",
+            placeholder="Payment price (1B, 1T,...)",
+            min_length = 1,
+            max_length = 30,
+            style=discord.InputTextStyle.short,
+            row=4
             ))
 
     async def callback(self, interaction: discord.Interaction):
@@ -69,10 +71,11 @@ class builder_request_modal(discord.ui.Modal):
             color=0x28a745
             )
 
-        embed.add_field(name="Discord name", value=f"```{self.children[0].value}```", inline=False)
-        embed.add_field(name="Roblox username", value=f"```{self.children[1].value}```", inline=False)
-        embed.add_field(name="Island Code", value=f"```{self.children[2].value}```", inline=False)
-        embed.add_field(name="Build", value=f"```{self.children[3].value}```", inline=False)
+        embed.add_field(name="User", value=f"```{interaction.user.mention} ({interaction.user.id} - {interaction.user.global_name})```", inline=False)
+        embed.add_field(name="Roblox username", value=f"```{self.children[0].value}```", inline=False)
+        embed.add_field(name="Island Code", value=f"```{self.children[1].value}```", inline=False)
+        embed.add_field(name="Build", value=f"```{self.children[2].value}```", inline=False)
+        embed.add_field(name="Payment", value=f"```{self.children[3].value}```", inline=False)
         embed.set_footer(text="Please, confirm your answer before send to builder team.")
 
         open_ticket = check_open_builder_ticket(int(interaction.user.id), ticket_type=self.ticket_type)
