@@ -20,7 +20,7 @@ from src.ticket.view.jump_channel import jump_channel
 
 
 class builder_request_modal(discord.ui.Modal):
-    def __init__(self, ticket_type, roblox_user=None, island_code=None, build=None, status=None, *args, **kwargs) -> None:
+    def __init__(self, ticket_type, roblox_user=None, island_code=None, build=None, payment=None, status=None, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self.status = status
         self.ticket_type = ticket_type
@@ -61,7 +61,8 @@ class builder_request_modal(discord.ui.Modal):
             min_length = 1,
             max_length = 30,
             style=discord.InputTextStyle.short,
-            row=4
+            row=4,
+            value=payment
             ))
 
     async def callback(self, interaction: discord.Interaction):
