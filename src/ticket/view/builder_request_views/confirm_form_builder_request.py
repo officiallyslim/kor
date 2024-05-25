@@ -47,16 +47,18 @@ class confirm_form_builder_view(discord.ui.View):
 
         # Get form data
         embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
-        name = embed[0]['fields'][0]['value'].replace("```", "")
+        name = f"{interaction.user.mention} ({interaction.user.id} - {interaction.user.global_name})"
         roblox_username = embed[0]['fields'][1]['value'].replace("```", "")
         island_code = embed[0]['fields'][2]['value'].replace("```", "")
         build = embed[0]['fields'][3]['value'].replace("```", "")
+        payment = embed[0]['fields'][4]['value'].replace("```", "")
         edit_builder_request_db(
             ticket_id=ticket_id,
             form_name=name,
             form_roblox_user=roblox_username,
             form_island_code=island_code,
             form_build=build,
+            form_payment=payment,
         )
 
         # Get welcome message
@@ -77,10 +79,11 @@ class confirm_form_builder_view(discord.ui.View):
             description="Please wait for a member of the staff to contact you.\n\n## Form information",
             color=0x58B9FF
         )
-        new_welcome_embed.add_field(name="Discord name", value=f"```{name}```", inline=False)
+        new_welcome_embed.add_field(name="Discord name", value=f"{interaction.user.mention}```({interaction.user.id} - {interaction.user.global_name})```", inline=False)
         new_welcome_embed.add_field(name="Roblox username", value=f"```{roblox_username}```", inline=False)
         new_welcome_embed.add_field(name="Island Code", value=f"```{island_code}```", inline=False)
         new_welcome_embed.add_field(name="Build", value=f"```{build}```", inline=False)
+        new_welcome_embed.add_field(name="Payment", value=f"```{payment}```", inline=False)
         new_welcome_embed.set_footer(text=f"Ticket ID: {ticket_id}")
         await welcome_msg.edit(content="", embed=new_welcome_embed)
         await welcome_msg.pin(reason="Pinning the first message")
