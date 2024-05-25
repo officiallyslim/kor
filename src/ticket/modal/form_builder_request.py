@@ -71,7 +71,7 @@ class builder_request_modal(discord.ui.Modal):
             color=0x28a745
             )
 
-        embed.add_field(name="User", value=f"```{interaction.user.mention} ({interaction.user.id} - {interaction.user.global_name})```", inline=False)
+        embed.add_field(name="User", value=f"{interaction.user.mention}```{interaction.user.id} - {interaction.user.global_name}```", inline=False)
         embed.add_field(name="Roblox username", value=f"```{self.children[0].value}```", inline=False)
         embed.add_field(name="Island Code", value=f"```{self.children[1].value}```", inline=False)
         embed.add_field(name="Build", value=f"```{self.children[2].value}```", inline=False)
