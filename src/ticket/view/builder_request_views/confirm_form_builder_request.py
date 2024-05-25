@@ -152,10 +152,11 @@ class confirm_form_builder_view(discord.ui.View):
         roblox_username = embed[0]['fields'][1]['value'].replace("```", "")
         island_code = embed[0]['fields'][2]['value'].replace("```", "")
         build = embed[0]['fields'][3]['value'].replace("```", "")
+        payment = embed[0]['fields'][4]['value'].replace("```", "")
 
         ticket_type = get_builder_ticket_type(ticket_id=ticket_id)
 
         # Send modal
         from src.ticket.modal.form_builder_request import builder_request_modal
-        modal = builder_request_modal(title="Builder Request Form", status="edit", roblox_user=roblox_username, island_code=island_code, build=build, ticket_type=ticket_type)
+        modal = builder_request_modal(title="Builder Request Form", status="edit", roblox_user=roblox_username, island_code=island_code, build=build, ticket_type=ticket_type, payment=payment)
         await interaction.response.send_modal(modal)
