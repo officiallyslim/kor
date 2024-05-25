@@ -36,7 +36,7 @@ class form_builder_request_view(discord.ui.View):
 
         ticket_type = get_builder_ticket_type(ticket_id=ticket_id)
 
-        modal = builder_request_modal(title="Builder Request Form",name=interaction.user.name, status="new", ticket_type=ticket_type)
+        modal = builder_request_modal(title="Builder Request Form", status="new", ticket_type=ticket_type)
         await interaction.response.send_modal(modal)
 
     @discord.ui.button(label="Close", style=discord.ButtonStyle.red, emoji="🔒", custom_id="close_form_pixel_art_view")
