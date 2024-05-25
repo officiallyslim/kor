@@ -1,58 +1,16 @@
 import discord
 from discord.ext import commands
-from src.loa_request.data.roles_hierarchy import (
-    builder_roles_hierarchy,
-    moderator_roles_hierarchy,
+
+from config import bot
+from src.global_src.global_embed import no_perm_embed
+from src.global_src.global_roles import (
+    assistant_director_role_id,
+    developer_role_id,
+    head_of_operations_role_id,
+    mr_boomsteak_role_id,
 )
-
-
-def get_max_builder(auhor_roles):
-    levels = [
-        builder_roles_hierarchy.get(role.id, {}).get("level", 0) for role in auhor_roles
-    ]
-
-    max_level = max(levels, default=None)
-
-    if max_level is not None:
-        max_role = next(
-            (
-                role
-                for role in auhor_roles
-                if builder_roles_hierarchy.get(role.id, {}).get("level") == max_level
-            ),
-            None,
-        )
-        if max_role:
-            return max_role
-        else:
-            return "No builder role"
-    else:
-        return "No builder role"
-
-
-def get_max_moderator(auhor_roles):
-    levels = [
-        moderator_roles_hierarchy.get(role.id, {}).get("level", 0)
-        for role in auhor_roles
-    ]
-
-    max_level = max(levels, default=None)
-
-    if max_level is not None:
-        max_role = next(
-            (
-                role
-                for role in auhor_roles
-                if moderator_roles_hierarchy.get(role.id, {}).get("level") == max_level
-            ),
-            None,
-        )
-        if max_role:
-            return max_role
-        else:
-            return "No moderator role"
-    else:
-        return "No moderator role"
+from src.loa_request.actions_builder_request import loa_request_view
+from src.loa_request.utils.get_max_role import get_max_builder, get_max_moderator
 
 
 class loa_request(commands.Cog):
@@ -101,6 +59,35 @@ class loa_request(commands.Cog):
 
         await ctx.respond(max_role, ephemeral=True)
 
+    @discord.slash_command(
+        name="send_loa_panel",
+        description="Send the LOA panel",
+    )
+    async def send_loa_panel(self, ctx: discord.ApplicationContext):
+        if int(ctx.author.id) != 756509638169460837 and not any(
+            role.id
+            in [
+                assistant_director_role_id,
+                head_of_operations_role_id,
+                developer_role_id,
+                mr_boomsteak_role_id,
+            ]
+            for role in ctx.author.roles
+        ):
+            await ctx.respond(embed=no_perm_embed, ephemeral=True)
+            return
+
+        embed = discord.Embed(
+            title="LoA request",
+            description="Do you have a job or do you want to take a break?\nAsk for a LoA request to avoid being demoted!",
+            colour=discord.Colour(int("ADD8E6", 16))
+        )
+        await ctx.response.send_message("Sending!", ephemeral=True)
+        await ctx.channel.send(embed=embed, view=loa_request_view())
+
+    @discord.Cog.listener()
+    async def on_ready(self):
+        bot.add_view(loa_request_view())
 
 def setup(bot):
     bot.add_cog(loa_request(bot))
