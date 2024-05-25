@@ -193,6 +193,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
             form_build=None,
             form_build_desp=None,
             form_build_img=None,
+            form_payment=None,
             channel_id=channel_id,
             welcome_msg_id=welcome_message.id,
             dm_msg_id=dm_message.id,
