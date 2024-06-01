@@ -47,7 +47,7 @@ class confirm_form_builder_view(discord.ui.View):
 
         # Get form data
         embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
-        name = f"{interaction.user.mention} ({interaction.user.id} - {interaction.user.global_name})"
+        name = f"{interaction.user.mention} ({interaction.user.id} - {interaction.user.name})"
         roblox_username = embed[0]['fields'][1]['value'].replace("```", "")
         island_code = embed[0]['fields'][2]['value'].replace("```", "")
         build = embed[0]['fields'][3]['value'].replace("```", "")
@@ -79,7 +79,7 @@ class confirm_form_builder_view(discord.ui.View):
             description="Please wait for a member of the staff to contact you.\n\n## Form information",
             color=0x58B9FF
         )
-        new_welcome_embed.add_field(name="Discord name", value=f"{interaction.user.mention}```({interaction.user.id} - {interaction.user.global_name})```", inline=False)
+        new_welcome_embed.add_field(name="Discord name", value=f"{interaction.user.mention}```({interaction.user.id} - {interaction.user.name})```", inline=False)
         new_welcome_embed.add_field(name="Roblox username", value=f"```{roblox_username}```", inline=False)
         new_welcome_embed.add_field(name="Island Code", value=f"```{island_code}```", inline=False)
         new_welcome_embed.add_field(name="Build", value=f"```{build}```", inline=False)
