@@ -87,23 +87,30 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id):
 
     # Gen transcript
     status_message = await interaction.response.send_message(
-        "🔒Closing ticket...\n\n🔄 Creating transcript... This may take a while!",
-        ephemeral=True,
+        "🔒Closing ticket...\n\n🔄 Creating transcript... This may take a while!"
     )
     channel_id = get_builder_channel_id(ticket_id)
     ticket_channel = bot.get_channel(channel_id)
-    status = await get_transcript(ticket_channel, ticket_id)
 
-    if status[0] == "Failed":
+    try:
+        status = await get_transcript(ticket_channel, ticket_id)
+
+        if status[0] == "Failed":
+            await status_message.edit(
+                content="🔒**Closing ticket...**\n\n🔄 **Creating transcript...** This may take a while!\n\n❌ Failed generating transcript! Please, report to admins with the ticket id"
+            )
+            return
+
         await status_message.edit(
-            content="🔒**Closing ticket...**\n\n🔄 **Creating transcript...** This may take a while!\n\n❌ Failed generating transcript! Please, report to admins with the ticket id"
+            content=f"🔒**Closing ticket...**\n\n🔄 **Creating transcript...** This may take a while!\n\n✅ [Transcript]({status[0]}) generated correctly! Deleting channel in 5 seconds."
+        )
+        await asyncio.sleep(5)
+
+    except Exception as e:
+        await status_message.edit(
+            content=f"🔒**Closing ticket...**\n\n🔄 **Creating transcript...** This may take a while!\n\n❌ Something failed genereting transcript.\nError: ```{e}```**Reporting to <@756509638169460837>.**"
         )
         return
-
-    await status_message.edit(
-        content=f"🔒**Closing ticket...**\n\n🔄 **Creating transcript...** This may take a while!\n\n✅ [Transcript]({status[0]}) generated correctly! Deleting channel in 5 seconds."
-    )
-    await asyncio.sleep(5)
 
     close_time = int(datetime.now().timestamp())
     edit_builder_request_db(
