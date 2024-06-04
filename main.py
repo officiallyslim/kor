@@ -25,8 +25,7 @@ for cog in cogs:
     try:
         bot.load_extension(cog)
         print(f'Cog loaded "{cog}"')
-    except Exception:
-        e = traceback.format_exc()
+    except Exception as e:
         print(f'Error loading cog: "{cog}": {e}')
 
 
