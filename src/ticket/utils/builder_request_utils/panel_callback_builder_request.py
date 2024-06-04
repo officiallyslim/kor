@@ -68,14 +68,24 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
 
         # Check user have current open channel
         open_ticket = check_open_builder_ticket(int(interaction.user.id), ticket_data['type'])
-        if open_ticket is not False:
-            ticket_id, channel_id = open_ticket
-            embed = discord.Embed(
-                title=f"You already have an open {ticket_data['button_label']} ticket!",
-                description=f"You have the `{ticket_data['button_label']}` ticket: `{ticket_id}` already opened.\nYou can enter by clicking the button below.",
-                color=0xff0000
+        try:
+            if open_ticket is not False:
+                ticket_id, channel_id = open_ticket
+                embed = discord.Embed(
+                    title=f"You already have an open {ticket_data['button_label']} ticket!",
+                    description=f"You have the `{ticket_data['button_label']}` ticket: `{ticket_id}` already opened.\nYou can enter by clicking the button below.",
+                    color=0xff0000
+                )
+                await interaction.response.send_message(embed=embed, view=jump_channel(guild_id, channel_id), ephemeral=True)
+                return
+        except Exception as e:
+            error_code_embed = discord.Embed(
+                title="Error code:",
+                description=f"Error: ```{e}```\nTicket ID: `{ticket_id}`\nTime: <t:{int(datetime.now().timestamp())}:F>",
+                colour=discord.Colour(int("ff0000", 16)),
             )
-            await interaction.response.send_message(embed=embed, view=jump_channel(guild_id, channel_id), ephemeral=True)
+            await interaction.response.send_message(embeds=[error_embed, error_code_embed], ephemeral=True)
+            print(f"Error when creating channel for ticket {ticket_id}: {e}")
             return
 
         # Defer response
@@ -113,11 +123,26 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
                 reason=f"New channel for {ticket_data['button_label']} Builder request",
                 category=discord.Object(id=ticket_data['category_id']),
             )
+
+        except discord.errors.DiscordServerError as e:
+            print(f"Error when creating channel for ticket {ticket_id}: {e}")
+            error_code_embed = discord.Embed(
+                title="Error code:",
+                description=f"Error filter: **DISCORD INTERNAL SERVER ERROR**\nError: ```{e}```\nTicket ID: `{ticket_id}`\nTime: <t:{open_time}:F>",
+                colour=discord.Colour(int("ff0000", 16)),
+            )
+            await interaction.followup.send(embeds=[error_embed, error_code_embed], ephemeral=True)
+            print(f"Error when creating channel for ticket {ticket_id}: {e}")
+            return
+
         except Exception as e:
-            await interaction.followup.send(embed=error_embed, ephemeral=True)
-            print(f"Error when creating channel: {e}")
-            import traceback
-            traceback.print_exc()
+            error_code_embed = discord.Embed(
+                title="Error code:",
+                description=f"Error: ```{e}```\nTicket ID: `{ticket_id}`\nTime: <t:{open_time}:F>",
+                colour=discord.Colour(int("ff0000", 16)),
+            )
+            await interaction.followup.send(embeds=[error_embed, error_code_embed], ephemeral=True)
+            print(f"Error when creating channel for ticket {ticket_id}: {e}")
             return
 
         # Send welcome message

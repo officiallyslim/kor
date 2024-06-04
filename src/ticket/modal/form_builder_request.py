@@ -1,9 +1,11 @@
 
 import asyncio
+from datetime import datetime
 
 import discord
 
 from config import bot, guild_id
+from src.global_src.global_embed import error_embed
 from src.global_src.global_emojis import loading_emoji
 from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request import (
     edit_builder_request_db,
@@ -80,15 +82,25 @@ class builder_request_modal(discord.ui.Modal):
         embed.set_footer(text="Please, confirm your answer before send to builder team.")
 
         open_ticket = check_open_builder_ticket(int(interaction.user.id), ticket_type=self.ticket_type)
-        if open_ticket is False:
-            loading_message = await interaction.response.send_message(f"{loading_emoji} Processing...", ephemeral=True)
-            await asyncio.sleep(5)
-            open_ticket = check_open_builder_ticket(int(interaction.user.id), ticket_type=self.ticket_type)
-            ticket_id, channel_id = open_ticket
-            await loading_message.edit(content="Please, go to the ticket channel for proceed.", view=jump_channel(guild_id=guild_id, channel_id=channel_id))
-        else:
-            ticket_id, channel_id = open_ticket
+        try:
+            if open_ticket is False:
+                loading_message = await interaction.response.send_message(f"{loading_emoji} Processing...", ephemeral=True)
+                await asyncio.sleep(5)
+                open_ticket = check_open_builder_ticket(int(interaction.user.id), ticket_type=self.ticket_type)
+                ticket_id, channel_id = open_ticket
+                await loading_message.edit(content="Please, go to the ticket channel for proceed.", view=jump_channel(guild_id=guild_id, channel_id=channel_id))
+            else:
+                ticket_id, channel_id = open_ticket
+        except Exception as e:
+            error_code_embed = discord.Embed(
+                title="Error code:",
+                description=f"Error: ```{e}```\nTicket ID: `{ticket_id}`\nTime: <t:{int(datetime.now().timestamp())}:F>",
+                colour=discord.Colour(int("ff0000", 16)),
+            )
 
+            await interaction.followup.send(embeds=[error_embed, error_code_embed], ephemeral=True)
+            print(f"Error when creating channel for ticket {ticket_id}: {e}")
+            return
         # Send form or edit
         if self.status == "new": # Send the message if is new form and change view in original welcome message
             welcome_msg_id, channel_id = get_builder_welcome_msg(ticket_id)
