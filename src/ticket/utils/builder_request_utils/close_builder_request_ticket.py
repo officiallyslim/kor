@@ -108,7 +108,7 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id):
 
     except Exception as e:
         await status_message.edit(
-            content=f"🔒**Closing ticket...**\n\n🔄 **Creating transcript...** This may take a while!\n\n❌ Something failed genereting transcript.\nError: ```{e}```**Reporting to <@756509638169460837>.**"
+            content=f"🔒**Closing ticket...**\n\n🔄 **Creating transcript...** This may take a while!\n\n❌ Something failed genereting transcript.\nError: ```{e}```**\nPlease, report to <@756509638169460837>.**"
         )
         return
 
