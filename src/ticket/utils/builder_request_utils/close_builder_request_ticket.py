@@ -76,9 +76,9 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id):
         if value["type"] == ticket_type:
             queue_channel_id = value["queue_channel_id"]
 
-    # Check if user is in claimed user for close
+    # Check if user is in claimed user for close or is the owner
     claim_user_id = check_claimed_builder_ticket(ticket_id)
-    if claim_user_id is not None:
+    if claim_user_id is not None or int(interaction.user.id) != 731894309615304815:
         if interaction.user.id != claim_user_id:
             await interaction.response.send_message(
                 embed=claimed_ticket_embed, ephemeral=True
