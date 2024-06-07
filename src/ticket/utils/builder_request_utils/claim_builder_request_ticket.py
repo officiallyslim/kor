@@ -65,7 +65,7 @@ async def claim_ticket(interaction: discord.Interaction):
     notification_embed = discord.Embed(
             title="",
             description=f"{interaction.user.mention} claimed this ticket!",
-            colour=discord.Colour(int("ff0000", 16)),
+            colour=discord.Colour(int("ff7900", 16)),
         )
     await interaction.channel.send(embed=notification_embed)
 
