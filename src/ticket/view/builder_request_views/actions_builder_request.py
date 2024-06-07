@@ -6,19 +6,15 @@ from src.utils.embed_to_dict import embed_to_dict
 from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_emojis import claim_emoji
 from src.global_src.global_roles import (
-    assistant_director_role_id,
-    community_manager_role_id,
-    developer_role_id,
-    head_administration_role_id,
-    head_of_operations_role_id,
-    junior_administration_role_id,
-    mr_boomsteak_role_id,
-    mr_boomsteaks_controller_role_id,
-    official_administration_role_id,
+    expo_role_id,
+    farm_role_id,
+    giveaway_role_id,
+    industrial_role_id,
     pixel_art_role_id,
-    senior_administration_role_id,
-    staff_manager_role_id,
-    trial_administration_role_id,
+    recruitment_role_id,
+    shop_role_id,
+    structure_role_id,
+    support_role_id,
 )
 from src.ticket.utils.builder_request_utils.claim_builder_request_ticket import claim_ticket
 from src.ticket.view.confirm_close_ticket import confirm_close_ticket
@@ -35,18 +31,14 @@ class actions_builder_view(discord.ui.View):
             role.id
             in [
                 pixel_art_role_id,
-                junior_administration_role_id,
-                trial_administration_role_id,
-                mr_boomsteaks_controller_role_id,
-                official_administration_role_id,
-                senior_administration_role_id,
-                head_administration_role_id,
-                staff_manager_role_id,
-                community_manager_role_id,
-                assistant_director_role_id,
-                head_of_operations_role_id,
-                developer_role_id,
-                mr_boomsteak_role_id,
+                expo_role_id,
+                shop_role_id,
+                industrial_role_id,
+                farm_role_id,
+                structure_role_id,
+                recruitment_role_id,
+                support_role_id,
+                giveaway_role_id,
             ]
             for role in interaction.user.roles
         ):
