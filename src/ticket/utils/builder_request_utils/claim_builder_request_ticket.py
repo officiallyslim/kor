@@ -67,7 +67,7 @@ async def claim_ticket(interaction: discord.Interaction):
             description=f"{interaction.user.mention} claimed this ticket!",
             colour=discord.Colour(int("ff0000", 16)),
         )
-    await interaction.channel.send(embed=notification_embed, ephemeral=True)
+    await interaction.channel.send(embed=notification_embed)
 
     welcome_msg_id, channel_id = get_builder_welcome_msg(ticket_id=ticket_id)
     welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
