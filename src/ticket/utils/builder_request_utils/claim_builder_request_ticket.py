@@ -1,9 +1,9 @@
 import re
+from datetime import datetime
 
 import discord
 
 from config import bot
-from src.utils.embed_to_dict import embed_to_dict
 from src.global_src.global_emojis import discord_emoji, roblox_emoji
 from src.ticket.utils.builder_request_utils.builder_ticket_type import ticket_type_dict
 from src.ticket.utils.builder_request_utils.db_utils.edit_db_builder_request import (
@@ -17,7 +17,8 @@ from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request
     get_builder_welcome_msg,
 )
 from src.ticket.utils.create_overwrites import create_custom_overwrites
-from datetime import datetime
+from src.utils.embed_to_dict import embed_to_dict
+
 
 async def claim_ticket(interaction: discord.Interaction):
     # Get ticket ID
