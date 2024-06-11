@@ -139,8 +139,9 @@ async def remove_user_ticket(ctx: discord.ApplicationContext, user: discord.Memb
 @ticket_group.command(name="close", description="Close the ticket")
 @option("close_reason", description="Close ticket reason")
 @option("ticket_id", description="The ID of the ticket you want to close", default=None)
+@option("password", description="Close the ticket even if its claimed", default=None)
 
-async def close_ticket_cmd(ctx: discord.ApplicationContext, close_reason: str, ticket_id: str,):
+async def close_ticket_cmd(ctx: discord.ApplicationContext, close_reason: str, ticket_id: str, password:str):
     if int(ctx.user.id) != 756509638169460837 and not any(
         role.id
         in [
@@ -159,4 +160,4 @@ async def close_ticket_cmd(ctx: discord.ApplicationContext, close_reason: str, t
         await ctx.response.send_message(embed=no_perm_embed, ephemeral=True)
         return
 
-    await close_ticket(interaction=ctx, reason=close_reason, ticket_id=ticket_id)
+    await close_ticket(interaction=ctx, reason=close_reason, ticket_id=ticket_id, password=password)

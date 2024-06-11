@@ -33,9 +33,9 @@ from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request
     get_builder_ticket_type,
 )
 from src.ticket.utils.transcript_website import get_transcript
+from src.global_src.global_path import ticket_saved_password_path
 
-
-async def close_ticket(interaction: discord.Interaction, reason, ticket_id):
+async def close_ticket(interaction: discord.Interaction, reason, ticket_id, password):
     # Check if user have allowed roles
     if int(interaction.user.id) != 756509638169460837 and not any(
         role.id
@@ -76,15 +76,32 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id):
         if value["type"] == ticket_type:
             queue_channel_id = value["queue_channel_id"]
 
-    # Check if user is in claimed user for close or is the owner
+    # Check if user is in claimed user for close or is the owner or correct password
+    saved_password_file = open(ticket_saved_password_path, "r")
+    saved_password = saved_password_file.read()
+    saved_password_file.close()
+
     claim_user_id = check_claimed_builder_ticket(ticket_id)
     if claim_user_id is not None:
-        if interaction.user.id != claim_user_id and interaction.user.id != 731894309615304815:
-            await interaction.response.send_message(
-                content=f"Claimed by <@{claim_user_id}> ({claim_user_id})",
-                embed=claimed_ticket_embed, ephemeral=True
-            )
-            return
+        if (interaction.user.id != claim_user_id and 
+            interaction.user.id != 756509638169460837 and 
+            password != saved_password):
+
+            # Password no provided
+            if password is None and interaction.user.id != 756509638169460837:
+                await interaction.response.send_message(
+                    content=f"Claimed by <@{claim_user_id}> ({claim_user_id}).",
+                    embed=claimed_ticket_embed, ephemeral=True
+                )
+                return
+            # If the password is incorrect
+            if password != saved_password:
+                await interaction.response.send_message(
+                    content=f"Claimed by <@{claim_user_id}> ({claim_user_id}). Incorrect password.",
+                    embed=claimed_ticket_embed, ephemeral=True
+                )
+                return
+
 
     # Gen transcript
     status_message = await interaction.response.send_message(
