@@ -84,11 +84,11 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id, pass
     claim_user_id = check_claimed_builder_ticket(ticket_id)
     if claim_user_id is not None:
         if (interaction.user.id != claim_user_id and 
-            interaction.user.id != 756509638169460837 and 
+            interaction.user.id != 731894309615304815 and 
             password != saved_password):
 
             # Password no provided
-            if password is None and interaction.user.id != 756509638169460837:
+            if password is None and interaction.user.id != 731894309615304815:
                 await interaction.response.send_message(
                     content=f"Claimed by <@{claim_user_id}> ({claim_user_id}).",
                     embed=claimed_ticket_embed, ephemeral=True
@@ -104,7 +104,8 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id, pass
 
 
     # Gen transcript
-    status_message = await interaction.response.send_message(
+    await interaction.response.send_message(content="Closing...")
+    status_message = await interaction.channel.send(
         "🔒Closing ticket...\n\n🔄 Creating transcript... This may take a while!"
     )
     channel_id = get_builder_channel_id(ticket_id)
