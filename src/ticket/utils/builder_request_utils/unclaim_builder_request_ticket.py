@@ -71,26 +71,30 @@ async def unclaim_ticket(interaction: discord.Interaction):
     await welcome_msg.edit(view=actions_builder_view())
 
     # Edit queue message
-    queue_message_id = get_builder_queue_message_id(ticket_id)
-    queue_message = await bot.get_channel(queue_channel_id).fetch_message(queue_message_id) # e
-    old_embed = [embed_to_dict(embed) for embed in queue_message.embeds]
-    
-    new_embed = discord.Embed(
-        title=f"{builder_name} ticket - {ticket_id}",
-        color=0xffa500,
-        description=""
-    )
-    new_embed.add_field(name="👤 User", value=old_embed[0]['fields'][0]['value'], inline=False)
-    new_embed.add_field(name="🆔 User ID", value=old_embed[0]['fields'][1]['value'], inline=False)
-    new_embed.add_field(name="📛 User name", value=old_embed[0]['fields'][2]['value'], inline=False)
-    new_embed.add_field(name="👥 Claim user", value="`No claimed`", inline=False)
-    new_embed.add_field(name=f"{discord_emoji} Discord name", value=old_embed[0]['fields'][4]['value'], inline=False)
-    new_embed.add_field(name=f"{roblox_emoji} Roblox username", value=old_embed[0]['fields'][5]['value'], inline=False)
-    new_embed.add_field(name="🔢 Island Code", value=old_embed[0]['fields'][6]['value'], inline=False)
-    new_embed.add_field(name="🏠 Build", value=old_embed[0]['fields'][7]['value'], inline=False)
-    new_embed.add_field(name="💵 Payment", value=old_embed[0]['fields'][8]['value'], inline=False)
-    new_embed.add_field(name="🏢 Channel", value=f"<#{channel_id}>", inline=False)
-    new_embed.set_footer(text=old_embed[0]['footer']['text'])
-    await queue_message.edit(embed=new_embed)
+    try:
+        queue_message_id = get_builder_queue_message_id(ticket_id)
+        queue_message = await bot.get_channel(queue_channel_id).fetch_message(queue_message_id) # e
+        old_embed = [embed_to_dict(embed) for embed in queue_message.embeds]
+        
+        new_embed = discord.Embed(
+            title=f"{builder_name} ticket - {ticket_id}",
+            color=0xffa500,
+            description=""
+        )
+        new_embed.add_field(name="👤 User", value=old_embed[0]['fields'][0]['value'], inline=False)
+        new_embed.add_field(name="🆔 User ID", value=old_embed[0]['fields'][1]['value'], inline=False)
+        new_embed.add_field(name="📛 User name", value=old_embed[0]['fields'][2]['value'], inline=False)
+        new_embed.add_field(name="👥 Claim user", value="`No claimed`", inline=False)
+        new_embed.add_field(name=f"{discord_emoji} Discord name", value=old_embed[0]['fields'][4]['value'], inline=False)
+        new_embed.add_field(name=f"{roblox_emoji} Roblox username", value=old_embed[0]['fields'][5]['value'], inline=False)
+        new_embed.add_field(name="🔢 Island Code", value=old_embed[0]['fields'][6]['value'], inline=False)
+        new_embed.add_field(name="🏠 Build", value=old_embed[0]['fields'][7]['value'], inline=False)
+        new_embed.add_field(name="💵 Payment", value=old_embed[0]['fields'][8]['value'], inline=False)
+        new_embed.add_field(name="🏢 Channel", value=f"<#{channel_id}>", inline=False)
+        new_embed.set_footer(text=old_embed[0]['footer']['text'])
+        await queue_message.edit(embed=new_embed)
+    except Exception:
+        print(f"Failed edit unclaim queue message for ticket {ticket_id}")
+
     # Save to database
     edit_builder_request_db(ticket_id=ticket_id, claim_user_id=None)
