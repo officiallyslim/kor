@@ -96,5 +96,11 @@ async def unclaim_ticket(interaction: discord.Interaction):
     except Exception:
         print(f"Failed edit unclaim queue message for ticket {ticket_id}")
 
+    notification_embed = discord.Embed(
+            title="",
+            description=f"{interaction.user.mention} unclaimed this ticket!",
+            colour=discord.Colour(int("ff7900", 16)),
+        )
+    await interaction.channel.send(embed=notification_embed)
     # Save to database
     edit_builder_request_db(ticket_id=ticket_id, claim_user_id=None)
