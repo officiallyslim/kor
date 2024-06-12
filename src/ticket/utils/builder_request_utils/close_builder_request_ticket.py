@@ -104,7 +104,7 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id, pass
 
 
     # Gen transcript
-    await interaction.response.send_message(content="Closing...")
+    await interaction.response.send_message(content="Closing...", ephemeral=True)
     status_message = await interaction.channel.send(
         "🔒Closing ticket...\n\n🔄 Creating transcript... This may take a while!"
     )
