@@ -1,6 +1,7 @@
 import discord
 from commands.ticket_cmd_group.ticket_remove import remove_user_ticket
 from commands.ticket_cmd_group.ticket_close import close_ticket
+from commands.ticket_cmd_group.ticket_add import add_user_ticket
 from discord import option
 
 ticket_group = discord.SlashCommandGroup("ticket", "Ticket utils command")
@@ -25,3 +26,7 @@ ticket_group.command(name="close", description="Close the ticket")(
         )
     )
 )
+
+ticket_group.command(
+    name="add", description="Add someone to the current ticket channel"
+)(add_user_ticket)

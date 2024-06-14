@@ -2,7 +2,6 @@ import re
 
 import discord
 
-from commands.ticket_commands import ticket_group
 from config import bot
 from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_roles import (
@@ -23,10 +22,6 @@ from src.ticket.utils.create_overwrites import (
     create_view_and_chat_overwrites,
 )
 
-
-@ticket_group.command(
-    name="add", description="Add someone to the current ticket channel"
-)
 async def add_user_ticket(ctx: discord.ApplicationContext, user: discord.Member):
     if int(ctx.user.id) != 756509638169460837 and not any(
         role.id
