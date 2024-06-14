@@ -2,6 +2,7 @@ import discord
 from commands.ticket_cmd_group.ticket_remove import remove_user_ticket
 from commands.ticket_cmd_group.ticket_close import close_ticket
 from commands.ticket_cmd_group.ticket_add import add_user_ticket
+from commands.ticket_cmd_group.ticket_info import view_ticket_info_callback
 from discord import option
 
 ticket_group = discord.SlashCommandGroup("ticket", "Ticket utils command")
@@ -33,4 +34,4 @@ ticket_group.command(
 
 ticket_group.command(name="info", description="View specific information")(
     option("ticket_id", description="The ticket ID for view information", default=None)
-)
+)(view_ticket_info_callback)
