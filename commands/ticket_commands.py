@@ -30,3 +30,7 @@ ticket_group.command(name="close", description="Close the ticket")(
 ticket_group.command(
     name="add", description="Add someone to the current ticket channel"
 )(add_user_ticket)
+
+ticket_group.command(name="info", description="View specific information")(
+    option("ticket_id", description="The ticket ID for view information", default=None)
+)

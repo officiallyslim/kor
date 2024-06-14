@@ -117,3 +117,14 @@ def get_builder_ticket_type(ticket_id):
         return confirm_message_id
     else:
         return None
+
+def get_all_ticket_info(ticket_id):
+    conn = sqlite3.connect(ticket_database_path)
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM builder_request WHERE ticket_id = ?', (ticket_id,))
+    result = cursor.fetchone()
+    conn.close()
+    if result is not None:
+        return result
+    else:
+        return None
