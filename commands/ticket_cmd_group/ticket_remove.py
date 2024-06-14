@@ -2,7 +2,6 @@ import re
 
 import discord
 
-from commands.ticket_commands import ticket_group
 from config import bot
 from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_roles import (
@@ -26,9 +25,6 @@ from src.ticket.utils.create_overwrites import (
 )
 
 
-@ticket_group.command(
-    name="remove", description="Remove someone to the current ticket channel"
-)
 async def remove_user_ticket(ctx: discord.ApplicationContext, user: discord.Member):
     if int(ctx.user.id) != 756509638169460837 and not any(
         role.id
