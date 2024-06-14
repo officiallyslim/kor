@@ -1,5 +1,6 @@
 import sqlite3
 from src.global_src.global_path import ticket_database_path
+from src.ticket.utils.builder_request_utils.db_utils.Ticket import Ticket
 
 def get_builder_welcome_msg(ticket_id):
     conn = sqlite3.connect(ticket_database_path)
@@ -125,6 +126,6 @@ def get_all_ticket_info(ticket_id):
     result = cursor.fetchone()
     conn.close()
     if result is not None:
-        return result
+        return Ticket(*result)
     else:
         return None

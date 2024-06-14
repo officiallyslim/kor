@@ -33,5 +33,5 @@ ticket_group.command(
 )(add_user_ticket)
 
 ticket_group.command(name="info", description="View specific information")(
-    option("ticket_id", description="The ticket ID for view information", default=None)
-)(view_ticket_info_callback)
+    option("ticket_id", description="The ticket ID for view information", default=None)(view_ticket_info_callback)
+)
