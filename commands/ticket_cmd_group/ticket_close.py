@@ -1,8 +1,6 @@
 
 import discord
-from discord import option
 
-from commands.ticket_commands import ticket_group
 from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_roles import (
     expo_role_id,
@@ -18,12 +16,6 @@ from src.global_src.global_roles import (
 from src.ticket.utils.builder_request_utils.close_builder_request_ticket import (
     close_ticket,
 )
-
-
-@ticket_group.command(name="close", description="Close the ticket")
-@option("close_reason", description="Close ticket reason")
-@option("ticket_id", description="The ID of the ticket you want to close", default=None)
-@option("password", description="Close the ticket even if its claimed", default=None)
 
 async def close_ticket_cmd(ctx: discord.ApplicationContext, close_reason: str, ticket_id: str, password:str):
     if int(ctx.user.id) != 756509638169460837 and not any(
