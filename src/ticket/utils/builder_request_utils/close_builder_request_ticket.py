@@ -175,7 +175,7 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id, pass
             pass
 
     embed = discord.Embed(
-        title=f"Ticket {ticket_id} closed", description="", color=0x85B3FA
+        title=f"Ticket {ticket_id} closed", description="", color=0x5cb85c
     )
     embed.add_field(name="🕐 Close time", value=f"<t:{close_time}>", inline=False)
     embed.add_field(
