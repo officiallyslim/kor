@@ -1,4 +1,3 @@
-
 import discord
 import re
 from src.global_src.global_embed import no_perm_embed
@@ -13,7 +12,11 @@ from src.global_src.global_roles import (
     structure_role_id,
     support_role_id,
 )
-from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import get_all_ticket_info
+from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import (
+    get_all_ticket_info,
+)
+from src.global_src.global_embed import error_embed
+
 
 async def view_ticket_info_callback(ctx: discord.ApplicationContext, ticket_id: str):
     if int(ctx.user.id) != 756509638169460837 and not any(
@@ -45,7 +48,22 @@ async def view_ticket_info_callback(ctx: discord.ApplicationContext, ticket_id: 
             )
             return
 
-    ticket_data = get_all_ticket_info(ticket_id=ticket_id)
+    try:
+        ticket_data = get_all_ticket_info(ticket_id=ticket_id)
+        if ticket_data:
+            info_embed = discord.Embed(
+                title=f"Ticket {ticket_data.ticket_id} information",
+                description=f"**🙍 Open user:** <@{ticket_data.open_user_id}",
+                colour=discord.Colour(int("5cb85c", 16)),
+            )
+            info_embed.add_field(
+                name="TEST",
+                value=f"A",
+                inline=False,
+            )
 
-    await ctx.response.send_message(content=f"```{ticket_data}```")
-    
+            await ctx.response.send_message(content=f"```{ticket_data}```")
+        else:
+            await ctx.response.send_message(content="Ticket data not found")
+    except Exception:
+        await ctx.response.send_message(embed=error_embed, ephemeral=True)
