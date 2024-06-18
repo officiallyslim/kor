@@ -51,9 +51,21 @@ async def view_ticket_info_callback(ctx: discord.ApplicationContext, ticket_id: 
     try:
         ticket_data = get_all_ticket_info(ticket_id=ticket_id)
         if ticket_data:
+
+            if ticket_data.close_time is not None:
+                current_ticket_status = "Ticket is open"
+            elif ticket_data.claim_user_id is not None:
+                current_ticket_status = (
+                    f"Currently claimed by <@{ticket_data.claim_user_id}>"
+                )
+            else:
+                current_ticket_status = "Ticket is closed"
+
             info_embed = discord.Embed(
                 title=f"Ticket {ticket_data.ticket_id} information",
-                description=f"**🙍 Open user:** <@{ticket_data.open_user_id}",
+                description=f"""
+                **📢 Current status: {current_ticket_status}** 
+                **🙍 Open user:** <@{ticket_data.open_user_id}""",
                 colour=discord.Colour(int("5cb85c", 16)),
             )
             info_embed.add_field(
