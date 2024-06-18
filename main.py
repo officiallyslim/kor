@@ -1,4 +1,5 @@
 import os
+import traceback
 
 import discord
 import dotenv
@@ -26,7 +27,7 @@ for cog in cogs:
         print(f'Cog loaded "{cog}"')
     except Exception as e:
         print(f'Error loading cog: "{cog}": {e}')
-
+        traceback.print_exc()
 
 @bot.event
 async def on_ready():
