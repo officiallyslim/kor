@@ -16,6 +16,7 @@ from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request
     get_all_ticket_info,
 )
 from src.global_src.global_embed import error_embed
+from src.ticket.utils.builder_request_utils.db_utils.ticket_info_embed import create_ticket_info_embed
 
 
 async def view_ticket_info_callback(ctx: discord.ApplicationContext, ticket_id: str):
@@ -52,8 +53,9 @@ async def view_ticket_info_callback(ctx: discord.ApplicationContext, ticket_id: 
         ticket_data = get_all_ticket_info(ticket_id=ticket_id)
         if ticket_data:
 
-            if ticket_data.close_time is not None:
+            if ticket_data.close_time is None:
                 current_ticket_status = "Ticket is open"
+
             elif ticket_data.claim_user_id is not None:
                 current_ticket_status = (
                     f"Currently claimed by <@{ticket_data.claim_user_id}>"
@@ -61,20 +63,8 @@ async def view_ticket_info_callback(ctx: discord.ApplicationContext, ticket_id: 
             else:
                 current_ticket_status = "Ticket is closed"
 
-            info_embed = discord.Embed(
-                title=f"Ticket {ticket_data.ticket_id} information",
-                description=f"""
-                **📢 Current status: {current_ticket_status}** 
-                **🙍 Open user:** <@{ticket_data.open_user_id}""",
-                colour=discord.Colour(int("5cb85c", 16)),
-            )
-            info_embed.add_field(
-                name="TEST",
-                value=f"A",
-                inline=False,
-            )
-
-            await ctx.response.send_message(content=f"```{ticket_data}```")
+            embed = create_ticket_info_embed(ticket_data=ticket_data, current_ticket_status=current_ticket_status)
+            await ctx.response.send_message(embed=embed)
         else:
             await ctx.response.send_message(content="Ticket data not found")
     except Exception:
