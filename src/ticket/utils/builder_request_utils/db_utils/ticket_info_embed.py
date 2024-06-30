@@ -15,24 +15,24 @@ def create_ticket_info_embed(ticket_data: Ticket, current_ticket_status):
                         **🏠 Channel:** <#{ticket_data.channel_id}>""",
             colour=discord.Colour(int("5cb85c", 16)),
         )
-        info_embed.add_field(
-            name="Roblox user (form)",
-            value=f"```{ticket_data.form_roblox_user}```",
-            inline=False,
-        )
-        info_embed.add_field(
-            name="Island Code (form)",
-            value=f"```{ticket_data.form_island_code}```",
-            inline=False,
-        )
-        info_embed.add_field(
-            name="Build (form)", value=f"```{ticket_data.form_build}```", inline=False
-        )
-        info_embed.add_field(
-            name="Payment (form)",
-            value=f"```{ticket_data.form_payment}```",
-            inline=False,
-        )
+        # info_embed.add_field(
+        #     name="Roblox user (form)",
+        #     value=f"```{ticket_data.form_roblox_user}```",
+        #     inline=False,
+        # )
+        # info_embed.add_field(
+        #     name="Island Code (form)",
+        #     value=f"```{ticket_data.form_island_code}```",
+        #     inline=False,
+        # )
+        # info_embed.add_field(
+        #     name="Build (form)", value=f"```{ticket_data.form_build}```", inline=False
+        # )
+        # info_embed.add_field(
+        #     name="Payment (form)",
+        #     value=f"```{ticket_data.form_payment}```",
+        #     inline=False,
+        # )
         info_embed.set_footer(text=f"Ticket ID: {ticket_data.ticket_id}")
         return info_embed
 
@@ -50,24 +50,24 @@ def create_ticket_info_embed(ticket_data: Ticket, current_ticket_status):
                         **🏠 Channel:** <#{ticket_data.channel_id}>""",
             colour=discord.Colour(int("5cb85c", 16)),
         )
-        info_embed.add_field(
-            name="Roblox user (form)",
-            value=f"```{ticket_data.form_roblox_user}```",
-            inline=False,
-        )
-        info_embed.add_field(
-            name="Island Code (form)",
-            value=f"```{ticket_data.form_island_code}```",
-            inline=False,
-        )
-        info_embed.add_field(
-            name="Build (form)", value=f"```{ticket_data.form_build}```", inline=False
-        )
-        info_embed.add_field(
-            name="Payment (form)",
-            value=f"```{ticket_data.form_payment}```",
-            inline=False,
-        )
+        # info_embed.add_field(
+        #     name="Roblox user (form)",
+        #     value=f"```{ticket_data.form_roblox_user}```",
+        #     inline=False,
+        # )
+        # info_embed.add_field(
+        #     name="Island Code (form)",
+        #     value=f"```{ticket_data.form_island_code}```",
+        #     inline=False,
+        # )
+        # info_embed.add_field(
+        #     name="Build (form)", value=f"```{ticket_data.form_build}```", inline=False
+        # )
+        # info_embed.add_field(
+        #     name="Payment (form)",
+        #     value=f"```{ticket_data.form_payment}```",
+        #     inline=False,
+        # )
         info_embed.set_footer(text=f"Ticket ID: {ticket_data.ticket_id}")
         return info_embed
 
@@ -90,23 +90,23 @@ def create_ticket_info_embed(ticket_data: Ticket, current_ticket_status):
             value=f"```{ticket_data.close_reason}```",
             inline=False,
         )
-        info_embed.add_field(
-            name="Roblox user (form)",
-            value=f"```{ticket_data.form_roblox_user}```",
-            inline=False,
-        )
-        info_embed.add_field(
-            name="Island Code (form)",
-            value=f"```{ticket_data.form_island_code}```",
-            inline=False,
-        )
-        info_embed.add_field(
-            name="Build (form)", value=f"```{ticket_data.form_build}```", inline=False
-        )
-        info_embed.add_field(
-            name="Payment (form)",
-            value=f"```{ticket_data.form_payment}```",
-            inline=False,
-        )
+        # info_embed.add_field(
+        #     name="Roblox user (form)",
+        #     value=f"```{ticket_data.form_roblox_user}```",
+        #     inline=False,
+        # )
+        # info_embed.add_field(
+        #     name="Island Code (form)",
+        #     value=f"```{ticket_data.form_island_code}```",
+        #     inline=False,
+        # )
+        # info_embed.add_field(
+        #     name="Build (form)", value=f"```{ticket_data.form_build}```", inline=False
+        # )
+        # info_embed.add_field(
+        #     name="Payment (form)",
+        #     value=f"```{ticket_data.form_payment}```",
+        #     inline=False,
+        # )
         info_embed.set_footer(text=f"Ticket ID: {ticket_data.ticket_id}")
         return info_embed
