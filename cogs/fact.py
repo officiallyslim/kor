@@ -9,7 +9,12 @@ from discord.ext import commands, tasks
 
 from commands.fact_commands import fact_group, source_island
 from config import bot
-from src.facts.get_fact import get_daily_islandfact
+from src.facts.get_fact import (
+    get_daily_islandfact,
+    get_randomcatfact,
+    get_randomdogfact,
+    get_randomfact,
+)
 from src.global_src.global_channel_id import (
     daily_fact_channel_id,
     daily_fact_log_channel_id,
@@ -32,6 +37,7 @@ from src.global_src.global_roles import (
     mr_boomsteak_role_id,
     staff_manager_role_id,
 )
+import random
 
 dotenv.load_dotenv()
 token = str(os.getenv("GITHUB_TOKEN"))
@@ -155,70 +161,125 @@ async def increment_fact_number():
 
 
 fact_sent = False
+last_sent = None
 
 
 @tasks.loop(seconds=1)
 async def dailyfact():
-    global fact_sent
+    global last_sent
     now = datetime.now(pytz.utc)
     cest = pytz.timezone("Europe/Madrid")
+    if now.astimezone(cest).hour == 22 and now.astimezone(cest).minute == 24:
+        # print("ITS TIME FOR NEW!")
+        if last_sent is None or now.date() != last_sent:
+            last_sent = now.date()
+            channel = bot.get_channel(daily_fact_channel_id)
+            fact_type = random.randint(1, 3)
+            if fact_type == 1:
+                fact = get_randomfact()
+                dailyfact_embed = discord.Embed(
+                    title="Did you know? 🤔",
+                    description=f"{fact}",
+                    colour=discord.Colour(int("6692d7", 16)),
+                )
 
-    # Check time
-    if (
-        now.astimezone(cest).hour == 17
-        and now.astimezone(cest).minute == 00
-        and not fact_sent
-    ):
-        channel = bot.get_channel(daily_fact_channel_id)
-        fact = await get_daily_islandfact()
-        mod_channel = bot.get_channel(mod_channel_id)
-
-        if fact:
-            randomislandfact_embed = discord.Embed(
-                title="Did you know? 🏝️",
-                description=f"{fact['Fact']}",
-                colour=discord.Colour(int("d1e8fa", 16)),
-            )
+            elif fact_type == 2:
+                fact = get_randomcatfact()
+                dailyfact_embed = discord.Embed(
+                    title="Did you know? 🐱",
+                    description=f"{fact}",
+                    colour=discord.Colour(int("ffcc00", 16)),
+                )
+            else:
+                fact = get_randomdogfact()
+                dailyfact_embed = discord.Embed(
+                    title="Did you know? 🐶",
+                    description=f"{fact}",
+                    colour=discord.Colour(int("964B00", 16)),
+                )
 
             fact_number = await get_fact_number()
-
-            if fact["Image Link"] is not None:
-                randomislandfact_embed.set_image(url=f"{str(fact['Image Link'])}")
-
-            if fact["Source Link"] is None:
-                await channel.send(
-                    f"## <@&1198106586309201950> Random Fact #{fact_number}\n",
-                    embed=randomislandfact_embed,
-                )
-                print("Send daily fact without button")
-            else:
-                await channel.send(
-                    f"## <@&1198106586309201950> Random Fact #{fact_number}\n",
-                    embed=randomislandfact_embed,
-                    view=source_island(fact["Source Link"]),
-                )
-                print("Send daily fact with button")
-
             await increment_fact_number()
-            fact_sent = True
-
+            await channel.send(
+                f"## <@&1198106586309201950> Random Fact #{fact_number}\n",
+                embed=dailyfact_embed,
+            )
             # Send log
             daily_log_channel = bot.get_channel(daily_fact_log_channel_id)
 
             embed = discord.Embed(
                 title=f"Daily random fact status #{fact_number}",
-                description=f"{fact['Fact']}",
+                description=f"{fact}",
                 colour=discord.Colour(int("d1e8fa", 16)),
             )
 
             await daily_log_channel.send(embed=embed)
+    else:
+        pass
 
-            if fact["Available Facts"] < 5:
-                await mod_channel.send(
-                    f"<@756509638169460837> There's only **{fact['Available Facts']}** daily facts left!"
-                )
-        else:
-            await mod_channel.send("<@756509638169460837> Daily Fact Error.")
 
-    if now.astimezone(cest).hour == 0 and now.astimezone(cest).minute == 0:
-        fact_sent = False
+# @tasks.loop(seconds=1)
+# async def dailyfact():
+#     global fact_sent
+#     now = datetime.now(pytz.utc)
+#     cest = pytz.timezone("Europe/Madrid")
+
+#     # Check time
+#     if (
+#         now.astimezone(cest).hour == 17
+#         and now.astimezone(cest).minute == 00
+#         and not fact_sent
+#     ):
+#         channel = bot.get_channel(daily_fact_channel_id)
+#         fact = await get_daily_islandfact()
+#         mod_channel = bot.get_channel(mod_channel_id)
+
+#         if fact:
+#             randomislandfact_embed = discord.Embed(
+#                 title="Did you know? 🏝️",
+#                 description=f"{fact['Fact']}",
+#                 colour=discord.Colour(int("d1e8fa", 16)),
+#             )
+
+#             fact_number = await get_fact_number()
+
+#             if fact["Image Link"] is not None:
+#                 randomislandfact_embed.set_image(url=f"{str(fact['Image Link'])}")
+
+#             if fact["Source Link"] is None:
+#                 await channel.send(
+#                     f"## <@&1198106586309201950> Random Fact #{fact_number}\n",
+#                     embed=randomislandfact_embed,
+#                 )
+#                 print("Send daily fact without button")
+#             else:
+#                 await channel.send(
+#                     f"## <@&1198106586309201950> Random Fact #{fact_number}\n",
+#                     embed=randomislandfact_embed,
+#                     view=source_island(fact["Source Link"]),
+#                 )
+#                 print("Send daily fact with button")
+
+#             await increment_fact_number()
+#             fact_sent = True
+
+#             # Send log
+#             daily_log_channel = bot.get_channel(daily_fact_log_channel_id)
+
+#             embed = discord.Embed(
+#                 title=f"Daily random fact status #{fact_number}",
+#                 description=f"{fact['Fact']}",
+#                 colour=discord.Colour(int("d1e8fa", 16)),
+#             )
+
+#             await daily_log_channel.send(embed=embed)
+
+#             if fact["Available Facts"] < 5:
+#                 await mod_channel.send(
+#                     f"<@756509638169460837> There's only **{fact['Available Facts']}** daily facts left!"
+#                 )
+#         else:
+#             await mod_channel.send("<@756509638169460837> Daily Fact Error.")
+
+#     if now.astimezone(cest).hour == 0 and now.astimezone(cest).minute == 0:
+#         fact_sent = False
