@@ -169,7 +169,7 @@ async def dailyfact():
     global last_sent
     now = datetime.now(pytz.utc)
     cest = pytz.timezone("Europe/Madrid")
-    if now.astimezone(cest).hour == 22 and now.astimezone(cest).minute == 24:
+    if now.astimezone(cest).hour == 17 and now.astimezone(cest).minute == 00:
         # print("ITS TIME FOR NEW!")
         if last_sent is None or now.date() != last_sent:
             last_sent = now.date()
