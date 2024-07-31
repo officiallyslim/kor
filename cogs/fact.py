@@ -7,10 +7,9 @@ import pytz
 from discord import option
 from discord.ext import commands, tasks
 
-from commands.fact_commands import fact_group, source_island
+from commands.fact_commands import fact_group
 from config import bot
 from src.facts.get_fact import (
-    get_daily_islandfact,
     get_randomcatfact,
     get_randomdogfact,
     get_randomfact,
@@ -19,7 +18,6 @@ from src.global_src.global_channel_id import (
     daily_fact_channel_id,
     daily_fact_log_channel_id,
     general_log_channel_id,
-    mod_channel_id,
 )
 from src.global_src.global_embed import (
     failed_fetch_daily_channel,
