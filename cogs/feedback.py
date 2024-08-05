@@ -37,7 +37,7 @@ class feedback(commands.Cog):
             dm_channel = await member.create_dm()
             feedback_embed = discord.Embed(
                 title="You have been invited!",
-                description=f"You've been invited to participate in a volunteer survey about the KOR bot ticket system. Your feedback is invaluable in helping us enhance our system and provide you with even better service. We greatly appreciate your time and input!\n\nYou discord Id is {member.id}",
+                description=f"You've been invited to participate in a volunteer survey about the KOR bot ticket system. Your feedback is invaluable in helping us enhance our system and provide you with even better service. We greatly appreciate your time and input!\n\nYou Discord ID is {member.id}",
                 colour=discord.Colour(int("6692d7", 16)),
             )
             await dm_channel.send(embed=feedback_embed, view=feedback_view())
