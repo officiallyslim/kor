@@ -32,8 +32,11 @@ class feedback(commands.Cog):
             f"Found {len(users_with_role)} users with the role.", ephemeral=True
         )
 
+        i = 0
+
         for member in users_with_role:
             print(member.id)
+            print(f"{i+1}/{len(users_with_role)}")
             dm_channel = await member.create_dm()
             feedback_embed = discord.Embed(
                 title="You have been invited!",
