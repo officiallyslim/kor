@@ -44,7 +44,7 @@ class feedback(commands.Cog):
                 colour=discord.Colour(int("6692d7", 16)),
             )
             await dm_channel.send(embed=feedback_embed, view=feedback_view())
-
+            i += 1
 
 class feedback_view(discord.ui.View):
     def __init__(self):
