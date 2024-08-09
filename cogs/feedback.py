@@ -14,7 +14,7 @@ class feedback(commands.Cog):
     async def send_ticket_feedback_callback(self, ctx: discord.ApplicationContext):
         await ctx.defer(ephemeral=True)
 
-        role_id = 1229570230611742771
+        role_id = 1151613209648840754
 
         guild = self.bot.get_guild(guild_id)
         if guild is None:
