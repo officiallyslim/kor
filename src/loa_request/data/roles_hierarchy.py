@@ -15,7 +15,7 @@ builder_roles_hierarchy = {
 }
 
 moderator_roles_hierarchy = {
-    1210006813945106492: {"level": 18, "description": "Mr. Boomsteak"},
+    1210006813945106492: {"level": 18, "description": "Owner"},
     1214469615808417812: {"level": 17, "description": "Developer"},
     1168385225349406771: {"level": 16, "description": "Head of Operations"},
     1151613202669514813: {"level": 15, "description": "Assistant Director"},

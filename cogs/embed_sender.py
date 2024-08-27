@@ -14,7 +14,7 @@ from src.global_src.global_roles import (
     community_manager_role_id,
     developer_role_id,
     head_of_operations_role_id,
-    mr_boomsteak_role_id,
+    owner_role_id,
     staff_manager_role_id,
 )
 
@@ -43,7 +43,7 @@ class embed_sender(commands.Cog):
 
     @discord.slash_command(name = "send_embed", description = "Send embed in specifically channel")
     async def embed_sender(self, ctx: discord.ApplicationContext, channel: discord.TextChannel, file: discord.Attachment = None, discohook_link: str = None):
-        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager_role_id, community_manager_role_id, assistant_director_role_id, head_of_operations_role_id, developer_role_id, mr_boomsteak_role_id] for role in ctx.author.roles):
+        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager_role_id, community_manager_role_id, assistant_director_role_id, head_of_operations_role_id, developer_role_id, owner_role_id] for role in ctx.author.roles):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
         if file and discohook_link:
@@ -100,7 +100,7 @@ class embed_sender(commands.Cog):
 
     @discord.slash_command(name = "send_dm_embed", description = "Send embed in DM")
     async def dm_sender(self, ctx: discord.ApplicationContext, user: discord.User, file: discord.Attachment = None, discohook_link: str = None):
-        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager_role_id, community_manager_role_id, assistant_director_role_id, head_of_operations_role_id, developer_role_id, mr_boomsteak_role_id] for role in ctx.author.roles):
+        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager_role_id, community_manager_role_id, assistant_director_role_id, head_of_operations_role_id, developer_role_id, owner_role_id] for role in ctx.author.roles):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
         if file and discohook_link:

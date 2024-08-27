@@ -7,7 +7,7 @@ from src.global_src.global_roles import (
     assistant_director_role_id,
     developer_role_id,
     head_of_operations_role_id,
-    mr_boomsteak_role_id,
+    owner_role_id,
 )
 from src.loa_request.actions_builder_request import loa_request_view
 from src.loa_request.utils.get_max_role import get_max_builder, get_max_moderator
@@ -70,7 +70,7 @@ class loa_request(commands.Cog):
                 assistant_director_role_id,
                 head_of_operations_role_id,
                 developer_role_id,
-                mr_boomsteak_role_id,
+                owner_role_id,
             ]
             for role in ctx.author.roles
         ):

@@ -10,7 +10,7 @@ from src.global_src.global_roles import (
     community_manager_role_id,
     developer_role_id,
     head_of_operations_role_id,
-    mr_boomsteak_role_id,
+    owner_role_id,
     staff_manager_role_id,
 )
 from src.ticket.view.confirm_close_ticket import confirm_close_ticket
@@ -32,7 +32,7 @@ class ticket(commands.Cog):
 
     @discord.slash_command(name = "send_panel", description = "Send embed in specifically channel")
     async def embed_sender(self, ctx: discord.ApplicationContext):
-        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager_role_id, community_manager_role_id, assistant_director_role_id, head_of_operations_role_id, developer_role_id, mr_boomsteak_role_id] for role in ctx.author.roles):
+        if int(ctx.author.id) != 756509638169460837 and not any(role.id in [staff_manager_role_id, community_manager_role_id, assistant_director_role_id, head_of_operations_role_id, developer_role_id, owner_role_id] for role in ctx.author.roles):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
         await ctx.respond("Select a panel",view=panel_selector(), ephemeral=True)

@@ -12,7 +12,7 @@ from src.global_src.global_roles import (
     community_manager_role_id,
     developer_role_id,
     head_of_operations_role_id,
-    mr_boomsteak_role_id,
+    owner_role_id,
     staff_manager_role_id,
 )
 
@@ -53,7 +53,7 @@ async def reload_cog(
             assistant_director_role_id,
             head_of_operations_role_id,
             developer_role_id,
-            mr_boomsteak_role_id,
+            owner_role_id,
         ]
         for role in ctx.author.roles
     ):
@@ -82,7 +82,7 @@ async def kill(
             assistant_director_role_id,
             head_of_operations_role_id,
             developer_role_id,
-            mr_boomsteak_role_id,
+            owner_role_id,
         ]
         for role in ctx.author.roles
     ):
@@ -105,7 +105,7 @@ async def version(
             assistant_director_role_id,
             head_of_operations_role_id,
             developer_role_id,
-            mr_boomsteak_role_id,
+            owner_role_id,
         ]
         for role in ctx.author.roles
     ):

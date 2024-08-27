@@ -1,5 +1,5 @@
 # Staff Roles
-mr_boomsteak_role_id = 1210006813945106492
+owner_role_id = 1148746074769588305
 developer_role_id = 1214469615808417812
 head_of_operations_role_id = 1168385225349406771
 assistant_director_role_id = 1151613202669514813
@@ -9,7 +9,6 @@ head_administration_role_id = 1216518080889622538
 senior_administration_role_id = 1216518078649860198
 official_administration_role_id = 1216518079433936975
 junior_administration_role_id = 1175985559743774791
-trial_administration_role_id = 1175985971565694987
 mr_boomsteaks_controller_role_id = 1151613201377677382
 management_team_role_id = 1175984805620494426
 head_of_moderation_role_id = 1216518081032093766

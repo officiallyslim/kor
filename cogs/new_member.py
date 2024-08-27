@@ -10,7 +10,7 @@ from src.global_src.global_roles import (
     community_manager_role_id,
     developer_role_id,
     head_of_operations_role_id,
-    mr_boomsteak_role_id,
+    owner_role_id,
     staff_manager_role_id,
 )
 from src.new_member.create_welcome_card import create_welcome_card
@@ -42,7 +42,7 @@ class new_member(commands.Cog):
                 assistant_director_role_id,
                 head_of_operations_role_id,
                 developer_role_id,
-                mr_boomsteak_role_id] for role in ctx.author.roles):
+                owner_role_id] for role in ctx.author.roles):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
         await create_welcome_card(member)
