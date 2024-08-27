@@ -110,3 +110,11 @@ def create_ticket_info_embed(ticket_data: Ticket, current_ticket_status):
         # )
         info_embed.set_footer(text=f"Ticket ID: {ticket_data.ticket_id}")
         return info_embed
+    elif current_ticket_status == "Failed":
+        info_embed = discord.Embed(
+            title=f"Ticket {ticket_data.ticket_id} information",
+            description="Failed to get ticket data",
+            colour=discord.Colour(int("d9534f", 16)),
+        )
+        info_embed.set_footer(text=f"Ticket ID: {ticket_data.ticket_id}")
+        return info_embed
