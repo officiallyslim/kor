@@ -72,10 +72,10 @@ async def claim_ticket(interaction: discord.Interaction):
     welcome_msg_id, channel_id = get_builder_welcome_msg(ticket_id=ticket_id)
     welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
     from src.ticket.view.builder_request_views.actions_claimed_builder_request import (
-        actions_claimed_pixel_art_view,
+        actions_claimed_builder_view,
     )
     try:
-        await welcome_msg.edit(view=actions_claimed_pixel_art_view())
+        await welcome_msg.edit(view=actions_claimed_builder_view())
     except Exception as e:
         error_code_embed = discord.Embed(
             title="Error code:",

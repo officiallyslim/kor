@@ -8,7 +8,7 @@ from src.ticket.utils.builder_request_utils.unclaim_builder_request_ticket impor
 from src.ticket.view.confirm_close_ticket import confirm_close_ticket
 from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request import check_claimed_builder_ticket
 
-class actions_claimed_pixel_art_view(discord.ui.View):
+class actions_claimed_builder_view(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
@@ -36,7 +36,7 @@ class actions_claimed_pixel_art_view(discord.ui.View):
 
         embed = discord.Embed(
             title="Closing ticket...",
-            description="Are you u want close the ticket?",
+            description="Are you sure you want to close the ticket?",
             color=0xff0000
         )
         embed.set_footer(text=f"Ticket ID: {ticket_id}")

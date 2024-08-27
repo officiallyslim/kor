@@ -16,7 +16,7 @@ from src.global_src.global_roles import (
 from src.ticket.view.confirm_close_ticket import confirm_close_ticket
 from src.ticket.view.panel_selector import panel_selector
 from src.ticket.view.builder_request_views.actions_claimed_builder_request import (
-    actions_claimed_pixel_art_view,
+    actions_claimed_builder_view,
 )
 from src.ticket.view.builder_request_views.actions_builder_request import actions_builder_view
 from src.ticket.view.builder_request_views.confirm_form_builder_request import (
@@ -44,7 +44,7 @@ class ticket(commands.Cog):
         bot.add_view(confirm_form_builder_view())
         bot.add_view(actions_builder_view())
         bot.add_view(confirm_close_ticket())
-        bot.add_view(actions_claimed_pixel_art_view())
+        bot.add_view(actions_claimed_builder_view())
 
     print("Loading ticket commands...")
     bot.add_application_command(ticket_group)

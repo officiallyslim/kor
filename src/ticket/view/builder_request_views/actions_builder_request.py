@@ -55,7 +55,7 @@ class actions_builder_view(discord.ui.View):
 
         embed = discord.Embed(
             title="Closing ticket...",
-            description="Are you u want close the ticket?",
+            description="Are you sure you want to close the ticket?",
             color=0xff0000
         )
         embed.set_footer(text=f"Ticket ID: {ticket_id}")
