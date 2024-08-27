@@ -16,8 +16,8 @@ class form_builder_request_view(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @discord.ui.button(label="Fill", style=discord.ButtonStyle.green, emoji="📝", custom_id="fill_form_pixel_art_view")
-    async def fill_form_pixel_art_view_callback(self, button: discord.ui.Button, interaction: discord.Interaction):
+    @discord.ui.button(label="Fill", style=discord.ButtonStyle.green, emoji="📝", custom_id="fill_form_builder_view")
+    async def fill_form_builder_view_callback(self, button: discord.ui.Button, interaction: discord.Interaction):
         # Get ticket ID
         try:
             print(interaction.channel.topic)
@@ -39,8 +39,8 @@ class form_builder_request_view(discord.ui.View):
         modal = builder_request_modal(title="Builder Request Form", status="new", ticket_type=ticket_type)
         await interaction.response.send_modal(modal)
 
-    @discord.ui.button(label="Close", style=discord.ButtonStyle.red, emoji="🔒", custom_id="close_form_pixel_art_view")
-    async def close_form_pixel_art_view(self, button: discord.ui.Button, interaction: discord.Interaction):
+    @discord.ui.button(label="Close", style=discord.ButtonStyle.red, emoji="🔒", custom_id="close_form_builder_view")
+    async def close_form_builder_view(self, button: discord.ui.Button, interaction: discord.Interaction):
         embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
         ticket_id = re.findall(r"Ticket ID: (\w+)", embed[0]['footer']['text'])[0]
 
