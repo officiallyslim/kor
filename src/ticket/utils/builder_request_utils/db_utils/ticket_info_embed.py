@@ -1,7 +1,11 @@
 import discord
+import dotenv
+import os
 
 from src.ticket.utils.builder_request_utils.db_utils.Ticket import Ticket
 
+dotenv.load_dotenv()
+private_api = str(os.getenv("PRIVATE_API"))
 
 def create_ticket_info_embed(ticket_data: Ticket, current_ticket_status):
     if current_ticket_status == "Ticket is open":
@@ -90,11 +94,11 @@ def create_ticket_info_embed(ticket_data: Ticket, current_ticket_status):
             value=f"```{ticket_data.close_reason}```",
             inline=False,
         )
-        # info_embed.add_field(
-        #     name="Roblox user (form)",
-        #     value=f"```{ticket_data.form_roblox_user}```",
-        #     inline=False,
-        # )
+        info_embed.add_field(
+            name="Transcript",
+            value=f"[Open in browser]({private_api}/getTranscript/{ticket_data.ticket_id}?ticket_key={ticket_data.transcript_key})",
+            inline=False,
+        )
         # info_embed.add_field(
         #     name="Island Code (form)",
         #     value=f"```{ticket_data.form_island_code}```",
