@@ -20,13 +20,14 @@ from src.ticket.utils.create_overwrites import create_custom_overwrites
 from src.utils.embed_to_dict import embed_to_dict
 
 
-async def claim_ticket(interaction: discord.Interaction):
-    # Get ticket ID
-    embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
-    ticket_id = re.findall(r"Ticket ID: (\w+)", embed[0]["footer"]["text"])[0]
+async def claim_ticket(interaction: discord.Interaction, ticket_id = None):
+    if ticket_id is None:
+        # Get ticket ID
+        embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
+        ticket_id = {"origin": "button", "ticket_id":re.findall(r"Ticket ID: (\w+)", embed[0]["footer"]["text"])[0]}
 
     # Get ticket type
-    ticket_type = get_builder_ticket_type(ticket_id=ticket_id)
+    ticket_type = get_builder_ticket_type(ticket_id=ticket_id["ticket_id"])
     for key, value in ticket_type_dict.items():
         if value["type"] == ticket_type:
             queue_channel_id = value["queue_channel_id"]
@@ -34,10 +35,10 @@ async def claim_ticket(interaction: discord.Interaction):
             builder_role_id = value["role_id"]
 
     # Get channel ID
-    channel_id = get_builder_channel_id(ticket_id=ticket_id)
+    channel_id = get_builder_channel_id(ticket_id=ticket_id["ticket_id"])
 
     # Get open user ID
-    open_user_id = get_builder_open_user_id(ticket_id=ticket_id)
+    open_user_id = get_builder_open_user_id(ticket_id=ticket_id["ticket_id"])
 
     # Get users and roles
     whoami = interaction.user
@@ -56,12 +57,26 @@ async def claim_ticket(interaction: discord.Interaction):
     )
 
     # Set new perms
-    ticket_channel = bot.get_channel(channel_id)
-    for obj, perms in new_overwrites.items():
-        await ticket_channel.set_permissions(obj, overwrite=perms)
+    try:
+        ticket_channel = bot.get_channel(channel_id)
+        for obj, perms in new_overwrites.items():
+            await ticket_channel.set_permissions(obj, overwrite=perms)
+    except Exception as e:
+        if ticket_id["origin"] == "button":
+            await interaction.followup.send(f"Something failed. Please, report to stage: {e}", ephemeral=True)
+            return
+        elif ticket_id["origin"] == "cmd":
+            await interaction.response.send_message(f"Something failed. Please, report to stage: {e}", ephemeral=True)
+            return
+
 
     # Respond and edit
-    await interaction.followup.send("Claimed!", ephemeral=True)
+    if ticket_id["origin"] == "button":
+        await interaction.followup.send("Claimed!", ephemeral=True)
+    elif ticket_id["origin"] == "cmd":
+        await interaction.response.send_message("Claimed!", ephemeral=True)
+
+    # Notify
     notification_embed = discord.Embed(
             title="",
             description=f"{interaction.user.mention} claimed this ticket!",
