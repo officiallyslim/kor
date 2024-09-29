@@ -81,8 +81,8 @@ class builder_request_modal(discord.ui.Modal):
         embed.add_field(name="Payment", value=f"```{self.children[3].value}```", inline=False)
         embed.set_footer(text="Please, confirm your answer before send to builder team.")
 
-        open_ticket = check_open_builder_ticket(int(interaction.user.id), ticket_type=self.ticket_type)
         try:
+            open_ticket = check_open_builder_ticket(int(interaction.user.id), ticket_type=self.ticket_type)
             if open_ticket is False:
                 loading_message = await interaction.response.send_message(f"{loading_emoji} Processing...", ephemeral=True)
                 await asyncio.sleep(5)
