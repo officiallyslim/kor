@@ -13,7 +13,7 @@ def get_builder_welcome_msg(ticket_id):
 def get_builder_open_user_id(ticket_id):
     conn = sqlite3.connect(ticket_database_path)
     cursor = conn.cursor()
-    cursor.execute('SELECT open_user_id FROM builder_request WHERE ticket_id = ? AND close_time IS NULL', (ticket_id,))
+    cursor.execute('SELECT open_user_id FROM builder_request WHERE ticket_id = ? AND close_time IS NULL', (str(ticket_id),))
     fetch_result = cursor.fetchone()
     conn.close()
     if fetch_result is not None:
@@ -49,7 +49,7 @@ def check_claimed_builder_ticket(ticket_id):
 def get_builder_channel_id(ticket_id):
     conn = sqlite3.connect(ticket_database_path)
     cursor = conn.cursor()
-    cursor.execute('SELECT channel_id FROM builder_request WHERE ticket_id = ?', (ticket_id,))
+    cursor.execute('SELECT channel_id FROM builder_request WHERE ticket_id = ?', (str(ticket_id),))
     fetch_result = cursor.fetchone()
     conn.close()
     if fetch_result is not None:

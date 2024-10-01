@@ -13,12 +13,12 @@ from src.global_src.global_roles import (
     support_role_id,
 )
 import re
-from src.ticket.utils.builder_request_utils.claim_builder_request_ticket import (
-    claim_ticket,
+from src.ticket.utils.builder_request_utils.unclaim_builder_request_ticket import (
+    unclaim_ticket,
 )
 
 
-async def claim_ticket_cmd(ctx: discord.ApplicationContext):
+async def unclaim_ticket_cmd(ctx: discord.ApplicationContext):
     if int(ctx.user.id) != 756509638169460837 and not any(
         role.id
         in [
@@ -50,6 +50,6 @@ async def claim_ticket_cmd(ctx: discord.ApplicationContext):
         )
         return
 
-    await claim_ticket(
+    await unclaim_ticket(
         interaction=ctx, ticket_id={"origin": "cmd", "ticket_id": ticket_id[0]}
     )

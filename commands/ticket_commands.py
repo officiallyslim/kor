@@ -1,5 +1,6 @@
 import discord
 from commands.ticket_cmd_group.ticket_claim import claim_ticket_cmd
+from commands.ticket_cmd_group.ticket_unclaim import unclaim_ticket_cmd
 from commands.ticket_cmd_group.ticket_remove import remove_user_ticket
 from commands.ticket_cmd_group.ticket_close import close_ticket
 from commands.ticket_cmd_group.ticket_add import add_user_ticket
@@ -31,3 +32,7 @@ ticket_group.command(
 ticket_group.command(
     name="claim", description="Claim the current ticket channel"
 )(claim_ticket_cmd)
+
+ticket_group.command(
+    name="unclaim", description="Unclaim the current ticket channel"
+)(unclaim_ticket_cmd)

@@ -21,18 +21,27 @@ from src.utils.embed_to_dict import embed_to_dict
 
 
 async def claim_ticket(interaction: discord.Interaction, ticket_id = None):
+    print(ticket_id)
     if ticket_id is None:
-        # Get ticket ID
         embed = [embed_to_dict(embed) for embed in interaction.message.embeds]
         ticket_id = {"origin": "button", "ticket_id":re.findall(r"Ticket ID: (\w+)", embed[0]["footer"]["text"])[0]}
 
     # Get ticket type
-    ticket_type = get_builder_ticket_type(ticket_id=ticket_id["ticket_id"])
+    ticket_type = get_builder_ticket_type(ticket_id=str(ticket_id["ticket_id"]))
+    found_ticket = False
     for key, value in ticket_type_dict.items():
-        if value["type"] == ticket_type:
+        if str(value["type"]) == str(ticket_type):
             queue_channel_id = value["queue_channel_id"]
             builder_name = value["button_label"]
             builder_role_id = value["role_id"]
+            found_ticket = True
+            break
+        if not found_ticket:
+            print("No ticket type found!")
+            print(f"Ticket type provided: {ticket_type}")  # Imprimir el tipo de ticket proporcionado
+            return
+        else:
+            print(f"Builder role ID: {builder_role_id}")  # Solo imprimir si se encontró el ticket
 
     # Get channel ID
     channel_id = get_builder_channel_id(ticket_id=ticket_id["ticket_id"])
@@ -84,7 +93,7 @@ async def claim_ticket(interaction: discord.Interaction, ticket_id = None):
         )
     await interaction.channel.send(embed=notification_embed)
 
-    welcome_msg_id, channel_id = get_builder_welcome_msg(ticket_id=ticket_id)
+    welcome_msg_id, channel_id = get_builder_welcome_msg(ticket_id=ticket_id["ticket_id"])
     welcome_msg = await bot.get_channel(channel_id).fetch_message(welcome_msg_id)
     from src.ticket.view.builder_request_views.actions_claimed_builder_request import (
         actions_claimed_builder_view,
@@ -98,18 +107,18 @@ async def claim_ticket(interaction: discord.Interaction, ticket_id = None):
             colour=discord.Colour(int("ff0000", 16)),
         )
         await interaction.followup.send(embeds=[error_code_embed], ephemeral=True)
-        print(f"Error when fetching queue message id for ticket {ticket_id}: {e}")
+        print(f"Error when fetching queue message id for ticket {ticket_id['ticket_id']}: {e}")
         return
 
     # Edit queue message
     try:
-        queue_message_id = get_builder_queue_message_id(ticket_id)
+        queue_message_id = get_builder_queue_message_id(ticket_id["ticket_id"])
         if queue_message_id is not None:
             queue_message = await bot.get_channel(queue_channel_id).fetch_message(queue_message_id)
             old_embed = [embed_to_dict(embed) for embed in queue_message.embeds]
 
             new_embed = discord.Embed(
-                title=f"{builder_name} ticket - {ticket_id}",
+                title=f"{builder_name} ticket - {ticket_id['ticket_id']}",
                 color=0x28a745,
                 description=""
             )
@@ -128,12 +137,12 @@ async def claim_ticket(interaction: discord.Interaction, ticket_id = None):
     except Exception as e:
         error_code_embed = discord.Embed(
             title="Error editing queue message:",
-            description=f"Error: ```{e}```\nTicket ID: `{ticket_id}`\nTime: <t:{int(datetime.now().timestamp())}:F>",
+            description=f"Error: ```{e}```\nTicket ID: `{ticket_id['ticket_id']}`\nTime: <t:{int(datetime.now().timestamp())}:F>",
             colour=discord.Colour(int("ff0000", 16)),
         )
         await interaction.followup.send(embeds=[error_code_embed], ephemeral=True)
-        print(f"Error when fetching queue message id for ticket {ticket_id}: {e}")
+        print(f"Error when fetching queue message id for ticket {ticket_id['ticket_id']}: {e}")
         return
 
     # Save to database
-    edit_builder_request_db(ticket_id=ticket_id, claim_user_id=interaction.user.id)
+    edit_builder_request_db(ticket_id=ticket_id["ticket_id"], claim_user_id=interaction.user.id)
