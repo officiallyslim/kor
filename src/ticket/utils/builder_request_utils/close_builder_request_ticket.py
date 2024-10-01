@@ -156,7 +156,7 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id, pass
     log_message = await bot.get_channel(ticket_log_channel_id).fetch_message(log_msg_id)
 
     open_user_data = get_builder_dm_message_id(ticket_id)
-    if open_user_data is not None:
+    if open_user_data[1] is not None:
         open_user = bot.get_user(open_user_data[0])
         try:
             dm_channel = open_user.dm_channel
@@ -173,6 +173,8 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id, pass
             await dm_message.reply(embed=embed)
         except Exception:
             pass
+    else:
+        print(f"{open_user} dm is probably is closed xd?")
 
     embed = discord.Embed(
         title=f"Ticket {ticket_id} closed", description="", color=0x5cb85c

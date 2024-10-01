@@ -183,8 +183,10 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
             dm_message = await dm.send(
                 content="", embed=embed, view=jump_channel(guild_id, channel_id)
             )
+            dm_message_id = dm_message.id
         except discord.Forbidden:
             print(f"Failed send DM to {interaction.user.name}")
+            dm_message_id = None
 
         # Send to log
         embed = discord.Embed(
@@ -221,7 +223,7 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
             form_payment=None,
             channel_id=channel_id,
             welcome_msg_id=welcome_message.id,
-            dm_msg_id=dm_message.id,
+            dm_msg_id=dm_message_id,
             confirm_message_id=None,
             queue_msg_id=None,
             log_msg_id=log_message.id,
