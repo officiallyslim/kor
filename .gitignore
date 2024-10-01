@@ -10,3 +10,4 @@ src/new_member/welcome_img_template/user_pfp.png
 **/.venv
 
 db/
+clear.py
