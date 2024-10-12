@@ -23,7 +23,7 @@ class gamble(commands.Cog):
         # Check if exist, if not add
         if user_id not in data:
             data[user_id] = 100
-            await ctx.respond("You have successfully registered! Your initial balance is $100.")
+            await ctx.respond("What a young man... Get this my friend, **$100**, use it with mind :3")
             
             # Save data
             with open('db/gamble/gamble_db.json', 'w') as file:
@@ -34,12 +34,12 @@ class gamble(commands.Cog):
 
         if user_balance <= 0:
             data[user_id] = -1 
-            await ctx.respond(f"<@{user_id}>\nYou are bankrupt, there are no more opportunities for you :3 (game over)")
+            await ctx.respond(f"<@{user_id}>\nYou are bankrupt now stop gambling bruh")
             return
 
         # Check if has enough money
         if user_balance < amount:
-            await ctx.respond(f"<@{user_id}>\nYou poor :3.\nGamble with less money. You have `${user_balance}`.")
+            await ctx.respond(f"<@{user_id}>\nYou poor :3.\nGamble with less money man. You have `${user_balance}`.")
             return
 
         # GAMBLE TIME :D
@@ -47,15 +47,15 @@ class gamble(commands.Cog):
 
         if win:
             new_balance = user_balance + amount
-            await ctx.respond(f"<@{user_id}>\nLMAOOOO YOU WON! Your new balance is **${new_balance}**.")
+            await ctx.respond(f"<@{user_id}>\YAY YOU WON! Your new balance is **${new_balance}**.")
         else:
             new_balance = user_balance - amount
-            await ctx.respond(f"<@{user_id}>\nYou lost! Your new balance is **${new_balance}**.")
+            await ctx.respond(f"<@{user_id}>\nLMAOOO You lost! Your new balance is **${new_balance}**.")
 
         # Refresh db
         if new_balance <= 0:
             data[user_id] = -1 
-            await ctx.followup.send(f"<@{user_id}>\nYou are bankrupt, there are no more opportunities for you :3 (game over)")
+            await ctx.followup.send(f"<@{user_id}>\nYou are now officially bankrupt lol")
         else:
             data[user_id] = new_balance
 
