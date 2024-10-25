@@ -32,7 +32,7 @@ from src.ticket.utils.builder_request_utils.db_utils.get_db_data_builder_request
     get_builder_queue_message_id,
     get_builder_ticket_type,
 )
-from src.ticket.utils.transcript_website import get_transcript
+from ticket.utils.transcript import get_transcript
 from src.global_src.global_path import ticket_saved_password_path
 
 async def close_ticket(interaction: discord.Interaction, reason, ticket_id, password):
@@ -121,7 +121,7 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id, pass
             return
 
         await status_message.edit(
-            content=f"🔒**Closing ticket...**\n\n🔄 **Creating transcript...** This may take a while!\n\n✅ [Transcript]({status[0]}) generated correctly! Deleting channel in 5 seconds."
+            content="🔒**Closing ticket...**\n\n🔄 **Creating transcript...** This may take a while!\n\n✅ Transcript generated correctly! Deleting channel in 5 seconds."
         )
         await asyncio.sleep(5)
 
@@ -137,7 +137,6 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id, pass
         close_time=close_time,
         close_user_id=interaction.user.id,
         close_reason=reason,
-        transcript_key=status[1],
     )
 
     await ticket_channel.delete(reason=f"Ticket {ticket_id} finished.")
@@ -146,8 +145,8 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id, pass
     if queue_message_id is not None:
         queue_message = await bot.get_channel(queue_channel_id).fetch_message(
             queue_message_id
-        )  # e
-        await queue_message.delete(reason="Ticketd clsoed")
+        )
+        await queue_message.delete(reason="Ticket closed")
         print(f"Ticket {ticket_id} closed")
     else:
         print(f"Ticket {ticket_id} closed")
@@ -188,16 +187,6 @@ async def close_ticket(interaction: discord.Interaction, reason, ticket_id, pass
     embed.add_field(
         name="✏️ Close reason",
         value=f"```{reason}```",
-        inline=False,
-    )
-    embed.add_field(
-        name="🗝️ Web transcript key",
-        value=f"```{status[1]}```",
-        inline=False,
-    )
-    embed.add_field(
-        name="🌐 Web Transcript",
-        value=f"[Open in browser]({status[0]})",
         inline=False,
     )
     embed.set_footer(text=f"Ticket ID: {ticket_id}")
