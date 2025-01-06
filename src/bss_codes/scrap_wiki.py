@@ -21,10 +21,6 @@ def check_codes(new_codes, current_codes):
     invalid = None if not invalid else invalid
     common = None if not common else common
 
-    print(f"Códigos nuevos: {news}")
-    print(f"Códigos eliminados: {invalid}")
-    print(f"Códigos comunes: {common}")
-
     return news, invalid, common
 
 
