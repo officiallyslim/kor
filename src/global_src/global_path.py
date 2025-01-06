@@ -48,3 +48,7 @@ ticket_database_path = "db/ticket/ticket_data.db"
 ticket_banned_path = "db/ticket/ticket_ban_id.json"
 ticket_cooldown_path = "db/ticket/ticket_cooldown.json"
 ticket_saved_password_path = "db/ticket/password.txt"
+
+# codes
+bss_codes_path = "db/bss_codes/codes.json"
+bssUpdateCodesPath = "db/bss_codes/update_codes.json"
