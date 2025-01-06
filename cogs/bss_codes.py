@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-from config import bot
+from src.bss_codes.update_bss_panel import updateBssCodes
 from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_roles import (
     assistant_director_role_id,
@@ -11,7 +11,6 @@ from src.global_src.global_roles import (
     owner_role_id,
     staff_manager_role_id,
 )
-
 
 class bss_codes(commands.Cog):
     def __init__(self, bot):
@@ -36,7 +35,13 @@ class bss_codes(commands.Cog):
             await ctx.respond(embed=no_perm_embed, ephemeral=True)
             return
         await ctx.defer(ephemeral=True)
-        await ctx.followup.send("Updated!", ephemeral=True)
+        try:
+            newsCodes, invalidCodes, commonCodes = await updateBssCodes()
+        except Exception as e:
+            print(e)
+            await ctx.followup.send("Something failed :c", ephemeral=True)
+            return "Failed"
+        await ctx.followup.send(f"Updated!\n New working codes: {newsCodes}\nInvalid/Old codes: {invalidCodes}\nStill working codes: {commonCodes}", ephemeral=True)
 
     @discord.Cog.listener()
     async def on_ready(self):
