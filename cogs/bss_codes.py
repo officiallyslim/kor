@@ -1,5 +1,5 @@
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 
 from src.bss_codes.update_bss_panel import updateBssCodes
 from src.global_src.global_embed import no_perm_embed
@@ -45,8 +45,11 @@ class bss_codes(commands.Cog):
 
     @discord.Cog.listener()
     async def on_ready(self):
-        pass
+        updateBssCodesLoop.start()
 
+@tasks.loop(seconds=3600)
+async def updateBssCodesLoop():
+    await updateBssCodes()
 
 def setup(bot):
     bot.add_cog(bss_codes(bot))
