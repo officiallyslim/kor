@@ -1,6 +1,7 @@
 import json
 from src.global_src.global_path import bssUpdateCodesPath
 from config import bot
+import discord
 
 def loadUpdateCodesData():
     try:
@@ -12,4 +13,9 @@ def loadUpdateCodesData():
 async def sendNewCodeNotification(code):
     updateCodes = loadUpdateCodesData()
     channel = await bot.fetch_channel(updateCodes["notificationChannelID"])
-    await channel.send(f"New code: {code}")
+    codeEmbed = discord.Embed(
+        title="New BSS code!",
+        description=f"```{code}```",
+        colour=discord.Colour(int("6798ed", 16)),
+    )
+    await channel.send(embed=codeEmbed)
