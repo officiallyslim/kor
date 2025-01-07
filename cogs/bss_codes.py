@@ -1,6 +1,7 @@
 import discord
+from config import bot
 from discord.ext import commands, tasks
-
+from src.bss_codes.show_more import showMoreView
 from src.bss_codes.update_bss_panel import updateBssCodes
 from src.global_src.global_embed import no_perm_embed
 from src.global_src.global_roles import (
@@ -46,6 +47,7 @@ class bss_codes(commands.Cog):
     @discord.Cog.listener()
     async def on_ready(self):
         updateBssCodesLoop.start()
+        bot.add_view(showMoreView())
 
 @tasks.loop(seconds=3600)
 async def updateBssCodesLoop():

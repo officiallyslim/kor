@@ -9,9 +9,9 @@ def loadCodes():
     except FileNotFoundError:
         return {}
 
-class showMoreModal(discord.ui.View):
+class showMoreView(discord.ui.View):
     def __init__(self):
-        super().__init__()
+        super().__init__(timeout=None)
         self.codes = loadCodes()
         self.add_item(self.create_select())
 

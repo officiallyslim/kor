@@ -5,7 +5,7 @@ from src.bss_codes.scrap_wiki import scrap_wiki
 import discord
 from datetime import datetime
 from src.bss_codes.send_new_codes import sendNewCodeNotification
-from src.bss_codes.show_more import showMoreModal
+from src.bss_codes.show_more import showMoreView
 
 def loadCodes():
     try:
@@ -44,7 +44,7 @@ async def updateBssCodes():
                 json.dump(updateCodes, file, indent=4)
         if message:
             embed = await refactCodes(updateCodes["updateFrequency"])
-            await message.edit(content="", embed=embed, view=showMoreModal())
+            await message.edit(content="", embed=embed, view=showMoreView())
     except Exception as e:
         print(e)
         return "Failed"
