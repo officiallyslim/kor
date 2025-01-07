@@ -94,7 +94,6 @@ async def builder_request_panel_callback(button: discord.ui.Button, interaction:
 
         # Gen ticket id
         ticket_id = gen_key(15)
-        print(f"Creating new ticket: {ticket_id}")
 
         # Get users and roles
         whoami = interaction.user

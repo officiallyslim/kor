@@ -11,7 +11,6 @@ private_api = str(os.getenv("PRIVATE_API"))
 private_api_token = str(os.getenv("PRIVATE_API_KEY_TOKEN"))
 
 async def get_transcript(channel: discord.TextChannel, ticket_id):
-    print(f"Creating transcript for {ticket_id}...")
     export = await chat_exporter.export(channel=channel)
     file_name=f"db/ticket/transcript/{ticket_id}.html"
 
@@ -23,7 +22,7 @@ async def get_transcript(channel: discord.TextChannel, ticket_id):
             f.write(export)
 
     # Upload transcript to private server
-    print(f"Uploading transcript {ticket_id} to private API server.")
+    # print(f"Uploading transcript {ticket_id} to private API server.")
     private_api_url= f"{private_api}/addTranscript"
 
     with open(file_name, 'r', encoding='utf-8') as f:

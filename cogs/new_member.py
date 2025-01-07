@@ -24,7 +24,6 @@ class new_member(commands.Cog):
     async def on_member_join(self, member: discord.Member):
         log_channel = bot.get_channel(new_members_log_channel_id)
 
-        print(f"{member} joined")
         embed = discord.Embed(
             title="",
             description=f"{member.mention} ({member.id}) joined!",
