@@ -12,7 +12,7 @@ intents.guild_messages = True
 bot = commands.Bot(command_prefix="a!", intents=intents)
 
 # Server ID
-guild_id = 1151612424785494116
+guild_id = 1370200323586527232
 
 # Github token
 dotenv.load_dotenv()
